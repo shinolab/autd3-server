@@ -267,8 +267,10 @@ def server_build(args):
                     "universal-apple-darwin",
                 ]
             ).check_returncode()
-    else:
-        subprocess.run(["npm", "run", "tauri", "build"], shell=shell).check_returncode()
+        else:
+            subprocess.run(
+                ["npm", "run", "tauri", "build"], shell=shell
+            ).check_returncode()
 
 
 def server_clear(args):
