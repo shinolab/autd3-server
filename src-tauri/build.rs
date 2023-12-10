@@ -88,6 +88,37 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         )?;
     };
 
+    if cfg!(target_os = "macos") {
+        std::fs::copy(
+            manifest_dir.join("./target/x86_64-apple-darwin/release/simulator-unity"),
+            manifest_dir.join("simulator-unity-x86_64-apple-darwin"),
+        )?;
+        std::fs::copy(
+            manifest_dir.join("./target/aarch64-apple-darwin/release/simulator-unity"),
+            manifest_dir.join("simulator-unity-aarch64-apple-darwin"),
+        )?;
+        Command::new("lipo")
+            .current_dir(manifest_dir)
+            .args([
+                "-create",
+                "simulator-unity-x86_64-apple-darwin",
+                "simulator-unity-aarch64-apple-darwin",
+                "-output",
+                "simulator-unity-universal-apple-darwin",
+            ])
+            .spawn()?
+            .wait()?;
+    } else {
+        std::fs::copy(
+            manifest_dir.join(format!("./target/release/simulator-unity{}", ext)),
+            manifest_dir.join(format!(
+                "simulator-unity-{}{}",
+                std::env::var("TARGET")?,
+                ext
+            )),
+        )?;
+    };
+
     // NOTICE
     let notice_path = manifest_dir.join("NOTICE");
     if notice_path.exists() {

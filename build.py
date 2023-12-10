@@ -148,62 +148,127 @@ def server_build(args):
         err("shaderc is not installed. Cannot build simulator.")
         sys.exit(-1)
 
-    with working_dir("."):
-        if config.is_windows():
-            subprocess.run(["npm", "install"], shell=True).check_returncode()
-        else:
-            subprocess.run(["npm", "install"]).check_returncode()
+    shell = True if config.is_windows() else False
 
+    with working_dir("simulator"):
+        build_commands = []
         if config.is_macos():
-            command_x86 = [
-                "cargo",
-                "build",
-                "--release",
-                "--target=x86_64-apple-darwin",
-            ]
-            command_aarch64 = [
-                "cargo",
-                "build",
-                "--release",
-                "--target=aarch64-apple-darwin",
-            ]
-
-            with working_dir("simulator"):
-                subprocess.run(command_x86).check_returncode()
-                subprocess.run(command_aarch64).check_returncode()
-
-            with working_dir("SOEMAUTDServer"):
-                subprocess.run(command_x86).check_returncode()
-                subprocess.run(command_aarch64).check_returncode()
-
-            if not args.external_only:
-                subprocess.run(
-                    [
-                        "npm",
-                        "run",
-                        "tauri",
-                        "build",
-                        "--",
-                        "--target",
-                        "universal-apple-darwin",
-                    ]
-                ).check_returncode()
+            build_commands.append(
+                [
+                    "cargo",
+                    "build",
+                    "--release",
+                    "--target=x86_64-apple-darwin",
+                    "--features",
+                    "unity",
+                ]
+            )
+            build_commands.append(
+                [
+                    "cargo",
+                    "build",
+                    "--release",
+                    "--target=aarch64-apple-darwin",
+                    "--features",
+                    "unity",
+                ]
+            )
         else:
-            command = ["cargo", "build", "--release"]
+            build_commands.append(
+                [
+                    "cargo",
+                    "build",
+                    "--release",
+                    "--features",
+                    "unity",
+                ]
+            )
+        for command in build_commands:
+            subprocess.run(command).check_returncode()
+    if config.is_macos():
+        shutil.copy(
+            "src-tauri/target/aarch64-apple-darwin/release/simulator",
+            "src-tauri/target/aarch64-apple-darwin/release/simulator-unity",
+        )
+        shutil.copy(
+            "src-tauri/target/x86_64-apple-darwin/release/simulator",
+            "src-tauri/target/x86_64-apple-darwin/release/simulator-unity",
+        )
+    elif config.is_windows():
+        shutil.copy(
+            "src-tauri/target/release/simulator.exe",
+            "src-tauri/target/release/simulator-unity.exe",
+        )
+    elif config.is_linux():
+        shutil.copy(
+            "src-tauri/target/release/simulator",
+            "src-tauri/target/release/simulator-unity",
+        )
 
-            with working_dir("simulator"):
-                subprocess.run(command).check_returncode()
+    with working_dir("simulator"):
+        build_commands = []
+        if config.is_macos():
+            build_commands.append(
+                [
+                    "cargo",
+                    "build",
+                    "--release",
+                    "--target=x86_64-apple-darwin",
+                ]
+            )
+            build_commands.append(
+                [
+                    "cargo",
+                    "build",
+                    "--release",
+                    "--target=aarch64-apple-darwin",
+                ]
+            )
+        else:
+            build_commands.append(["cargo", "build", "--release"])
+        for command in build_commands:
+            subprocess.run(command).check_returncode()
 
-            with working_dir("SOEMAUTDServer"):
-                subprocess.run(command).check_returncode()
+    with working_dir("SOEMAUTDServer"):
+        build_commands = []
+        if config.is_macos():
+            build_commands.append(
+                [
+                    "cargo",
+                    "build",
+                    "--release",
+                    "--target=x86_64-apple-darwin",
+                ]
+            )
+            build_commands.append(
+                [
+                    "cargo",
+                    "build",
+                    "--release",
+                    "--target=aarch64-apple-darwin",
+                ]
+            )
+        else:
+            build_commands.append(["cargo", "build", "--release"])
+        for command in build_commands:
+            subprocess.run(command).check_returncode()
 
-            if not args.external_only:
-                if config.is_windows():
-                    subprocess.run(
-                        ["npm", "run", "tauri", "build"], shell=True
-                    ).check_returncode()
-                else:
-                    subprocess.run(["npm", "run", "tauri", "build"]).check_returncode()
+    subprocess.run(["npm", "install"], shell=shell).check_returncode()
+    if not args.external_only:
+        if config.is_macos():
+            subprocess.run(
+                [
+                    "npm",
+                    "run",
+                    "tauri",
+                    "build",
+                    "--",
+                    "--target",
+                    "universal-apple-darwin",
+                ]
+            ).check_returncode()
+    else:
+        subprocess.run(["npm", "run", "tauri", "build"], shell=shell).check_returncode()
 
 
 def server_clear(args):

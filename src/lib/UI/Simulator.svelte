@@ -4,7 +4,7 @@ Project: AUTD Server
 Created Date: 06/07/2023
 Author: Shun Suzuki
 -----
-Last Modified: 14/10/2023
+Last Modified: 10/12/2023
 Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
 -----
 Copyright (c) 2023 Shun Suzuki. All rights reserved.
@@ -48,7 +48,7 @@ Copyright (c) 2023 Shun Suzuki. All rights reserved.
   const cachedGPUs = writable<string | null>(null);
   let availableGpus: string[] = [];
   $: availableGpusNames = ["Auto"].concat(
-    availableGpus.map((gpu) => gpu.split(":")[1].trim())
+    availableGpus.map((gpu) => gpu.split(":")[1].trim()),
   );
 
   let handleRunClick = async () => {
@@ -69,17 +69,19 @@ Copyright (c) 2023 Shun Suzuki. All rights reserved.
       args.push("-g");
       args.push(simulatorOptions.gpu_idx.toString());
     }
-    command = Command.sidecar("simulator", args);
+    command = simulatorOptions.unity
+      ? Command.sidecar("simulator-unity", args)
+      : Command.sidecar("simulator", args);
     child = await command.spawn();
     command.stdout.on("data", (line) =>
       consoleOutputQueue.update((v) => {
         return [...v, line.trimEnd()];
-      })
+      }),
     );
     command.stderr.on("data", (line) =>
       consoleOutputQueue.update((v) => {
         return [...v, line.trimEnd()];
-      })
+      }),
     );
     command.on("error", () => handleCloseClick());
     command.on("close", () => handleCloseClick());
@@ -109,7 +111,8 @@ Copyright (c) 2023 Shun Suzuki. All rights reserved.
       .map((s) => s.trim().replace(/ \(type .*\)$/g, ""));
     gpuName = (
       availableGpus.find(
-        (gpu) => parseInt(gpu.split(":")[0].trim()) === simulatorOptions.gpu_idx
+        (gpu) =>
+          parseInt(gpu.split(":")[0].trim()) === simulatorOptions.gpu_idx,
       ) ?? "0:Auto"
     )
       .split(":")[1]
@@ -148,6 +151,9 @@ Copyright (c) 2023 Shun Suzuki. All rights reserved.
     min="1"
     step="1"
   />
+
+  <label for="unity">Unity:</label>
+  <CheckBox id="unity" bind:checked={simulatorOptions.unity} />
 
   <Button label="Run" click={handleRunClick} disabled={!!child} />
   <Button label="Close" click={handleCloseClick} disabled={!child} />

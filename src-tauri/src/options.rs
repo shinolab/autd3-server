@@ -4,7 +4,7 @@
  * Created Date: 06/07/2023
  * Author: Shun Suzuki
  * -----
- * Last Modified: 25/10/2023
+ * Last Modified: 10/12/2023
  * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
  * -----
  * Copyright (c) 2023 Shun Suzuki. All rights reserved.
@@ -76,6 +76,8 @@ pub struct SimulatorOptions {
     pub gpu_idx: i32,
     pub window_width: u32,
     pub window_height: u32,
+    #[serde(default)]
+    pub unity: bool,
 }
 
 impl Default for SimulatorOptions {
@@ -86,6 +88,7 @@ impl Default for SimulatorOptions {
             gpu_idx: -1,
             window_width: 800,
             window_height: 600,
+            unity: false,
         }
     }
 }

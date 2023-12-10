@@ -41,6 +41,7 @@ tracing-core = "0.1.31"
 
 [features]
 default = []
-use_meter = ["autd3/use_meter"]
+use_meter = ["autd3/use_meter", "autd3-driver/use_meter"]
 left_handed = []
 enable_debug = []
+unity = ["use_meter", "left_handed"]

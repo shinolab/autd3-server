@@ -4,7 +4,7 @@
  * Created Date: 10/07/2023
  * Author: Shun Suzuki
  * -----
- * Last Modified: 25/10/2023
+ * Last Modified: 10/12/2023
  * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
  * -----
  * Copyright (c) 2023 Shun Suzuki. All rights reserved.
@@ -47,6 +47,7 @@ export interface SimulatorOptions {
     gpu_idx: number;
     window_width: number;
     window_height: number;
+    unity: boolean;
 }
 
 export interface Options {
