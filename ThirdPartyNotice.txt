@@ -10,7 +10,7 @@ The license terms for each of these components are provided later in this notice
 git+https://github.com/ampproject/remapping.git
 ---------------------------------------------------------
 
-@babel/code-frame 7.22.5 MIT
+@babel/code-frame 7.23.5 MIT
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
@@ -22,7 +22,7 @@ https://github.com/babel/babel.git
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
-@babel/generator 7.22.5 MIT
+@babel/generator 7.23.6 MIT
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
@@ -30,11 +30,11 @@ https://github.com/babel/babel.git
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
-@babel/helper-environment-visitor 7.22.5 MIT
+@babel/helper-environment-visitor 7.22.20 MIT
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
-@babel/helper-function-name 7.22.5 MIT
+@babel/helper-function-name 7.23.0 MIT
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
@@ -54,15 +54,15 @@ https://github.com/babel/babel.git
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
-@babel/helper-split-export-declaration 7.22.5 MIT
+@babel/helper-split-export-declaration 7.22.6 MIT
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
-@babel/helper-string-parser 7.22.5 MIT
+@babel/helper-string-parser 7.23.4 MIT
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
-@babel/helper-validator-identifier 7.22.5 MIT
+@babel/helper-validator-identifier 7.22.20 MIT
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
@@ -74,23 +74,23 @@ https://github.com/babel/babel.git
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
-@babel/highlight 7.22.5 MIT
+@babel/highlight 7.23.4 MIT
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
-@babel/parser 7.22.5 MIT
+@babel/parser 7.23.6 MIT
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
-@babel/template 7.22.5 MIT
+@babel/template 7.22.15 MIT
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
-@babel/traverse 7.22.5 MIT
+@babel/traverse 7.23.6 MIT
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
-@babel/types 7.22.5 MIT
+@babel/types 7.23.6 MIT
 https://github.com/babel/babel.git
 ---------------------------------------------------------
 
@@ -266,7 +266,7 @@ mkdirp 0.5.6 MIT
 https://github.com/substack/node-mkdirp.git
 ---------------------------------------------------------
 
-nanoid 3.3.6 MIT
+nanoid 3.3.7 MIT
 ai/nanoid
 ---------------------------------------------------------
 
@@ -290,7 +290,7 @@ picomatch 2.3.1 MIT
 micromatch/picomatch
 ---------------------------------------------------------
 
-postcss 8.4.27 MIT
+postcss 8.4.32 MIT
 postcss/postcss
 ---------------------------------------------------------
 
@@ -306,12 +306,16 @@ rimraf 2.7.1 ISC
 git://github.com/isaacs/rimraf.git
 ---------------------------------------------------------
 
-rollup 3.26.0 MIT
+rollup 3.29.4 MIT
 rollup/rollup
 ---------------------------------------------------------
 
 sander 0.5.1 MIT
 https://github.com/rich-harris/sander
+---------------------------------------------------------
+
+semver 6.3.1 ISC
+https://github.com/npm/node-semver.git
 ---------------------------------------------------------
 
 sorcery 0.11.0 MIT
@@ -370,7 +374,7 @@ update-browserslist-db 1.0.11 MIT
 browserslist/update-db
 ---------------------------------------------------------
 
-vite 4.4.6 MIT
+vite 4.5.1 MIT
 git+https://github.com/vitejs/vite.git
 ---------------------------------------------------------
 

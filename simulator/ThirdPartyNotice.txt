@@ -46,7 +46,7 @@ android_system_properties 0.1.5 (Apache-2.0 OR MIT)
 https://github.com/nical/android_system_properties
 ---------------------------------------------------------
 
-anstream 0.6.4 (Apache-2.0 OR MIT)
+anstream 0.6.5 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
@@ -58,7 +58,7 @@ anstyle-parse 0.2.3 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
-anstyle-query 1.0.1 (Apache-2.0 OR MIT)
+anstyle-query 1.0.2 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle
 ---------------------------------------------------------
 
@@ -106,24 +106,24 @@ atomic-polyfill 1.0.3 (Apache-2.0 OR MIT)
 https://github.com/embassy-rs/atomic-polyfill
 ---------------------------------------------------------
 
-autd3 19.0.0 (MIT)
-https://github.com/shinolab/autd3
+autd3 19.1.0 (MIT)
+https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 19.0.0 (MIT)
-https://github.com/shinolab/autd3
+autd3-derive 19.1.0 (MIT)
+https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 19.0.0 (MIT)
-https://github.com/shinolab/autd3
+autd3-driver 19.1.0 (MIT)
+https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 19.0.0 (MIT)
-https://github.com/shinolab/autd3
+autd3-firmware-emulator 19.1.0 (MIT)
+https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-protobuf 19.0.0 (MIT)
-https://github.com/shinolab/autd3
+autd3-protobuf 19.1.0 (MIT)
+https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
 autocfg 1.1.0 (Apache-2.0 OR MIT)
@@ -278,23 +278,23 @@ critical-section 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/rust-embedded/critical-section
 ---------------------------------------------------------
 
-crossbeam-channel 0.5.8 (Apache-2.0 OR MIT)
+crossbeam-channel 0.5.9 (Apache-2.0 OR MIT)
 https://github.com/crossbeam-rs/crossbeam
 ---------------------------------------------------------
 
-crossbeam-deque 0.8.3 (Apache-2.0 OR MIT)
+crossbeam-deque 0.8.4 (Apache-2.0 OR MIT)
 https://github.com/crossbeam-rs/crossbeam
 ---------------------------------------------------------
 
-crossbeam-epoch 0.9.15 (Apache-2.0 OR MIT)
+crossbeam-epoch 0.9.16 (Apache-2.0 OR MIT)
 https://github.com/crossbeam-rs/crossbeam
 ---------------------------------------------------------
 
-crossbeam-queue 0.3.8 (Apache-2.0 OR MIT)
+crossbeam-queue 0.3.9 (Apache-2.0 OR MIT)
 https://github.com/crossbeam-rs/crossbeam
 ---------------------------------------------------------
 
-crossbeam-utils 0.8.16 (Apache-2.0 OR MIT)
+crossbeam-utils 0.8.17 (Apache-2.0 OR MIT)
 https://github.com/crossbeam-rs/crossbeam
 ---------------------------------------------------------
 
@@ -493,7 +493,7 @@ http 1.0.0 (Apache-2.0 OR MIT)
 https://github.com/hyperium/http
 ---------------------------------------------------------
 
-http-body 0.4.5 (MIT)
+http-body 0.4.6 (MIT)
 https://github.com/hyperium/http-body
 ---------------------------------------------------------
 
@@ -553,7 +553,7 @@ itertools 0.11.0 (Apache-2.0 OR MIT)
 https://github.com/rust-itertools/itertools
 ---------------------------------------------------------
 
-itoa 1.0.9 (Apache-2.0 OR MIT)
+itoa 1.0.10 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/itoa
 ---------------------------------------------------------
 
@@ -581,7 +581,7 @@ lebe 0.5.2 (BSD-3-Clause)
 https://github.com/johannesvollmer/lebe
 ---------------------------------------------------------
 
-libc 0.2.150 (Apache-2.0 OR MIT)
+libc 0.2.151 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/libc
 ---------------------------------------------------------
 
@@ -649,10 +649,6 @@ mime 0.3.17 (Apache-2.0 OR MIT)
 https://github.com/hyperium/mime
 ---------------------------------------------------------
 
-minimal-lexical 0.2.1 (Apache-2.0 OR MIT)
-https://github.com/Alexhuszagh/minimal-lexical
----------------------------------------------------------
-
 miniz_oxide 0.7.1 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide
 ---------------------------------------------------------
@@ -699,10 +695,6 @@ https://github.com/nix-rust/nix
 
 nix 0.25.1 (MIT)
 https://github.com/nix-rust/nix
----------------------------------------------------------
-
-nom 7.1.3 (MIT)
-https://github.com/Geal/nom
 ---------------------------------------------------------
 
 nu-ansi-term 0.46.0 (MIT)
@@ -968,7 +960,7 @@ rustc_version 0.4.0 (Apache-2.0 OR MIT)
 https://github.com/Kimundi/rustc-version-rs
 ---------------------------------------------------------
 
-rustix 0.38.26 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
+rustix 0.38.28 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
 https://github.com/bytecodealliance/rustix
 ---------------------------------------------------------
 
@@ -976,7 +968,7 @@ rustversion 1.0.14 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/rustversion
 ---------------------------------------------------------
 
-ryu 1.0.15 (Apache-2.0 OR BSL-1.0)
+ryu 1.0.16 (Apache-2.0 OR BSL-1.0)
 https://github.com/dtolnay/ryu
 ---------------------------------------------------------
 
@@ -1036,7 +1028,7 @@ simd-adler32 0.3.7 (MIT)
 https://github.com/mcountryman/simd-adler32
 ---------------------------------------------------------
 
-simulator 19.0.0 (MIT)
+simulator 19.1.0 (MIT)
 https://github.com/shinolab/autd3
 ---------------------------------------------------------
 
@@ -1084,7 +1076,7 @@ syn 1.0.109 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
-syn 2.0.39 (Apache-2.0 OR MIT)
+syn 2.0.41 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
@@ -1124,7 +1116,7 @@ tiny-skia-path 0.8.4 (BSD-3-Clause)
 https://github.com/RazrFalcon/tiny-skia/path
 ---------------------------------------------------------
 
-tokio 1.34.0 (MIT)
+tokio 1.35.0 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
@@ -1448,7 +1440,7 @@ winit 0.28.7 (Apache-2.0)
 https://github.com/rust-windowing/winit
 ---------------------------------------------------------
 
-winnow 0.5.26 (MIT)
+winnow 0.5.28 (MIT)
 https://github.com/winnow-rs/winnow
 ---------------------------------------------------------
 
@@ -1460,7 +1452,7 @@ x11-dl 2.21.0 (MIT)
 https://github.com/AltF02/x11-rs.git
 ---------------------------------------------------------
 
-xcursor 0.3.4 (MIT)
+xcursor 0.3.5 (MIT)
 https://github.com/esposm03/xcursor-rs
 ---------------------------------------------------------
 
@@ -1472,11 +1464,11 @@ xmlparser 0.13.6 (Apache-2.0 OR MIT)
 https://github.com/RazrFalcon/xmlparser
 ---------------------------------------------------------
 
-zerocopy 0.7.29 (Apache-2.0 OR BSD-2-Clause OR MIT)
+zerocopy 0.7.31 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
-zerocopy-derive 0.7.29 (Apache-2.0 OR BSD-2-Clause OR MIT)
+zerocopy-derive 0.7.31 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
