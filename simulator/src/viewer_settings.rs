@@ -14,8 +14,10 @@
 use crate::{Quaternion, Vector3, MILLIMETER, ZPARITY};
 use cgmath::{Deg, Euler};
 use serde::{Deserialize, Serialize};
+use std::hash::Hash;
+use strum::EnumIter;
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, Hash, PartialEq, Eq, EnumIter)]
 pub enum ColorMapType {
     Viridis,
     Magma,
