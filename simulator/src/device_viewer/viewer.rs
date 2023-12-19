@@ -4,7 +4,7 @@
  * Created Date: 23/09/2023
  * Author: Shun Suzuki
  * -----
- * Last Modified: 06/11/2023
+ * Last Modified: 19/12/2023
  * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
  * -----
  * Copyright (c) 2023 Shun Suzuki. All rights reserved.
@@ -17,15 +17,15 @@ use autd3::prelude::Geometry;
 use vulkano::{
     buffer::{Buffer, BufferCreateInfo, BufferUsage, Subbuffer},
     command_buffer::{
-        AutoCommandBufferBuilder, CommandBufferUsage, CopyBufferToImageInfo,
-        PrimaryAutoCommandBuffer, PrimaryCommandBufferAbstract,
+        AutoCommandBufferBuilder, BlitImageInfo, CommandBufferUsage, CopyBufferToImageInfo,
+        ImageBlit, PrimaryAutoCommandBuffer, PrimaryCommandBufferAbstract,
     },
     descriptor_set::{PersistentDescriptorSet, WriteDescriptorSet},
     format::Format,
     image::{
         sampler::{Filter, Sampler, SamplerAddressMode, SamplerCreateInfo, SamplerMipmapMode},
         view::ImageView,
-        Image, ImageCreateInfo, ImageType, ImageUsage,
+        Image, ImageCreateInfo, ImageSubresourceLayers, ImageType, ImageUsage,
     },
     memory::allocator::{AllocationCreateInfo, MemoryTypeFilter},
     pipeline::{
@@ -109,7 +109,7 @@ impl DeviceViewer {
                 stages: stages.into_iter().collect(),
                 vertex_input_state: Some(vertex_input_state),
                 input_assembly_state: Some(InputAssemblyState {
-                    topology: PrimitiveTopology::TriangleStrip,
+                    topology: PrimitiveTopology::TriangleList,
                     ..Default::default()
                 }),
                 viewport_state: Some(ViewportState::default()),
@@ -332,14 +332,15 @@ impl DeviceViewer {
             CommandBufferUsage::OneTimeSubmit,
         )?;
 
+        let mip_levels = (image.width.min(image.height) as f32).log2().floor() as u32 + 1;
         let image = Image::new(
             renderer.memory_allocator(),
             ImageCreateInfo {
                 image_type: ImageType::Dim2d,
                 format: Format::R8G8B8A8_SRGB,
                 extent,
-                usage: ImageUsage::TRANSFER_DST | ImageUsage::SAMPLED,
-                mip_levels: (image.width.min(image.height) as f32).log2().ceil() as u32,
+                usage: ImageUsage::TRANSFER_SRC | ImageUsage::TRANSFER_DST | ImageUsage::SAMPLED,
+                mip_levels,
                 ..Default::default()
             },
             AllocationCreateInfo::default(),
@@ -352,6 +353,45 @@ impl DeviceViewer {
 
         let image = ImageView::new_default(image)?;
 
+        Self::generate_mipmaps(&mut uploads, image.image(), image.image().extent())?;
+
         Ok((uploads.build()?, image))
+    }
+
+    fn generate_mipmaps(
+        cbb: &mut AutoCommandBufferBuilder<PrimaryAutoCommandBuffer>,
+        image: &Arc<Image>,
+        dimensions: [u32; 3],
+    ) -> anyhow::Result<()> {
+        let mut src_size = [dimensions[0], dimensions[1], dimensions[2]];
+        for level in 1..image.mip_levels() {
+            let dst_size = [
+                if src_size[0] > 1 { src_size[0] / 2 } else { 1 },
+                if src_size[1] > 1 { src_size[1] / 2 } else { 1 },
+                src_size[2],
+            ];
+            cbb.blit_image(BlitImageInfo {
+                regions: [ImageBlit {
+                    src_subresource: ImageSubresourceLayers {
+                        mip_level: level - 1,
+                        ..image.subresource_layers()
+                    },
+                    src_offsets: [[0; 3], src_size],
+                    dst_subresource: ImageSubresourceLayers {
+                        mip_level: level,
+                        ..image.subresource_layers()
+                    },
+                    dst_offsets: [[0; 3], dst_size],
+                    ..Default::default()
+                }]
+                .into(),
+                filter: Filter::Linear,
+                ..BlitImageInfo::images(image.clone(), image.clone())
+            })?;
+            src_size[0] /= 2;
+            src_size[1] /= 2;
+        }
+
+        Ok(())
     }
 }
