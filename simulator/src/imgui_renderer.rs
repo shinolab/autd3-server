@@ -31,7 +31,7 @@ use cgmath::{Deg, Euler};
 use chrono::{Local, TimeZone, Utc};
 use imgui::{
     sys::{igDragFloat, igDragFloat2},
-    Context, FontConfig, FontGlyphRanges, FontSource, TextureId, TreeNodeFlags,
+    ColorEditFlags, Context, FontConfig, FontGlyphRanges, FontSource, TextureId, TreeNodeFlags,
 };
 use scarlet::{color::RGBColor, colormap::ColorMap};
 use strum::IntoEnumIterator;
@@ -846,7 +846,9 @@ impl ImGuiRenderer {
                     }
                     ui.separator();
 
-                    ui.color_picker4("Background", &mut settings.background);
+                    ui.color_picker4_config("Background", &mut settings.background)
+                        .flags(ColorEditFlags::PICKER_HUE_WHEEL)
+                        .build();
 
                     tab.end();
                 }
