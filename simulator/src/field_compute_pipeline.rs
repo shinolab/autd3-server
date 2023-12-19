@@ -4,7 +4,7 @@
  * Created Date: 28/11/2021
  * Author: Shun Suzuki
  * -----
- * Last Modified: 30/10/2023
+ * Last Modified: 19/12/2023
  * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
  * -----
  * Copyright (c) 2021 Hapis Lab. All rights reserved.
@@ -60,12 +60,10 @@ pub struct Config {
 }
 
 pub struct FieldComputePipeline {
-    pipeline_pressure: Arc<ComputePipeline>,
-    pipeline_radiation: Arc<ComputePipeline>,
+    pipeline: Arc<ComputePipeline>,
     source_drive_buf: Option<Subbuffer<[Drive]>>,
     source_pos_buf: Option<Subbuffer<[[f32; 4]]>>,
-    color_map_desc_set_pressure: Arc<PersistentDescriptorSet>,
-    color_map_desc_set_radiation: Arc<PersistentDescriptorSet>,
+    color_map_desc_set: Arc<PersistentDescriptorSet>,
 }
 
 impl FieldComputePipeline {
@@ -88,31 +86,11 @@ impl FieldComputePipeline {
         let color_map_desc_set_pressure =
             Self::create_color_map_desc_set(renderer, pipeline_pressure.clone(), settings)?;
 
-        let pipeline_radiation = {
-            let shader = cs_radiation::load(renderer.device())?;
-            let cs = shader.entry_point("main").unwrap();
-            let stage = PipelineShaderStageCreateInfo::new(cs);
-            let layout = PipelineLayout::new(
-                renderer.device(),
-                PipelineDescriptorSetLayoutCreateInfo::from_stages([&stage])
-                    .into_pipeline_layout_create_info(renderer.device())?,
-            )?;
-            ComputePipeline::new(
-                renderer.device(),
-                None,
-                ComputePipelineCreateInfo::stage_layout(stage, layout),
-            )?
-        };
-        let color_map_desc_set_radiation =
-            Self::create_color_map_desc_set(renderer, pipeline_radiation.clone(), settings)?;
-
         Ok(Self {
-            pipeline_pressure,
-            pipeline_radiation,
+            pipeline: pipeline_pressure,
             source_pos_buf: None,
             source_drive_buf: None,
-            color_map_desc_set_pressure,
-            color_map_desc_set_radiation,
+            color_map_desc_set: color_map_desc_set_pressure,
         })
     }
 
@@ -265,11 +243,8 @@ impl FieldComputePipeline {
         }
 
         if update_flag.contains(UpdateFlag::UPDATE_COLOR_MAP) {
-            self.color_map_desc_set_pressure = Self::create_color_map_desc_set(
-                renderer,
-                self.pipeline_pressure.clone(),
-                settings,
-            )?;
+            self.color_map_desc_set =
+                Self::create_color_map_desc_set(renderer, self.pipeline.clone(), settings)?;
         }
 
         Ok(())
@@ -280,13 +255,8 @@ impl FieldComputePipeline {
         renderer: &Renderer,
         config: Config,
         image: Subbuffer<[[f32; 4]]>,
-        settings: &ViewerSettings,
     ) -> anyhow::Result<Box<dyn GpuFuture>> {
-        let pipeline = if settings.show_radiation_pressure {
-            self.pipeline_radiation.clone()
-        } else {
-            self.pipeline_pressure.clone()
-        };
+        let pipeline = self.pipeline.clone();
 
         let pipeline_layout = pipeline.layout();
         let layout = pipeline_layout.set_layouts().get(0).unwrap();
@@ -319,11 +289,7 @@ impl FieldComputePipeline {
             [],
         )?;
 
-        let set_3 = if settings.show_radiation_pressure {
-            self.color_map_desc_set_radiation.clone()
-        } else {
-            self.color_map_desc_set_pressure.clone()
-        };
+        let set_3 = self.color_map_desc_set.clone();
 
         let mut builder = AutoCommandBufferBuilder::primary(
             renderer.command_buffer_allocator(),
@@ -376,14 +342,5 @@ mod cs_pressure {
     vulkano_shaders::shader! {
         ty: "compute",
         path: "./assets/shaders/pressure.comp"
-    }
-}
-
-#[allow(clippy::needless_question_mark)]
-mod cs_radiation {
-    vulkano_shaders::shader! {
-        ty: "compute",
-        path: "./assets/shaders/pressure.comp",
-        define: [("RADIATION", "1")]
     }
 }

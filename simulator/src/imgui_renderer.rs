@@ -4,7 +4,7 @@
  * Created Date: 23/05/2023
  * Author: Shun Suzuki
  * -----
- * Last Modified: 06/12/2023
+ * Last Modified: 19/12/2023
  * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
  * -----
  * Copyright (c) 2023 Shun Suzuki. All rights reserved.
@@ -332,14 +332,6 @@ impl ImGuiRenderer {
                     }
                     ui.separator();
 
-                    if ui.radio_button_bool("Acoustic", !settings.show_radiation_pressure) {
-                        settings.show_radiation_pressure = false;
-                    }
-                    if ui.radio_button_bool("Radiation", settings.show_radiation_pressure) {
-                        settings.show_radiation_pressure = true;
-                    }
-                    ui.separator();
-
                     ui.text("Color settings");
                     let items = ["Viridis", "Magma", "Inferno", "Plasma"];
                     let selected_idx = match settings.color_map_type {
@@ -386,8 +378,11 @@ impl ImGuiRenderer {
                     }
                     unsafe {
                         igDragFloat(
-                            CString::new("Scale##Slice").unwrap().as_c_str().as_ptr(),
-                            &mut settings.slice_color_scale as _,
+                            CString::new("Max pressure [Pa]##Slice")
+                                .unwrap()
+                                .as_c_str()
+                                .as_ptr(),
+                            &mut settings.pressure_max as _,
                             0.1,
                             0.0,
                             std::f32::MAX / 2.,

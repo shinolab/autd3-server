@@ -4,7 +4,7 @@
  * Created Date: 24/05/2023
  * Author: Shun Suzuki
  * -----
- * Last Modified: 22/11/2023
+ * Last Modified: 19/12/2023
  * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
  * -----
  * Copyright (c) 2023 Shun Suzuki. All rights reserved.
@@ -32,7 +32,7 @@ use crate::{
     viewer_settings::ViewerSettings,
     Quaternion, Vector3, MILLIMETER,
 };
-use autd3_driver::cpu::TxDatagram;
+use autd3_driver::{cpu::TxDatagram, defined::T4010A1_AMPLITUDE};
 use autd3_firmware_emulator::{CPUEmulator, FPGAEmulator};
 use crossbeam_channel::{bounded, Receiver, Sender, TryRecvError};
 use vulkano::{
@@ -565,7 +565,8 @@ impl Simulator {
 
                                 let config = Config {
                                     source_num: sources.len() as _,
-                                    color_scale: self.settings.slice_color_scale,
+                                    color_scale: T4010A1_AMPLITUDE as f32
+                                        / self.settings.pressure_max,
                                     width: (self.settings.slice_width
                                         / self.settings.slice_pixel_size)
                                         as _,
@@ -578,7 +579,7 @@ impl Simulator {
                                     ..Default::default()
                                 };
                                 let after_compute = field_compute_pipeline
-                                    .compute(&render, config, field_image, &self.settings)?
+                                    .compute(&render, config, field_image)?
                                     .join(before_pipeline_future);
                                 let future =
                                     after_compute.then_execute(render.queue(), command_buffer)?;

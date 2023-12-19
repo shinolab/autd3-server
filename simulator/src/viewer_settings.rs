@@ -4,7 +4,7 @@
  * Created Date: 26/11/2021
  * Author: Shun Suzuki
  * -----
- * Last Modified: 04/12/2023
+ * Last Modified: 19/12/2023
  * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
  * -----
  * Copyright (c) 2021 Hapis Lab. All rights reserved.
@@ -45,7 +45,8 @@ pub struct ViewerSettings {
     pub slice_rot_x: f32,
     pub slice_rot_y: f32,
     pub slice_rot_z: f32,
-    pub slice_color_scale: f32,
+    #[serde(default = "default_pressure_max")]
+    pub pressure_max: f32,
     pub slice_alpha: f32,
     pub color_map_type: ColorMapType,
     pub show_radiation_pressure: bool,
@@ -76,6 +77,10 @@ pub struct ViewerSettings {
     pub light_power: f32,
     #[serde(default = "default_time_scale")]
     pub time_scale: f32,
+}
+
+fn default_pressure_max() -> f32 {
+    5e3
 }
 
 fn default_ambient() -> f32 {
@@ -159,7 +164,7 @@ impl Default for ViewerSettings {
             slice_rot_x: 90.0 * ZPARITY,
             slice_rot_y: 0.,
             slice_rot_z: 0.,
-            slice_color_scale: 2.,
+            pressure_max: 5e3,
             slice_alpha: 1.,
             color_map_type: ColorMapType::Inferno,
             show_radiation_pressure: false,
