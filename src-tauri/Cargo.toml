@@ -1,10 +1,10 @@
 [package]
 name = "autd3-server"
-version = "19.1.0"
+version = "19.1.1"
 description = "AUTD Server app"
 authors = ["shun suzuki <suzuki@hapis.k.u-tokyo.ac.jp>"]
 edition = "2021"
-repository = "https://github.com/shinolab/autd3"
+repository = "https://github.com/shinolab/autd3-server"
 keywords = ["autd"]
 
 license = "MIT"

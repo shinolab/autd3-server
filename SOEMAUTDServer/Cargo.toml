@@ -1,12 +1,12 @@
 [package]
 name = "SOEMAUTDServer"
-version = "19.1.0"
+version = "19.1.1"
 authors = ["shun suzuki <suzuki@hapis.k.u-tokyo.ac.jp>"]
 edition = "2021"
 license = "MIT"
 
 description = "AUTDServer"
-repository = "https://github.com/shinolab/autd3"
+repository = "https://github.com/shinolab/autd3-server"
 readme = "../README.md"
 keywords = ["autd"]
 

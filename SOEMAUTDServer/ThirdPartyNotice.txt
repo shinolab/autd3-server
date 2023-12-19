@@ -6,8 +6,8 @@ The license terms for each of these components are provided later in this notice
 
 ---------------------------------------------------------
 
-SOEMAUTDServer 19.1.0 (MIT)
-https://github.com/shinolab/autd3
+SOEMAUTDServer 19.1.1 (MIT)
+https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
 addr2line 0.21.0 (Apache-2.0 OR MIT)

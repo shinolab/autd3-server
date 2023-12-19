@@ -1,12 +1,12 @@
 [package]
 name = "simulator"
-version = "19.1.0"
+version = "19.1.1"
 edition = "2021"
 authors = ["shun suzuki <suzuki@hapis.k.u-tokyo.ac.jp>"]
 
 license = "MIT"
 description = "AUTD Simulator"
-repository = "https://github.com/shinolab/autd3"
+repository = "https://github.com/shinolab/autd3-server"
 keywords = ["autd"]
 
 [dependencies]
