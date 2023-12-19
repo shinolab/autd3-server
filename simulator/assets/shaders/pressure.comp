@@ -4,7 +4,7 @@
  * Created Date: 22/05/2023
  * Author: Shun Suzuki
  * -----
- * Last Modified: 23/05/2023
+ * Last Modified: 19/12/2023
  * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
  * -----
  * Copyright (c) 2023 Shun Suzuki. All rights reserved.
@@ -64,11 +64,6 @@ void main() {
         re += amp * cos(p); 
         im += amp * sin(p); 
     } 
-#ifdef RADIATION
-    float c = re*re+im*im;
-#else
-    float c = sqrt(re*re+im*im);
-#endif
-    vec4 write_color = coloring(c / config.color_scale); 
+    vec4 write_color = coloring(sqrt(re*re+im*im) * config.color_scale); 
     data.data[gl_GlobalInvocationID.x + config.width * gl_GlobalInvocationID.y] = write_color; 
 }

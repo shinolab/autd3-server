@@ -4,39 +4,54 @@
  * Created Date: 23/05/2023
  * Author: Shun Suzuki
  * -----
- * Last Modified: 06/12/2023
+ * Last Modified: 19/12/2023
  * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
  * -----
  * Copyright (c) 2023 Shun Suzuki. All rights reserved.
  *
  */
 
-use std::{ffi::CString, path::PathBuf, time::Instant};
-
-use crate::patch::imgui_winit_support::{HiDpiMode, WinitPlatform};
-use autd3_driver::fpga::FPGA_CLK_FREQ;
-use autd3_firmware_emulator::CPUEmulator;
-use cgmath::{Deg, Euler};
-use chrono::{Local, TimeZone, Utc};
-use imgui::{
-    sys::{igDragFloat, igDragFloat2},
-    Context, FontConfig, FontGlyphRanges, FontSource, TreeNodeFlags,
-};
-use vulkano::{
-    command_buffer::{AutoCommandBufferBuilder, PrimaryAutoCommandBuffer},
-    image::view::ImageView,
-};
-use winit::{event::Event, window::Window};
+use std::{collections::HashMap, ffi::CString, path::PathBuf, time::Instant};
 
 use crate::{
     common::transform::quaternion_to,
-    patch::imgui_vulkano_renderer,
+    patch::{
+        imgui_vulkano_renderer,
+        imgui_winit_support::{HiDpiMode, WinitPlatform},
+    },
     renderer::Renderer,
     sound_sources::SoundSources,
     update_flag::UpdateFlag,
     viewer_settings::{ColorMapType, ViewerSettings},
     Matrix4, Quaternion, Vector3, Vector4, MILLIMETER, ZPARITY,
 };
+use autd3_driver::fpga::FPGA_CLK_FREQ;
+use autd3_firmware_emulator::CPUEmulator;
+use cgmath::{Deg, Euler};
+use chrono::{Local, TimeZone, Utc};
+use imgui::{
+    sys::{igDragFloat, igDragFloat2},
+    Context, FontConfig, FontGlyphRanges, FontSource, TextureId, TreeNodeFlags,
+};
+use scarlet::{color::RGBColor, colormap::ColorMap};
+use strum::IntoEnumIterator;
+use vulkano::{
+    buffer::{Buffer, BufferCreateInfo, BufferUsage},
+    command_buffer::{
+        AutoCommandBufferBuilder, CommandBufferUsage, CopyBufferToImageInfo,
+        PrimaryAutoCommandBuffer, PrimaryCommandBufferAbstract,
+    },
+    format::Format,
+    image::{
+        sampler::{Filter, Sampler, SamplerAddressMode, SamplerCreateInfo, SamplerMipmapMode},
+        view::ImageView,
+        Image, ImageCreateInfo, ImageType, ImageUsage,
+    },
+    memory::allocator::{AllocationCreateInfo, MemoryTypeFilter},
+    sync::GpuFuture,
+    DeviceSize,
+};
+use winit::{event::Event, window::Window};
 
 fn get_current_ec_time() -> u64 {
     (Local::now().time() - Utc.with_ymd_and_hms(2000, 1, 1, 0, 0, 0).unwrap().time())
@@ -60,6 +75,7 @@ pub struct ImGuiRenderer {
     real_time: u64,
     time_step: i32,
     initial_settings: ViewerSettings,
+    color_map_texture_ids: HashMap<ColorMapType, TextureId>,
 }
 
 impl ImGuiRenderer {
@@ -81,12 +97,128 @@ impl ImGuiRenderer {
 
         imgui.io_mut().font_global_scale = (1.0 / hidpi_factor) as f32;
 
-        let imgui_renderer = imgui_vulkano_renderer::Renderer::init(
+        let mut imgui_renderer = imgui_vulkano_renderer::Renderer::init(
             &mut imgui,
             renderer.device(),
             renderer.queue(),
             renderer.image_format(),
         )?;
+
+        const COLOR_MAP_SIZE: u32 = 100;
+        let color_map_texture_ids = ColorMapType::iter()
+            .map(|color| -> anyhow::Result<(ColorMapType, TextureId)> {
+                let mut uploads = AutoCommandBufferBuilder::primary(
+                    renderer.command_buffer_allocator(),
+                    renderer.queue().queue_family_index(),
+                    CommandBufferUsage::OneTimeSubmit,
+                )?;
+                let iter = (0..COLOR_MAP_SIZE).map(|x| x as f64 / COLOR_MAP_SIZE as f64);
+                let color_map: Vec<RGBColor> = match color {
+                    crate::viewer_settings::ColorMapType::Viridis => {
+                        scarlet::colormap::ListedColorMap::viridis().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Magma => {
+                        scarlet::colormap::ListedColorMap::magma().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Inferno => {
+                        scarlet::colormap::ListedColorMap::inferno().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Plasma => {
+                        scarlet::colormap::ListedColorMap::plasma().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Bluered => {
+                        scarlet::colormap::ListedColorMap::bluered().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Breeze => {
+                        scarlet::colormap::ListedColorMap::breeze().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Circle => {
+                        scarlet::colormap::ListedColorMap::circle().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Earth => {
+                        scarlet::colormap::ListedColorMap::earth().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Hell => {
+                        scarlet::colormap::ListedColorMap::hell().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Mist => {
+                        scarlet::colormap::ListedColorMap::mist().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Turbo => {
+                        scarlet::colormap::ListedColorMap::turbo().transform(iter)
+                    }
+                };
+
+                let extent = [COLOR_MAP_SIZE, 1, 1];
+                let texels = color_map
+                    .iter()
+                    .flat_map(|c| {
+                        [
+                            (c.r * 255.) as u8,
+                            (c.g * 255.) as u8,
+                            (c.b * 255.) as u8,
+                            255,
+                        ]
+                    })
+                    .collect::<Vec<_>>();
+
+                let upload_buffer = Buffer::new_slice(
+                    renderer.memory_allocator(),
+                    BufferCreateInfo {
+                        usage: BufferUsage::TRANSFER_SRC,
+                        ..Default::default()
+                    },
+                    AllocationCreateInfo {
+                        memory_type_filter: MemoryTypeFilter::PREFER_HOST
+                            | MemoryTypeFilter::HOST_SEQUENTIAL_WRITE,
+                        ..Default::default()
+                    },
+                    (extent[0] * 4) as DeviceSize,
+                )?;
+
+                upload_buffer.write()?.copy_from_slice(&texels);
+
+                let image = Image::new(
+                    renderer.memory_allocator(),
+                    ImageCreateInfo {
+                        image_type: ImageType::Dim2d,
+                        format: Format::R8G8B8A8_SRGB,
+                        extent,
+                        usage: ImageUsage::TRANSFER_DST | ImageUsage::SAMPLED,
+                        ..Default::default()
+                    },
+                    AllocationCreateInfo::default(),
+                )?;
+
+                uploads.copy_buffer_to_image(CopyBufferToImageInfo::buffer_image(
+                    upload_buffer,
+                    image.clone(),
+                ))?;
+
+                uploads
+                    .build()?
+                    .execute(renderer.queue())?
+                    .then_signal_fence_and_flush()?
+                    .wait(None)?;
+
+                let texture = (
+                    ImageView::new_default(image)?,
+                    Sampler::new(
+                        renderer.device(),
+                        SamplerCreateInfo {
+                            mag_filter: Filter::Linear,
+                            min_filter: Filter::Linear,
+                            mipmap_mode: SamplerMipmapMode::Nearest,
+                            address_mode: [SamplerAddressMode::Repeat; 3],
+                            mip_lod_bias: 0.0,
+                            ..Default::default()
+                        },
+                    )?,
+                );
+                let id = imgui_renderer.textures().insert(texture);
+                Ok((color, id))
+            })
+            .collect::<anyhow::Result<HashMap<_, _>>>()?;
 
         Ok(Self {
             imgui,
@@ -104,6 +236,7 @@ impl ImGuiRenderer {
             show_mod_plot: Vec::new(),
             mod_plot_size: Vec::new(),
             initial_settings,
+            color_map_texture_ids,
         })
     }
 
@@ -332,24 +465,26 @@ impl ImGuiRenderer {
                     }
                     ui.separator();
 
-                    if ui.radio_button_bool("Acoustic", !settings.show_radiation_pressure) {
-                        settings.show_radiation_pressure = false;
-                    }
-                    if ui.radio_button_bool("Radiation", settings.show_radiation_pressure) {
-                        settings.show_radiation_pressure = true;
-                    }
-                    ui.separator();
-
                     ui.text("Color settings");
-                    let items = ["Viridis", "Magma", "Inferno", "Plasma"];
+                    let items = [
+                        "Bluered", "Breeze", "Circle", "Earth", "Hell", "Inferno", "Magma", "Mist",
+                        "Plasma", "Turbo", "Viridis",
+                    ];
                     let selected_idx = match settings.color_map_type {
-                        ColorMapType::Viridis => 0,
-                        ColorMapType::Magma => 1,
-                        ColorMapType::Inferno => 2,
-                        ColorMapType::Plasma => 3,
+                        ColorMapType::Bluered => 0,
+                        ColorMapType::Breeze => 1,
+                        ColorMapType::Circle => 2,
+                        ColorMapType::Earth => 3,
+                        ColorMapType::Hell => 4,
+                        ColorMapType::Inferno => 5,
+                        ColorMapType::Magma => 6,
+                        ColorMapType::Mist => 7,
+                        ColorMapType::Plasma => 8,
+                        ColorMapType::Turbo => 9,
+                        ColorMapType::Viridis => 10,
                     };
                     let mut selected = &items[selected_idx];
-                    if let Some(cb) = ui.begin_combo("Coloring", selected) {
+                    if let Some(cb) = ui.begin_combo("##Coloring", selected) {
                         items.iter().for_each(|cur| {
                             if selected == cur {
                                 ui.set_item_default_focus();
@@ -361,34 +496,62 @@ impl ImGuiRenderer {
                             }
                         });
                         match *selected {
-                            "Viridis" => {
-                                settings.color_map_type = ColorMapType::Viridis;
-                                update_flag.set(UpdateFlag::UPDATE_COLOR_MAP, true);
+                            "Bluered" => {
+                                settings.color_map_type = ColorMapType::Bluered;
                             }
-                            "Magma" => {
-                                settings.color_map_type = ColorMapType::Magma;
-                                update_flag.set(UpdateFlag::UPDATE_COLOR_MAP, true);
+                            "Breeze" => {
+                                settings.color_map_type = ColorMapType::Breeze;
+                            }
+                            "Circle" => {
+                                settings.color_map_type = ColorMapType::Circle;
+                            }
+                            "Earth" => {
+                                settings.color_map_type = ColorMapType::Earth;
+                            }
+                            "Hell" => {
+                                settings.color_map_type = ColorMapType::Hell;
                             }
                             "Inferno" => {
                                 settings.color_map_type = ColorMapType::Inferno;
-                                update_flag.set(UpdateFlag::UPDATE_COLOR_MAP, true);
+                            }
+                            "Magma" => {
+                                settings.color_map_type = ColorMapType::Magma;
+                            }
+                            "Mist" => {
+                                settings.color_map_type = ColorMapType::Mist;
                             }
                             "Plasma" => {
-                                settings.color_map_type = ColorMapType::Magma;
-                                update_flag.set(UpdateFlag::UPDATE_COLOR_MAP, true);
+                                settings.color_map_type = ColorMapType::Plasma;
+                            }
+                            "Turbo" => {
+                                settings.color_map_type = ColorMapType::Turbo;
+                            }
+                            "Viridis" => {
+                                settings.color_map_type = ColorMapType::Viridis;
                             }
                             _ => {
                                 settings.color_map_type = ColorMapType::Inferno;
-                                update_flag.set(UpdateFlag::UPDATE_COLOR_MAP, true);
                             }
                         }
+                        update_flag.set(UpdateFlag::UPDATE_COLOR_MAP, true);
                         cb.end();
                     }
+                    let w = ui.item_rect_size()[0];
+                    ui.same_line();
+                    ui.text("Coloring");
+                    imgui::Image::new(
+                        self.color_map_texture_ids[&settings.color_map_type],
+                        [w, 10.0],
+                    )
+                    .build(ui);
                     unsafe {
                         igDragFloat(
-                            CString::new("Scale##Slice").unwrap().as_c_str().as_ptr(),
-                            &mut settings.slice_color_scale as _,
-                            0.1,
+                            CString::new("Max pressure [Pa]##Slice")
+                                .unwrap()
+                                .as_c_str()
+                                .as_ptr(),
+                            &mut settings.pressure_max as _,
+                            1000.,
                             0.0,
                             std::f32::MAX / 2.,
                             CString::new("%.3f").unwrap().as_c_str().as_ptr(),
