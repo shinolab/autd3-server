@@ -19,10 +19,17 @@ use strum::EnumIter;
 
 #[derive(Serialize, Deserialize, Debug, Clone, Hash, PartialEq, Eq, EnumIter)]
 pub enum ColorMapType {
-    Viridis,
-    Magma,
+    Bluered,
+    Breeze,
+    Circle,
+    Earth,
+    Hell,
     Inferno,
+    Magma,
+    Mist,
     Plasma,
+    Turbo,
+    Viridis,
 }
 
 /// Viewer settings

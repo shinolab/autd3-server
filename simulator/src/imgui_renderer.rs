@@ -126,6 +126,27 @@ impl ImGuiRenderer {
                     crate::viewer_settings::ColorMapType::Plasma => {
                         scarlet::colormap::ListedColorMap::plasma().transform(iter)
                     }
+                    crate::viewer_settings::ColorMapType::Bluered => {
+                        scarlet::colormap::ListedColorMap::bluered().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Breeze => {
+                        scarlet::colormap::ListedColorMap::breeze().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Circle => {
+                        scarlet::colormap::ListedColorMap::circle().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Earth => {
+                        scarlet::colormap::ListedColorMap::earth().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Hell => {
+                        scarlet::colormap::ListedColorMap::hell().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Mist => {
+                        scarlet::colormap::ListedColorMap::mist().transform(iter)
+                    }
+                    crate::viewer_settings::ColorMapType::Turbo => {
+                        scarlet::colormap::ListedColorMap::turbo().transform(iter)
+                    }
                 };
 
                 let extent = [COLOR_MAP_SIZE, 1, 1];
@@ -445,12 +466,22 @@ impl ImGuiRenderer {
                     ui.separator();
 
                     ui.text("Color settings");
-                    let items = ["Viridis", "Magma", "Inferno", "Plasma"];
+                    let items = [
+                        "Bluered", "Breeze", "Circle", "Earth", "Hell", "Inferno", "Magma", "Mist",
+                        "Plasma", "Turbo", "Viridis",
+                    ];
                     let selected_idx = match settings.color_map_type {
-                        ColorMapType::Viridis => 0,
-                        ColorMapType::Magma => 1,
-                        ColorMapType::Inferno => 2,
-                        ColorMapType::Plasma => 3,
+                        ColorMapType::Bluered => 0,
+                        ColorMapType::Breeze => 1,
+                        ColorMapType::Circle => 2,
+                        ColorMapType::Earth => 3,
+                        ColorMapType::Hell => 4,
+                        ColorMapType::Inferno => 5,
+                        ColorMapType::Magma => 6,
+                        ColorMapType::Mist => 7,
+                        ColorMapType::Plasma => 8,
+                        ColorMapType::Turbo => 9,
+                        ColorMapType::Viridis => 10,
                     };
                     let mut selected = &items[selected_idx];
                     if let Some(cb) = ui.begin_combo("##Coloring", selected) {
@@ -465,27 +496,44 @@ impl ImGuiRenderer {
                             }
                         });
                         match *selected {
-                            "Viridis" => {
-                                settings.color_map_type = ColorMapType::Viridis;
-                                update_flag.set(UpdateFlag::UPDATE_COLOR_MAP, true);
+                            "Bluered" => {
+                                settings.color_map_type = ColorMapType::Bluered;
                             }
-                            "Magma" => {
-                                settings.color_map_type = ColorMapType::Magma;
-                                update_flag.set(UpdateFlag::UPDATE_COLOR_MAP, true);
+                            "Breeze" => {
+                                settings.color_map_type = ColorMapType::Breeze;
+                            }
+                            "Circle" => {
+                                settings.color_map_type = ColorMapType::Circle;
+                            }
+                            "Earth" => {
+                                settings.color_map_type = ColorMapType::Earth;
+                            }
+                            "Hell" => {
+                                settings.color_map_type = ColorMapType::Hell;
                             }
                             "Inferno" => {
                                 settings.color_map_type = ColorMapType::Inferno;
-                                update_flag.set(UpdateFlag::UPDATE_COLOR_MAP, true);
+                            }
+                            "Magma" => {
+                                settings.color_map_type = ColorMapType::Magma;
+                            }
+                            "Mist" => {
+                                settings.color_map_type = ColorMapType::Mist;
                             }
                             "Plasma" => {
-                                settings.color_map_type = ColorMapType::Magma;
-                                update_flag.set(UpdateFlag::UPDATE_COLOR_MAP, true);
+                                settings.color_map_type = ColorMapType::Plasma;
+                            }
+                            "Turbo" => {
+                                settings.color_map_type = ColorMapType::Turbo;
+                            }
+                            "Viridis" => {
+                                settings.color_map_type = ColorMapType::Viridis;
                             }
                             _ => {
                                 settings.color_map_type = ColorMapType::Inferno;
-                                update_flag.set(UpdateFlag::UPDATE_COLOR_MAP, true);
                             }
                         }
+                        update_flag.set(UpdateFlag::UPDATE_COLOR_MAP, true);
                         cb.end();
                     }
                     let w = ui.item_rect_size()[0];
@@ -503,7 +551,7 @@ impl ImGuiRenderer {
                                 .as_c_str()
                                 .as_ptr(),
                             &mut settings.pressure_max as _,
-                            0.1,
+                            1000.,
                             0.0,
                             std::f32::MAX / 2.,
                             CString::new("%.3f").unwrap().as_c_str().as_ptr(),

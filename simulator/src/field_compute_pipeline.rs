@@ -120,6 +120,27 @@ impl FieldComputePipeline {
                 crate::viewer_settings::ColorMapType::Plasma => {
                     scarlet::colormap::ListedColorMap::plasma().transform(iter)
                 }
+                crate::viewer_settings::ColorMapType::Bluered => {
+                    scarlet::colormap::ListedColorMap::bluered().transform(iter)
+                }
+                crate::viewer_settings::ColorMapType::Breeze => {
+                    scarlet::colormap::ListedColorMap::breeze().transform(iter)
+                }
+                crate::viewer_settings::ColorMapType::Circle => {
+                    scarlet::colormap::ListedColorMap::circle().transform(iter)
+                }
+                crate::viewer_settings::ColorMapType::Earth => {
+                    scarlet::colormap::ListedColorMap::earth().transform(iter)
+                }
+                crate::viewer_settings::ColorMapType::Hell => {
+                    scarlet::colormap::ListedColorMap::hell().transform(iter)
+                }
+                crate::viewer_settings::ColorMapType::Mist => {
+                    scarlet::colormap::ListedColorMap::mist().transform(iter)
+                }
+                crate::viewer_settings::ColorMapType::Turbo => {
+                    scarlet::colormap::ListedColorMap::turbo().transform(iter)
+                }
             };
 
             let extent = [color_map_size, 1, 1];
