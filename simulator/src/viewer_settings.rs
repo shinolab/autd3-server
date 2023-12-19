@@ -153,6 +153,17 @@ impl ViewerSettings {
 
 impl Default for ViewerSettings {
     fn default() -> Self {
+        let image_save_path = if let Some(user_dirs) = directories::UserDirs::new() {
+            if let Some(p) = user_dirs.picture_dir() {
+                let mut path = p.to_path_buf();
+                path.push("image.png");
+                path.to_str().unwrap().to_string()
+            } else {
+                "image.png".to_string()
+            }
+        } else {
+            "image.png".to_string()
+        };
         ViewerSettings {
             window_width: 800,
             window_height: 600,
@@ -185,7 +196,7 @@ impl Default for ViewerSettings {
             background: [0.3, 0.3, 0.3, 1.],
             mod_enable: false,
             auto_play: false,
-            image_save_path: "image.png".to_string(),
+            image_save_path,
             port: 8080,
             camera_move_speed: 10. * MILLIMETER,
             view_device: false,
