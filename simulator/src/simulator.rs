@@ -4,7 +4,7 @@
  * Created Date: 24/05/2023
  * Author: Shun Suzuki
  * -----
- * Last Modified: 19/12/2023
+ * Last Modified: 05/01/2024
  * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
  * -----
  * Copyright (c) 2023 Shun Suzuki. All rights reserved.
@@ -499,14 +499,15 @@ impl Simulator {
                                 if update_flag.contains(UpdateFlag::UPDATE_SOURCE_DRIVE) {
                                     cpus.iter().for_each(|cpu| {
                                         let idx = if cpu.fpga().is_stm_mode() {
-                                            ImGuiRenderer::stm_idx(imgui.system_time(), cpu)
+                                            cpu.fpga().stm_idx_from_systime(imgui.system_time())
                                         } else {
                                             0
                                         };
                                         let drives = cpu.fpga().intensities_and_phases(idx);
                                         let m = if self.settings.mod_enable {
-                                            let mod_idx =
-                                                ImGuiRenderer::mod_idx(imgui.system_time(), cpu);
+                                            let mod_idx = cpu
+                                                .fpga()
+                                                .mod_idx_from_systime(imgui.system_time());
                                             cpu.fpga().modulation_at(mod_idx)
                                         } else {
                                             0xFF

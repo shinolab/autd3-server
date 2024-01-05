@@ -4,7 +4,7 @@
  * Created Date: 23/05/2023
  * Author: Shun Suzuki
  * -----
- * Last Modified: 19/12/2023
+ * Last Modified: 05/01/2024
  * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
  * -----
  * Copyright (c) 2023 Shun Suzuki. All rights reserved.
@@ -26,9 +26,8 @@ use crate::{
     Matrix4, Quaternion, Vector3, Vector4, MILLIMETER, ZPARITY,
 };
 use autd3_driver::fpga::FPGA_CLK_FREQ;
-use autd3_firmware_emulator::CPUEmulator;
+use autd3_firmware_emulator::{CPUEmulator, FPGAEmulator};
 use cgmath::{Deg, Euler};
-use chrono::{Local, TimeZone, Utc};
 use imgui::{
     sys::{igDragFloat, igDragFloat2},
     ColorEditFlags, Context, FontConfig, FontGlyphRanges, FontSource, TextureId, TreeNodeFlags,
@@ -52,12 +51,6 @@ use vulkano::{
     DeviceSize,
 };
 use winit::{event::Event, window::Window};
-
-fn get_current_ec_time() -> u64 {
-    (Local::now().time() - Utc.with_ymd_and_hms(2000, 1, 1, 0, 0, 0).unwrap().time())
-        .num_nanoseconds()
-        .unwrap() as _
-}
 
 pub struct ImGuiRenderer {
     imgui: Context,
@@ -231,7 +224,7 @@ impl ImGuiRenderer {
             visible: Vec::new(),
             enable: Vec::new(),
             thermal: Vec::new(),
-            real_time: get_current_ec_time(),
+            real_time: FPGAEmulator::ec_time_now(),
             time_step: 1000000,
             show_mod_plot: Vec::new(),
             mod_plot_size: Vec::new(),
@@ -289,7 +282,7 @@ impl ImGuiRenderer {
 
         self.platform.prepare_frame(io, render.window())?;
 
-        let system_time = self.system_time();
+        let system_time = FPGAEmulator::systime(self.real_time);
         let ui = self.imgui.new_frame();
 
         {
@@ -863,11 +856,25 @@ impl ImGuiRenderer {
                             TreeNodeFlags::DEFAULT_OPEN,
                         ) {
                             ui.text("Silencer");
-                            ui.text(format!(
-                                "Step intensity: {}",
-                                cpu.fpga().silencer_step_intensity()
-                            ));
-                            ui.text(format!("Step phase: {}", cpu.fpga().silencer_step_phase()));
+                            if cpu.fpga().silencer_fixed_completion_steps_mode() {
+                                ui.text(format!(
+                                    "Completion steps intensity: {}",
+                                    cpu.fpga().silencer_completion_steps_intensity()
+                                ));
+                                ui.text(format!(
+                                    "Completion steps phase: {}",
+                                    cpu.fpga().silencer_completion_steps_phase()
+                                ));
+                            } else {
+                                ui.text(format!(
+                                    "Update rate intensity: {}",
+                                    cpu.fpga().silencer_update_rate_intensity()
+                                ));
+                                ui.text(format!(
+                                    "Update rate phase: {}",
+                                    cpu.fpga().silencer_update_rate_phase()
+                                ));
+                            }
 
                             {
                                 ui.separator();
@@ -892,7 +899,7 @@ impl ImGuiRenderer {
 
                                 ui.text(format!(
                                     "Current Index: {}",
-                                    Self::mod_idx(system_time, cpu)
+                                    cpu.fpga().mod_idx_from_systime(system_time)
                                 ));
 
                                 if !m.is_empty() {
@@ -985,7 +992,7 @@ impl ImGuiRenderer {
 
                                 ui.text(format!(
                                     "Current Index: {}",
-                                    Self::stm_idx(system_time, cpu)
+                                    cpu.fpga().stm_idx_from_systime(system_time)
                                 ));
                             }
                         }
@@ -1065,7 +1072,7 @@ impl ImGuiRenderer {
 
         if settings.auto_play {
             update_flag.set(UpdateFlag::UPDATE_SOURCE_DRIVE, true);
-            self.real_time = (get_current_ec_time() as f64 * settings.time_scale as f64) as _;
+            self.real_time = (FPGAEmulator::ec_time_now() as f64 * settings.time_scale as f64) as _;
         }
 
         self.font_size = font_size;
@@ -1134,20 +1141,11 @@ impl ImGuiRenderer {
         Ok(())
     }
 
-    pub(crate) const fn system_time(&self) -> u64 {
-        ((self.real_time as u128 * autd3_driver::fpga::FPGA_CLK_FREQ as u128) / 1000000000) as _
-    }
-
-    pub(crate) fn stm_idx(system_time: u64, cpu: &CPUEmulator) -> usize {
-        (system_time / cpu.fpga().stm_frequency_division() as u64) as usize % cpu.fpga().stm_cycle()
-    }
-
-    pub(crate) fn mod_idx(system_time: u64, cpu: &CPUEmulator) -> usize {
-        (system_time / cpu.fpga().modulation_frequency_division() as u64) as usize
-            % cpu.fpga().modulation_cycle()
-    }
-
     pub(crate) fn visible(&self) -> &[bool] {
         &self.visible
+    }
+
+    pub(crate) fn system_time(&self) -> u64 {
+        FPGAEmulator::systime(self.real_time)
     }
 }

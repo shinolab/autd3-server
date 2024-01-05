@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "SOEMAUTDServer"
-version = "19.1.1"
+version = "20.0.0"
 dependencies = [
  "anyhow",
  "autd3-driver",
@@ -157,9 +157,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-derive"
-version = "19.1.0"
+version = "20.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0ad3998c332614e69c35dc66da0654df8585a52e939c2c4f6fa8a69fbfccd173"
+checksum = "69ccc611f1388ef4930fedcb47ba1cde064cc13724a910e55e20efe561683696"
 dependencies = [
  "quote",
  "syn",
@@ -167,11 +167,10 @@ dependencies = [
 
 [[package]]
 name = "autd3-driver"
-version = "19.1.0"
+version = "20.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b6662ca73c1486636883a665172afd0f3098884803a830c4ec1fb5bef85505d9"
+checksum = "3353dfbc885f1c1e13a4c9c3d70ef6f4602a51cd37bed6b27a6e2f07ae1821df"
 dependencies = [
- "async-trait",
  "bitflags 2.4.1",
  "bitvec",
  "libc",
@@ -182,11 +181,10 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-soem"
-version = "19.1.0"
+version = "20.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1fa219df3c54b0b1606152d32f68299ab8070f22afd6b1a9f791a94ad92a048a"
+checksum = "5e66f267505157e3143f04c4baf692f9a776c648a02eb0dcc892a11a882b4a8d"
 dependencies = [
- "async-trait",
  "autd3-derive",
  "autd3-driver",
  "cc",
@@ -199,9 +197,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-protobuf"
-version = "19.1.0"
+version = "20.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9f2a47882fb67aca44f8d171ae1fdc6ff85be603d920e054d9cf791083140c2a"
+checksum = "d80d57678e139b01574359acd0bf904d0a3d0d7be4c553a15c2fbadfc41f5b4e"
 dependencies = [
  "autd3-driver",
  "h2 0.4.0",
