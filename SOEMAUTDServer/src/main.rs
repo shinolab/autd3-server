@@ -4,7 +4,7 @@
  * Created Date: 27/09/2023
  * Author: Shun Suzuki
  * -----
- * Last Modified: 06/11/2023
+ * Last Modified: 24/01/2024
  * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
  * -----
  * Copyright (c) 2023 Shun Suzuki. All rights reserved.
@@ -110,7 +110,8 @@ impl ecat_server::Ecat for SOEMServer {
         &self,
         request: Request<TxRawData>,
     ) -> Result<Response<SendResponse>, Status> {
-        let tx = TxDatagram::from_msg(&request.into_inner());
+        let tx = TxDatagram::from_msg(&request.into_inner())
+            .ok_or(Status::invalid_argument("Invalid data"))?;
         Ok(Response::new(SendResponse {
             success: Link::send(&mut *self.soem.write().await, &tx)
                 .await
@@ -127,7 +128,12 @@ impl ecat_server::Ecat for SOEMServer {
     }
 
     async fn close(&self, _: Request<CloseRequest>) -> Result<Response<CloseResponse>, Status> {
-        self.soem.write().await.clear_iomap();
+        self.soem
+            .write()
+            .await
+            .clear_iomap()
+            .await
+            .map_err(|_| Status::invalid_argument("Failed to clear data"))?;
         Ok(Response::new(CloseResponse { success: true }))
     }
 }
