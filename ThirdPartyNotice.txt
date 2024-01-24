@@ -374,7 +374,7 @@ update-browserslist-db 1.0.11 MIT
 browserslist/update-db
 ---------------------------------------------------------
 
-vite 4.5.1 MIT
+vite 4.5.2 MIT
 git+https://github.com/vitejs/vite.git
 ---------------------------------------------------------
 

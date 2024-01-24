@@ -4,7 +4,7 @@
  * Created Date: 24/05/2023
  * Author: Shun Suzuki
  * -----
- * Last Modified: 05/01/2024
+ * Last Modified: 23/01/2024
  * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
  * -----
  * Copyright (c) 2023 Shun Suzuki. All rights reserved.
@@ -291,7 +291,8 @@ impl Simulator {
                         sources.clear();
                         cpus.clear();
 
-                        let geometry = autd3_driver::geometry::Geometry::from_msg(&geometry);
+                        let geometry = autd3_driver::geometry::Geometry::from_msg(&geometry)
+                            .ok_or(AUTDProtoBufError::DataParseError)?;
                         geometry.iter().for_each(|dev| {
                             dev.iter().for_each(|tr| {
                                 let p = tr.position();
@@ -336,7 +337,8 @@ impl Simulator {
                         is_initialized = true;
                     }
                     Ok(Signal::UpdateGeometry(geometry)) => {
-                        let geometry = autd3_driver::geometry::Geometry::from_msg(&geometry);
+                        let geometry = autd3_driver::geometry::Geometry::from_msg(&geometry)
+                            .ok_or(AUTDProtoBufError::DataParseError)?;
                         geometry
                             .iter()
                             .flat_map(|dev| {
@@ -357,7 +359,8 @@ impl Simulator {
                         trans_viewer.update_source_pos(&sources)?;
                     }
                     Ok(Signal::Send(raw)) => {
-                        let tx = TxDatagram::from_msg(&raw);
+                        let tx =
+                            TxDatagram::from_msg(&raw).ok_or(AUTDProtoBufError::DataParseError)?;
                         cpus.iter_mut().for_each(|cpu| {
                             cpu.send(&tx);
                         });
