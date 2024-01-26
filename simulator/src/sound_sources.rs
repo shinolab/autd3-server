@@ -1,8 +1,4 @@
-use std::f32::consts::PI;
-
-use bytemuck::{Pod, Zeroable};
-
-use crate::{Quaternion, Vector3, Vector4};
+use crate::prelude::*;
 
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Default, Zeroable, Pod)]
@@ -14,21 +10,21 @@ pub struct Drive {
 }
 
 impl Drive {
-    pub fn new(amp: f32, phase: f32, enable: f32, frequency: f32, sound_speed: f32) -> Self {
+    pub fn new(amp: f32, phase: f32, enable: f32, sound_speed: f32) -> Self {
         Self {
             amp,
             phase,
             enable,
-            wave_num: Self::to_wave_number(frequency, sound_speed),
+            wave_num: Self::to_wave_number(sound_speed),
         }
     }
 
-    pub fn set_wave_number(&mut self, frequency: f32, sound_speed: f32) {
-        self.wave_num = Self::to_wave_number(frequency, sound_speed);
+    pub fn set_wave_number(&mut self, sound_speed: f32) {
+        self.wave_num = Self::to_wave_number(sound_speed);
     }
 
-    fn to_wave_number(frequency: f32, sound_speed: f32) -> f32 {
-        2.0 * PI * frequency / sound_speed
+    fn to_wave_number(sound_speed: f32) -> f32 {
+        2.0 * PI * ULTRASOUND_FREQUENCY as f32 / sound_speed
     }
 }
 

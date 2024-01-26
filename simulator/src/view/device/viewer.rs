@@ -1,47 +1,6 @@
-use std::sync::Arc;
-
-use autd3::prelude::Geometry;
-use vulkano::{
-    buffer::{Buffer, BufferCreateInfo, BufferUsage, Subbuffer},
-    command_buffer::{
-        AutoCommandBufferBuilder, BlitImageInfo, CommandBufferUsage, CopyBufferToImageInfo,
-        ImageBlit, PrimaryAutoCommandBuffer, PrimaryCommandBufferAbstract,
-    },
-    descriptor_set::{PersistentDescriptorSet, WriteDescriptorSet},
-    format::Format,
-    image::{
-        sampler::{Filter, Sampler, SamplerAddressMode, SamplerCreateInfo, SamplerMipmapMode},
-        view::ImageView,
-        Image, ImageCreateInfo, ImageSubresourceLayers, ImageType, ImageUsage,
-    },
-    memory::allocator::{AllocationCreateInfo, MemoryTypeFilter},
-    pipeline::{
-        graphics::{
-            color_blend::{AttachmentBlend, ColorBlendAttachmentState, ColorBlendState},
-            depth_stencil::{DepthState, DepthStencilState},
-            input_assembly::{InputAssemblyState, PrimitiveTopology},
-            multisample::MultisampleState,
-            rasterization::RasterizationState,
-            vertex_input::{Vertex, VertexDefinition},
-            viewport::ViewportState,
-            GraphicsPipelineCreateInfo,
-        },
-        layout::PipelineDescriptorSetLayoutCreateInfo,
-        DynamicState, GraphicsPipeline, Pipeline, PipelineBindPoint, PipelineLayout,
-        PipelineShaderStageCreateInfo,
-    },
-    render_pass::Subpass,
-    sync::GpuFuture,
-    DeviceSize,
-};
-
 use super::model::{Model, ModelVertex};
-use crate::{
-    common::transform::{to_gl_pos, to_gl_rot},
-    renderer::Renderer,
-    viewer_settings::ViewerSettings,
-    Matrix4, Quaternion, Vector3,
-};
+
+use crate::prelude::*;
 
 #[allow(clippy::needless_question_mark)]
 mod vs {
@@ -60,6 +19,7 @@ mod fs {
 }
 
 pub struct DeviceViewer {
+    model: Model,
     vertices: Subbuffer<[ModelVertex]>,
     indices: Subbuffer<[u32]>,
     texture_desc_set: Arc<PersistentDescriptorSet>,
@@ -68,33 +28,27 @@ pub struct DeviceViewer {
 }
 
 impl DeviceViewer {
-    pub fn new(renderer: &Renderer, model: &Model) -> anyhow::Result<Self> {
-        let device = renderer.device();
+    pub fn new(renderer: &Renderer) -> anyhow::Result<Self> {
+        let model = Model::new()?;
+
         let vertices = Self::create_vertices(renderer, &model.vertices)?;
         let indices = Self::create_indices(renderer, &model.indices)?;
 
-        let vs = vs::load(device.clone())?.entry_point("main").unwrap();
-        let fs = fs::load(device.clone())?.entry_point("main").unwrap();
+        let vs = vs::load(renderer.device())?.entry_point("main").unwrap();
+        let fs = fs::load(renderer.device())?.entry_point("main").unwrap();
 
-        let vertex_input_state =
-            ModelVertex::per_vertex().definition(&vs.info().input_interface)?;
+        let interface = vs.info().input_interface.clone();
         let stages = [
             PipelineShaderStageCreateInfo::new(vs),
             PipelineShaderStageCreateInfo::new(fs),
         ];
-        let layout = PipelineLayout::new(
-            device.clone(),
-            PipelineDescriptorSetLayoutCreateInfo::from_stages(&stages)
-                .into_pipeline_layout_create_info(device.clone())?,
-        )?;
         let subpass = Subpass::from(renderer.render_pass(), 0).unwrap();
-
         let pipeline = GraphicsPipeline::new(
-            device.clone(),
+            renderer.device(),
             None,
             GraphicsPipelineCreateInfo {
-                stages: stages.into_iter().collect(),
-                vertex_input_state: Some(vertex_input_state),
+                stages: stages.iter().cloned().collect(),
+                vertex_input_state: Some(ModelVertex::per_vertex().definition(&interface)?),
                 input_assembly_state: Some(InputAssemblyState {
                     topology: PrimitiveTopology::TriangleList,
                     ..Default::default()
@@ -118,16 +72,23 @@ impl DeviceViewer {
                 }),
                 dynamic_state: [DynamicState::Viewport].into_iter().collect(),
                 subpass: Some(subpass.into()),
-                ..GraphicsPipelineCreateInfo::layout(layout)
+                ..GraphicsPipelineCreateInfo::layout(PipelineLayout::new(
+                    renderer.device(),
+                    PipelineDescriptorSetLayoutCreateInfo::from_stages(&stages)
+                        .into_pipeline_layout_create_info(renderer.device())?,
+                )?)
             },
         )?;
-        let texture_desc_set =
-            Self::create_texture_desc_set(pipeline.clone(), renderer, &model.image)?;
 
         Ok(Self {
+            texture_desc_set: Self::create_texture_desc_set(
+                pipeline.clone(),
+                renderer,
+                &model.image,
+            )?,
+            model,
             vertices,
             indices,
-            texture_desc_set,
             pipeline,
             pos_rot: Vec::new(),
         })
@@ -149,7 +110,6 @@ impl DeviceViewer {
 
     pub fn render(
         &mut self,
-        model: &Model,
         view_proj: (Matrix4, Matrix4),
         setting: &ViewerSettings,
         visible: &[bool],
@@ -175,46 +135,48 @@ impl DeviceViewer {
             .zip(visible.iter())
             .filter(|&(_, &s)| s)
             .try_for_each(|(&(pos, rot), _)| -> anyhow::Result<()> {
-                model
+                self.model
                     .primitives
                     .iter()
                     .try_for_each(|primitive| -> anyhow::Result<()> {
-                        let material = &model.materials[primitive.material_index];
-                        let pcf = fs::PushConsts {
-                            proj_view: (proj * view).into(),
-                            model: (Matrix4::from_translation(pos / crate::METER)
-                                * Matrix4::from(rot))
-                            .into(),
-                            lightPos: [
-                                setting.light_pos_x / crate::METER,
-                                setting.light_pos_y / crate::METER,
-                                setting.light_pos_z / crate::METER,
-                                1.,
-                            ],
-                            viewPos: [
-                                setting.camera_pos_x / crate::METER,
-                                setting.camera_pos_y / crate::METER,
-                                setting.camera_pos_z / crate::METER,
-                                1.,
-                            ],
-                            ambient: setting.ambient,
-                            specular: setting.specular,
-                            lightPower: setting.light_power,
-                            metallic: material.metallic_factor,
-                            roughness: material.roughness_factor,
-                            baseColorR: material.base_color_factor[0],
-                            baseColorG: material.base_color_factor[1],
-                            baseColorB: material.base_color_factor[2],
-                            hasTexture: if material.base_color_texture_idx.is_some() {
-                                1
-                            } else {
-                                0
-                            },
-                        };
-
+                        let material = &self.model.materials[primitive.material_index];
                         builder
                             .bind_pipeline_graphics(self.pipeline.clone())?
-                            .push_constants(self.pipeline.layout().clone(), 0, pcf)?
+                            .push_constants(
+                                self.pipeline.layout().clone(),
+                                0,
+                                fs::PushConsts {
+                                    proj_view: (proj * view).into(),
+                                    model: (Matrix4::from_translation(pos / crate::METER)
+                                        * Matrix4::from(rot))
+                                    .into(),
+                                    lightPos: [
+                                        setting.light_pos_x / crate::METER,
+                                        setting.light_pos_y / crate::METER,
+                                        setting.light_pos_z / crate::METER,
+                                        1.,
+                                    ],
+                                    viewPos: [
+                                        setting.camera_pos_x / crate::METER,
+                                        setting.camera_pos_y / crate::METER,
+                                        setting.camera_pos_z / crate::METER,
+                                        1.,
+                                    ],
+                                    ambient: setting.ambient,
+                                    specular: setting.specular,
+                                    lightPower: setting.light_power,
+                                    metallic: material.metallic_factor,
+                                    roughness: material.roughness_factor,
+                                    baseColorR: material.base_color_factor[0],
+                                    baseColorG: material.base_color_factor[1],
+                                    baseColorB: material.base_color_factor[2],
+                                    hasTexture: if material.base_color_texture_idx.is_some() {
+                                        1
+                                    } else {
+                                        0
+                                    },
+                                },
+                            )?
                             .draw_indexed(primitive.index_count, 1, primitive.first_index, 0, 0)?;
 
                         Ok(())
@@ -265,29 +227,32 @@ impl DeviceViewer {
         image: &gltf::image::Data,
     ) -> anyhow::Result<Arc<PersistentDescriptorSet>> {
         let (uploads, texture) = Self::load_image(renderer, image)?;
-        let sampler = Sampler::new(
-            pipeline.device().clone(),
-            SamplerCreateInfo {
-                mag_filter: Filter::Linear,
-                min_filter: Filter::Linear,
-                mipmap_mode: SamplerMipmapMode::Linear,
-                address_mode: [SamplerAddressMode::Repeat; 3],
-                mip_lod_bias: 0.0,
-                lod: 0.0..=texture.image().mip_levels() as f32,
-                ..Default::default()
-            },
-        )?;
-        let layout = pipeline.layout().set_layouts().get(0).unwrap();
 
         uploads
             .execute(renderer.queue())?
             .then_signal_fence_and_flush()?
             .wait(None)?;
 
+        let mip_levels = texture.image().mip_levels();
         Ok(PersistentDescriptorSet::new(
             renderer.descriptor_set_allocator(),
-            layout.clone(),
-            [WriteDescriptorSet::image_view_sampler(0, texture, sampler)],
+            pipeline.layout().set_layouts().get(0).unwrap().clone(),
+            [WriteDescriptorSet::image_view_sampler(
+                0,
+                texture,
+                Sampler::new(
+                    pipeline.device().clone(),
+                    SamplerCreateInfo {
+                        mag_filter: Filter::Linear,
+                        min_filter: Filter::Linear,
+                        mipmap_mode: SamplerMipmapMode::Linear,
+                        address_mode: [SamplerAddressMode::Repeat; 3],
+                        mip_lod_bias: 0.0,
+                        lod: 0.0..=mip_levels as f32,
+                        ..Default::default()
+                    },
+                )?,
+            )],
             [],
         )?)
     }
@@ -296,7 +261,6 @@ impl DeviceViewer {
         renderer: &Renderer,
         image: &gltf::image::Data,
     ) -> anyhow::Result<(Arc<PrimaryAutoCommandBuffer>, Arc<ImageView>)> {
-        let extent = [image.width, image.height, 1];
         let upload_buffer = Buffer::new_slice(
             renderer.memory_allocator(),
             BufferCreateInfo {
@@ -310,7 +274,6 @@ impl DeviceViewer {
             },
             (image.width * image.height * 4) as DeviceSize,
         )?;
-
         upload_buffer.write()?.copy_from_slice(&image.pixels);
 
         let mut uploads = AutoCommandBufferBuilder::primary(
@@ -319,15 +282,14 @@ impl DeviceViewer {
             CommandBufferUsage::OneTimeSubmit,
         )?;
 
-        let mip_levels = (image.width.min(image.height) as f32).log2().floor() as u32 + 1;
         let image = Image::new(
             renderer.memory_allocator(),
             ImageCreateInfo {
                 image_type: ImageType::Dim2d,
                 format: Format::R8G8B8A8_SRGB,
-                extent,
+                extent: [image.width, image.height, 1],
                 usage: ImageUsage::TRANSFER_SRC | ImageUsage::TRANSFER_DST | ImageUsage::SAMPLED,
-                mip_levels,
+                mip_levels: (image.width.min(image.height) as f32).log2().floor() as u32 + 1,
                 ..Default::default()
             },
             AllocationCreateInfo::default(),

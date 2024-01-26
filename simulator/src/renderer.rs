@@ -1,39 +1,4 @@
-use std::sync::Arc;
-
-use camera_controllers::{Camera, CameraPerspective, FirstPerson, FirstPersonSettings};
-
-use vulkano::{
-    command_buffer::allocator::StandardCommandBufferAllocator,
-    descriptor_set::allocator::StandardDescriptorSetAllocator,
-    device::{
-        physical::{PhysicalDevice, PhysicalDeviceType},
-        Device, DeviceCreateInfo, DeviceExtensions, Features, Queue, QueueCreateInfo, QueueFlags,
-    },
-    format::{Format, FormatFeatures},
-    image::{view::ImageView, Image, ImageCreateInfo, ImageUsage, SampleCount, SampleCounts},
-    instance::{
-        debug::{
-            DebugUtilsMessageSeverity, DebugUtilsMessageType, DebugUtilsMessenger,
-            DebugUtilsMessengerCallback, DebugUtilsMessengerCreateInfo,
-        },
-        Instance, InstanceCreateFlags, InstanceCreateInfo,
-    },
-    memory::allocator::{AllocationCreateInfo, StandardMemoryAllocator},
-    pipeline::graphics::viewport::Viewport,
-    render_pass::{Framebuffer, FramebufferCreateInfo, RenderPass},
-    swapchain::{
-        self, ColorSpace, FullScreenExclusive, PresentMode, Surface, SurfaceTransform, Swapchain,
-        SwapchainCreateInfo, SwapchainPresentInfo,
-    },
-    sync::{self, GpuFuture},
-    Validated, VulkanError, VulkanLibrary,
-};
-use winit::{
-    event_loop::{EventLoop, EventLoopBuilder},
-    window::{Window, WindowBuilder},
-};
-
-use crate::{camera_helper, viewer_settings::ViewerSettings, Matrix4, Vector3};
+use crate::prelude::*;
 
 /// List available GPUs
 pub fn available_gpus() -> anyhow::Result<Vec<(u32, String, PhysicalDeviceType)>> {

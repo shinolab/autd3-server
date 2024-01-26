@@ -1,36 +1,4 @@
-use std::sync::Arc;
-
-use bytemuck::{Pod, Zeroable};
-use vulkano::{
-    buffer::{Buffer, BufferCreateInfo, BufferUsage, Subbuffer},
-    command_buffer::{AutoCommandBufferBuilder, PrimaryAutoCommandBuffer},
-    descriptor_set::{PersistentDescriptorSet, WriteDescriptorSet},
-    memory::allocator::{AllocationCreateInfo, MemoryTypeFilter},
-    pipeline::{
-        graphics::{
-            color_blend::{AttachmentBlend, ColorBlendAttachmentState, ColorBlendState},
-            depth_stencil::{DepthState, DepthStencilState},
-            input_assembly::{InputAssemblyState, PrimitiveTopology},
-            multisample::MultisampleState,
-            rasterization::RasterizationState,
-            vertex_input::{Vertex, VertexDefinition},
-            viewport::ViewportState,
-            GraphicsPipelineCreateInfo,
-        },
-        layout::PipelineDescriptorSetLayoutCreateInfo,
-        DynamicState, GraphicsPipeline, Pipeline, PipelineBindPoint, PipelineLayout,
-        PipelineShaderStageCreateInfo,
-    },
-    render_pass::Subpass,
-};
-
-use crate::{
-    common::transform::{to_gl_pos, to_gl_rot},
-    renderer::Renderer,
-    update_flag::UpdateFlag,
-    viewer_settings::ViewerSettings,
-    Matrix4,
-};
+use crate::prelude::*;
 
 #[repr(C)]
 #[derive(Default, Debug, Copy, Clone, Zeroable, Pod, Vertex)]
@@ -49,11 +17,10 @@ struct Data {
     proj: [[f32; 4]; 4],
     width: u32,
     height: u32,
-    _dummy_0: u32,
-    _dummy_1: u32,
+    _pad0: u32,
+    _pad1: u32,
 }
 
-#[allow(clippy::needless_question_mark)]
 mod vs {
     vulkano_shaders::shader! {
         ty: "vertex",
@@ -61,7 +28,6 @@ mod vs {
     }
 }
 
-#[allow(clippy::needless_question_mark)]
 mod fs {
     vulkano_shaders::shader! {
         ty: "fragment",
@@ -79,32 +45,24 @@ pub struct SliceViewer {
 
 impl SliceViewer {
     pub fn new(renderer: &Renderer, settings: &ViewerSettings) -> anyhow::Result<Self> {
-        let device = renderer.device();
         let vertices = Self::create_vertices(renderer, settings)?;
         let indices = Self::create_indices(renderer)?;
 
-        let vs = vs::load(device.clone())?.entry_point("main").unwrap();
-        let fs = fs::load(device.clone())?.entry_point("main").unwrap();
+        let vs = vs::load(renderer.device())?.entry_point("main").unwrap();
+        let fs = fs::load(renderer.device())?.entry_point("main").unwrap();
 
-        let vertex_input_state =
-            SliceVertex::per_vertex().definition(&vs.info().input_interface)?;
+        let interface = vs.info().input_interface.clone();
         let stages = [
             PipelineShaderStageCreateInfo::new(vs),
             PipelineShaderStageCreateInfo::new(fs),
         ];
-        let layout = PipelineLayout::new(
-            device.clone(),
-            PipelineDescriptorSetLayoutCreateInfo::from_stages(&stages)
-                .into_pipeline_layout_create_info(device.clone())?,
-        )?;
         let subpass = Subpass::from(renderer.render_pass(), 0).unwrap();
-
         let pipeline = GraphicsPipeline::new(
-            device.clone(),
+            renderer.device(),
             None,
             GraphicsPipelineCreateInfo {
-                stages: stages.into_iter().collect(),
-                vertex_input_state: Some(vertex_input_state),
+                stages: stages.iter().cloned().collect(),
+                vertex_input_state: Some(SliceVertex::per_vertex().definition(&interface)?),
                 input_assembly_state: Some(InputAssemblyState {
                     topology: PrimitiveTopology::TriangleStrip,
                     ..Default::default()
@@ -128,20 +86,26 @@ impl SliceViewer {
                 }),
                 dynamic_state: [DynamicState::Viewport].into_iter().collect(),
                 subpass: Some(subpass.into()),
-                ..GraphicsPipelineCreateInfo::layout(layout)
+                ..GraphicsPipelineCreateInfo::layout(PipelineLayout::new(
+                    renderer.device(),
+                    PipelineDescriptorSetLayoutCreateInfo::from_stages(&stages)
+                        .into_pipeline_layout_create_info(renderer.device())?,
+                )?)
             },
         )?;
-
-        let width = (settings.slice_width / settings.slice_pixel_size) as u32;
-        let height = (settings.slice_height / settings.slice_pixel_size) as u32;
-        let field_image_view = Self::create_field_image_view(renderer, [width, height])?;
 
         Ok(Self {
             vertices,
             indices,
             pipeline,
             model: Matrix4::from_scale(1.),
-            field_image_view,
+            field_image_view: Self::create_field_image_view(
+                renderer,
+                [
+                    (settings.slice_width / settings.slice_pixel_size) as u32,
+                    (settings.slice_height / settings.slice_pixel_size) as u32,
+                ],
+            )?,
         })
     }
 
@@ -150,10 +114,8 @@ impl SliceViewer {
     }
 
     fn update_pos(&mut self, settings: &ViewerSettings) {
-        let rotation = to_gl_rot(settings.slice_rotation());
-        let mut model = Matrix4::from(rotation);
-        model[3] = to_gl_pos(settings.slice_pos()).extend(1.);
-        self.model = model;
+        self.model = Matrix4::from_translation(to_gl_pos(settings.slice_pos()))
+            * Matrix4::from(to_gl_rot(settings.slice_rotation()));
     }
 
     pub const fn model(&self) -> Matrix4 {
@@ -175,9 +137,13 @@ impl SliceViewer {
         }
 
         if update_flag.contains(UpdateFlag::UPDATE_SLICE_SIZE) {
-            let width = (settings.slice_width / settings.slice_pixel_size) as u32;
-            let height = (settings.slice_height / settings.slice_pixel_size) as u32;
-            self.field_image_view = Self::create_field_image_view(renderer, [width, height])?;
+            self.field_image_view = Self::create_field_image_view(
+                renderer,
+                [
+                    (settings.slice_width / settings.slice_pixel_size) as u32,
+                    (settings.slice_height / settings.slice_pixel_size) as u32,
+                ],
+            )?;
             self.vertices = Self::create_vertices(renderer, settings)?;
             self.indices = Self::create_indices(renderer)?;
         }
@@ -193,29 +159,28 @@ impl SliceViewer {
         settings: &ViewerSettings,
         builder: &mut AutoCommandBufferBuilder<PrimaryAutoCommandBuffer>,
     ) -> anyhow::Result<()> {
-        let pc = fs::PushConstsConfig {
-            pvm: (proj * view * self.model).into(),
-            width: (settings.slice_width / settings.slice_pixel_size) as _,
-            height: (settings.slice_height / settings.slice_pixel_size) as _,
-        };
-
-        let layout = self.pipeline.layout().set_layouts().get(0).unwrap();
-        let desc_set = PersistentDescriptorSet::new(
-            renderer.descriptor_set_allocator(),
-            layout.clone(),
-            [WriteDescriptorSet::buffer(0, self.field_image_view())],
-            [],
-        )?;
-
         builder
             .bind_pipeline_graphics(self.pipeline.clone())?
             .bind_descriptor_sets(
                 PipelineBindPoint::Graphics,
                 self.pipeline.layout().clone(),
                 0,
-                desc_set,
+                PersistentDescriptorSet::new(
+                    renderer.descriptor_set_allocator(),
+                    self.pipeline.layout().set_layouts().get(0).unwrap().clone(),
+                    [WriteDescriptorSet::buffer(0, self.field_image_view())],
+                    [],
+                )?,
             )?
-            .push_constants(self.pipeline.layout().clone(), 0, pc)?
+            .push_constants(
+                self.pipeline.layout().clone(),
+                0,
+                fs::PushConstsConfig {
+                    pvm: (proj * view * self.model).into(),
+                    width: (settings.slice_width / settings.slice_pixel_size) as _,
+                    height: (settings.slice_height / settings.slice_pixel_size) as _,
+                },
+            )?
             .bind_vertex_buffers(0, self.vertices.clone())?
             .bind_index_buffer(self.indices.clone())?
             .draw_indexed(self.indices.len() as u32, 1, 0, 0, 0)?;
@@ -227,8 +192,7 @@ impl SliceViewer {
         renderer: &Renderer,
         view_size: [u32; 2],
     ) -> anyhow::Result<Subbuffer<[[f32; 4]]>> {
-        let data_iter = vec![[0., 0., 0., 1.]; view_size[0] as usize * view_size[1] as usize];
-        let buffer = Buffer::from_iter(
+        Ok(Buffer::from_iter(
             renderer.memory_allocator(),
             BufferCreateInfo {
                 usage: BufferUsage::STORAGE_BUFFER,
@@ -239,9 +203,8 @@ impl SliceViewer {
                     | MemoryTypeFilter::HOST_SEQUENTIAL_WRITE,
                 ..Default::default()
             },
-            data_iter,
-        )?;
-        Ok(buffer)
+            vec![[0., 0., 0., 1.]; view_size[0] as usize * view_size[1] as usize],
+        )?)
     }
 
     fn create_vertices(
@@ -250,7 +213,7 @@ impl SliceViewer {
     ) -> anyhow::Result<Subbuffer<[SliceVertex]>> {
         let width = settings.slice_width;
         let height = settings.slice_height;
-        let buffer = Buffer::from_iter(
+        Ok(Buffer::from_iter(
             renderer.memory_allocator(),
             BufferCreateInfo {
                 usage: BufferUsage::VERTEX_BUFFER,
@@ -278,17 +241,12 @@ impl SliceViewer {
                     position: [-width / 2.0, height / 2.0, 0.0, 1.0],
                     tex_coords: [0.0, 1.0],
                 },
-            ]
-            .iter()
-            .cloned(),
-        )?;
-
-        Ok(buffer)
+            ],
+        )?)
     }
 
     fn create_indices(renderer: &Renderer) -> anyhow::Result<Subbuffer<[u32]>> {
-        let indices: Vec<u32> = vec![0, 2, 1, 0, 3, 2];
-        let buffer = Buffer::from_iter(
+        Ok(Buffer::from_iter(
             renderer.memory_allocator(),
             BufferCreateInfo {
                 usage: BufferUsage::INDEX_BUFFER,
@@ -299,9 +257,7 @@ impl SliceViewer {
                     | MemoryTypeFilter::HOST_SEQUENTIAL_WRITE,
                 ..Default::default()
             },
-            indices,
-        )?;
-
-        Ok(buffer)
+            [0, 2, 1, 0, 3, 2],
+        )?)
     }
 }

@@ -1,36 +1,4 @@
-use std::sync::Arc;
-
-use bytemuck::{Pod, Zeroable};
-use scarlet::{colormap::ColorMap, prelude::*};
-use vulkano::{
-    buffer::{Buffer, BufferCreateInfo, BufferUsage, Subbuffer},
-    command_buffer::{
-        AutoCommandBufferBuilder, CommandBufferUsage, CopyBufferToImageInfo,
-        PrimaryCommandBufferAbstract,
-    },
-    descriptor_set::{PersistentDescriptorSet, WriteDescriptorSet},
-    format::Format,
-    image::{
-        sampler::{Filter, Sampler, SamplerAddressMode, SamplerCreateInfo, SamplerMipmapMode},
-        view::ImageView,
-        Image, ImageCreateInfo, ImageType, ImageUsage,
-    },
-    memory::allocator::{AllocationCreateInfo, MemoryTypeFilter},
-    pipeline::{
-        compute::ComputePipelineCreateInfo, layout::PipelineDescriptorSetLayoutCreateInfo,
-        ComputePipeline, Pipeline, PipelineBindPoint, PipelineLayout,
-        PipelineShaderStageCreateInfo,
-    },
-    sync::GpuFuture,
-    DeviceSize,
-};
-
-use crate::{
-    renderer::Renderer,
-    sound_sources::{Drive, SoundSources},
-    update_flag::UpdateFlag,
-    viewer_settings::ViewerSettings,
-};
+use crate::prelude::*;
 
 #[repr(C)]
 #[derive(Default, Debug, Copy, Clone, Pod, Zeroable)]
@@ -42,7 +10,7 @@ pub struct Config {
     pub height: u32,
     pub pixel_size: f32,
     pub scale: f32,
-    pub _dummy_0: u32,
+    pub _pad0: u32,
     pub model: [[f32; 4]; 4],
 }
 

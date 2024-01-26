@@ -1,48 +1,4 @@
-use std::{f32::consts::PI, sync::Arc};
-
-use autd3_driver::autd3_device::AUTD3;
-use bytemuck::{Pod, Zeroable};
-use vulkano::{
-    buffer::{Buffer, BufferCreateInfo, BufferUsage, Subbuffer},
-    command_buffer::{
-        AutoCommandBufferBuilder, CommandBufferUsage, CopyBufferToImageInfo,
-        PrimaryAutoCommandBuffer, PrimaryCommandBufferAbstract,
-    },
-    descriptor_set::{PersistentDescriptorSet, WriteDescriptorSet},
-    format::Format,
-    image::{
-        sampler::{Filter, Sampler, SamplerAddressMode, SamplerCreateInfo, SamplerMipmapMode},
-        view::ImageView,
-        Image, ImageCreateInfo, ImageType, ImageUsage,
-    },
-    memory::allocator::{AllocationCreateInfo, MemoryTypeFilter},
-    pipeline::{
-        graphics::{
-            color_blend::{AttachmentBlend, ColorBlendAttachmentState, ColorBlendState},
-            depth_stencil::{DepthState, DepthStencilState},
-            input_assembly::{InputAssemblyState, PrimitiveTopology},
-            multisample::MultisampleState,
-            rasterization::RasterizationState,
-            vertex_input::{Vertex, VertexDefinition},
-            viewport::ViewportState,
-            GraphicsPipelineCreateInfo,
-        },
-        layout::PipelineDescriptorSetLayoutCreateInfo,
-        DynamicState, GraphicsPipeline, Pipeline, PipelineBindPoint, PipelineLayout,
-        PipelineShaderStageCreateInfo,
-    },
-    render_pass::Subpass,
-    sync::GpuFuture,
-    DeviceSize,
-};
-
-use crate::{
-    common::coloring_method::{coloring_hsv, ColoringMethod},
-    renderer::Renderer,
-    sound_sources::SoundSources,
-    update_flag::UpdateFlag,
-    Matrix4,
-};
+use crate::prelude::*;
 
 #[repr(C)]
 #[derive(Default, Debug, Copy, Clone, Zeroable, Pod, Vertex)]
@@ -95,35 +51,31 @@ pub struct TransViewer {
 
 impl TransViewer {
     pub fn new(renderer: &Renderer) -> anyhow::Result<Self> {
-        let device = renderer.device();
         let vertices = Self::create_vertices(renderer)?;
         let indices = Self::create_indices(renderer)?;
 
-        let vs = vs::load(device.clone())?.entry_point("main").unwrap();
-        let fs = fs::load(device.clone())?.entry_point("main").unwrap();
+        let vs = vs::load(renderer.device())?.entry_point("main").unwrap();
+        let fs = fs::load(renderer.device())?.entry_point("main").unwrap();
 
-        let vertex_input_state = [
-            CircleVertex::per_vertex(),
-            ModelInstanceData::per_instance(),
-            ColorInstanceData::per_instance(),
-        ]
-        .definition(&vs.info().input_interface)?;
+        let interface = vs.info().input_interface.clone();
         let stages = [
             PipelineShaderStageCreateInfo::new(vs),
             PipelineShaderStageCreateInfo::new(fs),
         ];
-        let layout = PipelineLayout::new(
-            device.clone(),
-            PipelineDescriptorSetLayoutCreateInfo::from_stages(&stages)
-                .into_pipeline_layout_create_info(device.clone())?,
-        )?;
         let subpass = Subpass::from(renderer.render_pass(), 0).unwrap();
         let pipeline = GraphicsPipeline::new(
-            device.clone(),
+            renderer.device(),
             None,
             GraphicsPipelineCreateInfo {
-                stages: stages.into_iter().collect(),
-                vertex_input_state: Some(vertex_input_state),
+                stages: stages.iter().cloned().collect(),
+                vertex_input_state: Some(
+                    [
+                        CircleVertex::per_vertex(),
+                        ModelInstanceData::per_instance(),
+                        ColorInstanceData::per_instance(),
+                    ]
+                    .definition(&interface)?,
+                ),
                 input_assembly_state: Some(InputAssemblyState {
                     topology: PrimitiveTopology::TriangleStrip,
                     ..Default::default()
@@ -147,29 +99,30 @@ impl TransViewer {
                 }),
                 dynamic_state: [DynamicState::Viewport].into_iter().collect(),
                 subpass: Some(subpass.into()),
-                ..GraphicsPipelineCreateInfo::layout(layout)
+                ..GraphicsPipelineCreateInfo::layout(PipelineLayout::new(
+                    renderer.device(),
+                    PipelineDescriptorSetLayoutCreateInfo::from_stages(&stages)
+                        .into_pipeline_layout_create_info(renderer.device())?,
+                )?)
             },
         )?;
-
-        let texture_desc_set = Self::create_texture_desc_set(pipeline.clone(), renderer)?;
         Ok(Self {
             vertices,
             indices,
             model_instance_data: None,
             color_instance_data: None,
+            texture_desc_set: Self::create_texture_desc_set(pipeline.clone(), renderer)?,
             pipeline,
-            texture_desc_set,
             coloring_method: coloring_hsv,
         })
     }
 
     pub fn init(&mut self, renderer: &Renderer, sources: &SoundSources) -> anyhow::Result<()> {
-        self.color_instance_data = Some(Self::create_color_instance_data(
-            renderer,
-            sources,
-            self.coloring_method,
-        )?);
-        self.model_instance_data = Some(Self::create_model_instance_data(renderer, sources)?);
+        let size = sources.len();
+        self.color_instance_data = Some(Self::create_color_instance_data(renderer, size)?);
+        self.update_color_instance_data(sources)?;
+        self.model_instance_data = Some(Self::create_model_instance_data(renderer, size)?);
+        self.update_model_instance_data(sources)?;
         Ok(())
     }
 
@@ -184,7 +137,6 @@ impl TransViewer {
         {
             self.update_color_instance_data(sources)?;
         }
-
         Ok(())
     }
 
@@ -198,10 +150,6 @@ impl TransViewer {
         proj: Matrix4,
         builder: &mut AutoCommandBufferBuilder<PrimaryAutoCommandBuffer>,
     ) -> anyhow::Result<()> {
-        let pc = vs::PushConsts {
-            proj_view: (proj * view).into(),
-        };
-
         if let (Some(model), Some(color)) = (&self.model_instance_data, &self.color_instance_data) {
             builder
                 .bind_pipeline_graphics(self.pipeline.clone())?
@@ -211,20 +159,25 @@ impl TransViewer {
                     0,
                     self.texture_desc_set.clone(),
                 )?
-                .push_constants(self.pipeline.layout().clone(), 0, pc)?
+                .push_constants(
+                    self.pipeline.layout().clone(),
+                    0,
+                    vs::PushConsts {
+                        proj_view: (proj * view).into(),
+                    },
+                )?
                 .bind_vertex_buffers(0, (self.vertices.clone(), model.clone(), color.clone()))?
                 .bind_index_buffer(self.indices.clone())?
                 .draw_indexed(self.indices.len() as u32, model.len() as u32, 0, 0, 0)?;
         }
-
         Ok(())
     }
 
     fn create_model_instance_data(
         renderer: &Renderer,
-        sources: &SoundSources,
+        size: usize,
     ) -> anyhow::Result<Subbuffer<[ModelInstanceData]>> {
-        let buffer = Buffer::from_iter(
+        Ok(Buffer::from_iter(
             renderer.memory_allocator(),
             BufferCreateInfo {
                 usage: BufferUsage::STORAGE_BUFFER | BufferUsage::VERTEX_BUFFER,
@@ -235,32 +188,15 @@ impl TransViewer {
                     | MemoryTypeFilter::HOST_SEQUENTIAL_WRITE,
                 ..Default::default()
             },
-            sources
-                .positions()
-                .zip(sources.rotations())
-                .map(|(pos, rot)| {
-                    #[allow(clippy::unnecessary_cast)]
-                    let s = 0.5 * AUTD3::TRANS_SPACING as f32;
-                    let mut m = Matrix4::from_scale(s);
-                    m[3][0] = pos[0];
-                    m[3][1] = pos[1];
-                    m[3][2] = pos[2];
-                    let rotm = Matrix4::from(*rot);
-                    ModelInstanceData {
-                        model: (m * rotm).into(),
-                    }
-                }),
-        )?;
-
-        Ok(buffer)
+            (0..size).map(|_| ModelInstanceData::default()),
+        )?)
     }
 
     fn create_color_instance_data(
         renderer: &Renderer,
-        sources: &SoundSources,
-        coloring_method: ColoringMethod,
+        size: usize,
     ) -> anyhow::Result<Subbuffer<[ColorInstanceData]>> {
-        let buffer = Buffer::from_iter(
+        Ok(Buffer::from_iter(
             renderer.memory_allocator(),
             BufferCreateInfo {
                 usage: BufferUsage::STORAGE_BUFFER | BufferUsage::VERTEX_BUFFER,
@@ -271,20 +207,12 @@ impl TransViewer {
                     | MemoryTypeFilter::HOST_SEQUENTIAL_WRITE,
                 ..Default::default()
             },
-            sources
-                .drives()
-                .zip(sources.visibilities())
-                .map(|(drive, &v)| {
-                    let color = coloring_method(drive.phase / (2.0 * PI), drive.amp, v);
-                    ColorInstanceData { color }
-                }),
-        )?;
-
-        Ok(buffer)
+            (0..size).map(|_| ColorInstanceData::default()),
+        )?)
     }
 
     fn create_vertices(renderer: &Renderer) -> anyhow::Result<Subbuffer<[CircleVertex]>> {
-        let buffer = Buffer::from_iter(
+        Ok(Buffer::from_iter(
             renderer.memory_allocator(),
             BufferCreateInfo {
                 usage: BufferUsage::VERTEX_BUFFER,
@@ -313,16 +241,12 @@ impl TransViewer {
                     tex_coords: [0.0, 0.0],
                 },
             ]
-            .iter()
-            .cloned(),
-        )?;
-
-        Ok(buffer)
+            .into_iter(),
+        )?)
     }
 
     fn create_indices(renderer: &Renderer) -> anyhow::Result<Subbuffer<[u32]>> {
-        let indices: Vec<u32> = vec![0, 1, 2, 2, 3, 0];
-        let buffer = Buffer::from_iter(
+        Ok(Buffer::from_iter(
             renderer.memory_allocator(),
             BufferCreateInfo {
                 usage: BufferUsage::INDEX_BUFFER,
@@ -333,10 +257,8 @@ impl TransViewer {
                     | MemoryTypeFilter::HOST_SEQUENTIAL_WRITE,
                 ..Default::default()
             },
-            indices,
-        )?;
-
-        Ok(buffer)
+            [0, 1, 2, 2, 3, 0],
+        )?)
     }
 
     fn create_texture_desc_set(
@@ -344,18 +266,6 @@ impl TransViewer {
         renderer: &Renderer,
     ) -> anyhow::Result<Arc<PersistentDescriptorSet>> {
         let (uploads, texture) = Self::load_image(renderer)?;
-        let sampler = Sampler::new(
-            pipeline.device().clone(),
-            SamplerCreateInfo {
-                mag_filter: Filter::Linear,
-                min_filter: Filter::Linear,
-                mipmap_mode: SamplerMipmapMode::Nearest,
-                address_mode: [SamplerAddressMode::Repeat; 3],
-                mip_lod_bias: 0.0,
-                ..Default::default()
-            },
-        )?;
-        let layout = pipeline.layout().set_layouts().get(0).unwrap();
 
         uploads
             .execute(renderer.queue())?
@@ -364,8 +274,22 @@ impl TransViewer {
 
         let set = PersistentDescriptorSet::new(
             renderer.descriptor_set_allocator(),
-            layout.clone(),
-            [WriteDescriptorSet::image_view_sampler(0, texture, sampler)],
+            pipeline.layout().set_layouts().get(0).unwrap().clone(),
+            [WriteDescriptorSet::image_view_sampler(
+                0,
+                texture,
+                Sampler::new(
+                    pipeline.device().clone(),
+                    SamplerCreateInfo {
+                        mag_filter: Filter::Linear,
+                        min_filter: Filter::Linear,
+                        mipmap_mode: SamplerMipmapMode::Nearest,
+                        address_mode: [SamplerAddressMode::Repeat; 3],
+                        mip_lod_bias: 0.0,
+                        ..Default::default()
+                    },
+                )?,
+            )],
             [],
         )?;
         Ok(set)
@@ -374,11 +298,10 @@ impl TransViewer {
     fn load_image(
         renderer: &Renderer,
     ) -> anyhow::Result<(Arc<PrimaryAutoCommandBuffer>, Arc<ImageView>)> {
-        let png_bytes = include_bytes!("../assets/textures/circle.png").as_slice();
-        let decoder = png::Decoder::new(png_bytes);
+        let decoder =
+            png::Decoder::new(include_bytes!("../../assets/textures/circle.png").as_slice());
+
         let mut reader = decoder.read_info()?;
-        let info = reader.info();
-        let extent = [info.width, info.height, 1];
 
         let upload_buffer = Buffer::new_slice(
             renderer.memory_allocator(),
@@ -391,9 +314,8 @@ impl TransViewer {
                     | MemoryTypeFilter::HOST_SEQUENTIAL_WRITE,
                 ..Default::default()
             },
-            (info.width * info.height * 4) as DeviceSize,
+            (reader.info().width * reader.info().height * 4) as DeviceSize,
         )?;
-
         reader.next_frame(&mut upload_buffer.write()?)?;
 
         let image = Image::new(
@@ -401,7 +323,7 @@ impl TransViewer {
             ImageCreateInfo {
                 image_type: ImageType::Dim2d,
                 format: Format::R8G8B8A8_SRGB,
-                extent,
+                extent: [reader.info().width, reader.info().height, 1],
                 usage: ImageUsage::TRANSFER_DST | ImageUsage::SAMPLED,
                 ..Default::default()
             },
@@ -413,15 +335,12 @@ impl TransViewer {
             renderer.queue().queue_family_index(),
             CommandBufferUsage::OneTimeSubmit,
         )?;
-
         uploads.copy_buffer_to_image(CopyBufferToImageInfo::buffer_image(
             upload_buffer,
             image.clone(),
         ))?;
 
-        let image = ImageView::new_default(image)?;
-
-        Ok((uploads.build()?, image))
+        Ok((uploads.build()?, ImageView::new_default(image)?))
     }
 
     fn update_color_instance_data(&mut self, sources: &SoundSources) -> anyhow::Result<()> {
@@ -442,7 +361,10 @@ impl TransViewer {
                 .iter_mut()
                 .zip(sources.positions().zip(sources.rotations()))
                 .for_each(|(d, (pos, rot))| {
-                    #[allow(clippy::unnecessary_cast)]
+                    // d.model = (Matrix4::from_translation(pos.truncate())
+                    //     * Matrix4::from_scale(0.5 * AUTD3::TRANS_SPACING as f32)
+                    //     * Matrix4::from(*rot))
+                    // .into();
                     let s = 0.5 * AUTD3::TRANS_SPACING as f32;
                     let mut m = Matrix4::from_scale(s);
                     m[3][0] = pos[0];

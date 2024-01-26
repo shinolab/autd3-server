@@ -10,12 +10,10 @@ use std::{
 use crate::{
     common::transform::{to_gl_pos, to_gl_rot},
     field_compute_pipeline::{Config, FieldComputePipeline},
-    imgui_renderer::ImGuiRenderer,
     renderer::Renderer,
-    slice_viewer::SliceViewer,
     sound_sources::{Drive, SoundSources},
-    trans_viewer::TransViewer,
     update_flag::UpdateFlag,
+    view::*,
     viewer_settings::ViewerSettings,
     Quaternion, Vector3, MILLIMETER,
 };
@@ -247,9 +245,8 @@ impl Simulator {
 
         let mut field_compute_pipeline = FieldComputePipeline::new(&render, &self.settings)?;
         let mut slice_viewer = SliceViewer::new(&render, &self.settings)?;
-        let model = crate::device_viewer::Model::new()?;
-        let mut device_viewer = crate::device_viewer::DeviceViewer::new(&render, &model)?;
-        let mut imgui = ImGuiRenderer::new(self.settings.clone(), &self.config_path, &render)?;
+        let mut device_viewer = DeviceViewer::new(&render)?;
+        let mut imgui = ImGuiViewer::new(self.settings.clone(), &self.config_path, &render)?;
         let mut trans_viewer = TransViewer::new(&render)?;
 
         let mut is_initialized = false;
@@ -289,7 +286,7 @@ impl Simulator {
                                     to_gl_rot(Quaternion::new(
                                         r.w as _, r.i as _, r.j as _, r.k as _,
                                     )),
-                                    Drive::new(1.0, 0.0, 1.0, 40e3, self.settings.sound_speed),
+                                    Drive::new(1.0, 0.0, 1.0, self.settings.sound_speed),
                                     1.0,
                                 );
                             });
@@ -455,7 +452,6 @@ impl Simulator {
                                 let slice_model = slice_viewer.model();
                                 if self.settings.view_device {
                                     device_viewer.render(
-                                        &model,
                                         (view, proj),
                                         &self.settings,
                                         &imgui.visible(),
@@ -514,7 +510,7 @@ impl Simulator {
                                                     / 512.0)
                                                     .sin();
                                                 d.phase = 2. * PI * (drives[i].1 as f32) / 256.0;
-                                                d.set_wave_number(40e3, self.settings.sound_speed);
+                                                d.set_wave_number(self.settings.sound_speed);
                                             });
                                     });
                                 }

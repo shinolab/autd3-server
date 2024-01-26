@@ -1,25 +1,20 @@
-mod camera_helper;
 mod common;
-mod device_viewer;
 mod field_compute_pipeline;
-mod imgui_renderer;
-mod log_formatter;
 mod patch;
+mod prelude;
 mod renderer;
 mod simulator;
-mod slice_viewer;
 mod sound_sources;
-mod trans_viewer;
 mod update_flag;
+mod view;
 mod viewer_settings;
 
-pub use log_formatter::LogFormatter;
+pub use common::log_formatter::LogFormatter;
 pub use simulator::Simulator;
 pub use viewer_settings::ViewerSettings;
 
 pub use renderer::available_gpus;
 
-pub type Vector2 = cgmath::Vector2<f32>;
 pub type Vector3 = cgmath::Vector3<f32>;
 pub type Vector4 = cgmath::Vector4<f32>;
 pub type Quaternion = cgmath::Quaternion<f32>;
