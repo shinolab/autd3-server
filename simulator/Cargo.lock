@@ -259,7 +259,6 @@ version = "21.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "235d390f2ec198e7f2208d97dbddb24523be611724c1a413f6b4937d30be28c8"
 dependencies = [
- "async-trait",
  "autd3-derive",
  "bitflags 2.4.2",
  "bitvec",
@@ -284,30 +283,15 @@ dependencies = [
 ]
 
 [[package]]
-name = "autd3-gain-holo"
-version = "21.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "418db1eac57723911eb9f32c10b7a597521e3fffbde3d29cac19d7da52ac2119"
-dependencies = [
- "autd3-driver",
- "nalgebra",
- "rand",
- "thiserror",
-]
-
-[[package]]
 name = "autd3-protobuf"
 version = "21.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9c1e5f5bd21c9b1976b67de1e45cc22f0dc94bd529c9adedb02f2e5cf868039a"
 dependencies = [
- "autd3",
  "autd3-driver",
- "autd3-gain-holo",
  "h2 0.4.2",
  "prost",
  "thiserror",
- "tokio",
  "tonic",
  "tonic-build",
 ]

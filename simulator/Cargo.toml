@@ -13,7 +13,7 @@ keywords = ["autd"]
 autd3 = { version = "21.0.0" }
 autd3-driver = { version = "21.0.0" }
 autd3-firmware-emulator = { version = "21.0.0" }
-autd3-protobuf = { version = "21.0.0", features = ["lightweight"] }
+autd3-protobuf = { version = "21.0.0" }
 bitflags = "2.3.1"
 bytemuck = { version = "1.13.1", features = ["derive", "extern_crate_std", "min_const_generics"] }
 camera_controllers = "0.34.0"
