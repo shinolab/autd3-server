@@ -1,16 +1,3 @@
-/*
- * File: main.rs
- * Project: autd3-server
- * Created Date: 10/12/2023
- * Author: Shun Suzuki
- * -----
- * Last Modified: 10/12/2023
- * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
- * -----
- * Copyright (c) 2023 Shun Suzuki. All rights reserved.
- *
- */
-
 use std::path::Path;
 
 use autd3_license_check::license_file;

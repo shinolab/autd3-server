@@ -1,16 +1,3 @@
-/*
- * File: log_formatter.rs
- * Project: autd-server
- * Created Date: 14/10/2023
- * Author: Shun Suzuki
- * -----
- * Last Modified: 14/10/2023
- * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
- * -----
- * Copyright (c) 2023 Shun Suzuki. All rights reserved.
- *
- */
-
 use tracing_core::{Event, Subscriber};
 use tracing_subscriber::fmt::{
     format::{self, FormatEvent, FormatFields},

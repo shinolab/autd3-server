@@ -1,16 +1,3 @@
-/*
- * File: renderer.rs
- * Project: src
- * Created Date: 11/11/2021
- * Author: Shun Suzuki
- * -----
- * Last Modified: 30/10/2023
- * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
- * -----
- * Copyright (c) 2021 Hapis Lab. All rights reserved.
- *
- */
-
 use std::sync::Arc;
 
 use camera_controllers::{Camera, CameraPerspective, FirstPerson, FirstPersonSettings};

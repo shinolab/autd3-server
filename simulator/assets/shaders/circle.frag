@@ -1,16 +1,3 @@
-/*
- * File: circle.frag
- * Project: shaders
- * Created Date: 26/11/2021
- * Author: Shun Suzuki
- * -----
- * Last Modified: 23/05/2023
- * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
- * -----
- * Copyright (c) 2021 Hapis Lab. All rights reserved.
- * 
- */
-
 #version 450 core
 
 layout(location = 0) in vec2 v_tex_coords;

@@ -1,16 +1,3 @@
-/*
- * File: slice.vert
- * Project: shaders
- * Created Date: 05/10/2022
- * Author: Shun Suzuki
- * -----
- * Last Modified: 25/05/2023
- * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
- * -----
- * Copyright (c) 2022 Shun Suzuki. All rights reserved.
- * 
- */
-
 #version 450
 
 layout(location = 0) in vec4 position;

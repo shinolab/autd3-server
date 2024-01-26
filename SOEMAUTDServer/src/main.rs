@@ -1,16 +1,3 @@
-/*
- * File: main.rs
- * Project: autd-server
- * Created Date: 27/09/2023
- * Author: Shun Suzuki
- * -----
- * Last Modified: 24/01/2024
- * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
- * -----
- * Copyright (c) 2023 Shun Suzuki. All rights reserved.
- *
- */
-
 #![allow(non_snake_case)]
 
 mod log_formatter;

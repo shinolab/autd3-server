@@ -1,16 +1,3 @@
-/*
- * File: base.frag
- * Project: shaders
- * Created Date: 24/05/2023
- * Author: Shun Suzuki
- * -----
- * Last Modified: 25/05/2023
- * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
- * -----
- * Copyright (c) 2023 Shun Suzuki. All rights reserved.
- *
- */
-
 #version 450
 
 layout(set = 0, binding = 0) uniform sampler2D samplerColorMap;

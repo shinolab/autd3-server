@@ -1,16 +1,3 @@
-/*
- * File: build.rs
- * Project: AUTD Server
- * Created Date: 07/07/2023
- * Author: Shun Suzuki
- * -----
- * Last Modified: 10/12/2023
- * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
- * -----
- * Copyright (c) 2023 Shun Suzuki. All rights reserved.
- *
- */
-
 use std::{
     fs::File,
     io::{BufReader, BufWriter, Read, Write},

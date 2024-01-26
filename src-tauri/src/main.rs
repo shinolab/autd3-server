@@ -1,16 +1,3 @@
-/*
- * File: main.rs
- * Project: AUTD Server
- * Created Date: 07/07/2023
- * Author: Shun Suzuki
- * -----
- * Last Modified: 06/09/2023
- * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
- * -----
- * Copyright (c) 2023 Shun Suzuki. All rights reserved.
- *
- */
-
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 

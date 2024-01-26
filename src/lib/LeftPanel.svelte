@@ -1,16 +1,3 @@
-<!--
-File: LeftPanel.svelte
-Project: AUTD Server
-Created Date: 07/07/2023
-Author: Shun Suzuki
------
-Last Modified: 09/10/2023
-Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
------
-Copyright (c) 2023 Shun Suzuki. All rights reserved.
-
--->
-
 <script lang="ts">
   import type { Options } from "./UI/options";
 
@@ -42,7 +29,7 @@ Copyright (c) 2023 Shun Suzuki. All rights reserved.
       adapters = ifnames
         .split("\n")
         .slice(1)
-        .filter(s => s)
+        .filter((s) => s)
         .map((line) => line.trim().split("\t").join(","));
     } catch (err) {
       adapters = [];
@@ -73,9 +60,7 @@ Copyright (c) 2023 Shun Suzuki. All rights reserved.
 
       {#if twincatAvailable}
         <TabPanel>
-          <TwinCAT
-            twincatOptions={options.twincat}
-          />
+          <TwinCAT twincatOptions={options.twincat} />
         </TabPanel>
       {/if}
       {#if soemAvailable}

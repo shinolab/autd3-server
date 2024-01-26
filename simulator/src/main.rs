@@ -1,16 +1,3 @@
-/*
- * File: main.rs
- * Project: src
- * Created Date: 28/05/2023
- * Author: Shun Suzuki
- * -----
- * Last Modified: 30/10/2023
- * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
- * -----
- * Copyright (c) 2023 Shun Suzuki. All rights reserved.
- *
- */
-
 use std::{
     error::Error,
     fs::{self, File, OpenOptions},

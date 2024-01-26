@@ -89,7 +89,7 @@
         "./TwinCATAUTDServer/System.Runtime.CompilerServices.Unsafe.dll",
         "./TwinCATAUTDServer/TwinCAT.Ads.dll"
       ],
-      "copyright": "Copyright (c) 2023 Shun Suzuki. All rights reserved.",
+      "copyright": "Copyright (c) 2023-2024 Shun Suzuki. All rights reserved.",
       "category": "DeveloperTool",
       "shortDescription": "AUTD Server application",
       "longDescription": "",

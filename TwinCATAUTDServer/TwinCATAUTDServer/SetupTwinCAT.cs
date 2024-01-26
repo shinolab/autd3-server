@@ -1,16 +1,3 @@
-/*
- * File: SetupTwinCATcs
- * Project: TwinCATAUTDServer
- * Created Date: 05/08/2022
- * Author: Shun Suzuki
- * -----
- * Last Modified: 15/07/2023
- * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
- * -----
- * Copyright (c) 2022 Shun Suzuki. All rights reserved.
- * 
- */
-
 using System;
 using System.Collections.Generic;
 using System.Xml;

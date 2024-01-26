@@ -1,16 +1,3 @@
-<!--
-File: SOEM.svelte
-Project: AUTD Server
-Created Date: 06/07/2023
-Author: Shun Suzuki
------
-Last Modified: 14/10/2023
-Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
------
-Copyright (c) 2023 Shun Suzuki. All rights reserved.
-
--->
-
 <script lang="ts">
   import type { SOEMOptions, SyncMode, TimerStrategy } from "./options.ts";
   import { SyncModeValues, TimerStrategyValues } from "./options.ts";
@@ -72,7 +59,7 @@ Copyright (c) 2023 Shun Suzuki. All rights reserved.
       soemOptions.ifname = "Auto";
     } else {
       const idx = adapters.findIndex(
-        (adapter) => adapter.split(",")[1].trim() == adapterName
+        (adapter) => adapter.split(",")[1].trim() == adapterName,
       );
       soemOptions.ifname = adapters[idx].split(",")[0].trim();
     }
@@ -109,12 +96,12 @@ Copyright (c) 2023 Shun Suzuki. All rights reserved.
     command.stdout.on("data", (line) =>
       consoleOutputQueue.update((v) => {
         return [...v, line.trimEnd()];
-      })
+      }),
     );
     command.stderr.on("data", (line) =>
       consoleOutputQueue.update((v) => {
         return [...v, line.trimEnd()];
-      })
+      }),
     );
     command.on("error", (err) => {
       alert(err);
@@ -137,7 +124,7 @@ Copyright (c) 2023 Shun Suzuki. All rights reserved.
 
   onMount(async () => {
     adapterNames = ["Auto"].concat(
-      adapters.map((adapter) => adapter.split(",")[1].trim())
+      adapters.map((adapter) => adapter.split(",")[1].trim()),
     );
   });
 </script>

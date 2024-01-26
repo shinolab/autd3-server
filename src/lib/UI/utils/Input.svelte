@@ -1,16 +1,3 @@
-<!--
-File: IpInput.svelte
-Project: AUTD Server
-Created Date: 06/07/2023
-Author: Shun Suzuki
------
-Last Modified: 10/07/2023
-Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
------
-Copyright (c) 2023 Shun Suzuki. All rights reserved.
-
--->
-
 <script lang="ts">
   export let id = "";
   export let value = "";
