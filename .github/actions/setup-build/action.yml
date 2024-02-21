@@ -13,7 +13,7 @@ runs:
   steps:
     - name: Setup Python
       if: needs.check-src.outputs.status
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: "3.12"
       
@@ -26,11 +26,6 @@ runs:
       shell: bash
       run: |
         python3 -m pip install -U packaging
-
-    - name: Install Protoc
-      uses: arduino/setup-protoc@v2
-      with:
-        repo-token: ${{ inputs.github-token }}
 
     - name: install shaderc
       shell: pwsh
