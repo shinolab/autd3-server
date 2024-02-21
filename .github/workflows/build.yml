@@ -59,7 +59,7 @@ jobs:
 
       - name: Sync node version and setup cache
         if: needs.check-src.outputs.status
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           cache: 'npm'
