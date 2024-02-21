@@ -88,7 +88,7 @@ impl simulator_server::Simulator for SimulatorServer {
     async fn read_data(&self, _: Request<ReadRequest>) -> Result<Response<RxMessage>, Status> {
         let rx = self.rx_buf.read().unwrap();
         Ok(Response::new(RxMessage {
-            data: rx.iter().flat_map(|c| [c.data, c.ack]).collect(),
+            data: rx.iter().flat_map(|c| [c.data(), c.ack()]).collect(),
         }))
     }
 
@@ -265,8 +265,7 @@ impl Simulator {
                         .iter_mut()
                         .zip(cpus.iter())
                         .for_each(|(d, s)| {
-                            d.ack = s.ack();
-                            d.data = s.rx_data();
+                            *d = autd3_driver::cpu::RxMessage::new(s.ack(), s.rx_data());
                         });
                 }
 
@@ -307,10 +306,7 @@ impl Simulator {
                             .collect::<Vec<_>>();
 
                         *rx_buf.write().unwrap() =
-                            vec![
-                                autd3_driver::cpu::RxMessage { ack: 0, data: 0 };
-                                geometry.num_devices()
-                            ];
+                            vec![autd3_driver::cpu::RxMessage::new(0, 0); geometry.num_devices()];
 
                         field_compute_pipeline.init(&render, &sources)?;
                         trans_viewer.init(&render, &sources)?;
@@ -354,8 +350,7 @@ impl Simulator {
                             .iter_mut()
                             .zip(cpus.iter())
                             .for_each(|(d, s)| {
-                                d.ack = s.ack();
-                                d.data = s.rx_data();
+                                *d = autd3_driver::cpu::RxMessage::new(s.ack(), s.rx_data());
                             });
 
                         is_source_update = true;
@@ -484,19 +479,25 @@ impl Simulator {
 
                                 if update_flag.contains(UpdateFlag::UPDATE_SOURCE_DRIVE) {
                                     cpus.iter().for_each(|cpu| {
-                                        let idx = if cpu.fpga().is_stm_mode() {
-                                            cpu.fpga().stm_idx_from_systime(imgui.system_time())
-                                        } else {
+                                        let stm_segment = cpu.fpga().current_stm_segment();
+                                        let idx = if cpu.fpga().stm_cycle(stm_segment) == 1 {
                                             0
-                                        };
-                                        let drives = cpu.fpga().intensities_and_phases(idx);
-                                        let m = if self.settings.mod_enable {
-                                            let mod_idx = cpu
-                                                .fpga()
-                                                .mod_idx_from_systime(imgui.system_time());
-                                            cpu.fpga().modulation_at(mod_idx)
                                         } else {
-                                            0xFF
+                                            cpu.fpga().stm_idx_from_systime(
+                                                stm_segment,
+                                                imgui.system_time(),
+                                            )
+                                        };
+                                        let drives = cpu.fpga().drives(stm_segment, idx);
+                                        let mod_segment = cpu.fpga().current_mod_segment();
+                                        let m = if self.settings.mod_enable {
+                                            let mod_idx = cpu.fpga().mod_idx_from_systime(
+                                                mod_segment,
+                                                imgui.system_time(),
+                                            );
+                                            cpu.fpga().modulation_at(mod_segment, mod_idx)
+                                        } else {
+                                            autd3::prelude::EmitIntensity::MAX
                                         };
                                         sources
                                             .drives_mut()
@@ -505,11 +506,14 @@ impl Simulator {
                                             .enumerate()
                                             .for_each(|(i, d)| {
                                                 d.amp = (PI
-                                                    * FPGAEmulator::to_pulse_width(drives[i].0, m)
+                                                    * FPGAEmulator::to_pulse_width(
+                                                        drives[i].intensity(),
+                                                        m,
+                                                    )
                                                         as f32
                                                     / 512.0)
                                                     .sin();
-                                                d.phase = 2. * PI * (drives[i].1 as f32) / 256.0;
+                                                d.phase = drives[i].phase().radian() as f32;
                                                 d.set_wave_number(self.settings.sound_speed);
                                             });
                                     });

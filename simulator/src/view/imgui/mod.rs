@@ -577,23 +577,28 @@ impl ImGuiViewer {
 
                                     {
                                         ui.separator();
-                                        let m = cpu.fpga().modulation();
+
+                                        let segment = cpu.fpga().current_mod_segment();
+
+                                        let m = cpu.fpga().modulation(segment);
                                         ui.text("Modulation");
 
                                         let mod_size = m.len();
                                         ui.text(format!("Size: {}", mod_size));
                                         ui.text(format!(
                                             "Frequency division: {}",
-                                            cpu.fpga().modulation_frequency_division()
+                                            cpu.fpga().modulation_frequency_division(segment)
                                         ));
                                         let sampling_freq = FPGA_CLK_FREQ as f32
-                                            / cpu.fpga().modulation_frequency_division() as f32;
+                                            / cpu.fpga().modulation_frequency_division(segment)
+                                                as f32;
                                         ui.text(format!(
                                             "Sampling Frequency: {:.3} [Hz]",
                                             sampling_freq
                                         ));
                                         let sampling_period = 1000000.0
-                                            * cpu.fpga().modulation_frequency_division() as f32
+                                            * cpu.fpga().modulation_frequency_division(segment)
+                                                as f32
                                             / FPGA_CLK_FREQ as f32;
                                         ui.text(format!(
                                             "Sampling period: {:.3} [us]",
@@ -604,14 +609,14 @@ impl ImGuiViewer {
 
                                         ui.text(format!(
                                             "Current Index: {}",
-                                            cpu.fpga().mod_idx_from_systime(system_time)
+                                            cpu.fpga().mod_idx_from_systime(segment, system_time)
                                         ));
 
                                         if !m.is_empty() {
-                                            ui.text(format!("mod[0]: {}", m[0]));
+                                            ui.text(format!("mod[0]: {}", m[0].value()));
                                         }
                                         if mod_size == 2 || mod_size == 3 {
-                                            ui.text(format!("mod[1]: {}", m[1]));
+                                            ui.text(format!("mod[1]: {}", m[1].value()));
                                         } else if mod_size > 3 {
                                             ui.text("...");
                                         }
@@ -619,7 +624,7 @@ impl ImGuiViewer {
                                             ui.text(format!(
                                                 "mod[{}]: {}",
                                                 mod_size - 1,
-                                                m[mod_size - 1]
+                                                m[mod_size - 1].value()
                                             ));
                                         }
 
@@ -631,8 +636,10 @@ impl ImGuiViewer {
                                                 !self.show_mod_plot[cpu.idx()];
                                         }
                                         if self.show_mod_plot[cpu.idx()] {
-                                            let mod_v: Vec<f32> =
-                                                m.iter().map(|&v| v as f32 / 255.0).collect();
+                                            let mod_v: Vec<f32> = m
+                                                .iter()
+                                                .map(|&v| v.value() as f32 / 255.0)
+                                                .collect();
                                             ui.plot_lines(
                                                 format!("##mod plot{}", cpu.idx()),
                                                 &mod_v,
@@ -654,46 +661,54 @@ impl ImGuiViewer {
                                         }
                                     }
 
-                                    if cpu.fpga().is_stm_mode() {
-                                        ui.separator();
+                                    ui.separator();
 
-                                        if cpu.fpga().is_stm_gain_mode() {
-                                            ui.text("Gain STM");
-                                        } else {
-                                            ui.text("Focus STM");
-                                            #[cfg(feature = "use_meter")]
-                                            ui.text(format!(
-                                                "Sound speed: {:.3} [m/s]",
-                                                cpu.fpga().sound_speed() as f32 / 1024.0
-                                            ));
-                                            #[cfg(not(feature = "use_meter"))]
-                                            ui.text(format!(
-                                                "Sound speed: {:.3} [mm/s]",
-                                                cpu.fpga().sound_speed() as f32 * 1000. / 1024.0
-                                            ));
-                                        }
+                                    let segment = cpu.fpga().current_stm_segment();
 
-                                        if let Some(start_idx) = cpu.fpga().stm_start_idx() {
-                                            ui.text(format!("Start idx: {}", start_idx));
-                                        }
-                                        if let Some(finish_idx) = cpu.fpga().stm_finish_idx() {
-                                            ui.text(format!("Finish idx: {}", finish_idx));
-                                        }
+                                    let stm_cycle = cpu.fpga().stm_cycle(segment);
 
-                                        let stm_size = cpu.fpga().stm_cycle();
+                                    let is_gain_mode = stm_cycle == 1;
+
+                                    if is_gain_mode {
+                                        ui.text("Gain");
+                                    } else if cpu.fpga().is_stm_gain_mode(segment) {
+                                        ui.text("Gain STM");
+                                    } else {
+                                        ui.text("Focus STM");
+                                        #[cfg(feature = "use_meter")]
+                                        ui.text(format!(
+                                            "Sound speed: {:.3} [m/s]",
+                                            cpu.fpga().sound_speed(segment) as f32 / 1024.0
+                                        ));
+                                        #[cfg(not(feature = "use_meter"))]
+                                        ui.text(format!(
+                                            "Sound speed: {:.3} [mm/s]",
+                                            cpu.fpga().sound_speed(segment) as f32 * 1000. / 1024.0
+                                        ));
+                                    }
+
+                                    ui.text(format!("Segment: {:?}", segment));
+
+                                    if !is_gain_mode {
+                                        ui.text(format!(
+                                            "LoopBehavior: {:?}",
+                                            cpu.fpga().stm_loop_behavior(segment)
+                                        ));
+
+                                        let stm_size = cpu.fpga().stm_cycle(segment);
                                         ui.text(format!("Size: {}", stm_size));
                                         ui.text(format!(
                                             "Frequency division: {}",
-                                            cpu.fpga().stm_frequency_division()
+                                            cpu.fpga().stm_frequency_division(segment)
                                         ));
                                         let sampling_freq = FPGA_CLK_FREQ as f32
-                                            / cpu.fpga().stm_frequency_division() as f32;
+                                            / cpu.fpga().stm_frequency_division(segment) as f32;
                                         ui.text(format!(
                                             "Sampling Frequency: {:.3} [Hz]",
                                             sampling_freq
                                         ));
                                         let sampling_period = 1000000.0
-                                            * cpu.fpga().stm_frequency_division() as f32
+                                            * cpu.fpga().stm_frequency_division(segment) as f32
                                             / FPGA_CLK_FREQ as f32;
                                         ui.text(format!(
                                             "Sampling period: {:.3} [us]",
@@ -704,7 +719,7 @@ impl ImGuiViewer {
 
                                         ui.text(format!(
                                             "Current Index: {}",
-                                            cpu.fpga().stm_idx_from_systime(system_time)
+                                            cpu.fpga().stm_idx_from_systime(segment, system_time)
                                         ));
                                     }
                                 }

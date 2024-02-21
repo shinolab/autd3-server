@@ -77,6 +77,8 @@ struct Arg {
     /// Timeout in ms
     #[clap(short = 't', long = "timeout", default_value = "20")]
     timeout: u64,
+    #[clap(short = 'l', long = "lightweight", default_value = "false")]
+    lightweight: bool,
 }
 
 #[derive(Subcommand)]
@@ -107,11 +109,11 @@ impl ecat_server::Ecat for SOEMServer {
     }
 
     async fn read_data(&self, _: Request<ReadRequest>) -> Result<Response<RxMessage>, Status> {
-        let mut rx = vec![autd3_driver::cpu::RxMessage { ack: 0, data: 0 }; self.num_dev];
+        let mut rx = vec![autd3_driver::cpu::RxMessage::new(0, 0); self.num_dev];
         Link::receive(&mut *self.soem.write().await, &mut rx)
             .await
             .unwrap_or(false);
-        Ok(Response::new(rx.to_msg()))
+        Ok(Response::new(rx.to_msg(None)))
     }
 
     async fn close(&self, _: Request<CloseRequest>) -> Result<Response<CloseResponse>, Status> {
@@ -170,9 +172,17 @@ async fn main_() -> anyhow::Result<()> {
                     .with_timer_strategy(timer_strategy)
                     .with_sync_mode(sync_mode)
                     .with_timeout(std::time::Duration::from_millis(timeout))
-                    .with_on_lost(|msg| {
-                        tracing::error!("{}", msg);
-                        std::process::exit(-1);
+                    .with_err_handler(|slave, status| match status {
+                        autd3_link_soem::Status::Error(msg) => {
+                            tracing::error!("Error [{}]: {}", slave, msg)
+                        }
+                        autd3_link_soem::Status::Lost(msg) => {
+                            tracing::error!("Lost [{}]: {}", slave, msg);
+                            std::process::exit(-1);
+                        }
+                        autd3_link_soem::Status::StateChanged(msg) => {
+                            tracing::error!("StateChanged [{}]: {}", slave, msg)
+                        }
                     })
             };
             let (tx, mut rx) = mpsc::channel(1);
@@ -184,26 +194,35 @@ async fn main_() -> anyhow::Result<()> {
 
             let addr = format!("0.0.0.0:{}", port).parse()?;
             tracing::info!("Waiting for client connection on {}", addr);
-            let rt = Runtime::new().expect("failed to obtain a new Runtime object");
 
-            tracing::info!("Starting SOEM server...");
+            if args.lightweight {
+                let server = autd3_protobuf::lightweight::LightweightServer::new(f);
+                Server::builder()
+                    .add_service(ecat_light_server::EcatLightServer::new(server))
+                    .serve_with_shutdown(addr, async {
+                        let _ = rx.recv().await;
+                    })
+                    .await?;
+            } else {
+                tracing::info!("Starting SOEM server...");
 
-            let soem = f()
-                .open(&autd3_driver::geometry::Geometry::new(vec![]))
-                .await?;
-            let num_dev = SOEM::num_devices();
+                let soem = f()
+                    .open(&autd3_driver::geometry::Geometry::new(vec![]))
+                    .await?;
+                let num_dev = SOEM::num_devices();
 
-            tracing::info!("{} AUTDs found", num_dev);
+                tracing::info!("{} AUTDs found", num_dev);
 
-            let server_future = Server::builder()
-                .add_service(ecat_server::EcatServer::new(SOEMServer {
-                    num_dev,
-                    soem: RwLock::new(soem),
-                }))
-                .serve_with_shutdown(addr, async {
-                    let _ = rx.recv().await;
-                });
-            rt.block_on(server_future)?;
+                Server::builder()
+                    .add_service(ecat_server::EcatServer::new(SOEMServer {
+                        num_dev,
+                        soem: RwLock::new(soem),
+                    }))
+                    .serve_with_shutdown(addr, async {
+                        let _ = rx.recv().await;
+                    })
+                    .await?;
+            }
         }
     }
 
