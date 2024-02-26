@@ -23,8 +23,8 @@ layout(push_constant) uniform Config {
     uint width;
     uint height;
     float pixel_size;
-    float scale;
-    uint _dummy_1;
+    uint _pad0;
+    uint _pad1;
     mat4 world;
 } config;
 
@@ -47,7 +47,7 @@ void main() {
         vec3 tp = vec3(source_pos.pos[idx]); 
         float r = length(point - tp); 
         float p = source_drive.drive[idx].y - source_drive.drive[idx].w * r; 
-        float amp = source_drive.drive[idx].z * source_drive.drive[idx].x / (4 * PI * r) * config.scale; 
+        float amp = source_drive.drive[idx].z * source_drive.drive[idx].x / (4 * PI * r); 
         re += amp * cos(p); 
         im += amp * sin(p); 
     } 

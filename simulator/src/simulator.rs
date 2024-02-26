@@ -15,7 +15,7 @@ use crate::{
     update_flag::UpdateFlag,
     view::*,
     viewer_settings::ViewerSettings,
-    Quaternion, Vector3, MILLIMETER,
+    Quaternion, Vector3,
 };
 use autd3_driver::{cpu::TxDatagram, defined::T4010A1_AMPLITUDE};
 use autd3_firmware_emulator::{CPUEmulator, FPGAEmulator};
@@ -565,7 +565,6 @@ impl Simulator {
                                         / self.settings.slice_pixel_size)
                                         as _,
                                     pixel_size: self.settings.slice_pixel_size as _,
-                                    scale: MILLIMETER,
                                     model: slice_model.into(),
                                     ..Default::default()
                                 };

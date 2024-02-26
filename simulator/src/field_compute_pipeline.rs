@@ -9,8 +9,8 @@ pub struct Config {
     pub width: u32,
     pub height: u32,
     pub pixel_size: f32,
-    pub scale: f32,
     pub _pad0: u32,
+    pub _pad1: u32,
     pub model: [[f32; 4]; 4],
 }
 
