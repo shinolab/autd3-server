@@ -22,11 +22,6 @@ runs:
       with:
         toolchain: 'stable'
 
-    - name: Install packaging
-      shell: bash
-      run: |
-        python3 -m pip install -U packaging
-
     - name: install shaderc
       shell: pwsh
       if: inputs.os == 'windows-latest'
