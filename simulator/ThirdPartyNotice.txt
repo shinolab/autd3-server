@@ -106,23 +106,23 @@ atomic-polyfill 1.0.3 (Apache-2.0 OR MIT)
 https://github.com/embassy-rs/atomic-polyfill
 ---------------------------------------------------------
 
-autd3 22.0.0 (MIT)
+autd3 22.0.4 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 22.0.0 (MIT)
+autd3-derive 22.0.4 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 22.0.0 (MIT)
+autd3-driver 22.0.4 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 22.0.0 (MIT)
+autd3-firmware-emulator 22.0.4 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-protobuf 22.0.0 (MIT)
+autd3-protobuf 22.0.4 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -992,7 +992,7 @@ simd-adler32 0.3.7 (MIT)
 https://github.com/mcountryman/simd-adler32
 ---------------------------------------------------------
 
-simulator 22.0.0 (MIT)
+simulator 22.0.4 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
