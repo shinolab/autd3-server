@@ -6,7 +6,7 @@ The license terms for each of these components are provided later in this notice
 
 ---------------------------------------------------------
 
-ab_glyph 0.2.23 (Apache-2.0)
+ab_glyph 0.2.24 (Apache-2.0)
 https://github.com/alexheretic/ab-glyph
 ---------------------------------------------------------
 
@@ -22,12 +22,16 @@ adler 1.0.2 (0BSD OR Apache-2.0 OR MIT)
 https://github.com/jonas-schievink/adler.git
 ---------------------------------------------------------
 
-ahash 0.8.9 (Apache-2.0 OR MIT)
+ahash 0.8.11 (Apache-2.0 OR MIT)
 https://github.com/tkaitchuck/ahash
 ---------------------------------------------------------
 
-aho-corasick 1.1.2 (MIT OR Unlicense)
+aho-corasick 1.1.3 (MIT OR Unlicense)
 https://github.com/BurntSushi/aho-corasick
+---------------------------------------------------------
+
+aligned-vec 0.5.0 (MIT)
+https://github.com/sarah-ek/aligned-vec/
 ---------------------------------------------------------
 
 android-activity 0.4.3 (Apache-2.0 OR MIT)
@@ -46,7 +50,7 @@ android_system_properties 0.1.5 (Apache-2.0 OR MIT)
 https://github.com/nical/android_system_properties
 ---------------------------------------------------------
 
-anstream 0.6.12 (Apache-2.0 OR MIT)
+anstream 0.6.13 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
@@ -66,7 +70,7 @@ anstyle-wincon 3.0.2 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
-anyhow 1.0.80 (Apache-2.0 OR MIT)
+anyhow 1.0.81 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/anyhow
 ---------------------------------------------------------
 
@@ -76,6 +80,14 @@ https://github.com/brendanzab/approx
 
 approx 0.5.1 (Apache-2.0)
 https://github.com/brendanzab/approx
+---------------------------------------------------------
+
+arbitrary 1.3.2 (Apache-2.0 OR MIT)
+https://github.com/rust-fuzz/arbitrary/
+---------------------------------------------------------
+
+arg_enum_proc_macro 0.3.4 (MIT)
+https://github.com/lu-zero/arg_enum_proc_macro
 ---------------------------------------------------------
 
 arrayref 0.3.7 (BSD-2-Clause)
@@ -98,7 +110,7 @@ async-stream-impl 0.3.5 (MIT)
 https://github.com/tokio-rs/async-stream
 ---------------------------------------------------------
 
-async-trait 0.1.77 (Apache-2.0 OR MIT)
+async-trait 0.1.79 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/async-trait
 ---------------------------------------------------------
 
@@ -106,28 +118,36 @@ atomic-polyfill 1.0.3 (Apache-2.0 OR MIT)
 https://github.com/embassy-rs/atomic-polyfill
 ---------------------------------------------------------
 
-autd3 22.0.4 (MIT)
+autd3 22.1.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 22.0.4 (MIT)
+autd3-derive 22.1.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 22.0.4 (MIT)
+autd3-driver 22.1.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 22.0.4 (MIT)
+autd3-firmware-emulator 22.1.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-protobuf 22.0.4 (MIT)
+autd3-protobuf 22.1.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autocfg 1.1.0 (Apache-2.0 OR MIT)
+autocfg 1.2.0 (Apache-2.0 OR MIT)
 https://github.com/cuviper/autocfg
+---------------------------------------------------------
+
+av1-grain 0.2.3 (BSD-2-Clause)
+https://github.com/rust-av/av1-grain
+---------------------------------------------------------
+
+avif-serialize 0.8.1 (BSD-3-Clause)
+https://github.com/kornelski/avif-serialize
 ---------------------------------------------------------
 
 axum 0.6.20 (MIT)
@@ -138,7 +158,7 @@ axum-core 0.3.4 (MIT)
 https://github.com/tokio-rs/axum
 ---------------------------------------------------------
 
-backtrace 0.3.69 (Apache-2.0 OR MIT)
+backtrace 0.3.71 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/backtrace-rs
 ---------------------------------------------------------
 
@@ -154,12 +174,20 @@ bit_field 0.10.2 (Apache-2.0 OR MIT)
 https://github.com/phil-opp/rust-bit-field
 ---------------------------------------------------------
 
+bitfield-struct 0.6.0 (MIT)
+https://github.com/wrenger/bitfield-struct-rs.git
+---------------------------------------------------------
+
 bitflags 1.3.2 (Apache-2.0 OR MIT)
 https://github.com/bitflags/bitflags
 ---------------------------------------------------------
 
-bitflags 2.4.2 (Apache-2.0 OR MIT)
+bitflags 2.5.0 (Apache-2.0 OR MIT)
 https://github.com/bitflags/bitflags
+---------------------------------------------------------
+
+bitstream-io 2.2.0 (Apache-2.0 OR MIT)
+https://github.com/tuffy/bitstream-io
 ---------------------------------------------------------
 
 bitvec 1.0.1 (MIT)
@@ -174,15 +202,19 @@ block2 0.2.0-alpha.6 (MIT)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-bumpalo 3.15.1 (Apache-2.0 OR MIT)
+built 0.7.1 (MIT)
+https://github.com/lukaslueg/built
+---------------------------------------------------------
+
+bumpalo 3.15.4 (Apache-2.0 OR MIT)
 https://github.com/fitzgen/bumpalo
 ---------------------------------------------------------
 
-bytemuck 1.14.3 (Apache-2.0 OR MIT OR Zlib)
+bytemuck 1.15.0 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/bytemuck
 ---------------------------------------------------------
 
-bytemuck_derive 1.5.0 (Apache-2.0 OR MIT OR Zlib)
+bytemuck_derive 1.6.0 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/bytemuck
 ---------------------------------------------------------
 
@@ -190,7 +222,7 @@ byteorder 1.5.0 (MIT OR Unlicense)
 https://github.com/BurntSushi/byteorder
 ---------------------------------------------------------
 
-bytes 1.5.0 (MIT)
+bytes 1.6.0 (MIT)
 https://github.com/tokio-rs/bytes
 ---------------------------------------------------------
 
@@ -202,8 +234,12 @@ camera_controllers 0.34.0 (MIT)
 https://github.com/PistonDevelopers/camera_controllers.git
 ---------------------------------------------------------
 
-cc 1.0.86 (Apache-2.0 OR MIT)
+cc 1.0.91 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/cc-rs
+---------------------------------------------------------
+
+cfg-expr 0.15.7 (Apache-2.0 OR MIT)
+https://github.com/EmbarkStudios/cfg-expr
 ---------------------------------------------------------
 
 cfg-if 1.0.0 (Apache-2.0 OR MIT)
@@ -222,19 +258,19 @@ chlorine 1.0.10 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/chlorine
 ---------------------------------------------------------
 
-chrono 0.4.34 (Apache-2.0 OR MIT)
+chrono 0.4.37 (Apache-2.0 OR MIT)
 https://github.com/chronotope/chrono
 ---------------------------------------------------------
 
-clap 4.5.1 (Apache-2.0 OR MIT)
+clap 4.5.4 (Apache-2.0 OR MIT)
 https://github.com/clap-rs/clap
 ---------------------------------------------------------
 
-clap_builder 4.5.1 (Apache-2.0 OR MIT)
+clap_builder 4.5.2 (Apache-2.0 OR MIT)
 https://github.com/clap-rs/clap
 ---------------------------------------------------------
 
-clap_derive 4.5.0 (Apache-2.0 OR MIT)
+clap_derive 4.5.4 (Apache-2.0 OR MIT)
 https://github.com/clap-rs/clap/tree/master/clap_derive
 ---------------------------------------------------------
 
@@ -278,7 +314,7 @@ critical-section 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/rust-embedded/critical-section
 ---------------------------------------------------------
 
-crossbeam-channel 0.5.11 (Apache-2.0 OR MIT)
+crossbeam-channel 0.5.12 (Apache-2.0 OR MIT)
 https://github.com/crossbeam-rs/crossbeam
 ---------------------------------------------------------
 
@@ -325,7 +361,7 @@ dlib 0.5.2 (MIT)
 https://github.com/elinorbgr/dlib
 ---------------------------------------------------------
 
-downcast-rs 1.2.0 (Apache-2.0 OR MIT)
+downcast-rs 1.2.1 (Apache-2.0 OR MIT)
 https://github.com/marcianx/downcast-rs
 ---------------------------------------------------------
 
@@ -409,7 +445,7 @@ geo 0.25.1 (Apache-2.0 OR MIT)
 https://github.com/georust/geo
 ---------------------------------------------------------
 
-geo-types 0.7.12 (Apache-2.0 OR MIT)
+geo-types 0.7.13 (Apache-2.0 OR MIT)
 https://github.com/georust/geo
 ---------------------------------------------------------
 
@@ -417,11 +453,11 @@ geographiclib-rs 0.2.4 (MIT)
 https://github.com/georust/geographiclib-rs
 ---------------------------------------------------------
 
-getrandom 0.2.12 (Apache-2.0 OR MIT)
+getrandom 0.2.13 (Apache-2.0 OR MIT)
 https://github.com/rust-random/getrandom
 ---------------------------------------------------------
 
-gif 0.12.0 (Apache-2.0 OR MIT)
+gif 0.13.1 (Apache-2.0 OR MIT)
 https://github.com/image-rs/image-gif
 ---------------------------------------------------------
 
@@ -441,15 +477,15 @@ gltf-json 1.4.0 (Apache-2.0 OR MIT)
 https://github.com/gltf-rs/gltf
 ---------------------------------------------------------
 
-h2 0.3.24 (MIT)
+h2 0.3.26 (MIT)
 https://github.com/hyperium/h2
 ---------------------------------------------------------
 
-h2 0.4.2 (MIT)
+h2 0.4.4 (MIT)
 https://github.com/hyperium/h2
 ---------------------------------------------------------
 
-half 2.3.1 (Apache-2.0 OR MIT)
+half 2.4.1 (Apache-2.0 OR MIT)
 https://github.com/starkat99/half-rs
 ---------------------------------------------------------
 
@@ -473,15 +509,19 @@ heck 0.4.1 (Apache-2.0 OR MIT)
 https://github.com/withoutboats/heck
 ---------------------------------------------------------
 
-hermit-abi 0.3.6 (Apache-2.0 OR MIT)
-https://github.com/hermitcore/hermit-rs
+heck 0.5.0 (Apache-2.0 OR MIT)
+https://github.com/withoutboats/heck
 ---------------------------------------------------------
 
-http 0.2.11 (Apache-2.0 OR MIT)
+hermit-abi 0.3.9 (Apache-2.0 OR MIT)
+https://github.com/hermit-os/hermit-rs
+---------------------------------------------------------
+
+http 0.2.12 (Apache-2.0 OR MIT)
 https://github.com/hyperium/http
 ---------------------------------------------------------
 
-http 1.0.0 (Apache-2.0 OR MIT)
+http 1.1.0 (Apache-2.0 OR MIT)
 https://github.com/hyperium/http
 ---------------------------------------------------------
 
@@ -513,8 +553,20 @@ iana-time-zone-haiku 0.1.2 (Apache-2.0 OR MIT)
 https://github.com/strawlab/iana-time-zone
 ---------------------------------------------------------
 
-image 0.24.8 (MIT)
+image 0.24.9 (Apache-2.0 OR MIT)
 https://github.com/image-rs/image
+---------------------------------------------------------
+
+image 0.25.1 (Apache-2.0 OR MIT)
+https://github.com/image-rs/image
+---------------------------------------------------------
+
+image-webp 0.1.1 (Apache-2.0 OR MIT)
+https://github.com/image-rs/image-webp
+---------------------------------------------------------
+
+imgref 1.10.1 (Apache-2.0 OR CC0-1.0)
+https://github.com/kornelski/imgref
 ---------------------------------------------------------
 
 imgui 0.11.0 (Apache-2.0 OR MIT)
@@ -529,7 +581,7 @@ indexmap 1.9.3 (Apache-2.0 OR MIT)
 https://github.com/bluss/indexmap
 ---------------------------------------------------------
 
-indexmap 2.2.3 (Apache-2.0 OR MIT)
+indexmap 2.2.6 (Apache-2.0 OR MIT)
 https://github.com/indexmap-rs/indexmap
 ---------------------------------------------------------
 
@@ -541,11 +593,19 @@ instant 0.1.12 (BSD-3-Clause)
 https://github.com/sebcrozet/instant
 ---------------------------------------------------------
 
+interpolate_name 0.2.4 (MIT)
+https://github.com/lu-zero/interpolate_name
+---------------------------------------------------------
+
 itertools 0.11.0 (Apache-2.0 OR MIT)
 https://github.com/rust-itertools/itertools
 ---------------------------------------------------------
 
-itoa 1.0.10 (Apache-2.0 OR MIT)
+itertools 0.12.1 (Apache-2.0 OR MIT)
+https://github.com/rust-itertools/itertools
+---------------------------------------------------------
+
+itoa 1.0.11 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/itoa
 ---------------------------------------------------------
 
@@ -553,11 +613,15 @@ jni-sys 0.3.0 (Apache-2.0 OR MIT)
 https://github.com/sfackler/rust-jni-sys
 ---------------------------------------------------------
 
+jobserver 0.1.28 (Apache-2.0 OR MIT)
+https://github.com/alexcrichton/jobserver-rs
+---------------------------------------------------------
+
 jpeg-decoder 0.3.1 (Apache-2.0 OR MIT)
 https://github.com/image-rs/jpeg-decoder
 ---------------------------------------------------------
 
-js-sys 0.3.68 (Apache-2.0 OR MIT)
+js-sys 0.3.69 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/js-sys
 ---------------------------------------------------------
 
@@ -573,11 +637,15 @@ libc 0.2.153 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/libc
 ---------------------------------------------------------
 
+libfuzzer-sys 0.4.7 (Apache-2.0 OR MIT OR NCSA)
+https://github.com/rust-fuzz/libfuzzer
+---------------------------------------------------------
+
 libloading 0.7.4 (ISC)
 https://github.com/nagisa/rust_libloading/
 ---------------------------------------------------------
 
-libloading 0.8.1 (ISC)
+libloading 0.8.3 (ISC)
 https://github.com/nagisa/rust_libloading/
 ---------------------------------------------------------
 
@@ -585,11 +653,11 @@ libm 0.2.8 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/libm
 ---------------------------------------------------------
 
-libredox 0.0.1 (MIT)
+libredox 0.0.2 (MIT)
 https://gitlab.redox-os.org/redox-os/libredox.git
 ---------------------------------------------------------
 
-libredox 0.0.2 (MIT)
+libredox 0.1.3 (MIT)
 https://gitlab.redox-os.org/redox-os/libredox.git
 ---------------------------------------------------------
 
@@ -597,8 +665,12 @@ lock_api 0.4.11 (Apache-2.0 OR MIT)
 https://github.com/Amanieu/parking_lot
 ---------------------------------------------------------
 
-log 0.4.20 (Apache-2.0 OR MIT)
+log 0.4.21 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/log
+---------------------------------------------------------
+
+loop9 0.1.5 (MIT)
+https://gitlab.com/kornelski/loop9.git
 ---------------------------------------------------------
 
 malloc_buf 0.0.6 (MIT)
@@ -617,7 +689,11 @@ matrixmultiply 0.3.8 (Apache-2.0 OR MIT)
 https://github.com/bluss/matrixmultiply/
 ---------------------------------------------------------
 
-memchr 2.7.1 (MIT OR Unlicense)
+maybe-rayon 0.1.1 (MIT)
+https://github.com/shssoichiro/maybe-rayon
+---------------------------------------------------------
+
+memchr 2.7.2 (MIT OR Unlicense)
 https://github.com/BurntSushi/memchr
 ---------------------------------------------------------
 
@@ -633,6 +709,10 @@ mime 0.3.17 (Apache-2.0 OR MIT)
 https://github.com/hyperium/mime
 ---------------------------------------------------------
 
+minimal-lexical 0.2.1 (Apache-2.0 OR MIT)
+https://github.com/Alexhuszagh/minimal-lexical
+---------------------------------------------------------
+
 miniz_oxide 0.7.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide
 ---------------------------------------------------------
@@ -641,11 +721,11 @@ mint 0.5.9 (MIT)
 https://github.com/kvark/mint
 ---------------------------------------------------------
 
-mio 0.8.10 (MIT)
+mio 0.8.11 (MIT)
 https://github.com/tokio-rs/mio
 ---------------------------------------------------------
 
-nalgebra 0.32.4 (BSD-3-Clause)
+nalgebra 0.32.5 (BSD-3-Clause)
 https://github.com/dimforge/nalgebra
 ---------------------------------------------------------
 
@@ -665,12 +745,24 @@ ndk-sys 0.4.1+23.1.7779620 (Apache-2.0 OR MIT)
 https://github.com/rust-windowing/android-ndk-rs
 ---------------------------------------------------------
 
+new_debug_unreachable 1.0.6 (MIT)
+https://github.com/mbrubeck/rust-debug-unreachable
+---------------------------------------------------------
+
 nix 0.24.3 (MIT)
 https://github.com/nix-rust/nix
 ---------------------------------------------------------
 
 nix 0.25.1 (MIT)
 https://github.com/nix-rust/nix
+---------------------------------------------------------
+
+nom 7.1.3 (MIT)
+https://github.com/Geal/nom
+---------------------------------------------------------
+
+noop_proc_macro 0.3.0 (MIT)
+https://github.com/lu-zero/noop_proc_macro
 ---------------------------------------------------------
 
 nu-ansi-term 0.46.0 (MIT)
@@ -687,6 +779,10 @@ https://github.com/rust-num/num-bigint
 
 num-complex 0.4.5 (Apache-2.0 OR MIT)
 https://github.com/rust-num/num-complex
+---------------------------------------------------------
+
+num-derive 0.4.2 (Apache-2.0 OR MIT)
+https://github.com/rust-num/num-derive
 ---------------------------------------------------------
 
 num-integer 0.1.46 (Apache-2.0 OR MIT)
@@ -781,15 +877,15 @@ percent-encoding 2.3.1 (Apache-2.0 OR MIT)
 https://github.com/servo/rust-url/
 ---------------------------------------------------------
 
-pin-project 1.1.4 (Apache-2.0 OR MIT)
+pin-project 1.1.5 (Apache-2.0 OR MIT)
 https://github.com/taiki-e/pin-project
 ---------------------------------------------------------
 
-pin-project-internal 1.1.4 (Apache-2.0 OR MIT)
+pin-project-internal 1.1.5 (Apache-2.0 OR MIT)
 https://github.com/taiki-e/pin-project
 ---------------------------------------------------------
 
-pin-project-lite 0.2.13 (Apache-2.0 OR MIT)
+pin-project-lite 0.2.14 (Apache-2.0 OR MIT)
 https://github.com/taiki-e/pin-project-lite
 ---------------------------------------------------------
 
@@ -829,15 +925,23 @@ proc-macro-crate 1.3.1 (Apache-2.0 OR MIT)
 https://github.com/bkchr/proc-macro-crate
 ---------------------------------------------------------
 
-proc-macro2 1.0.78 (Apache-2.0 OR MIT)
+proc-macro2 1.0.79 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/proc-macro2
 ---------------------------------------------------------
 
-prost 0.12.3 (Apache-2.0)
+profiling 1.0.15 (Apache-2.0 OR MIT)
+https://github.com/aclysma/profiling
+---------------------------------------------------------
+
+profiling-procmacros 1.0.15 (Apache-2.0 OR MIT)
+https://github.com/aclysma/profiling
+---------------------------------------------------------
+
+prost 0.12.4 (Apache-2.0)
 https://github.com/tokio-rs/prost
 ---------------------------------------------------------
 
-prost-derive 0.12.3 (Apache-2.0)
+prost-derive 0.12.4 (Apache-2.0)
 https://github.com/tokio-rs/prost
 ---------------------------------------------------------
 
@@ -847,6 +951,10 @@ https://github.com/aldanor/qoi-rust
 
 quaternion 1.0.0 (Apache-2.0 OR MIT)
 https://github.com/PistonDevelopers/quaternion.git
+---------------------------------------------------------
+
+quick-error 2.0.1 (Apache-2.0 OR MIT)
+http://github.com/tailhook/quick-error
 ---------------------------------------------------------
 
 quote 1.0.35 (Apache-2.0 OR MIT)
@@ -869,6 +977,14 @@ rand_core 0.6.4 (Apache-2.0 OR MIT)
 https://github.com/rust-random/rand
 ---------------------------------------------------------
 
+rav1e 0.7.1 (BSD-2-Clause)
+https://github.com/xiph/rav1e/
+---------------------------------------------------------
+
+ravif 0.11.5 (BSD-3-Clause)
+https://github.com/kornelski/cavif-rs
+---------------------------------------------------------
+
 raw-window-handle 0.5.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/rust-windowing/raw-window-handle
 ---------------------------------------------------------
@@ -877,7 +993,7 @@ rawpointer 0.2.1 (Apache-2.0 OR MIT)
 https://github.com/bluss/rawpointer/
 ---------------------------------------------------------
 
-rayon 1.8.1 (Apache-2.0 OR MIT)
+rayon 1.10.0 (Apache-2.0 OR MIT)
 https://github.com/rayon-rs/rayon
 ---------------------------------------------------------
 
@@ -893,20 +1009,24 @@ redox_syscall 0.4.1 (MIT)
 https://gitlab.redox-os.org/redox-os/syscall
 ---------------------------------------------------------
 
-redox_users 0.4.4 (MIT)
+redox_users 0.4.5 (MIT)
 https://gitlab.redox-os.org/redox-os/users
 ---------------------------------------------------------
 
-regex 1.10.3 (Apache-2.0 OR MIT)
+regex 1.10.4 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/regex
 ---------------------------------------------------------
 
-regex-automata 0.4.5 (Apache-2.0 OR MIT)
+regex-automata 0.4.6 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/regex/tree/master/regex-automata
 ---------------------------------------------------------
 
-regex-syntax 0.8.2 (Apache-2.0 OR MIT)
+regex-syntax 0.8.3 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/regex/tree/master/regex-syntax
+---------------------------------------------------------
+
+rgb 0.8.37 (MIT)
+https://github.com/kornelski/rust-rgb
 ---------------------------------------------------------
 
 robust 0.2.3 (Apache-2.0 OR MIT)
@@ -928,7 +1048,7 @@ rustc_version 0.4.0 (Apache-2.0 OR MIT)
 https://github.com/Kimundi/rustc-version-rs
 ---------------------------------------------------------
 
-rustversion 1.0.14 (Apache-2.0 OR MIT)
+rustversion 1.0.15 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/rustversion
 ---------------------------------------------------------
 
@@ -968,8 +1088,12 @@ serde_derive 1.0.197 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
-serde_json 1.0.114 (Apache-2.0 OR MIT)
+serde_json 1.0.115 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/json
+---------------------------------------------------------
+
+serde_spanned 0.6.5 (Apache-2.0 OR MIT)
+https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
 shaderc 0.8.3 (Apache-2.0)
@@ -992,7 +1116,11 @@ simd-adler32 0.3.7 (MIT)
 https://github.com/mcountryman/simd-adler32
 ---------------------------------------------------------
 
-simulator 22.0.4 (MIT)
+simd_helpers 0.1.0 (MIT)
+https://github.com/lu-zero/simd_helpers
+---------------------------------------------------------
+
+simulator 22.1.0 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -1004,7 +1132,7 @@ slotmap 1.0.7 (Zlib)
 https://github.com/orlp/slotmap
 ---------------------------------------------------------
 
-smallvec 1.13.1 (Apache-2.0 OR MIT)
+smallvec 1.13.2 (Apache-2.0 OR MIT)
 https://github.com/servo/rust-smallvec
 ---------------------------------------------------------
 
@@ -1012,7 +1140,7 @@ smithay-client-toolkit 0.16.1 (MIT)
 https://github.com/smithay/client-toolkit
 ---------------------------------------------------------
 
-socket2 0.5.5 (Apache-2.0 OR MIT)
+socket2 0.5.6 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/socket2
 ---------------------------------------------------------
 
@@ -1028,15 +1156,15 @@ strict-num 0.1.1 (MIT)
 https://github.com/RazrFalcon/strict-num
 ---------------------------------------------------------
 
-strsim 0.11.0 (MIT)
+strsim 0.11.1 (MIT)
 https://github.com/rapidfuzz/strsim-rs
 ---------------------------------------------------------
 
-strum 0.25.0 (MIT)
+strum 0.26.2 (MIT)
 https://github.com/Peternator7/strum
 ---------------------------------------------------------
 
-strum_macros 0.25.3 (MIT)
+strum_macros 0.26.2 (MIT)
 https://github.com/Peternator7/strum
 ---------------------------------------------------------
 
@@ -1044,7 +1172,7 @@ syn 1.0.109 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
-syn 2.0.50 (Apache-2.0 OR MIT)
+syn 2.0.58 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
@@ -1052,15 +1180,23 @@ sync_wrapper 0.1.2 (Apache-2.0)
 https://github.com/Actyx/sync_wrapper
 ---------------------------------------------------------
 
+system-deps 6.2.2 (Apache-2.0 OR MIT)
+https://github.com/gdesmott/system-deps
+---------------------------------------------------------
+
 tap 1.0.1 (MIT)
 https://github.com/myrrlyn/tap
 ---------------------------------------------------------
 
-thiserror 1.0.57 (Apache-2.0 OR MIT)
+target-lexicon 0.12.14 (Apache-2.0 WITH LLVM-exception)
+https://github.com/bytecodealliance/target-lexicon
+---------------------------------------------------------
+
+thiserror 1.0.58 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
-thiserror-impl 1.0.57 (Apache-2.0 OR MIT)
+thiserror-impl 1.0.58 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
@@ -1080,7 +1216,7 @@ tiny-skia-path 0.8.4 (BSD-3-Clause)
 https://github.com/RazrFalcon/tiny-skia/path
 ---------------------------------------------------------
 
-tokio 1.36.0 (MIT)
+tokio 1.37.0 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
@@ -1088,7 +1224,7 @@ tokio-io-timeout 1.2.0 (Apache-2.0 OR MIT)
 https://github.com/sfackler/tokio-io-timeout
 ---------------------------------------------------------
 
-tokio-stream 0.1.14 (MIT)
+tokio-stream 0.1.15 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
@@ -1096,11 +1232,19 @@ tokio-util 0.7.10 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
+toml 0.8.12 (Apache-2.0 OR MIT)
+https://github.com/toml-rs/toml
+---------------------------------------------------------
+
 toml_datetime 0.6.5 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
 toml_edit 0.19.15 (Apache-2.0 OR MIT)
+https://github.com/toml-rs/toml
+---------------------------------------------------------
+
+toml_edit 0.22.9 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
@@ -1164,6 +1308,10 @@ utf8parse 0.2.1 (Apache-2.0 OR MIT)
 https://github.com/alacritty/vte
 ---------------------------------------------------------
 
+v_frame 0.3.8 (BSD-2-Clause)
+https://github.com/rust-av/v_frame
+---------------------------------------------------------
+
 valuable 0.1.0 (MIT)
 https://github.com/tokio-rs/valuable
 ---------------------------------------------------------
@@ -1174,6 +1322,10 @@ https://github.com/contain-rs/vec-map
 
 vecmath 1.0.0 (MIT)
 https://github.com/pistondevelopers/vecmath.git
+---------------------------------------------------------
+
+version-compare 0.2.0 (MIT)
+https://gitlab.com/timvisee/version-compare
 ---------------------------------------------------------
 
 version_check 0.9.4 (Apache-2.0 OR MIT)
@@ -1204,23 +1356,23 @@ wasi 0.11.0+wasi-snapshot-preview1 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception
 https://github.com/bytecodealliance/wasi
 ---------------------------------------------------------
 
-wasm-bindgen 0.2.91 (Apache-2.0 OR MIT)
+wasm-bindgen 0.2.92 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen
 ---------------------------------------------------------
 
-wasm-bindgen-backend 0.2.91 (Apache-2.0 OR MIT)
+wasm-bindgen-backend 0.2.92 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/backend
 ---------------------------------------------------------
 
-wasm-bindgen-macro 0.2.91 (Apache-2.0 OR MIT)
+wasm-bindgen-macro 0.2.92 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/macro
 ---------------------------------------------------------
 
-wasm-bindgen-macro-support 0.2.91 (Apache-2.0 OR MIT)
+wasm-bindgen-macro-support 0.2.92 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/macro-support
 ---------------------------------------------------------
 
-wasm-bindgen-shared 0.2.91 (Apache-2.0 OR MIT)
+wasm-bindgen-shared 0.2.92 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/shared
 ---------------------------------------------------------
 
@@ -1248,7 +1400,7 @@ wayland-sys 0.29.5 (MIT)
 https://github.com/smithay/wayland-rs
 ---------------------------------------------------------
 
-web-sys 0.3.68 (Apache-2.0 OR MIT)
+web-sys 0.3.69 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/web-sys
 ---------------------------------------------------------
 
@@ -1272,11 +1424,19 @@ winapi-x86_64-pc-windows-gnu 0.4.0 (Apache-2.0 OR MIT)
 https://github.com/retep998/winapi-rs
 ---------------------------------------------------------
 
-windows 0.52.0 (Apache-2.0 OR MIT)
+windows 0.54.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
 windows-core 0.52.0 (Apache-2.0 OR MIT)
+https://github.com/microsoft/windows-rs
+---------------------------------------------------------
+
+windows-core 0.54.0 (Apache-2.0 OR MIT)
+https://github.com/microsoft/windows-rs
+---------------------------------------------------------
+
+windows-result 0.1.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1300,7 +1460,7 @@ windows-targets 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-targets 0.52.0 (Apache-2.0 OR MIT)
+windows-targets 0.52.4 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1312,7 +1472,7 @@ windows_aarch64_gnullvm 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_aarch64_gnullvm 0.52.0 (Apache-2.0 OR MIT)
+windows_aarch64_gnullvm 0.52.4 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1324,7 +1484,7 @@ windows_aarch64_msvc 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_aarch64_msvc 0.52.0 (Apache-2.0 OR MIT)
+windows_aarch64_msvc 0.52.4 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1336,7 +1496,7 @@ windows_i686_gnu 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_i686_gnu 0.52.0 (Apache-2.0 OR MIT)
+windows_i686_gnu 0.52.4 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1348,7 +1508,7 @@ windows_i686_msvc 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_i686_msvc 0.52.0 (Apache-2.0 OR MIT)
+windows_i686_msvc 0.52.4 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1360,7 +1520,7 @@ windows_x86_64_gnu 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_gnu 0.52.0 (Apache-2.0 OR MIT)
+windows_x86_64_gnu 0.52.4 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1372,7 +1532,7 @@ windows_x86_64_gnullvm 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_gnullvm 0.52.0 (Apache-2.0 OR MIT)
+windows_x86_64_gnullvm 0.52.4 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1384,7 +1544,7 @@ windows_x86_64_msvc 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_msvc 0.52.0 (Apache-2.0 OR MIT)
+windows_x86_64_msvc 0.52.4 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1393,6 +1553,10 @@ https://github.com/rust-windowing/winit
 ---------------------------------------------------------
 
 winnow 0.5.40 (MIT)
+https://github.com/winnow-rs/winnow
+---------------------------------------------------------
+
+winnow 0.6.5 (MIT)
 https://github.com/winnow-rs/winnow
 ---------------------------------------------------------
 
@@ -1408,7 +1572,7 @@ xcursor 0.3.5 (MIT)
 https://github.com/esposm03/xcursor-rs
 ---------------------------------------------------------
 
-xml-rs 0.8.19 (MIT)
+xml-rs 0.8.20 (MIT)
 https://github.com/kornelski/xml-rs
 ---------------------------------------------------------
 
@@ -1424,7 +1588,14 @@ zerocopy-derive 0.7.32 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
+zune-core 0.4.12 (Apache-2.0 OR MIT OR Zlib)
+---------------------------------------------------------
+
 zune-inflate 0.2.54 (Apache-2.0 OR MIT OR Zlib)
+---------------------------------------------------------
+
+zune-jpeg 0.4.11 (Apache-2.0 OR MIT OR Zlib)
+https://github.com/etemesi254/zune-image/tree/dev/crates/zune-jpeg
 ---------------------------------------------------------
 
 imgui-vulkano-renderer 0.9.0 (MIT)
@@ -1700,6 +1871,133 @@ Permission is hereby granted, free of charge, to any person or organization obta
 The copyright notices in the Software and this entire statement, including the above license grant, this restriction and the following disclaimer, must be included in all copies of the Software, in whole or in part, and all derivative works of the Software, unless such copies or derivative works are solely in the form of machine-executable object code generated by a source language processor.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+---------------------------------------------------------
+
+CC0-1.0
+
+---
+
+Creative Commons Legal Code
+
+CC0 1.0 Universal
+
+    CREATIVE COMMONS CORPORATION IS NOT A LAW FIRM AND DOES NOT PROVIDE
+    LEGAL SERVICES. DISTRIBUTION OF THIS DOCUMENT DOES NOT CREATE AN
+    ATTORNEY-CLIENT RELATIONSHIP. CREATIVE COMMONS PROVIDES THIS
+    INFORMATION ON AN "AS-IS" BASIS. CREATIVE COMMONS MAKES NO WARRANTIES
+    REGARDING THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS
+    PROVIDED HEREUNDER, AND DISCLAIMS LIABILITY FOR DAMAGES RESULTING FROM
+    THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS PROVIDED
+    HEREUNDER.
+
+Statement of Purpose
+
+The laws of most jurisdictions throughout the world automatically confer
+exclusive Copyright and Related Rights (defined below) upon the creator
+and subsequent owner(s) (each and all, an "owner") of an original work of
+authorship and/or a database (each, a "Work").
+
+Certain owners wish to permanently relinquish those rights to a Work for
+the purpose of contributing to a commons of creative, cultural and
+scientific works ("Commons") that the public can reliably and without fear
+of later claims of infringement build upon, modify, incorporate in other
+works, reuse and redistribute as freely as possible in any form whatsoever
+and for any purposes, including without limitation commercial purposes.
+These owners may contribute to the Commons to promote the ideal of a free
+culture and the further production of creative, cultural and scientific
+works, or to gain reputation or greater distribution for their Work in
+part through the use and efforts of others.
+
+For these and/or other purposes and motivations, and without any
+expectation of additional consideration or compensation, the person
+associating CC0 with a Work (the "Affirmer"), to the extent that he or she
+is an owner of Copyright and Related Rights in the Work, voluntarily
+elects to apply CC0 to the Work and publicly distribute the Work under its
+terms, with knowledge of his or her Copyright and Related Rights in the
+Work and the meaning and intended legal effect of CC0 on those rights.
+
+1. Copyright and Related Rights. A Work made available under CC0 may be
+protected by copyright and related or neighboring rights ("Copyright and
+Related Rights"). Copyright and Related Rights include, but are not
+limited to, the following:
+
+  i. the right to reproduce, adapt, distribute, perform, display,
+     communicate, and translate a Work;
+ ii. moral rights retained by the original author(s) and/or performer(s);
+iii. publicity and privacy rights pertaining to a person's image or
+     likeness depicted in a Work;
+ iv. rights protecting against unfair competition in regards to a Work,
+     subject to the limitations in paragraph 4(a), below;
+  v. rights protecting the extraction, dissemination, use and reuse of data
+     in a Work;
+ vi. database rights (such as those arising under Directive 96/9/EC of the
+     European Parliament and of the Council of 11 March 1996 on the legal
+     protection of databases, and under any national implementation
+     thereof, including any amended or successor version of such
+     directive); and
+vii. other similar, equivalent or corresponding rights throughout the
+     world based on applicable law or treaty, and any national
+     implementations thereof.
+
+2. Waiver. To the greatest extent permitted by, but not in contravention
+of, applicable law, Affirmer hereby overtly, fully, permanently,
+irrevocably and unconditionally waives, abandons, and surrenders all of
+Affirmer's Copyright and Related Rights and associated claims and causes
+of action, whether now known or unknown (including existing as well as
+future claims and causes of action), in the Work (i) in all territories
+worldwide, (ii) for the maximum duration provided by applicable law or
+treaty (including future time extensions), (iii) in any current or future
+medium and for any number of copies, and (iv) for any purpose whatsoever,
+including without limitation commercial, advertising or promotional
+purposes (the "Waiver"). Affirmer makes the Waiver for the benefit of each
+member of the public at large and to the detriment of Affirmer's heirs and
+successors, fully intending that such Waiver shall not be subject to
+revocation, rescission, cancellation, termination, or any other legal or
+equitable action to disrupt the quiet enjoyment of the Work by the public
+as contemplated by Affirmer's express Statement of Purpose.
+
+3. Public License Fallback. Should any part of the Waiver for any reason
+be judged legally invalid or ineffective under applicable law, then the
+Waiver shall be preserved to the maximum extent permitted taking into
+account Affirmer's express Statement of Purpose. In addition, to the
+extent the Waiver is so judged Affirmer hereby grants to each affected
+person a royalty-free, non transferable, non sublicensable, non exclusive,
+irrevocable and unconditional license to exercise Affirmer's Copyright and
+Related Rights in the Work (i) in all territories worldwide, (ii) for the
+maximum duration provided by applicable law or treaty (including future
+time extensions), (iii) in any current or future medium and for any number
+of copies, and (iv) for any purpose whatsoever, including without
+limitation commercial, advertising or promotional purposes (the
+"License"). The License shall be deemed effective as of the date CC0 was
+applied by Affirmer to the Work. Should any part of the License for any
+reason be judged legally invalid or ineffective under applicable law, such
+partial invalidity or ineffectiveness shall not invalidate the remainder
+of the License, and in such case Affirmer hereby affirms that he or she
+will not (i) exercise any of his or her remaining Copyright and Related
+Rights in the Work or (ii) assert any associated claims and causes of
+action with respect to the Work, in either case contrary to Affirmer's
+express Statement of Purpose.
+
+4. Limitations and Disclaimers.
+
+ a. No trademark or patent rights held by Affirmer are waived, abandoned,
+    surrendered, licensed or otherwise affected by this document.
+ b. Affirmer offers the Work as-is and makes no representations or
+    warranties of any kind concerning the Work, express, implied,
+    statutory or otherwise, including without limitation warranties of
+    title, merchantability, fitness for a particular purpose, non
+    infringement, or the absence of latent or other defects, accuracy, or
+    the present or absence of errors, whether or not discoverable, all to
+    the greatest extent permissible under applicable law.
+ c. Affirmer disclaims responsibility for clearing rights of other persons
+    that may apply to the Work or any use thereof, including without
+    limitation any person's Copyright and Related Rights in the Work.
+    Further, Affirmer disclaims responsibility for obtaining any necessary
+    consents, permissions or other rights required for any use of the
+    Work.
+ d. Affirmer understands and acknowledges that Creative Commons is not a
+    party to this document and has no duty or obligation with respect to
+    this CC0 or use of the Work.
 ---------------------------------------------------------
 
 ISC
