@@ -43,7 +43,8 @@ pub struct ViewerSettings {
     pub slice_rot_z: f32,
     #[serde(default = "default_pressure_max")]
     pub pressure_max: f32,
-    pub slice_alpha: f32,
+    #[serde(default = "default_slice_show")]
+    pub slice_show: bool,
     pub color_map_type: ColorMapType,
     pub show_radiation_pressure: bool,
     pub camera_rot_x: f32,
@@ -105,6 +106,10 @@ fn default_light_power() -> f32 {
 
 fn default_time_scale() -> f32 {
     1.
+}
+
+fn default_slice_show() -> bool {
+    true
 }
 
 impl ViewerSettings {
@@ -172,7 +177,7 @@ impl Default for ViewerSettings {
             slice_rot_y: 0.,
             slice_rot_z: 0.,
             pressure_max: 5e3,
-            slice_alpha: 1.,
+            slice_show: true,
             color_map_type: ColorMapType::Inferno,
             show_radiation_pressure: false,
             camera_rot_x: 90.0 * ZPARITY,

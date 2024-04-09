@@ -445,6 +445,15 @@ impl Simulator {
                                 let view = render.get_view();
                                 let proj = render.get_projection(&self.settings);
                                 let slice_model = slice_viewer.model();
+                                if self.settings.slice_show {
+                                    slice_viewer.render(
+                                        &render,
+                                        view,
+                                        proj,
+                                        &self.settings,
+                                        &mut builder,
+                                    )?;
+                                }
                                 if self.settings.view_device {
                                     device_viewer.render(
                                         (view, proj),
@@ -455,13 +464,6 @@ impl Simulator {
                                 } else {
                                     trans_viewer.render(view, proj, &mut builder)?;
                                 }
-                                slice_viewer.render(
-                                    &render,
-                                    view,
-                                    proj,
-                                    &self.settings,
-                                    &mut builder,
-                                )?;
                                 builder.end_render_pass(Default::default())?;
 
                                 let mut update_flag = imgui.update(

@@ -331,10 +331,7 @@ impl ImGuiViewer {
                                 0.,
                                 f32::MAX / 2.,
                             );
-                            if drag_float("Alpha##Slice", &mut settings.slice_alpha, 0.01, 0.0, 1.)
-                            {
-                                update_flag.set(UpdateFlag::UPDATE_COLOR_MAP, true);
-                            }
+                            ui.checkbox("Show##Slice", &mut settings.slice_show);
                             ui.separator();
 
                             if ui.small_button("xy") {

@@ -99,7 +99,6 @@ impl FieldComputePipeline {
             };
 
             let extent = [color_map_size, 1, 1];
-            let alpha = (settings.slice_alpha * 255.) as u8;
             let texels = color_map
                 .iter()
                 .flat_map(|color| {
@@ -107,7 +106,7 @@ impl FieldComputePipeline {
                         (color.r * 255.) as u8,
                         (color.g * 255.) as u8,
                         (color.b * 255.) as u8,
-                        alpha,
+                        255,
                     ]
                 })
                 .collect::<Vec<_>>();
