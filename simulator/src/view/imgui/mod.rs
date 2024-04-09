@@ -479,7 +479,7 @@ impl ImGuiViewer {
                             });
                             ui.separator();
 
-                            if ui.checkbox(format!("View as device"), &mut settings.view_device) {}
+                            ui.checkbox("View as device", &mut settings.view_device);
                             if settings.view_device {
                                 ui.text("Light position");
                                 drag_float(

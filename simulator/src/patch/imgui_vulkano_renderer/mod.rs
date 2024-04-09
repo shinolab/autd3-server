@@ -447,7 +447,7 @@ impl Renderer {
             (texture.width * texture.height * 4) as DeviceSize,
         )?;
 
-        upload_buffer.write()?.copy_from_slice(&texture.data);
+        upload_buffer.write()?.copy_from_slice(texture.data);
 
         let mut uploads = AutoCommandBufferBuilder::primary(
             &command_buffer_allocator,

@@ -167,7 +167,12 @@ impl SliceViewer {
                 0,
                 PersistentDescriptorSet::new(
                     renderer.descriptor_set_allocator(),
-                    self.pipeline.layout().set_layouts().get(0).unwrap().clone(),
+                    self.pipeline
+                        .layout()
+                        .set_layouts()
+                        .first()
+                        .unwrap()
+                        .clone(),
                     [WriteDescriptorSet::buffer(0, self.field_image_view())],
                     [],
                 )?,

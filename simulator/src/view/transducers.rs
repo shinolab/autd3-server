@@ -274,7 +274,7 @@ impl TransViewer {
 
         let set = PersistentDescriptorSet::new(
             renderer.descriptor_set_allocator(),
-            pipeline.layout().set_layouts().get(0).unwrap().clone(),
+            pipeline.layout().set_layouts().first().unwrap().clone(),
             [WriteDescriptorSet::image_view_sampler(
                 0,
                 texture,

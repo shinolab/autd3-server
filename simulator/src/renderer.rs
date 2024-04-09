@@ -174,7 +174,7 @@ impl Renderer {
             WindowBuilder::new()
                 .with_inner_size(winit::dpi::LogicalSize::new(width, height))
                 .with_title(title)
-                .build(&event_loop)?,
+                .build(event_loop)?,
         );
         let surface = Surface::from_window(instance.clone(), window.clone())?;
 

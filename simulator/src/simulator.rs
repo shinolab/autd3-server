@@ -458,7 +458,7 @@ impl Simulator {
                                     device_viewer.render(
                                         (view, proj),
                                         &self.settings,
-                                        &imgui.visible(),
+                                        imgui.visible(),
                                         &mut builder,
                                     )?;
                                 } else {

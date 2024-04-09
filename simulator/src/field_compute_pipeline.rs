@@ -234,7 +234,7 @@ impl FieldComputePipeline {
         let pipeline = self.pipeline.clone();
 
         let pipeline_layout = pipeline.layout();
-        let layout = pipeline_layout.set_layouts().get(0).unwrap();
+        let layout = pipeline_layout.set_layouts().first().unwrap();
         let set_0 = PersistentDescriptorSet::new(
             renderer.descriptor_set_allocator(),
             layout.clone(),
