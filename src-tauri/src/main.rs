@@ -32,6 +32,24 @@ fn get_settings_file_path(handle: &tauri::AppHandle) -> std::io::Result<PathBuf>
 }
 
 #[tauri::command]
+fn set_libpath(_: tauri::AppHandle) {
+    if cfg!(target_os = "macos") {
+        let home = std::env::var("HOME").unwrap_or(String::new());
+        let libpath = format!("{}/lib:/usr/local/lib:/usr/lib", home);
+        let fallback_path = if let Ok(path) = std::env::var("DYLD_FALLBACK_LIBRARY_PATH") {
+            if path.contains(&libpath) {
+                path
+            } else {
+                format!("{}:{}", path, libpath)
+            }
+        } else {
+            libpath
+        };
+        std::env::set_var("DYLD_FALLBACK_LIBRARY_PATH", fallback_path);
+    }
+}
+
+#[tauri::command]
 async fn load_settings(handle: tauri::AppHandle) -> Result<Options, String> {
     let options: Options = if let Ok(mut file) =
         File::open(get_settings_file_path(&handle).map_err(|e| e.to_string())?).await
@@ -240,6 +258,7 @@ async fn main() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
+            set_libpath,
             load_settings,
             save_settings,
             copy_autd_xml,

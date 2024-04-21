@@ -4,6 +4,7 @@
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
   import { Command, Child } from "@tauri-apps/api/shell";
+  import { invoke } from "@tauri-apps/api";
   import { consoleOutputQueue } from "./console_output.ts";
   import { appConfigDir } from "@tauri-apps/api/path";
 
@@ -82,6 +83,8 @@
   };
 
   onMount(async () => {
+    await invoke("set_libpath", {});
+
     appConfigDirPath = await appConfigDir();
 
     let gpus: null | string = null;
