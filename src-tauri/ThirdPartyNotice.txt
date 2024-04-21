@@ -34,7 +34,7 @@ android_system_properties 0.1.5 (Apache-2.0 OR MIT)
 https://github.com/nical/android_system_properties
 ---------------------------------------------------------
 
-anyhow 1.0.81 (Apache-2.0 OR MIT)
+anyhow 1.0.82 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/anyhow
 ---------------------------------------------------------
 
@@ -46,11 +46,11 @@ async-broadcast 0.7.0 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/async-broadcast
 ---------------------------------------------------------
 
-async-channel 2.2.0 (Apache-2.0 OR MIT)
+async-channel 2.2.1 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/async-channel
 ---------------------------------------------------------
 
-async-executor 1.10.0 (Apache-2.0 OR MIT)
+async-executor 1.11.0 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/async-executor
 ---------------------------------------------------------
 
@@ -70,7 +70,7 @@ async-lock 3.3.0 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/async-lock
 ---------------------------------------------------------
 
-async-process 2.2.0 (Apache-2.0 OR MIT)
+async-process 2.2.1 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/async-process
 ---------------------------------------------------------
 
@@ -86,7 +86,7 @@ async-task 4.7.0 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/async-task
 ---------------------------------------------------------
 
-async-trait 0.1.79 (Apache-2.0 OR MIT)
+async-trait 0.1.80 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/async-trait
 ---------------------------------------------------------
 
@@ -130,7 +130,7 @@ base64 0.21.7 (Apache-2.0 OR MIT)
 https://github.com/marshallpierce/rust-base64
 ---------------------------------------------------------
 
-bitfield-struct 0.6.0 (MIT)
+bitfield-struct 0.6.1 (MIT)
 https://github.com/wrenger/bitfield-struct-rs.git
 ---------------------------------------------------------
 
@@ -170,7 +170,7 @@ bstr 1.9.1 (Apache-2.0 OR MIT)
 https://github.com/BurntSushi/bstr
 ---------------------------------------------------------
 
-bumpalo 3.15.4 (Apache-2.0 OR MIT)
+bumpalo 3.16.0 (Apache-2.0 OR MIT)
 https://github.com/fitzgen/bumpalo
 ---------------------------------------------------------
 
@@ -198,7 +198,7 @@ cargo_toml 0.15.3 (Apache-2.0 OR MIT)
 https://gitlab.com/crates.rs/cargo_toml
 ---------------------------------------------------------
 
-cc 1.0.91 (Apache-2.0 OR MIT)
+cc 1.0.94 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/cc-rs
 ---------------------------------------------------------
 
@@ -214,7 +214,7 @@ cfg-expr 0.9.1 (Apache-2.0 OR MIT)
 https://github.com/EmbarkStudios/cfg-expr
 ---------------------------------------------------------
 
-cfg-expr 0.15.7 (Apache-2.0 OR MIT)
+cfg-expr 0.15.8 (Apache-2.0 OR MIT)
 https://github.com/EmbarkStudios/cfg-expr
 ---------------------------------------------------------
 
@@ -226,7 +226,7 @@ cfg_aliases 0.1.1 (MIT)
 https://github.com/katharostech/cfg_aliases
 ---------------------------------------------------------
 
-chrono 0.4.37 (Apache-2.0 OR MIT)
+chrono 0.4.38 (Apache-2.0 OR MIT)
 https://github.com/chronotope/chrono
 ---------------------------------------------------------
 
@@ -242,7 +242,7 @@ color_quant 1.1.0 (MIT)
 https://github.com/image-rs/color_quant.git
 ---------------------------------------------------------
 
-combine 4.6.6 (MIT)
+combine 4.6.7 (MIT)
 https://github.com/Marwes/combine
 ---------------------------------------------------------
 
@@ -306,7 +306,7 @@ cssparser-macros 0.6.1 (MPL-2.0)
 https://github.com/servo/rust-cssparser
 ---------------------------------------------------------
 
-ctor 0.2.7 (Apache-2.0 OR MIT)
+ctor 0.2.8 (Apache-2.0 OR MIT)
 https://github.com/mmastrac/rust-ctor
 ---------------------------------------------------------
 
@@ -370,7 +370,7 @@ embed_plist 1.2.2 (Apache-2.0 OR MIT)
 https://github.com/nvzqz/embed-plist-rs
 ---------------------------------------------------------
 
-encoding_rs 0.8.33 ((Apache-2.0 OR MIT) AND BSD-3-Clause)
+encoding_rs 0.8.34 ((Apache-2.0 OR MIT) AND BSD-3-Clause)
 https://github.com/hsivonen/encoding_rs
 ---------------------------------------------------------
 
@@ -534,7 +534,7 @@ getrandom 0.1.16 (Apache-2.0 OR MIT)
 https://github.com/rust-random/getrandom
 ---------------------------------------------------------
 
-getrandom 0.2.13 (Apache-2.0 OR MIT)
+getrandom 0.2.14 (Apache-2.0 OR MIT)
 https://github.com/rust-random/getrandom
 ---------------------------------------------------------
 
@@ -1042,19 +1042,15 @@ proc-macro-hack 0.5.20+deprecated (Apache-2.0 OR MIT)
 https://github.com/dtolnay/proc-macro-hack
 ---------------------------------------------------------
 
-proc-macro2 1.0.79 (Apache-2.0 OR MIT)
+proc-macro2 1.0.81 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/proc-macro2
----------------------------------------------------------
-
-quick-xml 0.30.0 (MIT)
-https://github.com/tafia/quick-xml
 ---------------------------------------------------------
 
 quick-xml 0.31.0 (MIT)
 https://github.com/tafia/quick-xml
 ---------------------------------------------------------
 
-quote 1.0.35 (Apache-2.0 OR MIT)
+quote 1.0.36 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/quote
 ---------------------------------------------------------
 
@@ -1178,19 +1174,19 @@ semver 1.0.22 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/semver
 ---------------------------------------------------------
 
-serde 1.0.197 (Apache-2.0 OR MIT)
+serde 1.0.198 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
-serde_derive 1.0.197 (Apache-2.0 OR MIT)
+serde_derive 1.0.198 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
-serde_json 1.0.115 (Apache-2.0 OR MIT)
+serde_json 1.0.116 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/json
 ---------------------------------------------------------
 
-serde_repr 0.1.18 (Apache-2.0 OR MIT)
+serde_repr 0.1.19 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/serde-repr
 ---------------------------------------------------------
 
@@ -1292,7 +1288,7 @@ syn 1.0.109 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
-syn 2.0.58 (Apache-2.0 OR MIT)
+syn 2.0.60 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
@@ -1360,7 +1356,7 @@ tauri-winres 0.1.1 (MIT)
 https://github.com/tauri-apps/winres
 ---------------------------------------------------------
 
-tauri-winrt-notification 0.2.0 (Apache-2.0 OR MIT)
+tauri-winrt-notification 0.2.1 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/winrt-notification
 ---------------------------------------------------------
 
@@ -1388,7 +1384,7 @@ thread_local 1.1.8 (Apache-2.0 OR MIT)
 https://github.com/Amanieu/thread_local-rs
 ---------------------------------------------------------
 
-time 0.3.34 (Apache-2.0 OR MIT)
+time 0.3.36 (Apache-2.0 OR MIT)
 https://github.com/time-rs/time
 ---------------------------------------------------------
 
@@ -1396,7 +1392,7 @@ time-core 0.1.2 (Apache-2.0 OR MIT)
 https://github.com/time-rs/time
 ---------------------------------------------------------
 
-time-macros 0.2.17 (Apache-2.0 OR MIT)
+time-macros 0.2.18 (Apache-2.0 OR MIT)
 https://github.com/time-rs/time
 ---------------------------------------------------------
 
@@ -1440,7 +1436,7 @@ toml_edit 0.21.1 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
-toml_edit 0.22.9 (Apache-2.0 OR MIT)
+toml_edit 0.22.11 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
@@ -1588,7 +1584,7 @@ webview2-com-sys 0.19.0 (MIT)
 https://github.com/wravery/webview2-rs
 ---------------------------------------------------------
 
-wide 0.7.15 (Apache-2.0 OR MIT OR Zlib)
+wide 0.7.16 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/wide
 ---------------------------------------------------------
 
@@ -1624,6 +1620,10 @@ windows 0.54.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
+windows 0.56.0 (Apache-2.0 OR MIT)
+https://github.com/microsoft/windows-rs
+---------------------------------------------------------
+
 windows-bindgen 0.39.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
@@ -1636,7 +1636,19 @@ windows-core 0.54.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
+windows-core 0.56.0 (Apache-2.0 OR MIT)
+https://github.com/microsoft/windows-rs
+---------------------------------------------------------
+
 windows-implement 0.39.0 (Apache-2.0 OR MIT)
+https://github.com/microsoft/windows-rs
+---------------------------------------------------------
+
+windows-implement 0.56.0 (Apache-2.0 OR MIT)
+https://github.com/microsoft/windows-rs
+---------------------------------------------------------
+
+windows-interface 0.56.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1644,7 +1656,7 @@ windows-metadata 0.39.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-result 0.1.0 (Apache-2.0 OR MIT)
+windows-result 0.1.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1668,7 +1680,7 @@ windows-targets 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-targets 0.52.4 (Apache-2.0 OR MIT)
+windows-targets 0.52.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1676,7 +1688,7 @@ windows-tokens 0.39.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-version 0.1.0 (Apache-2.0 OR MIT)
+windows-version 0.1.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1688,7 +1700,7 @@ windows_aarch64_gnullvm 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_aarch64_gnullvm 0.52.4 (Apache-2.0 OR MIT)
+windows_aarch64_gnullvm 0.52.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1708,7 +1720,7 @@ windows_aarch64_msvc 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_aarch64_msvc 0.52.4 (Apache-2.0 OR MIT)
+windows_aarch64_msvc 0.52.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1728,7 +1740,11 @@ windows_i686_gnu 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_i686_gnu 0.52.4 (Apache-2.0 OR MIT)
+windows_i686_gnu 0.52.5 (Apache-2.0 OR MIT)
+https://github.com/microsoft/windows-rs
+---------------------------------------------------------
+
+windows_i686_gnullvm 0.52.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1748,7 +1764,7 @@ windows_i686_msvc 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_i686_msvc 0.52.4 (Apache-2.0 OR MIT)
+windows_i686_msvc 0.52.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1768,7 +1784,7 @@ windows_x86_64_gnu 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_gnu 0.52.4 (Apache-2.0 OR MIT)
+windows_x86_64_gnu 0.52.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1780,7 +1796,7 @@ windows_x86_64_gnullvm 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_gnullvm 0.52.4 (Apache-2.0 OR MIT)
+windows_x86_64_gnullvm 0.52.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1800,7 +1816,7 @@ windows_x86_64_msvc 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_msvc 0.52.4 (Apache-2.0 OR MIT)
+windows_x86_64_msvc 0.52.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1808,7 +1824,7 @@ winnow 0.5.40 (MIT)
 https://github.com/winnow-rs/winnow
 ---------------------------------------------------------
 
-winnow 0.6.5 (MIT)
+winnow 0.6.6 (MIT)
 https://github.com/winnow-rs/winnow
 ---------------------------------------------------------
 
