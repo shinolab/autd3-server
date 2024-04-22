@@ -1,3 +1,5 @@
+use std::path::Path;
+
 use bytemuck::{Pod, Zeroable};
 use gltf::{buffer::Data, Document, Node, Semantic};
 use vulkano::pipeline::graphics::vertex_input::Vertex;
@@ -34,12 +36,16 @@ pub struct Model {
 }
 
 impl Model {
-    fn load_autd3_model() -> anyhow::Result<Vec<u8>> {
-        Ok(std::fs::read("assets/autd3.glb")?)
+    fn load_autd3_model<P: AsRef<Path>>(resource_path: P) -> anyhow::Result<Vec<u8>> {
+        tracing::info!("Loading AUTD3 model");
+        Ok(std::fs::read(
+            resource_path.as_ref().join("assets/autd3.glb"),
+        )?)
     }
 
-    pub fn new() -> anyhow::Result<Self> {
-        let glb = Self::load_autd3_model()?;
+    pub fn new<P: AsRef<Path>>(resource_path: P) -> anyhow::Result<Self> {
+        let glb = Self::load_autd3_model(resource_path)?;
+        tracing::info!("Parsing AUTD3 model");
         let (document, buffers, images) = gltf::import_slice(glb)?;
         let node = document.scenes().next().unwrap().nodes().next().unwrap();
 

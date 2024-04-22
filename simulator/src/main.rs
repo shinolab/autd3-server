@@ -54,6 +54,10 @@ struct Arg {
     #[arg(long = "config_path")]
     config_path: Option<String>,
 
+    /// Resource path
+    #[arg(long = "resource_path", default_value = "./")]
+    resource_path: String,
+
     /// Setting file name
     #[arg(short = 's', long = "setting", default_value = "settings.json")]
     setting: String,
@@ -86,6 +90,7 @@ fn main() -> anyhow::Result<()> {
             let port = arg.port;
             let gpu_idx = arg.index;
             let window_size = arg.window_size;
+            let resource_path = Path::new(&arg.resource_path);
             let settings_path = if let Some(path) = &arg.config_path {
                 Path::new(path).join(&arg.setting)
             } else {
@@ -107,7 +112,7 @@ fn main() -> anyhow::Result<()> {
                 Default::default()
             };
 
-            let mut simulator = Simulator::new().with_settings(settings);
+            let mut simulator = Simulator::new(resource_path).with_settings(settings);
 
             if let Some(port) = port {
                 simulator = simulator.with_port(port);

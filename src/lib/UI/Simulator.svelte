@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { SimulatorOptions } from "./options.ts";
 
+  import { resolveResource } from "@tauri-apps/api/path";
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
   import { Command, Child } from "@tauri-apps/api/shell";
@@ -40,6 +41,7 @@
   );
 
   let handleRunClick = async () => {
+    const resourcePath = await resolveResource("");
     const args: string[] = [
       "run",
       "-w",
@@ -52,6 +54,8 @@
       "simulator_settings.json",
       "--config_path",
       appConfigDirPath,
+      "--resource_path",
+      resourcePath,
     ];
     if (simulatorOptions.gpu_idx !== -1) {
       args.push("-g");

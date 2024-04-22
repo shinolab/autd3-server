@@ -109,11 +109,12 @@ pub struct Simulator {
     port: Option<u16>,
     gpu_idx: Option<i32>,
     settings: ViewerSettings,
+    resource_path: PathBuf,
     config_path: Option<PathBuf>,
 }
 
 impl Simulator {
-    pub fn new() -> Self {
+    pub fn new<P: AsRef<Path>>(resource_path: P) -> Self {
         Self {
             window_width: None,
             window_height: None,
@@ -121,6 +122,7 @@ impl Simulator {
             port: None,
             gpu_idx: None,
             settings: ViewerSettings::default(),
+            resource_path: resource_path.as_ref().to_owned(),
             config_path: None,
         }
     }
@@ -245,7 +247,7 @@ impl Simulator {
 
         let mut field_compute_pipeline = FieldComputePipeline::new(&render, &self.settings)?;
         let mut slice_viewer = SliceViewer::new(&render, &self.settings)?;
-        let mut device_viewer = DeviceViewer::new(&render)?;
+        let mut device_viewer = DeviceViewer::new(&render, &self.resource_path)?;
         let mut imgui = ImGuiViewer::new(self.settings.clone(), &self.config_path, &render)?;
         let mut trans_viewer = TransViewer::new(&render)?;
 

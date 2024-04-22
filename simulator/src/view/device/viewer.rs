@@ -1,3 +1,5 @@
+use std::path::Path;
+
 use super::model::{Model, ModelVertex};
 
 use crate::prelude::*;
@@ -28,8 +30,8 @@ pub struct DeviceViewer {
 }
 
 impl DeviceViewer {
-    pub fn new(renderer: &Renderer) -> anyhow::Result<Self> {
-        let model = Model::new()?;
+    pub fn new<P: AsRef<Path>>(renderer: &Renderer, resource_path: P) -> anyhow::Result<Self> {
+        let model = Model::new(resource_path)?;
 
         let vertices = Self::create_vertices(renderer, &model.vertices)?;
         let indices = Self::create_indices(renderer, &model.indices)?;
