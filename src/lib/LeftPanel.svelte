@@ -53,7 +53,7 @@
           <Tab>TwinCAT</Tab>
         {/if}
         {#if soemAvailable}
-          <Tab>SOEM</Tab>
+          <Tab>SOEM (Remote)</Tab>
         {/if}
         <Tab>Simulator</Tab>
       </TabList>
