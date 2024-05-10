@@ -101,16 +101,6 @@ jobs:
         with:
           path: ./release_id/release_id.txt
       - uses: tauri-apps/tauri-action@v0
-        if: matrix.os == 'macos-latest'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          releaseId: ${{ steps.get_release_info.outputs.content }}
-          projectPath: '.'
-          updaterJsonKeepUniversal: true
-          args: '--target universal-apple-darwin'
-      - uses: tauri-apps/tauri-action@v0
-        if: matrix.os != 'macos-latest'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:

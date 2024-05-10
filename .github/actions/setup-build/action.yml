@@ -45,12 +45,6 @@ runs:
         echo "DYLD_LIBRARY_PATH=$GITHUB_WORKSPACE/install/lib" >> $GITHUB_ENV
         rm shaderc.tgz
 
-    - name: install aarch64 target on macos
-      shell: bash
-      if: inputs.os == 'macos-latest'
-      run: |
-        rustup target add aarch64-apple-darwin
-
     - name: install dependencies
       shell: bash
       if: inputs.os == 'ubuntu-latest'

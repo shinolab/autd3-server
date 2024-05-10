@@ -133,126 +133,35 @@ def server_build(args):
     shell = True if config.is_windows() else False
 
     with working_dir("simulator"):
-        build_commands = []
-        if config.is_macos():
-            build_commands.append(
-                [
-                    "cargo",
-                    "build",
-                    "--release",
-                    "--target=x86_64-apple-darwin",
-                    "--features",
-                    "unity",
-                ]
-            )
-            build_commands.append(
-                [
-                    "cargo",
-                    "build",
-                    "--release",
-                    "--target=aarch64-apple-darwin",
-                    "--features",
-                    "unity",
-                ]
-            )
-        else:
-            build_commands.append(
-                [
-                    "cargo",
-                    "build",
-                    "--release",
-                    "--features",
-                    "unity",
-                ]
-            )
-        for command in build_commands:
-            subprocess.run(command).check_returncode()
-    if config.is_macos():
-        shutil.copy(
-            "src-tauri/target/aarch64-apple-darwin/release/simulator",
-            "src-tauri/target/aarch64-apple-darwin/release/simulator-unity",
-        )
-        shutil.copy(
-            "src-tauri/target/x86_64-apple-darwin/release/simulator",
-            "src-tauri/target/x86_64-apple-darwin/release/simulator-unity",
-        )
-    elif config.is_windows():
+        subprocess.run(
+            [
+                "cargo",
+                "build",
+                "--release",
+                "--features",
+                "unity",
+            ]
+        ).check_returncode()
+    if config.is_windows():
         shutil.copy(
             "src-tauri/target/release/simulator.exe",
             "src-tauri/target/release/simulator-unity.exe",
         )
-    elif config.is_linux():
+    else:
         shutil.copy(
             "src-tauri/target/release/simulator",
             "src-tauri/target/release/simulator-unity",
         )
 
     with working_dir("simulator"):
-        build_commands = []
-        if config.is_macos():
-            build_commands.append(
-                [
-                    "cargo",
-                    "build",
-                    "--release",
-                    "--target=x86_64-apple-darwin",
-                ]
-            )
-            build_commands.append(
-                [
-                    "cargo",
-                    "build",
-                    "--release",
-                    "--target=aarch64-apple-darwin",
-                ]
-            )
-        else:
-            build_commands.append(["cargo", "build", "--release"])
-        for command in build_commands:
-            subprocess.run(command).check_returncode()
+        subprocess.run(["cargo", "build", "--release"]).check_returncode()
 
     with working_dir("SOEMAUTDServer"):
-        build_commands = []
-        if config.is_macos():
-            build_commands.append(
-                [
-                    "cargo",
-                    "build",
-                    "--release",
-                    "--target=x86_64-apple-darwin",
-                ]
-            )
-            build_commands.append(
-                [
-                    "cargo",
-                    "build",
-                    "--release",
-                    "--target=aarch64-apple-darwin",
-                ]
-            )
-        else:
-            build_commands.append(["cargo", "build", "--release"])
-        for command in build_commands:
-            subprocess.run(command).check_returncode()
+        subprocess.run(["cargo", "build", "--release"]).check_returncode()
 
     subprocess.run(["npm", "install"], shell=shell).check_returncode()
     if not args.external_only:
-        if config.is_macos():
-            subprocess.run(
-                [
-                    "npm",
-                    "run",
-                    "tauri",
-                    "build",
-                    "--",
-                    "--target",
-                    "universal-apple-darwin",
-                ]
-            ).check_returncode()
-        else:
-            subprocess.run(
-                ["npm", "run", "tauri", "build"], shell=shell
-            ).check_returncode()
+        subprocess.run(["npm", "run", "tauri", "build"], shell=shell).check_returncode()
 
 
 def server_clear(args):

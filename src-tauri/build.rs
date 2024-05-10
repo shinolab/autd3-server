@@ -20,91 +20,27 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         manifest_dir.join("assets/autd3.glb"),
     )?;
 
-    if cfg!(target_os = "macos") {
-        std::fs::copy(
-            manifest_dir.join("./target/x86_64-apple-darwin/release/simulator"),
-            manifest_dir.join("simulator-x86_64-apple-darwin"),
-        )?;
-        std::fs::copy(
-            manifest_dir.join("./target/aarch64-apple-darwin/release/simulator"),
-            manifest_dir.join("simulator-aarch64-apple-darwin"),
-        )?;
-        Command::new("lipo")
-            .current_dir(manifest_dir)
-            .args([
-                "-create",
-                "simulator-x86_64-apple-darwin",
-                "simulator-aarch64-apple-darwin",
-                "-output",
-                "simulator-universal-apple-darwin",
-            ])
-            .spawn()?
-            .wait()?;
+    std::fs::copy(
+        manifest_dir.join(format!("./target/release/simulator{}", ext)),
+        manifest_dir.join(format!("simulator-{}{}", std::env::var("TARGET")?, ext)),
+    )?;
+    std::fs::copy(
+        manifest_dir.join(format!("./target/release/SOEMAUTDServer{}", ext)),
+        manifest_dir.join(format!(
+            "SOEMAUTDServer-{}{}",
+            std::env::var("TARGET")?,
+            ext
+        )),
+    )?;
 
-        std::fs::copy(
-            manifest_dir.join("./target/x86_64-apple-darwin/release/SOEMAUTDServer"),
-            manifest_dir.join("SOEMAUTDServer-x86_64-apple-darwin"),
-        )?;
-        std::fs::copy(
-            manifest_dir.join("./target/aarch64-apple-darwin/release/SOEMAUTDServer"),
-            manifest_dir.join("SOEMAUTDServer-aarch64-apple-darwin"),
-        )?;
-        Command::new("lipo")
-            .current_dir(manifest_dir)
-            .args([
-                "-create",
-                "SOEMAUTDServer-x86_64-apple-darwin",
-                "SOEMAUTDServer-aarch64-apple-darwin",
-                "-output",
-                "SOEMAUTDServer-universal-apple-darwin",
-            ])
-            .spawn()?
-            .wait()?;
-    } else {
-        std::fs::copy(
-            manifest_dir.join(format!("./target/release/simulator{}", ext)),
-            manifest_dir.join(format!("simulator-{}{}", std::env::var("TARGET")?, ext)),
-        )?;
-        std::fs::copy(
-            manifest_dir.join(format!("./target/release/SOEMAUTDServer{}", ext)),
-            manifest_dir.join(format!(
-                "SOEMAUTDServer-{}{}",
-                std::env::var("TARGET")?,
-                ext
-            )),
-        )?;
-    };
-
-    if cfg!(target_os = "macos") {
-        std::fs::copy(
-            manifest_dir.join("./target/x86_64-apple-darwin/release/simulator-unity"),
-            manifest_dir.join("simulator-unity-x86_64-apple-darwin"),
-        )?;
-        std::fs::copy(
-            manifest_dir.join("./target/aarch64-apple-darwin/release/simulator-unity"),
-            manifest_dir.join("simulator-unity-aarch64-apple-darwin"),
-        )?;
-        Command::new("lipo")
-            .current_dir(manifest_dir)
-            .args([
-                "-create",
-                "simulator-unity-x86_64-apple-darwin",
-                "simulator-unity-aarch64-apple-darwin",
-                "-output",
-                "simulator-unity-universal-apple-darwin",
-            ])
-            .spawn()?
-            .wait()?;
-    } else {
-        std::fs::copy(
-            manifest_dir.join(format!("./target/release/simulator-unity{}", ext)),
-            manifest_dir.join(format!(
-                "simulator-unity-{}{}",
-                std::env::var("TARGET")?,
-                ext
-            )),
-        )?;
-    };
+    std::fs::copy(
+        manifest_dir.join(format!("./target/release/simulator-unity{}", ext)),
+        manifest_dir.join(format!(
+            "simulator-unity-{}{}",
+            std::env::var("TARGET")?,
+            ext
+        )),
+    )?;
 
     // NOTICE
     let notice_path = manifest_dir.join("NOTICE");
