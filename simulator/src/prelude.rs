@@ -2,10 +2,8 @@ pub(crate) use std::{
     collections::HashMap, f32::consts::PI, ffi::CString, path::PathBuf, sync::Arc, time::Instant,
 };
 
-pub(crate) use autd3_driver::{
-    autd3_device::AUTD3, defined::ULTRASOUND_FREQUENCY, fpga::FPGA_CLK_FREQ, geometry::Geometry,
-};
-pub(crate) use autd3_firmware_emulator::{CPUEmulator, FPGAEmulator};
+pub(crate) use autd3_driver::{autd3_device::AUTD3, geometry::Geometry};
+pub(crate) use autd3_firmware_emulator::CPUEmulator;
 
 pub(crate) use bytemuck::{Pod, Zeroable};
 pub(crate) use camera_controllers::{Camera, CameraPerspective, FirstPerson, FirstPersonSettings};

@@ -17,8 +17,11 @@ use crate::{
     viewer_settings::ViewerSettings,
     Quaternion, Vector3,
 };
-use autd3_driver::{cpu::TxDatagram, defined::T4010A1_AMPLITUDE};
-use autd3_firmware_emulator::{CPUEmulator, FPGAEmulator};
+use autd3_driver::{
+    defined::{Hz, T4010A1_AMPLITUDE},
+    firmware::cpu::TxDatagram,
+};
+use autd3_firmware_emulator::CPUEmulator;
 use crossbeam_channel::{bounded, Receiver, Sender, TryRecvError};
 use vulkano::{
     command_buffer::{AutoCommandBufferBuilder, CommandBufferUsage, RenderPassBeginInfo},
@@ -44,7 +47,7 @@ enum Signal {
 }
 
 struct SimulatorServer {
-    rx_buf: Arc<RwLock<Vec<autd3_driver::cpu::RxMessage>>>,
+    rx_buf: Arc<RwLock<Vec<autd3_driver::firmware::cpu::RxMessage>>>,
     sender: Sender<Signal>,
 }
 
@@ -172,13 +175,6 @@ impl Simulator {
         &self.settings
     }
 
-    /// Run Simulator
-    ///
-    /// # Returns
-    ///
-    /// ## Platform-specific
-    ///
-    /// X11 / Wayland: This function returns 1 upon disconnection from the display server.
     pub fn run(&mut self) -> anyhow::Result<i32> {
         tracing::info!("Initializing window...");
 
@@ -222,7 +218,7 @@ impl Simulator {
     fn run_simulator(
         &mut self,
         server_th: std::thread::JoinHandle<Result<(), tonic::transport::Error>>,
-        rx_buf: Arc<RwLock<Vec<autd3_driver::cpu::RxMessage>>>,
+        rx_buf: Arc<RwLock<Vec<autd3_driver::firmware::cpu::RxMessage>>>,
         receiver: Receiver<Signal>,
         shutdown: tokio::sync::oneshot::Sender<()>,
     ) -> anyhow::Result<i32> {
@@ -265,7 +261,7 @@ impl Simulator {
                         .iter_mut()
                         .zip(cpus.iter())
                         .for_each(|(d, s)| {
-                            *d = autd3_driver::cpu::RxMessage::new(s.ack(), s.rx_data());
+                            *d = s.rx();
                         });
                 }
 
@@ -285,7 +281,13 @@ impl Simulator {
                                     to_gl_rot(Quaternion::new(
                                         r.w as _, r.i as _, r.j as _, r.k as _,
                                     )),
-                                    Drive::new(1.0, 0.0, 1.0, self.settings.sound_speed),
+                                    Drive::new(
+                                        1.0,
+                                        0.0,
+                                        1.0,
+                                        40000 * Hz,
+                                        self.settings.sound_speed,
+                                    ),
                                     1.0,
                                 );
                             });
@@ -306,7 +308,10 @@ impl Simulator {
                             .collect::<Vec<_>>();
 
                         *rx_buf.write().unwrap() =
-                            vec![autd3_driver::cpu::RxMessage::new(0, 0); geometry.num_devices()];
+                            vec![
+                                autd3_driver::firmware::cpu::RxMessage::new(0, 0);
+                                geometry.num_devices()
+                            ];
 
                         field_compute_pipeline.init(&render, &sources)?;
                         trans_viewer.init(&render, &sources)?;
@@ -350,7 +355,7 @@ impl Simulator {
                             .iter_mut()
                             .zip(cpus.iter())
                             .for_each(|(d, s)| {
-                                *d = autd3_driver::cpu::RxMessage::new(s.ack(), s.rx_data());
+                                *d = s.rx();
                             });
 
                         is_source_update = true;
@@ -393,7 +398,7 @@ impl Simulator {
                             .to_logical::<u32>(render.window().scale_factor())
                             .to_physical(scale_factor);
                         render.resize();
-                        let event_imgui: Event<'_, ()> = Event::WindowEvent {
+                        let event_imgui: Event<()> = Event::WindowEvent {
                             window_id,
                             event: WindowEvent::ScaleFactorChanged {
                                 scale_factor,
@@ -480,14 +485,14 @@ impl Simulator {
                                 }
 
                                 if update_flag.contains(UpdateFlag::UPDATE_SOURCE_DRIVE) {
-                                    cpus.iter().for_each(|cpu| {
+                                    cpus.iter().try_for_each(|cpu| -> anyhow::Result<()> {
                                         let stm_segment = cpu.fpga().current_stm_segment();
                                         let idx = if cpu.fpga().stm_cycle(stm_segment) == 1 {
                                             0
                                         } else {
                                             cpu.fpga().stm_idx_from_systime(
                                                 stm_segment,
-                                                imgui.system_time(),
+                                                imgui.system_time()?,
                                             )
                                         };
                                         let drives = cpu.fpga().drives(stm_segment, idx);
@@ -495,11 +500,11 @@ impl Simulator {
                                         let m = if self.settings.mod_enable {
                                             let mod_idx = cpu.fpga().mod_idx_from_systime(
                                                 mod_segment,
-                                                imgui.system_time(),
+                                                imgui.system_time()?,
                                             );
                                             cpu.fpga().modulation_at(mod_segment, mod_idx)
                                         } else {
-                                            autd3::prelude::EmitIntensity::MAX
+                                            u8::MAX
                                         };
                                         sources
                                             .drives_mut()
@@ -508,17 +513,21 @@ impl Simulator {
                                             .enumerate()
                                             .for_each(|(i, d)| {
                                                 d.amp = (PI
-                                                    * FPGAEmulator::to_pulse_width(
-                                                        drives[i].intensity(),
-                                                        m,
-                                                    )
+                                                    * cpu
+                                                        .fpga()
+                                                        .to_pulse_width(drives[i].intensity(), m)
                                                         as f32
                                                     / 512.0)
                                                     .sin();
                                                 d.phase = drives[i].phase().radian() as f32;
-                                                d.set_wave_number(self.settings.sound_speed);
+                                                d.set_wave_number(
+                                                    cpu.fpga().ultrasound_freq(),
+                                                    self.settings.sound_speed,
+                                                );
                                             });
-                                    });
+
+                                        Ok(())
+                                    })?;
                                 }
 
                                 field_compute_pipeline.update(
