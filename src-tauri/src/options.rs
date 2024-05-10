@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 
-use autd3_driver::{sync_mode::SyncMode, timer_strategy::TimerStrategy};
+use autd3_driver::ethercat::SyncMode;
+use autd3_link_soem::TimerStrategy;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TwinCATOptions {

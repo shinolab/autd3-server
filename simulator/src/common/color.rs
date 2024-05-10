@@ -1,6 +1,5 @@
 pub trait Color {
     fn rgba(&self) -> [f32; 4];
-    fn hsva(&self) -> [f32; 4];
 }
 
 pub struct Hsv {
@@ -35,9 +34,5 @@ impl Color for Hsv {
             5 => [v, p, q, alpha],
             _ => unreachable!(),
         }
-    }
-
-    fn hsva(&self) -> [f32; 4] {
-        [self.h, self.s, self.v, self.a]
     }
 }

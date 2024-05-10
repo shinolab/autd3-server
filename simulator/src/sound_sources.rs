@@ -1,3 +1,5 @@
+use autd3_driver::defined::Freq;
+
 use crate::prelude::*;
 
 #[repr(C)]
@@ -10,21 +12,27 @@ pub struct Drive {
 }
 
 impl Drive {
-    pub fn new(amp: f32, phase: f32, enable: f32, sound_speed: f32) -> Self {
+    pub fn new(
+        amp: f32,
+        phase: f32,
+        enable: f32,
+        ultrasound_freq: Freq<u32>,
+        sound_speed: f32,
+    ) -> Self {
         Self {
             amp,
             phase,
             enable,
-            wave_num: Self::to_wave_number(sound_speed),
+            wave_num: Self::to_wave_number(ultrasound_freq, sound_speed),
         }
     }
 
-    pub fn set_wave_number(&mut self, sound_speed: f32) {
-        self.wave_num = Self::to_wave_number(sound_speed);
+    pub fn set_wave_number(&mut self, ultrasound_freq: Freq<u32>, sound_speed: f32) {
+        self.wave_num = Self::to_wave_number(ultrasound_freq, sound_speed);
     }
 
-    fn to_wave_number(sound_speed: f32) -> f32 {
-        2.0 * PI * ULTRASOUND_FREQUENCY as f32 / sound_speed
+    fn to_wave_number(ultrasound_freq: Freq<u32>, sound_speed: f32) -> f32 {
+        2.0 * PI * ultrasound_freq.hz() as f32 / sound_speed
     }
 }
 

@@ -165,8 +165,8 @@ async fn run_twincat_server(
         twincat_options.base.to_string(),
         "-m".to_string(),
         match twincat_options.mode {
-            autd3_driver::sync_mode::SyncMode::DC => "DC".to_string(),
-            autd3_driver::sync_mode::SyncMode::FreeRun => "FreeRun".to_string(),
+            autd3_driver::ethercat::SyncMode::DC => "DC".to_string(),
+            autd3_driver::ethercat::SyncMode::FreeRun => "FreeRun".to_string(),
         },
     ];
     if twincat_options.keep {

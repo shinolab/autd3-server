@@ -1,5 +1,7 @@
 mod components;
 
+use autd3::derive::AUTDInternalError;
+use autd3_driver::ethercat::{DcSysTime, ECAT_DC_SYS_TIME_BASE};
 use components::*;
 
 use crate::prelude::*;
@@ -62,7 +64,7 @@ impl ImGuiViewer {
             visible: Vec::new(),
             enable: Vec::new(),
             thermal: Vec::new(),
-            real_time: FPGAEmulator::ec_time_now(),
+            real_time: DcSysTime::now().sys_time(),
             time_step: 1000000,
             show_mod_plot: Vec::new(),
             mod_plot_size: Vec::new(),
@@ -158,7 +160,7 @@ impl ImGuiViewer {
 
         self.platform.prepare_frame(io, render.window())?;
 
-        let system_time = FPGAEmulator::systime(self.real_time);
+        let system_time = self.system_time()?;
         let ui = self.imgui.new_frame();
 
         Self::update_camera(ui, settings);
@@ -433,7 +435,10 @@ impl ImGuiViewer {
                                 cpus.iter().for_each(|cpu| {
                                     sources.drives_mut().skip(body_pointer[cpu.idx()]).for_each(
                                         |s| {
-                                            s.set_wave_number(settings.sound_speed);
+                                            s.set_wave_number(
+                                                cpu.fpga().ultrasound_freq(),
+                                                settings.sound_speed,
+                                            );
                                         },
                                     );
                                 });
@@ -584,19 +589,17 @@ impl ImGuiViewer {
                                         ui.text(format!("Size: {}", mod_size));
                                         ui.text(format!(
                                             "Frequency division: {}",
-                                            cpu.fpga().modulation_frequency_division(segment)
+                                            cpu.fpga().modulation_freq_division(segment)
                                         ));
-                                        let sampling_freq = FPGA_CLK_FREQ as f32
-                                            / cpu.fpga().modulation_frequency_division(segment)
-                                                as f32;
+                                        let sampling_freq = cpu.fpga().fpga_clk_freq().hz() as f32
+                                            / cpu.fpga().modulation_freq_division(segment) as f32;
                                         ui.text(format!(
                                             "Sampling Frequency: {:.3} [Hz]",
                                             sampling_freq
                                         ));
                                         let sampling_period = 1000000.0
-                                            * cpu.fpga().modulation_frequency_division(segment)
-                                                as f32
-                                            / FPGA_CLK_FREQ as f32;
+                                            * cpu.fpga().modulation_freq_division(segment) as f32
+                                            / cpu.fpga().fpga_clk_freq().hz() as f32;
                                         ui.text(format!(
                                             "Sampling period: {:.3} [us]",
                                             sampling_period
@@ -610,10 +613,10 @@ impl ImGuiViewer {
                                         ));
 
                                         if !m.is_empty() {
-                                            ui.text(format!("mod[0]: {}", m[0].value()));
+                                            ui.text(format!("mod[0]: {}", m[0]));
                                         }
                                         if mod_size == 2 || mod_size == 3 {
-                                            ui.text(format!("mod[1]: {}", m[1].value()));
+                                            ui.text(format!("mod[1]: {}", m[1]));
                                         } else if mod_size > 3 {
                                             ui.text("...");
                                         }
@@ -621,7 +624,7 @@ impl ImGuiViewer {
                                             ui.text(format!(
                                                 "mod[{}]: {}",
                                                 mod_size - 1,
-                                                m[mod_size - 1].value()
+                                                m[mod_size - 1]
                                             ));
                                         }
 
@@ -633,10 +636,8 @@ impl ImGuiViewer {
                                                 !self.show_mod_plot[cpu.idx()];
                                         }
                                         if self.show_mod_plot[cpu.idx()] {
-                                            let mod_v: Vec<f32> = m
-                                                .iter()
-                                                .map(|&v| v.value() as f32 / 255.0)
-                                                .collect();
+                                            let mod_v: Vec<f32> =
+                                                m.iter().map(|&v| v as f32 / 255.0).collect();
                                             ui.plot_lines(
                                                 format!("##mod plot{}", cpu.idx()),
                                                 &mod_v,
@@ -696,17 +697,17 @@ impl ImGuiViewer {
                                         ui.text(format!("Size: {}", stm_size));
                                         ui.text(format!(
                                             "Frequency division: {}",
-                                            cpu.fpga().stm_frequency_division(segment)
+                                            cpu.fpga().stm_freq_division(segment)
                                         ));
-                                        let sampling_freq = FPGA_CLK_FREQ as f32
-                                            / cpu.fpga().stm_frequency_division(segment) as f32;
+                                        let sampling_freq = cpu.fpga().fpga_clk_freq().hz() as f32
+                                            / cpu.fpga().stm_freq_division(segment) as f32;
                                         ui.text(format!(
                                             "Sampling Frequency: {:.3} [Hz]",
                                             sampling_freq
                                         ));
                                         let sampling_period = 1000000.0
-                                            * cpu.fpga().stm_frequency_division(segment) as f32
-                                            / FPGA_CLK_FREQ as f32;
+                                            * cpu.fpga().stm_freq_division(segment) as f32
+                                            / cpu.fpga().fpga_clk_freq().hz() as f32;
                                         ui.text(format!(
                                             "Sampling period: {:.3} [us]",
                                             sampling_period
@@ -802,7 +803,7 @@ impl ImGuiViewer {
 
         if settings.auto_play {
             update_flag.set(UpdateFlag::UPDATE_SOURCE_DRIVE, true);
-            self.real_time = (FPGAEmulator::ec_time_now() as f64 * settings.time_scale as f64) as _;
+            self.real_time = (DcSysTime::now().sys_time() as f64 * settings.time_scale as f64) as _;
         }
 
         self.font_size = font_size;
@@ -873,8 +874,8 @@ impl ImGuiViewer {
         &self.visible
     }
 
-    pub(crate) fn system_time(&self) -> u64 {
-        FPGAEmulator::systime(self.real_time)
+    pub(crate) fn system_time(&self) -> Result<DcSysTime, AUTDInternalError> {
+        DcSysTime::from_utc(ECAT_DC_SYS_TIME_BASE + std::time::Duration::from_nanos(self.real_time))
     }
 
     fn create_color_map_texture(
