@@ -67,11 +67,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      - name: fetch submodule
+        run: |
+          git submodule update --init --recursive autd3
 
       - name: Setup
         uses: ./.github/actions/setup-build
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           os: ${{ matrix.os }}
 
       - name: install dependencies (ubuntu only)

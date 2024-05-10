@@ -19,6 +19,7 @@ jobs:
         id: changed-files
         with:
           files: |
+            .github/actions/setup-build/action.yml
             .github/workflows/build.yml
             ./**/*.rs
             ./**/*.toml
@@ -37,19 +38,15 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      - name: fetch submodule
+        run: |
+          git submodule update --init --recursive autd3
 
       - name: Setup
         if: needs.check-src.outputs.status
         uses: ./.github/actions/setup-build
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           os: ${{ matrix.os }}
-
-      - name: Rust cache
-        if: needs.check-src.outputs.status
-        uses: swatinem/rust-cache@v2
-        with:
-          workspaces: './src-tauri -> target'
 
       - name: install dependencies (ubuntu only)
         if: needs.check-src.outputs.status && matrix.os == 'ubuntu-latest'

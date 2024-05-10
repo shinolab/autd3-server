@@ -1,9 +1,5 @@
 name: 'build tools setup action'
 inputs:
-  github-token:
-    description: 'GITHUB_TOKEN'
-    required: true
-    default: ''
   os:
     description: 'os'
     required: true
@@ -47,7 +43,6 @@ runs:
         tar -xzf shaderc.tgz
         echo "SHADERC_LIB_DIR=$GITHUB_WORKSPACE/install/lib" >> $GITHUB_ENV
         echo "DYLD_LIBRARY_PATH=$GITHUB_WORKSPACE/install/lib" >> $GITHUB_ENV
-        cp install/lib/*.dylib /usr/local/lib/
         rm shaderc.tgz
 
     - name: install aarch64 target on macos
