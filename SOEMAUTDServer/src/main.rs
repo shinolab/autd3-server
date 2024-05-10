@@ -5,11 +5,10 @@ mod log_formatter;
 use log_formatter::LogFormatter;
 
 use autd3_driver::{
-    cpu::TxDatagram,
+    firmware::cpu::TxDatagram,
     link::{Link, LinkBuilder},
-    timer_strategy::TimerStrategy,
 };
-use autd3_link_soem::{SyncMode, SOEM};
+use autd3_link_soem::{SyncMode, TimerStrategy, SOEM};
 use autd3_protobuf::*;
 
 use clap::{Args, Parser, Subcommand, ValueEnum};
@@ -109,7 +108,7 @@ impl ecat_server::Ecat for SOEMServer {
     }
 
     async fn read_data(&self, _: Request<ReadRequest>) -> Result<Response<RxMessage>, Status> {
-        let mut rx = vec![autd3_driver::cpu::RxMessage::new(0, 0); self.num_dev];
+        let mut rx = vec![autd3_driver::firmware::cpu::RxMessage::new(0, 0); self.num_dev];
         Link::receive(&mut *self.soem.write().await, &mut rx)
             .await
             .unwrap_or(false);
