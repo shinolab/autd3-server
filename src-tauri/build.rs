@@ -2,7 +2,6 @@ use std::{
     fs::File,
     io::{BufReader, BufWriter, Read, Write},
     path::Path,
-    process::Command,
 };
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
