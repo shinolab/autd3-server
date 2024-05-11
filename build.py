@@ -126,10 +126,6 @@ class Config:
 def server_build(args):
     config = Config(args)
 
-    if not config.shaderc:
-        err("shaderc is not installed. Cannot build simulator.")
-        sys.exit(-1)
-
     shell = True if config.is_windows() else False
 
     with working_dir("simulator"):

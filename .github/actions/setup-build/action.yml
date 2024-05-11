@@ -22,7 +22,7 @@ runs:
       shell: pwsh
       if: inputs.os == 'windows-latest'
       run: |
-        Invoke-WebRequest -URI https://storage.googleapis.com/shaderc/artifacts/prod/graphics_shader_compiler/shaderc/windows/continuous_release_2019/10/20230531-104731/install.zip -OutFile shaderc.zip
+        Invoke-WebRequest -URI https://storage.googleapis.com/shaderc/artifacts/prod/graphics_shader_compiler/shaderc/windows/continuous_release_2019/44/20240430-112613/install.zip -OutFile shaderc.zip
         Expand-Archive -Path shaderc.zip -DestinationPath shaderc
         echo "SHADERC_LIB_DIR=$Env:GITHUB_WORKSPACE/shaderc/install/lib" >> $Env:GITHUB_ENV
         rm shaderc.zip
@@ -30,7 +30,7 @@ runs:
       shell: bash
       if: inputs.os == 'ubuntu-latest'
       run: |
-        curl -L https://storage.googleapis.com/shaderc/artifacts/prod/graphics_shader_compiler/shaderc/linux/continuous_clang_release/418/20230531-104531/install.tgz > shaderc.tgz
+        curl -L https://storage.googleapis.com/shaderc/artifacts/prod/graphics_shader_compiler/shaderc/linux/continuous_clang_release/453/20240430-112351/install.tgz > shaderc.tgz
         tar -xzf shaderc.tgz
         echo "SHADERC_LIB_DIR=$GITHUB_WORKSPACE/install/lib" >> $GITHUB_ENV
         echo "LD_LIBRARY_PATH=$GITHUB_WORKSPACE/install/lib" >> $GITHUB_ENV
@@ -39,11 +39,7 @@ runs:
       shell: bash
       if: inputs.os == 'macos-latest'
       run: |
-        curl -L https://storage.googleapis.com/shaderc/artifacts/prod/graphics_shader_compiler/shaderc/macos/continuous_clang_release/426/20230531-104534/install.tgz > shaderc.tgz
-        tar -xzf shaderc.tgz
-        echo "SHADERC_LIB_DIR=$GITHUB_WORKSPACE/install/lib" >> $GITHUB_ENV
-        echo "DYLD_LIBRARY_PATH=$GITHUB_WORKSPACE/install/lib" >> $GITHUB_ENV
-        rm shaderc.tgz
+        brew install git cmake ninja python@3.8
 
     - name: install dependencies
       shell: bash
