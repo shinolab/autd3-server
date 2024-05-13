@@ -1,6 +1,6 @@
 [package]
 name = "simulator"
-version = "23.0.0"
+version = "23.1.0"
 edition = "2021"
 authors = ["shun suzuki <suzuki@hapis.k.u-tokyo.ac.jp>"]
 
