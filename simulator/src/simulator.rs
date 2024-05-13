@@ -255,7 +255,15 @@ impl Simulator {
 
         let res = event_loop.run_return(move |event, _, control_flow| {
             let mut run_loop = |event, control_flow: &mut ControlFlow| -> anyhow::Result<()> {
-                cpus.iter_mut().for_each(CPUEmulator::update);
+                if self.settings.auto_play {
+                    cpus.iter_mut().for_each(CPUEmulator::update);
+                } else {
+                    cpus.iter_mut().try_for_each(|cpu| -> anyhow::Result<()> {
+                        cpu.update_with_sys_time(imgui.system_time()?);
+                        Ok(())
+                    })?;
+                }
+
                 if cpus.iter().any(CPUEmulator::should_update) {
                     rx_buf
                         .write()
@@ -492,18 +500,12 @@ impl Simulator {
                                         let idx = if cpu.fpga().stm_cycle(stm_segment) == 1 {
                                             0
                                         } else {
-                                            cpu.fpga().stm_idx_from_systime(
-                                                stm_segment,
-                                                imgui.system_time()?,
-                                            )
+                                            cpu.fpga().current_stm_idx()
                                         };
                                         let drives = cpu.fpga().drives(stm_segment, idx);
                                         let mod_segment = cpu.fpga().current_mod_segment();
                                         let m = if self.settings.mod_enable {
-                                            let mod_idx = cpu.fpga().mod_idx_from_systime(
-                                                mod_segment,
-                                                imgui.system_time()?,
-                                            );
+                                            let mod_idx = cpu.fpga().current_mod_idx();
                                             cpu.fpga().modulation_at(mod_segment, mod_idx)
                                         } else {
                                             u8::MAX

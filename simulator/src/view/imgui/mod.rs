@@ -1,7 +1,10 @@
 mod components;
 
 use autd3::derive::AUTDInternalError;
-use autd3_driver::ethercat::{DcSysTime, ECAT_DC_SYS_TIME_BASE};
+use autd3_driver::{
+    ethercat::{DcSysTime, ECAT_DC_SYS_TIME_BASE},
+    firmware::fpga::ULTRASOUND_PERIOD,
+};
 use components::*;
 
 use crate::prelude::*;
@@ -160,7 +163,6 @@ impl ImGuiViewer {
 
         self.platform.prepare_frame(io, render.window())?;
 
-        let system_time = self.system_time()?;
         let ui = self.imgui.new_frame();
 
         Self::update_camera(ui, settings);
@@ -556,34 +558,43 @@ impl ImGuiViewer {
                                     format!("Device {}", cpu.idx()),
                                     TreeNodeFlags::DEFAULT_OPEN,
                                 ) {
-                                    ui.text("Silencer");
-                                    if cpu.fpga().silencer_fixed_completion_steps_mode() {
-                                        ui.text(format!(
-                                            "Completion steps intensity: {}",
-                                            cpu.fpga().silencer_completion_steps_intensity()
-                                        ));
-                                        ui.text(format!(
-                                            "Completion steps phase: {}",
-                                            cpu.fpga().silencer_completion_steps_phase()
-                                        ));
-                                    } else {
-                                        ui.text(format!(
-                                            "Update rate intensity: {}",
-                                            cpu.fpga().silencer_update_rate_intensity()
-                                        ));
-                                        ui.text(format!(
-                                            "Update rate phase: {}",
-                                            cpu.fpga().silencer_update_rate_phase()
-                                        ));
+                                    ui.dummy([10.0, 0.0]);
+                                    ui.same_line();
+                                    let g = ui.begin_group();
+                                    if ui.collapsing_header(
+                                        format!("Silencer##{}", cpu.idx()),
+                                        TreeNodeFlags::DEFAULT_OPEN,
+                                    ) {
+                                        if cpu.fpga().silencer_fixed_completion_steps_mode() {
+                                            ui.text(format!(
+                                                "Completion steps intensity: {}",
+                                                cpu.fpga().silencer_completion_steps_intensity()
+                                            ));
+                                            ui.text(format!(
+                                                "Completion steps phase: {}",
+                                                cpu.fpga().silencer_completion_steps_phase()
+                                            ));
+                                        } else {
+                                            ui.text(format!(
+                                                "Update rate intensity: {}",
+                                                cpu.fpga().silencer_update_rate_intensity()
+                                            ));
+                                            ui.text(format!(
+                                                "Update rate phase: {}",
+                                                cpu.fpga().silencer_update_rate_phase()
+                                            ));
+                                        }
                                     }
 
-                                    {
+                                    if ui.collapsing_header(
+                                        format!("Modulation##{}", cpu.idx()),
+                                        TreeNodeFlags::DEFAULT_OPEN,
+                                    ) {
                                         ui.separator();
 
                                         let segment = cpu.fpga().current_mod_segment();
 
                                         let m = cpu.fpga().modulation(segment);
-                                        ui.text("Modulation");
 
                                         let mod_size = m.len();
                                         ui.text(format!("Size: {}", mod_size));
@@ -609,7 +620,7 @@ impl ImGuiViewer {
 
                                         ui.text(format!(
                                             "Current Index: {}",
-                                            cpu.fpga().mod_idx_from_systime(segment, system_time)
+                                            cpu.fpga().current_mod_idx()
                                         ));
 
                                         if !m.is_empty() {
@@ -659,67 +670,193 @@ impl ImGuiViewer {
                                         }
                                     }
 
-                                    ui.separator();
+                                    if ui.collapsing_header(
+                                        format!("STM##{}", cpu.idx()),
+                                        TreeNodeFlags::DEFAULT_OPEN,
+                                    ) {
+                                        ui.separator();
 
-                                    let segment = cpu.fpga().current_stm_segment();
+                                        let segment = cpu.fpga().current_stm_segment();
 
-                                    let stm_cycle = cpu.fpga().stm_cycle(segment);
+                                        let stm_cycle = cpu.fpga().stm_cycle(segment);
 
-                                    let is_gain_mode = stm_cycle == 1;
+                                        let is_gain_mode = stm_cycle == 1;
 
-                                    if is_gain_mode {
-                                        ui.text("Gain");
-                                    } else if cpu.fpga().is_stm_gain_mode(segment) {
-                                        ui.text("Gain STM");
-                                    } else {
-                                        ui.text("Focus STM");
-                                        #[cfg(feature = "use_meter")]
-                                        ui.text(format!(
-                                            "Sound speed: {:.3} [m/s]",
-                                            cpu.fpga().sound_speed(segment) as f32 / 1024.0
-                                        ));
-                                        #[cfg(not(feature = "use_meter"))]
-                                        ui.text(format!(
-                                            "Sound speed: {:.3} [mm/s]",
-                                            cpu.fpga().sound_speed(segment) as f32 * 1000. / 1024.0
-                                        ));
+                                        if is_gain_mode {
+                                            ui.text("Gain");
+                                        } else if cpu.fpga().is_stm_gain_mode(segment) {
+                                            ui.text("Gain STM");
+                                        } else {
+                                            ui.text("Focus STM");
+                                            #[cfg(feature = "use_meter")]
+                                            ui.text(format!(
+                                                "Sound speed: {:.3} [m/s]",
+                                                cpu.fpga().sound_speed(segment) as f32 / 1024.0
+                                            ));
+                                            #[cfg(not(feature = "use_meter"))]
+                                            ui.text(format!(
+                                                "Sound speed: {:.3} [mm/s]",
+                                                cpu.fpga().sound_speed(segment) as f32 * 1000.
+                                                    / 1024.0
+                                            ));
+                                        }
+
+                                        ui.text(format!("Segment: {:?}", segment));
+
+                                        if !is_gain_mode {
+                                            ui.text(format!(
+                                                "LoopBehavior: {:?}",
+                                                cpu.fpga().stm_loop_behavior(segment)
+                                            ));
+
+                                            let stm_size = cpu.fpga().stm_cycle(segment);
+                                            ui.text(format!("Size: {}", stm_size));
+                                            ui.text(format!(
+                                                "Frequency division: {}",
+                                                cpu.fpga().stm_freq_division(segment)
+                                            ));
+                                            let sampling_freq = cpu.fpga().fpga_clk_freq().hz()
+                                                as f32
+                                                / cpu.fpga().stm_freq_division(segment) as f32;
+                                            ui.text(format!(
+                                                "Sampling Frequency: {:.3} [Hz]",
+                                                sampling_freq
+                                            ));
+                                            let sampling_period = 1000000.0
+                                                * cpu.fpga().stm_freq_division(segment) as f32
+                                                / cpu.fpga().fpga_clk_freq().hz() as f32;
+                                            ui.text(format!(
+                                                "Sampling period: {:.3} [us]",
+                                                sampling_period
+                                            ));
+                                            let period = sampling_period / stm_size as f32;
+                                            ui.text(format!("Period: {:.3} [us]", period));
+
+                                            ui.text(format!(
+                                                "Current Index: {}",
+                                                cpu.fpga().current_stm_idx()
+                                            ));
+                                        }
                                     }
 
-                                    ui.text(format!("Segment: {:?}", segment));
+                                    if ui.collapsing_header(
+                                        format!("GPIO OUT##{}", cpu.idx()),
+                                        TreeNodeFlags::empty(),
+                                    ) {
+                                        let debug_types = cpu.fpga().debug_types();
+                                        let debug_values = cpu.fpga().debug_values();
+                                        let gpio_out = |ty, value| match ty {
+                                            autd3_firmware_emulator::fpga::params::DBG_NONE => {
+                                                vec![0.0; ULTRASOUND_PERIOD as usize]
+                                            }
+                                            autd3_firmware_emulator::fpga::params::DBG_BASE_SIG => {
+                                                [
+                                                    vec![0.0; ULTRASOUND_PERIOD as usize / 2],
+                                                    vec![1.0; ULTRASOUND_PERIOD as usize / 2],
+                                                ]
+                                                .concat()
+                                            }
+                                            autd3_firmware_emulator::fpga::params::DBG_THERMO => {
+                                                vec![
+                                                    if cpu.fpga().is_thermo_asserted() {
+                                                        1.0
+                                                    } else {
+                                                        0.0
+                                                    };
+                                                    ULTRASOUND_PERIOD as usize
+                                                ]
+                                            }
+                                            autd3_firmware_emulator::fpga::params::DBG_FORCE_FAN => {
+                                                vec![
+                                                    if cpu.fpga().is_force_fan() {
+                                                        1.0
+                                                    } else {
+                                                        0.0
+                                                    };
+                                                    ULTRASOUND_PERIOD as usize
+                                                ]
+                                            }
+                                            autd3_firmware_emulator::fpga::params::DBG_SYNC => {
+                                                vec![0.0; ULTRASOUND_PERIOD as usize]
+                                            }
+                                            autd3_firmware_emulator::fpga::params::DBG_MOD_SEGMENT => {
+                                                vec![match cpu.fpga().current_mod_segment() {
+                                                    autd3::derive::Segment::S0 => 0.0,
+                                                    autd3::derive::Segment::S1 => 1.0,
+                                                }; ULTRASOUND_PERIOD as usize]
 
-                                    if !is_gain_mode {
-                                        ui.text(format!(
-                                            "LoopBehavior: {:?}",
-                                            cpu.fpga().stm_loop_behavior(segment)
-                                        ));
+                                            }
+                                            autd3_firmware_emulator::fpga::params::DBG_MOD_IDX => {
+                                                vec![if cpu.fpga().current_mod_idx() == 0 {
+                                                    1.0
+                                                } else {
+                                                    0.0
+                                                }; ULTRASOUND_PERIOD as usize]
+                                            }
+                                            autd3_firmware_emulator::fpga::params::DBG_STM_SEGMENT => {
+                                                vec![match cpu.fpga().current_stm_segment() {
+                                                    autd3::derive::Segment::S0 => 0.0,
+                                                    autd3::derive::Segment::S1 => 1.0,
+                                                }; ULTRASOUND_PERIOD as usize]
 
-                                        let stm_size = cpu.fpga().stm_cycle(segment);
-                                        ui.text(format!("Size: {}", stm_size));
-                                        ui.text(format!(
-                                            "Frequency division: {}",
-                                            cpu.fpga().stm_freq_division(segment)
-                                        ));
-                                        let sampling_freq = cpu.fpga().fpga_clk_freq().hz() as f32
-                                            / cpu.fpga().stm_freq_division(segment) as f32;
-                                        ui.text(format!(
-                                            "Sampling Frequency: {:.3} [Hz]",
-                                            sampling_freq
-                                        ));
-                                        let sampling_period = 1000000.0
-                                            * cpu.fpga().stm_freq_division(segment) as f32
-                                            / cpu.fpga().fpga_clk_freq().hz() as f32;
-                                        ui.text(format!(
-                                            "Sampling period: {:.3} [us]",
-                                            sampling_period
-                                        ));
-                                        let period = sampling_period / stm_size as f32;
-                                        ui.text(format!("Period: {:.3} [us]", period));
+                                            }
+                                            autd3_firmware_emulator::fpga::params::DBG_STM_IDX => {
+                                                vec![if cpu.fpga().current_mod_idx() == 0 {
+                                                    1.0
+                                                } else {
+                                                    0.0
+                                                }; ULTRASOUND_PERIOD as usize]
+                                            }
+                                            autd3_firmware_emulator::fpga::params::DBG_IS_STM_MODE => {
+                                                vec![if cpu.fpga().stm_cycle(cpu.fpga().current_stm_segment()) != 1 {
+                                                    1.0
+                                                } else {
+                                                    0.0
+                                                }; ULTRASOUND_PERIOD as usize]
+                                            }
+                                            autd3_firmware_emulator::fpga::params::DBG_PWM_OUT => {
+                                                let d = cpu.fpga().drives(cpu.fpga().current_stm_segment(),  cpu.fpga().current_stm_idx())[value as usize];
+                                                let m = cpu.fpga().modulation_at(cpu.fpga().current_mod_segment(), cpu.fpga().current_mod_idx());
+                                                let phase = d.phase().value() as u32;
+                                                let pulse_width = cpu.fpga().to_pulse_width(d.intensity(), m) as u32;
+                                                let rise = (ULTRASOUND_PERIOD-phase*2-pulse_width/2+ULTRASOUND_PERIOD)%ULTRASOUND_PERIOD;
+                                                let fall = (ULTRASOUND_PERIOD-phase*2+(pulse_width+1)/2+ULTRASOUND_PERIOD)%ULTRASOUND_PERIOD;
+                                                (0..ULTRASOUND_PERIOD).map(|t|
+                                                    if rise <= fall {
+                                                        if (rise <= t) && (t < fall) {
+                                                            1.0
+                                                        } else {
+                                                            0.0
+                                                        }
+                                                    } else {
+                                                        if (t < fall) || (rise <= t) {
+                                                            1.0
+                                                        } else {
+                                                            0.0
+                                                        }
+                                                    }
+                                                ).collect()
+                                            }
+                                            autd3_firmware_emulator::fpga::params::DBG_DIRECT => {
+                                                vec![value as f32; ULTRASOUND_PERIOD as usize]
+                                            }
+                                            _ => unreachable!()
+                                        };
 
-                                        ui.text(format!(
-                                            "Current Index: {}",
-                                            cpu.fpga().stm_idx_from_systime(segment, system_time)
-                                        ));
+                                        (0..4).for_each(|i| {
+                                            let gpio_out = gpio_out(debug_types[i], debug_values[i]);
+                                            ui.plot_lines(
+                                            format!("GPIO_OUT[{}]##{}", i, cpu.idx()),
+                                            &gpio_out,
+                                        )
+                                        .graph_size(self.mod_plot_size[cpu.idx()])
+                                        .scale_min(0.)
+                                        .scale_max(1.)
+                                        .build();
+                                        });
                                     }
+
+                                    g.end();
                                 }
                             });
 
