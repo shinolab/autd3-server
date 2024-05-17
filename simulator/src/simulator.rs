@@ -508,7 +508,7 @@ impl Simulator {
                                             let mod_idx = cpu.fpga().current_mod_idx();
                                             cpu.fpga().modulation_at(mod_segment, mod_idx)
                                         } else {
-                                            u8::MAX
+                                            autd3_driver::firmware::fpga::EmitIntensity::MAX
                                         };
                                         sources
                                             .drives_mut()

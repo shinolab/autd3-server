@@ -624,10 +624,10 @@ impl ImGuiViewer {
                                         ));
 
                                         if !m.is_empty() {
-                                            ui.text(format!("mod[0]: {}", m[0]));
+                                            ui.text(format!("mod[0]: {}", m[0].value()));
                                         }
                                         if mod_size == 2 || mod_size == 3 {
-                                            ui.text(format!("mod[1]: {}", m[1]));
+                                            ui.text(format!("mod[1]: {}", m[1].value()));
                                         } else if mod_size > 3 {
                                             ui.text("...");
                                         }
@@ -635,7 +635,7 @@ impl ImGuiViewer {
                                             ui.text(format!(
                                                 "mod[{}]: {}",
                                                 mod_size - 1,
-                                                m[mod_size - 1]
+                                                m[mod_size - 1].value()
                                             ));
                                         }
 
@@ -648,7 +648,7 @@ impl ImGuiViewer {
                                         }
                                         if self.show_mod_plot[cpu.idx()] {
                                             let mod_v: Vec<f32> =
-                                                m.iter().map(|&v| v as f32 / 255.0).collect();
+                                                m.iter().map(|v| v.value() as f32 / 255.0).collect();
                                             ui.plot_lines(
                                                 format!("##mod plot{}", cpu.idx()),
                                                 &mod_v,

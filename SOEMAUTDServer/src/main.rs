@@ -172,15 +172,15 @@ async fn main_() -> anyhow::Result<()> {
                     .with_sync_mode(sync_mode)
                     .with_timeout(std::time::Duration::from_millis(timeout))
                     .with_err_handler(|slave, status| match status {
-                        autd3_link_soem::Status::Error(msg) => {
-                            tracing::error!("Error [{}]: {}", slave, msg)
+                        autd3_link_soem::Status::Error => {
+                            tracing::error!("Error [{}]: {}", slave, status)
                         }
-                        autd3_link_soem::Status::Lost(msg) => {
-                            tracing::error!("Lost [{}]: {}", slave, msg);
+                        autd3_link_soem::Status::Lost => {
+                            tracing::error!("Lost [{}]: {}", slave, status);
                             std::process::exit(-1);
                         }
-                        autd3_link_soem::Status::StateChanged(msg) => {
-                            tracing::error!("StateChanged [{}]: {}", slave, msg)
+                        autd3_link_soem::Status::StateChanged => {
+                            tracing::error!("StateChanged [{}]: {}", slave, status)
                         }
                     })
             };
@@ -206,7 +206,10 @@ async fn main_() -> anyhow::Result<()> {
                 tracing::info!("Starting SOEM server...");
 
                 let soem = f()
-                    .open(&autd3_driver::geometry::Geometry::new(vec![]))
+                    .open(&autd3_driver::geometry::Geometry::new(
+                        vec![],
+                        autd3_driver::defined::FREQ_40K,
+                    ))
                     .await?;
                 let num_dev = SOEM::num_devices();
 

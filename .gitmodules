@@ -1,6 +1,3 @@
 [submodule "tools/autd3-license-check"]
 	path = tools/autd3-license-check
 	url = https://github.com/shinolab/autd3-license-check.git
-[submodule "autd3"]
-	path = autd3
-	url = https://github.com/shinolab/autd3-rs.git
