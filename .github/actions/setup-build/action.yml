@@ -28,13 +28,9 @@ runs:
         rm shaderc.zip
     - name: install shaderc
       shell: bash
-      if: inputs.os == 'ubuntu-latest'
+      if: inputs.shaderc && inputs.os == 'ubuntu-latest'
       run: |
-        curl -L https://storage.googleapis.com/shaderc/artifacts/prod/graphics_shader_compiler/shaderc/linux/continuous_clang_release/453/20240430-112351/install.tgz > shaderc.tgz
-        tar -xzf shaderc.tgz
-        echo "SHADERC_LIB_DIR=$GITHUB_WORKSPACE/install/lib" >> $GITHUB_ENV
-        echo "LD_LIBRARY_PATH=$GITHUB_WORKSPACE/install/lib" >> $GITHUB_ENV
-        rm shaderc.tgz
+        sudo apt-get install build-essential cmake git ninja-build
     - name: install shaderc
       shell: bash
       if: inputs.os == 'macos-latest'

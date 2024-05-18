@@ -38,9 +38,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - name: fetch submodule
-        run: |
-          git submodule update --init --recursive autd3
 
       - name: Setup
         if: needs.check-src.outputs.status

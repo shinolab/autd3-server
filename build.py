@@ -120,6 +120,13 @@ class Config:
         if not self.is_windows():
             if os.path.isfile(f"/usr/local/lib/{shaderc_lib_name}"):
                 return True
+        if (
+            shutil.which("git") is not None
+            and shutil.which("cmake") is not None
+            and shutil.which("python3") is not None
+            and shutil.which("ninja")
+        ):
+            return True
         return False
 
 
