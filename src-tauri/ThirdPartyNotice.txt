@@ -34,7 +34,7 @@ android_system_properties 0.1.5 (Apache-2.0 OR MIT)
 https://github.com/nical/android_system_properties
 ---------------------------------------------------------
 
-anyhow 1.0.83 (Apache-2.0 OR MIT)
+anyhow 1.0.85 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/anyhow
 ---------------------------------------------------------
 
@@ -46,7 +46,7 @@ async-broadcast 0.7.0 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/async-broadcast
 ---------------------------------------------------------
 
-async-channel 2.3.0 (Apache-2.0 OR MIT)
+async-channel 2.3.1 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/async-channel
 ---------------------------------------------------------
 
@@ -240,7 +240,7 @@ bumpalo 3.16.0 (Apache-2.0 OR MIT)
 https://github.com/fitzgen/bumpalo
 ---------------------------------------------------------
 
-bytemuck 1.15.0 (Apache-2.0 OR MIT OR Zlib)
+bytemuck 1.16.0 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/bytemuck
 ---------------------------------------------------------
 
@@ -376,15 +376,15 @@ ctor 0.2.8 (Apache-2.0 OR MIT)
 https://github.com/mmastrac/rust-ctor
 ---------------------------------------------------------
 
-darling 0.20.8 (MIT)
+darling 0.20.9 (MIT)
 https://github.com/TedDriggs/darling
 ---------------------------------------------------------
 
-darling_core 0.20.8 (MIT)
+darling_core 0.20.9 (MIT)
 https://github.com/TedDriggs/darling
 ---------------------------------------------------------
 
-darling_macro 0.20.8 (MIT)
+darling_macro 0.20.9 (MIT)
 https://github.com/TedDriggs/darling
 ---------------------------------------------------------
 
@@ -424,7 +424,7 @@ dunce 1.0.4 (Apache-2.0 OR CC0-1.0 OR MIT-0)
 https://gitlab.com/kornelski/dunce
 ---------------------------------------------------------
 
-either 1.11.0 (Apache-2.0 OR MIT)
+either 1.12.0 (Apache-2.0 OR MIT)
 https://github.com/rayon-rs/either
 ---------------------------------------------------------
 
@@ -728,7 +728,7 @@ infer 0.13.0 (MIT)
 https://github.com/bojand/infer
 ---------------------------------------------------------
 
-instant 0.1.12 (BSD-3-Clause)
+instant 0.1.13 (BSD-3-Clause)
 https://github.com/sebcrozet/instant
 ---------------------------------------------------------
 
@@ -780,7 +780,7 @@ lazy_static 1.4.0 (Apache-2.0 OR MIT)
 https://github.com/rust-lang-nursery/lazy-static.rs
 ---------------------------------------------------------
 
-libc 0.2.154 (Apache-2.0 OR MIT)
+libc 0.2.155 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/libc
 ---------------------------------------------------------
 
@@ -796,7 +796,7 @@ line-wrap 0.2.0 (Apache-2.0)
 https://bitbucket.org/marshallpierce/line-wrap-rs/src
 ---------------------------------------------------------
 
-linux-raw-sys 0.4.13 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
+linux-raw-sys 0.4.14 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
 https://github.com/sunfishcode/linux-raw-sys
 ---------------------------------------------------------
 
@@ -852,7 +852,7 @@ memoffset 0.9.1 (MIT)
 https://github.com/Gilnaa/memoffset
 ---------------------------------------------------------
 
-miniz_oxide 0.7.2 (Apache-2.0 OR MIT OR Zlib)
+miniz_oxide 0.7.3 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide
 ---------------------------------------------------------
 
@@ -1224,7 +1224,7 @@ rustix 0.38.34 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
 https://github.com/bytecodealliance/rustix
 ---------------------------------------------------------
 
-rustversion 1.0.16 (Apache-2.0 OR MIT)
+rustversion 1.0.17 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/rustversion
 ---------------------------------------------------------
 
@@ -1256,11 +1256,11 @@ semver 1.0.23 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/semver
 ---------------------------------------------------------
 
-serde 1.0.201 (Apache-2.0 OR MIT)
+serde 1.0.202 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
-serde_derive 1.0.201 (Apache-2.0 OR MIT)
+serde_derive 1.0.202 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
@@ -1272,7 +1272,7 @@ serde_repr 0.1.19 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/serde-repr
 ---------------------------------------------------------
 
-serde_spanned 0.6.5 (Apache-2.0 OR MIT)
+serde_spanned 0.6.6 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
@@ -1362,15 +1362,15 @@ string_cache_codegen 0.5.2 (Apache-2.0 OR MIT)
 https://github.com/servo/string-cache
 ---------------------------------------------------------
 
-strsim 0.10.0 (MIT)
-https://github.com/dguo/strsim-rs
+strsim 0.11.1 (MIT)
+https://github.com/rapidfuzz/strsim-rs
 ---------------------------------------------------------
 
 syn 1.0.109 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
-syn 2.0.63 (Apache-2.0 OR MIT)
+syn 2.0.64 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
@@ -1406,7 +1406,7 @@ target-lexicon 0.12.14 (Apache-2.0 WITH LLVM-exception)
 https://github.com/bytecodealliance/target-lexicon
 ---------------------------------------------------------
 
-tauri 1.6.5 (Apache-2.0 OR MIT)
+tauri 1.6.6 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
@@ -1454,11 +1454,11 @@ thin-slice 0.1.1 (MPL-2.0)
 https://github.com/heycam/thin-slice
 ---------------------------------------------------------
 
-thiserror 1.0.60 (Apache-2.0 OR MIT)
+thiserror 1.0.61 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
-thiserror-impl 1.0.60 (Apache-2.0 OR MIT)
+thiserror-impl 1.0.61 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
@@ -1506,11 +1506,11 @@ toml 0.7.8 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
-toml 0.8.12 (Apache-2.0 OR MIT)
+toml 0.8.13 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
-toml_datetime 0.6.5 (Apache-2.0 OR MIT)
+toml_datetime 0.6.6 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
@@ -1522,7 +1522,7 @@ toml_edit 0.21.1 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
-toml_edit 0.22.12 (Apache-2.0 OR MIT)
+toml_edit 0.22.13 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
@@ -1666,7 +1666,7 @@ webview2-com-sys 0.19.0 (MIT)
 https://github.com/wravery/webview2-rs
 ---------------------------------------------------------
 
-wide 0.7.18 (Apache-2.0 OR MIT OR Zlib)
+wide 0.7.19 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/wide
 ---------------------------------------------------------
 
@@ -1906,7 +1906,7 @@ winreg 0.52.0 (MIT)
 https://github.com/gentoo90/winreg-rs
 ---------------------------------------------------------
 
-wry 0.24.9 (Apache-2.0 OR MIT)
+wry 0.24.10 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/wry
 ---------------------------------------------------------
 

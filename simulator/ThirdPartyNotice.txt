@@ -70,7 +70,7 @@ anstyle-wincon 3.0.3 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
-anyhow 1.0.83 (Apache-2.0 OR MIT)
+anyhow 1.0.85 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/anyhow
 ---------------------------------------------------------
 
@@ -116,6 +116,10 @@ https://github.com/dtolnay/async-trait
 
 atomic-polyfill 1.0.3 (Apache-2.0 OR MIT)
 https://github.com/embassy-rs/atomic-polyfill
+---------------------------------------------------------
+
+atomic-waker 1.1.2 (Apache-2.0 OR MIT)
+https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
 autd3 24.0.0 (MIT)
@@ -210,7 +214,7 @@ bumpalo 3.16.0 (Apache-2.0 OR MIT)
 https://github.com/fitzgen/bumpalo
 ---------------------------------------------------------
 
-bytemuck 1.15.0 (Apache-2.0 OR MIT OR Zlib)
+bytemuck 1.16.0 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/bytemuck
 ---------------------------------------------------------
 
@@ -258,7 +262,7 @@ cgmath 0.18.0 (Apache-2.0)
 https://github.com/rustgd/cgmath
 ---------------------------------------------------------
 
-chlorine 1.0.10 (Apache-2.0 OR MIT OR Zlib)
+chlorine 1.0.11 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/chlorine
 ---------------------------------------------------------
 
@@ -385,7 +389,7 @@ earcutr 0.4.3 (ISC)
 https://github.com/frewsxcv/earcutr/
 ---------------------------------------------------------
 
-either 1.11.0 (Apache-2.0 OR MIT)
+either 1.12.0 (Apache-2.0 OR MIT)
 https://github.com/rayon-rs/either
 ---------------------------------------------------------
 
@@ -497,7 +501,7 @@ h2 0.3.26 (MIT)
 https://github.com/hyperium/h2
 ---------------------------------------------------------
 
-h2 0.4.4 (MIT)
+h2 0.4.5 (MIT)
 https://github.com/hyperium/h2
 ---------------------------------------------------------
 
@@ -601,7 +605,7 @@ inflections 1.1.1 (MIT)
 https://docs.rs/inflections
 ---------------------------------------------------------
 
-instant 0.1.12 (BSD-3-Clause)
+instant 0.1.13 (BSD-3-Clause)
 https://github.com/sebcrozet/instant
 ---------------------------------------------------------
 
@@ -649,7 +653,7 @@ lebe 0.5.2 (BSD-3-Clause)
 https://github.com/johannesvollmer/lebe
 ---------------------------------------------------------
 
-libc 0.2.154 (Apache-2.0 OR MIT)
+libc 0.2.155 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/libc
 ---------------------------------------------------------
 
@@ -729,7 +733,7 @@ minimal-lexical 0.2.1 (Apache-2.0 OR MIT)
 https://github.com/Alexhuszagh/minimal-lexical
 ---------------------------------------------------------
 
-miniz_oxide 0.7.2 (Apache-2.0 OR MIT OR Zlib)
+miniz_oxide 0.7.3 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide
 ---------------------------------------------------------
 
@@ -961,11 +965,11 @@ profiling-procmacros 1.0.15 (Apache-2.0 OR MIT)
 https://github.com/aclysma/profiling
 ---------------------------------------------------------
 
-prost 0.12.4 (Apache-2.0)
+prost 0.12.6 (Apache-2.0)
 https://github.com/tokio-rs/prost
 ---------------------------------------------------------
 
-prost-derive 0.12.5 (Apache-2.0)
+prost-derive 0.12.6 (Apache-2.0)
 https://github.com/tokio-rs/prost
 ---------------------------------------------------------
 
@@ -1076,7 +1080,7 @@ rustc_version 0.4.0 (Apache-2.0 OR MIT)
 https://github.com/Kimundi/rustc-version-rs
 ---------------------------------------------------------
 
-rustversion 1.0.16 (Apache-2.0 OR MIT)
+rustversion 1.0.17 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/rustversion
 ---------------------------------------------------------
 
@@ -1108,11 +1112,11 @@ semver 1.0.23 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/semver
 ---------------------------------------------------------
 
-serde 1.0.201 (Apache-2.0 OR MIT)
+serde 1.0.202 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
-serde_derive 1.0.201 (Apache-2.0 OR MIT)
+serde_derive 1.0.202 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
@@ -1120,7 +1124,7 @@ serde_json 1.0.117 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/json
 ---------------------------------------------------------
 
-serde_spanned 0.6.5 (Apache-2.0 OR MIT)
+serde_spanned 0.6.6 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
@@ -1200,7 +1204,7 @@ syn 1.0.109 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
-syn 2.0.63 (Apache-2.0 OR MIT)
+syn 2.0.64 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
@@ -1220,11 +1224,11 @@ target-lexicon 0.12.14 (Apache-2.0 WITH LLVM-exception)
 https://github.com/bytecodealliance/target-lexicon
 ---------------------------------------------------------
 
-thiserror 1.0.60 (Apache-2.0 OR MIT)
+thiserror 1.0.61 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
-thiserror-impl 1.0.60 (Apache-2.0 OR MIT)
+thiserror-impl 1.0.61 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
@@ -1272,11 +1276,11 @@ tokio-util 0.7.11 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
-toml 0.8.12 (Apache-2.0 OR MIT)
+toml 0.8.13 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
-toml_datetime 0.6.5 (Apache-2.0 OR MIT)
+toml_datetime 0.6.6 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
@@ -1284,7 +1288,7 @@ toml_edit 0.19.15 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
-toml_edit 0.22.12 (Apache-2.0 OR MIT)
+toml_edit 0.22.13 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
@@ -1448,7 +1452,7 @@ weezl 0.1.8 (Apache-2.0 OR MIT)
 https://github.com/image-rs/lzw
 ---------------------------------------------------------
 
-wide 0.7.18 (Apache-2.0 OR MIT OR Zlib)
+wide 0.7.19 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/wide
 ---------------------------------------------------------
 
