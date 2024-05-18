@@ -98,15 +98,15 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3-derive 24.0.0-rc.2 (MIT)
+autd3-derive 24.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 24.0.0-rc.2 (MIT)
+autd3-driver 24.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 24.0.0-rc.2
+autd3-link-soem 24.0.0
 https://github.com/shinolab/autd3-rs
 
 ---
@@ -172,7 +172,7 @@ SOEM write to Beckhoff Automation GmbH, Eiserstrasse 5, D-33415 Verl, Germany
 
 ---------------------------------------------------------
 
-autd3-server 24.0.0-rc.2 (MIT)
+autd3-server 24.0.0 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
