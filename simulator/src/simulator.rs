@@ -255,14 +255,10 @@ impl Simulator {
 
         let res = event_loop.run_return(move |event, _, control_flow| {
             let mut run_loop = |event, control_flow: &mut ControlFlow| -> anyhow::Result<()> {
-                if self.settings.auto_play {
-                    cpus.iter_mut().for_each(CPUEmulator::update);
-                } else {
-                    cpus.iter_mut().try_for_each(|cpu| -> anyhow::Result<()> {
-                        cpu.update_with_sys_time(imgui.system_time()?);
-                        Ok(())
-                    })?;
-                }
+                cpus.iter_mut().try_for_each(|cpu| -> anyhow::Result<()> {
+                    cpu.update_with_sys_time(imgui.system_time()?);
+                    Ok(())
+                })?;
 
                 if cpus.iter().any(CPUEmulator::should_update) {
                     rx_buf
