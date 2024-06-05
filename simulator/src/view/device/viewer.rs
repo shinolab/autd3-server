@@ -101,7 +101,7 @@ impl DeviceViewer {
             .iter()
             .map(|dev| {
                 let p = dev[0].position();
-                let r = dev[0].rotation();
+                let r = dev.rotation();
                 (
                     to_gl_pos(Vector3::new(p.x as _, p.y as _, p.z as _)),
                     to_gl_rot(Quaternion::new(r.w as _, r.i as _, r.j as _, r.k as _)),

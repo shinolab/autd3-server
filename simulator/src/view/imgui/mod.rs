@@ -624,10 +624,10 @@ impl ImGuiViewer {
                                         ));
 
                                         if !m.is_empty() {
-                                            ui.text(format!("mod[0]: {}", m[0].value()));
+                                            ui.text(format!("mod[0]: {}", m[0]));
                                         }
                                         if mod_size == 2 || mod_size == 3 {
-                                            ui.text(format!("mod[1]: {}", m[1].value()));
+                                            ui.text(format!("mod[1]: {}", m[1]));
                                         } else if mod_size > 3 {
                                             ui.text("...");
                                         }
@@ -635,7 +635,7 @@ impl ImGuiViewer {
                                             ui.text(format!(
                                                 "mod[{}]: {}",
                                                 mod_size - 1,
-                                                m[mod_size - 1].value()
+                                                m[mod_size - 1]
                                             ));
                                         }
 
@@ -648,7 +648,7 @@ impl ImGuiViewer {
                                         }
                                         if self.show_mod_plot[cpu.idx()] {
                                             let mod_v: Vec<f32> =
-                                                m.iter().map(|v| v.value() as f32 / 255.0).collect();
+                                                m.into_iter().map(|v| v as f32 / 255.0).collect();
                                             ui.plot_lines(
                                                 format!("##mod plot{}", cpu.idx()),
                                                 &mod_v,
@@ -818,7 +818,7 @@ impl ImGuiViewer {
                                                 let d = cpu.fpga().drives(cpu.fpga().current_stm_segment(),  cpu.fpga().current_stm_idx())[value as usize];
                                                 let m = cpu.fpga().modulation_at(cpu.fpga().current_mod_segment(), cpu.fpga().current_mod_idx());
                                                 let phase = d.phase().value() as u32;
-                                                let pulse_width = cpu.fpga().to_pulse_width(d.intensity(), m) as u32;
+                                                let pulse_width = cpu.fpga().to_pulse_width(d.intensity(), m.into()) as u32;
                                                 let rise = (ULTRASOUND_PERIOD-phase*2-pulse_width/2+ULTRASOUND_PERIOD)%ULTRASOUND_PERIOD;
                                                 let fall = (ULTRASOUND_PERIOD-phase*2+(pulse_width+1)/2+ULTRASOUND_PERIOD)%ULTRASOUND_PERIOD;
                                                 (0..ULTRASOUND_PERIOD).map(|t|

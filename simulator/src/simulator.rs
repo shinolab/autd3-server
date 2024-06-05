@@ -279,9 +279,9 @@ impl Simulator {
                         let geometry = autd3_driver::geometry::Geometry::from_msg(&geometry)
                             .ok_or(AUTDProtoBufError::DataParseError)?;
                         geometry.iter().for_each(|dev| {
+                            let r = dev.rotation();
                             dev.iter().for_each(|tr| {
                                 let p = tr.position();
-                                let r = tr.rotation();
                                 sources.add(
                                     to_gl_pos(Vector3::new(p.x as _, p.y as _, p.z as _)),
                                     to_gl_rot(Quaternion::new(
@@ -333,9 +333,9 @@ impl Simulator {
                         geometry
                             .iter()
                             .flat_map(|dev| {
+                                let r = dev.rotation();
                                 dev.iter().map(|tr| {
                                     let p = tr.position();
-                                    let r = tr.rotation();
                                     (
                                         Vector3::new(p.x as _, p.y as _, p.z as _),
                                         Quaternion::new(r.w as _, r.i as _, r.j as _, r.k as _),
@@ -504,7 +504,7 @@ impl Simulator {
                                             let mod_idx = cpu.fpga().current_mod_idx();
                                             cpu.fpga().modulation_at(mod_segment, mod_idx)
                                         } else {
-                                            autd3_driver::firmware::fpga::EmitIntensity::MAX
+                                            u8::MAX
                                         };
                                         sources
                                             .drives_mut()
@@ -513,9 +513,10 @@ impl Simulator {
                                             .enumerate()
                                             .for_each(|(i, d)| {
                                                 d.amp = (PI
-                                                    * cpu
-                                                        .fpga()
-                                                        .to_pulse_width(drives[i].intensity(), m)
+                                                    * cpu.fpga().to_pulse_width(
+                                                        drives[i].intensity(),
+                                                        m.into(),
+                                                    )
                                                         as f32
                                                     / 512.0)
                                                     .sin();
