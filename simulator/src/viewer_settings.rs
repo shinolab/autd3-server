@@ -60,48 +60,12 @@ pub struct ViewerSettings {
     pub camera_move_speed: f32,
     #[serde(default)]
     pub view_device: bool,
-    #[serde(default = "default_ambient")]
-    pub ambient: f32,
-    #[serde(default = "default_specular")]
-    pub specular: f32,
-    #[serde(default = "default_light_pos_x")]
-    pub light_pos_x: f32,
-    #[serde(default = "default_light_pos_y")]
-    pub light_pos_y: f32,
-    #[serde(default = "default_light_pos_z")]
-    pub light_pos_z: f32,
-    #[serde(default = "default_light_power")]
-    pub light_power: f32,
     #[serde(default = "default_time_scale")]
     pub time_scale: f32,
 }
 
 fn default_pressure_max() -> f32 {
     5e3
-}
-
-fn default_ambient() -> f32 {
-    60.
-}
-
-fn default_specular() -> f32 {
-    80.
-}
-
-fn default_light_pos_x() -> f32 {
-    86.6252 * MILLIMETER
-}
-
-fn default_light_pos_y() -> f32 {
-    -533.2867 * MILLIMETER
-}
-
-fn default_light_pos_z() -> f32 {
-    150.0 * MILLIMETER * ZPARITY
-}
-
-fn default_light_power() -> f32 {
-    5.
 }
 
 fn default_time_scale() -> f32 {
@@ -192,12 +156,6 @@ impl Default for ViewerSettings {
             port: 8080,
             camera_move_speed: 10. * MILLIMETER,
             view_device: false,
-            ambient: 60.,
-            specular: 80.,
-            light_pos_x: 86.6252 * MILLIMETER,
-            light_pos_y: -533.2867 * MILLIMETER,
-            light_pos_z: 150.0 * MILLIMETER * ZPARITY,
-            light_power: 5.,
             time_scale: 1.0,
         }
     }

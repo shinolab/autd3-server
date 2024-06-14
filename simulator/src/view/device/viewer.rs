@@ -113,7 +113,6 @@ impl DeviceViewer {
     pub fn render(
         &mut self,
         view_proj: (Matrix4, Matrix4),
-        setting: &ViewerSettings,
         visible: &[bool],
         builder: &mut AutoCommandBufferBuilder<PrimaryAutoCommandBuffer>,
     ) -> anyhow::Result<()> {
@@ -148,27 +147,11 @@ impl DeviceViewer {
                                 self.pipeline.layout().clone(),
                                 0,
                                 fs::PushConsts {
-                                    proj_view: (proj * view).into(),
-                                    model: (Matrix4::from_translation(pos / crate::METER)
-                                        * Matrix4::from(rot))
+                                    pvm: (proj
+                                        * view
+                                        * (Matrix4::from_translation(pos / crate::METER)
+                                            * Matrix4::from(rot)))
                                     .into(),
-                                    lightPos: [
-                                        setting.light_pos_x / crate::METER,
-                                        setting.light_pos_y / crate::METER,
-                                        setting.light_pos_z / crate::METER,
-                                        1.,
-                                    ],
-                                    viewPos: [
-                                        setting.camera_pos_x / crate::METER,
-                                        setting.camera_pos_y / crate::METER,
-                                        setting.camera_pos_z / crate::METER,
-                                        1.,
-                                    ],
-                                    ambient: setting.ambient,
-                                    specular: setting.specular,
-                                    lightPower: setting.light_power,
-                                    metallic: material.metallic_factor,
-                                    roughness: material.roughness_factor,
                                     baseColorR: material.base_color_factor[0],
                                     baseColorG: material.base_color_factor[1],
                                     baseColorB: material.base_color_factor[2],

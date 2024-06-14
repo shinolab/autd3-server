@@ -23,8 +23,6 @@ pub struct Primitive {
 pub struct Material {
     pub base_color_factor: [f32; 4],
     pub base_color_texture_idx: Option<usize>,
-    pub metallic_factor: f32,
-    pub roughness_factor: f32,
 }
 
 pub struct Model {
@@ -205,8 +203,6 @@ impl Model {
                     .pbr_metallic_roughness()
                     .base_color_texture()
                     .map(|t| t.texture().index()),
-                metallic_factor: m.pbr_metallic_roughness().metallic_factor(),
-                roughness_factor: m.pbr_metallic_roughness().roughness_factor(),
             })
             .collect()
     }

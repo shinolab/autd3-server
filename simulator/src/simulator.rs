@@ -468,7 +468,6 @@ impl Simulator {
                                 if self.settings.view_device {
                                     device_viewer.render(
                                         (view, proj),
-                                        &self.settings,
                                         imgui.visible(),
                                         &mut builder,
                                     )?;

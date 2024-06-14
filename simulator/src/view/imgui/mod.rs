@@ -487,54 +487,6 @@ impl ImGuiViewer {
                             ui.separator();
 
                             ui.checkbox("View as device", &mut settings.view_device);
-                            if settings.view_device {
-                                ui.text("Light position");
-                                drag_float(
-                                    "X##Light",
-                                    &mut settings.light_pos_x,
-                                    1. * MILLIMETER,
-                                    f32::MIN / 2.,
-                                    f32::MAX / 2.,
-                                );
-                                drag_float(
-                                    "Y##Light",
-                                    &mut settings.light_pos_y,
-                                    1. * MILLIMETER,
-                                    f32::MIN / 2.,
-                                    f32::MAX / 2.,
-                                );
-                                drag_float(
-                                    "Z##Light",
-                                    &mut settings.light_pos_z,
-                                    1. * MILLIMETER,
-                                    f32::MIN / 2.,
-                                    f32::MAX / 2.,
-                                );
-                                ui.separator();
-
-                                ui.text("Light properties");
-                                drag_float(
-                                    "Power",
-                                    &mut settings.light_power,
-                                    0.1,
-                                    0.,
-                                    f32::MAX / 2.,
-                                );
-                                drag_float(
-                                    "Ambient",
-                                    &mut settings.ambient,
-                                    0.1,
-                                    0.,
-                                    f32::MAX / 2.,
-                                );
-                                drag_float(
-                                    "Specular",
-                                    &mut settings.specular,
-                                    0.1,
-                                    0.,
-                                    f32::MAX / 2.,
-                                );
-                            }
                             ui.separator();
 
                             ui.color_picker4_config("Background", &mut settings.background)

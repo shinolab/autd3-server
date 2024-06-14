@@ -5,25 +5,13 @@ layout (location = 1) in vec3 norm;
 layout (location = 2) in vec2 uv;
 
 layout(push_constant) uniform PushConsts {
-	mat4 proj_view;
-	mat4 model;
-	vec4 lightPos;
-	vec4 viewPos;
+	mat4 pvm;
 } primitive;
 
-layout (location = 0) out vec3 outNormal;
-layout (location = 1) out vec2 outUV;
-layout (location = 2) out vec3 outViewVec;
-layout (location = 3) out vec3 outLightVec;
+layout (location = 0) out vec2 outUV;
 
 void main()
 {
-	vec4 pos = primitive.model * vec4(position, 1.0);
-
 	outUV = uv;
-	outNormal = mat3(primitive.model) * norm;
-	outLightVec = primitive.lightPos.xyz - pos.xyz;
-	outViewVec = primitive.viewPos.xyz - pos.xyz;
-
-	gl_Position = primitive.proj_view * pos;	
+	gl_Position = primitive.pvm * vec4(position, 1.0);	
 }
