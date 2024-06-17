@@ -98,15 +98,15 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3-derive 25.3.0 (MIT)
+autd3-derive 25.3.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 25.3.0 (MIT)
+autd3-driver 25.3.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 25.3.0
+autd3-link-soem 25.3.1
 https://github.com/shinolab/autd3-rs
 
 ---
@@ -172,7 +172,7 @@ SOEM write to Beckhoff Automation GmbH, Eiserstrasse 5, D-33415 Verl, Germany
 
 ---------------------------------------------------------
 
-autd3-server 25.3.0 (MIT)
+autd3-server 25.3.1 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -392,7 +392,7 @@ deranged 0.3.11 (Apache-2.0 OR MIT)
 https://github.com/jhpratt/deranged
 ---------------------------------------------------------
 
-derive_more 0.99.17 (MIT)
+derive_more 0.99.18 (MIT)
 https://github.com/JelteF/derive_more
 ---------------------------------------------------------
 
@@ -665,6 +665,10 @@ https://github.com/withoutboats/heck
 ---------------------------------------------------------
 
 hermit-abi 0.3.9 (Apache-2.0 OR MIT)
+https://github.com/hermit-os/hermit-rs
+---------------------------------------------------------
+
+hermit-abi 0.4.0 (Apache-2.0 OR MIT)
 https://github.com/hermit-os/hermit-rs
 ---------------------------------------------------------
 
@@ -1128,7 +1132,7 @@ png 0.17.13 (Apache-2.0 OR MIT)
 https://github.com/image-rs/image-png
 ---------------------------------------------------------
 
-polling 3.7.1 (Apache-2.0 OR MIT)
+polling 3.7.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/polling
 ---------------------------------------------------------
 
@@ -1232,7 +1236,7 @@ redox_syscall 0.4.1 (MIT)
 https://gitlab.redox-os.org/redox-os/syscall
 ---------------------------------------------------------
 
-redox_syscall 0.5.1 (MIT)
+redox_syscall 0.5.2 (MIT)
 https://gitlab.redox-os.org/redox-os/syscall
 ---------------------------------------------------------
 
@@ -1284,7 +1288,7 @@ ryu 1.0.18 (Apache-2.0 OR BSL-1.0)
 https://github.com/dtolnay/ryu
 ---------------------------------------------------------
 
-safe_arch 0.7.1 (Apache-2.0 OR MIT OR Zlib)
+safe_arch 0.7.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/safe_arch
 ---------------------------------------------------------
 
@@ -1440,6 +1444,10 @@ https://github.com/gdesmott/system-deps
 
 system-deps 6.2.2 (Apache-2.0 OR MIT)
 https://github.com/gdesmott/system-deps
+---------------------------------------------------------
+
+ta 0.5.0 (MIT)
+https://github.com/greyblake/ta-rs
 ---------------------------------------------------------
 
 tao 0.16.9 (Apache-2.0)
@@ -2018,11 +2026,11 @@ yoke-derive 0.7.4 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-zbus 4.2.2 (MIT)
+zbus 4.3.0 (MIT)
 https://github.com/dbus2/zbus/
 ---------------------------------------------------------
 
-zbus_macros 4.2.2 (MIT)
+zbus_macros 4.3.0 (MIT)
 https://github.com/dbus2/zbus/
 ---------------------------------------------------------
 

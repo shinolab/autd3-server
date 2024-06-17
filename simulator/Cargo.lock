@@ -261,9 +261,9 @@ checksum = "1505bd5d3d116872e7271a6d4e16d81d0c8570876c8de68093a09ac269d8aac0"
 
 [[package]]
 name = "autd3"
-version = "25.3.0"
+version = "25.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6ae26f81f61074399e8172fe31655b18f0f562da787c2218e6787c3363452d12"
+checksum = "4eb4320727c33cda761c3cafe116026677c2b900f1707c89dd7f101a3c247768"
 dependencies = [
  "autd3-driver",
  "autd3-firmware-emulator",
@@ -277,9 +277,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-derive"
-version = "25.3.0"
+version = "25.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "56149c77962a1a0343bb8154d2e377f268f2626226f28cd602ebaf9b11310f81"
+checksum = "d1a93439973ab92b49c5e0689e6150c8e59f2974f2704894cfb10d9623c239ea"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -289,9 +289,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-driver"
-version = "25.3.0"
+version = "25.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a13ccab73c829f5f4d099290afd79903e839e47a3f669ce05cb5c718668faff2"
+checksum = "ad06154d88fe85998805b462abef47407731f87943e5e53832bebab87466cdc7"
 dependencies = [
  "autd3-derive",
  "bitfield-struct",
@@ -313,9 +313,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-firmware-emulator"
-version = "25.3.0"
+version = "25.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f5bfd7f870ebcfc4c6babd8929b491b2076c3c2aec0facfbf1829235006c133a"
+checksum = "9e2806e182502b6f562869bf94c2f5d2d698a70937c0445227c5672f09ddb642"
 dependencies = [
  "autd3-driver",
  "num-integer",
@@ -325,9 +325,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-protobuf"
-version = "25.3.0"
+version = "25.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "df5a749e623128b207746214685fba3cdd328aa38b870c305fc08e3bca895359"
+checksum = "eaf519233df1495d8acc8aa68f1b6132348c88c5f461080951f1d3337b9f9e26"
 dependencies = [
  "autd3-driver",
  "h2 0.4.5",
@@ -2566,9 +2566,9 @@ checksum = "f3cb5ba0dc43242ce17de99c180e96db90b235b8a9fdc9543c96d2209116bd9f"
 
 [[package]]
 name = "safe_arch"
-version = "0.7.1"
+version = "0.7.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f398075ce1e6a179b46f51bd88d0598b92b00d3551f1a2d4ac49e771b56ac354"
+checksum = "c3460605018fdc9612bce72735cba0d27efbcd9904780d44c7e3a9948f96148a"
 dependencies = [
  "bytemuck",
 ]
@@ -2722,7 +2722,7 @@ dependencies = [
 
 [[package]]
 name = "simulator"
-version = "25.3.0"
+version = "25.3.1"
 dependencies = [
  "anyhow",
  "autd3",

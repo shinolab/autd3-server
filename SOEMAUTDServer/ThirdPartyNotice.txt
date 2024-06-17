@@ -6,7 +6,7 @@ The license terms for each of these components are provided later in this notice
 
 ---------------------------------------------------------
 
-SOEMAUTDServer 25.3.0 (MIT)
+SOEMAUTDServer 25.3.1 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -78,27 +78,27 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 25.3.0 (MIT)
+autd3 25.3.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 25.3.0 (MIT)
+autd3-derive 25.3.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 25.3.0 (MIT)
+autd3-driver 25.3.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 25.3.0 (MIT)
+autd3-firmware-emulator 25.3.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 25.3.0 (MIT)
+autd3-gain-holo 25.3.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 25.3.0
+autd3-link-soem 25.3.1
 https://github.com/shinolab/autd3-rs
 
 ---
@@ -164,7 +164,7 @@ SOEM write to Beckhoff Automation GmbH, Eiserstrasse 5, D-33415 Verl, Germany
 
 ---------------------------------------------------------
 
-autd3-protobuf 25.3.0 (MIT)
+autd3-protobuf 25.3.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -284,7 +284,7 @@ deranged 0.3.11 (Apache-2.0 OR MIT)
 https://github.com/jhpratt/deranged
 ---------------------------------------------------------
 
-derive_more 0.99.17 (MIT)
+derive_more 0.99.18 (MIT)
 https://github.com/JelteF/derive_more
 ---------------------------------------------------------
 
@@ -716,16 +716,16 @@ strsim 0.11.1 (MIT)
 https://github.com/rapidfuzz/strsim-rs
 ---------------------------------------------------------
 
-syn 1.0.109 (Apache-2.0 OR MIT)
-https://github.com/dtolnay/syn
----------------------------------------------------------
-
 syn 2.0.66 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
 sync_wrapper 0.1.2 (Apache-2.0)
 https://github.com/Actyx/sync_wrapper
+---------------------------------------------------------
+
+ta 0.5.0 (MIT)
+https://github.com/greyblake/ta-rs
 ---------------------------------------------------------
 
 tap 1.0.1 (MIT)
