@@ -6,7 +6,7 @@ The license terms for each of these components are provided later in this notice
 
 ---------------------------------------------------------
 
-SOEMAUTDServer 25.2.3 (MIT)
+SOEMAUTDServer 25.3.0 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -78,27 +78,27 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 25.2.3 (MIT)
+autd3 25.3.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 25.2.3 (MIT)
+autd3-derive 25.3.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 25.2.3 (MIT)
+autd3-driver 25.3.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 25.2.3 (MIT)
+autd3-firmware-emulator 25.3.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 25.2.3 (MIT)
+autd3-gain-holo 25.3.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 25.2.3
+autd3-link-soem 25.3.0
 https://github.com/shinolab/autd3-rs
 
 ---
@@ -164,7 +164,7 @@ SOEM write to Beckhoff Automation GmbH, Eiserstrasse 5, D-33415 Verl, Germany
 
 ---------------------------------------------------------
 
-autd3-protobuf 25.2.3 (MIT)
+autd3-protobuf 25.3.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 

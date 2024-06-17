@@ -1,6 +1,6 @@
 [package]
 name = "simulator"
-version = "25.2.3"
+version = "25.3.0"
 edition = "2021"
 authors = ["shun suzuki <suzuki@hapis.k.u-tokyo.ac.jp>"]
 
@@ -10,10 +10,10 @@ repository = "https://github.com/shinolab/autd3-server"
 keywords = ["autd"]
 
 [dependencies]
-autd3 = { version = "25.2.3" }
-autd3-driver = { version = "25.2.3" }
-autd3-firmware-emulator = { version = "25.2.3" }
-autd3-protobuf = { version = "25.2.3" }
+autd3 = { version = "25.3.0" }
+autd3-driver = { version = "25.3.0" }
+autd3-firmware-emulator = { version = "25.3.0" }
+autd3-protobuf = { version = "25.3.0" }
 bitflags = "2.3.1"
 bytemuck = { version = "1.13.1", features = ["derive", "extern_crate_std", "min_const_generics"] }
 camera_controllers = "0.34.0"

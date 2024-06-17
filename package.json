@@ -1,7 +1,7 @@
 {
   "name": "autd3-server",
   "type": "module",
-  "version": "25.2.3",
+  "version": "25.3.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

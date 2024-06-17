@@ -8,7 +8,7 @@ use autd3_driver::{
     firmware::cpu::TxDatagram,
     link::{Link, LinkBuilder},
 };
-use autd3_link_soem::{SyncMode, TimerStrategy, SOEM};
+use autd3_link_soem::{TimerStrategy, SOEM};
 use autd3_protobuf::*;
 
 use clap::{Args, Parser, Subcommand, ValueEnum};
@@ -18,14 +18,6 @@ use tokio::{
     sync::{mpsc, RwLock},
 };
 use tonic::{transport::Server, Request, Response, Status};
-
-#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
-enum SyncModeArg {
-    /// DC Sync
-    DC,
-    /// FreeRun mode
-    FreeRun,
-}
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
 enum TimerStrategyArg {
@@ -64,9 +56,6 @@ struct Arg {
     /// Buffer size
     #[clap(short = 'b', long = "buffer_size", default_value = "32")]
     buf_size: usize,
-    /// Sync mode
-    #[clap(short = 'm', long = "sync_mode", default_value = "free-run")]
-    sync_mode: SyncModeArg,
     /// Timer strategy
     #[clap(short = 'w', long = "timer", default_value = "sleep")]
     timer_strategy: TimerStrategyArg,
@@ -78,6 +67,12 @@ struct Arg {
     timeout: u64,
     #[clap(short = 'l', long = "lightweight", default_value = "false")]
     lightweight: bool,
+    /// Sync tolerance in us
+    #[clap(short = 'm', long = "sync_tolerance", default_value = "1")]
+    sync_tolerance: u64,
+    /// Sync timeout in s
+    #[clap(short = 'o', long = "sync_timeout", default_value = "10")]
+    sync_timeout: u64,
 }
 
 #[derive(Subcommand)]
@@ -148,10 +143,8 @@ async fn main_() -> anyhow::Result<()> {
             let sync0_cycle = args.sync0;
             let send_cycle = args.send;
             let state_check_interval = args.state_check_interval;
-            let sync_mode = match args.sync_mode {
-                SyncModeArg::DC => SyncMode::DC,
-                SyncModeArg::FreeRun => SyncMode::FreeRun,
-            };
+            let sync_tolerance = std::time::Duration::from_micros(args.sync_tolerance);
+            let sync_timeout = std::time::Duration::from_secs(args.sync_timeout);
             let timer_strategy = match args.timer_strategy {
                 TimerStrategyArg::NativeTimer => TimerStrategy::NativeTimer,
                 TimerStrategyArg::Sleep => TimerStrategy::Sleep,
@@ -169,7 +162,8 @@ async fn main_() -> anyhow::Result<()> {
                     ))
                     .with_sync0_cycle(sync0_cycle)
                     .with_timer_strategy(timer_strategy)
-                    .with_sync_mode(sync_mode)
+                    .with_sync_tolerance(sync_tolerance)
+                    .with_sync_timeout(sync_timeout)
                     .with_timeout(std::time::Duration::from_millis(timeout))
                     .with_err_handler(|slave, status| match status {
                         autd3_link_soem::Status::Error => {
