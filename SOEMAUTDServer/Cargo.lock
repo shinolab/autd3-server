@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "SOEMAUTDServer"
-version = "25.3.1"
+version = "25.3.2"
 dependencies = [
  "anyhow",
  "autd3-driver",
@@ -176,9 +176,9 @@ checksum = "1505bd5d3d116872e7271a6d4e16d81d0c8570876c8de68093a09ac269d8aac0"
 
 [[package]]
 name = "autd3"
-version = "25.3.1"
+version = "25.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4eb4320727c33cda761c3cafe116026677c2b900f1707c89dd7f101a3c247768"
+checksum = "0e00f1dec50b4886833b3d9fb32d8af68c51384b171a2b8c2052dfe1dd0d7d31"
 dependencies = [
  "autd3-driver",
  "autd3-firmware-emulator",
@@ -192,9 +192,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-derive"
-version = "25.3.1"
+version = "25.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d1a93439973ab92b49c5e0689e6150c8e59f2974f2704894cfb10d9623c239ea"
+checksum = "1b97cbd14ad9d01f7acf1874f925e1a191250d2ff77c773a63d123a2373cfeef"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -204,9 +204,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-driver"
-version = "25.3.1"
+version = "25.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ad06154d88fe85998805b462abef47407731f87943e5e53832bebab87466cdc7"
+checksum = "f840514d4b5b25ecb4909525ec89d6a270ae87cbe4bbf4c801958b32cfa3aff2"
 dependencies = [
  "async-trait",
  "autd3-derive",
@@ -229,9 +229,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-firmware-emulator"
-version = "25.3.1"
+version = "25.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9e2806e182502b6f562869bf94c2f5d2d698a70937c0445227c5672f09ddb642"
+checksum = "049c92af5515987cfd821e1d8e1a7dc3686a6d13059e7b8a845ca506f8532064"
 dependencies = [
  "autd3-driver",
  "num-integer",
@@ -241,9 +241,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-gain-holo"
-version = "25.3.1"
+version = "25.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8c08259a11b37d58704f4aee7b462def1f54268cc884ca433af29660940fc003"
+checksum = "5bfce3b7933fe81ce3346884afa8d01f7b11ba566e64cd07ffd4f38ee147034c"
 dependencies = [
  "approx",
  "autd3-driver",
@@ -258,9 +258,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-soem"
-version = "25.3.1"
+version = "25.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "792dc5bdefd73d3d1d3dbc6e538e54b0fa1cf7b3989cc516bf0b2e4b65477fbd"
+checksum = "dae460dbd8222de1ad9edc92ef670e602a08405d7c9c2807a53f2caf848fdc55"
 dependencies = [
  "async-channel",
  "autd3-driver",
@@ -280,9 +280,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-protobuf"
-version = "25.3.1"
+version = "25.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "eaf519233df1495d8acc8aa68f1b6132348c88c5f461080951f1d3337b9f9e26"
+checksum = "71f5e82fe6e7d40e4c93c5d177e2bf7826260139929630744f419ffc16cec632"
 dependencies = [
  "autd3",
  "autd3-driver",
@@ -840,9 +840,9 @@ dependencies = [
 
 [[package]]
 name = "httparse"
-version = "1.9.3"
+version = "1.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d0e7a4dd27b9476dc40cb050d3632d3bba3a70ddbff012285f7f8559a1e7e545"
+checksum = "0fcc0b4a115bf80b728eb8ea024ad5bd707b615bfed49e0665b6e0f86fd082d9"
 
 [[package]]
 name = "httpdate"
@@ -1028,9 +1028,9 @@ checksum = "68354c5c6bd36d73ff3feceb05efa59b6acb7626617f4962be322a825e61f79a"
 
 [[package]]
 name = "miniz_oxide"
-version = "0.7.3"
+version = "0.7.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "87dfd01fe195c66b572b37921ad8803d010623c0aca821bea2302239d155cdae"
+checksum = "b8a240ddb74feaf34a79a7add65a741f3167852fba007066dcac1ca548d89c08"
 dependencies = [
  "adler",
 ]
@@ -1455,9 +1455,9 @@ checksum = "955d28af4278de8121b7ebeb796b6a45735dc01436d898801014aced2773a3d6"
 
 [[package]]
 name = "safe_arch"
-version = "0.7.1"
+version = "0.7.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f398075ce1e6a179b46f51bd88d0598b92b00d3551f1a2d4ac49e771b56ac354"
+checksum = "c3460605018fdc9612bce72735cba0d27efbcd9904780d44c7e3a9948f96148a"
 dependencies = [
  "bytemuck",
 ]
