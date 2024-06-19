@@ -93,8 +93,8 @@
       "--sync_timeout",
       syncTimeoutS.toString(),
     ];
-    if (soemOptions.debug) {
-      args.push("-d");
+    if (soemOptions.lightweight) {
+      args.push("-l");
     }
 
     command = Command.sidecar("SOEMAUTDServer", args);
@@ -191,8 +191,8 @@
   <label for="timeoutMs">Timeout [ms]:</label>
   <NumberInput id="timeoutMs" bind:value={timeoutMs} min="1" step="1" />
 
-  <label for="debug">Enable debug:</label>
-  <CheckBox id="debug" bind:checked={soemOptions.debug} />
+  <label for="lightweight">Lightweight mode:</label>
+  <CheckBox id="lightweight" bind:checked={soemOptions.lightweight} />
 
   <Button label="Run" click={handleRunClick} disabled={!!child} />
   <Button label="Close" click={handleCloseClick} disabled={!child} />

@@ -35,7 +35,7 @@ pub struct SOEMOptions {
     pub sync_tolerance: std::time::Duration,
     pub sync_timeout: std::time::Duration,
     pub timeout: std::time::Duration,
-    pub debug: bool,
+    pub lightweight: bool,
 }
 
 impl Default for SOEMOptions {
@@ -51,7 +51,7 @@ impl Default for SOEMOptions {
             timeout: std::time::Duration::from_millis(200),
             sync_tolerance: std::time::Duration::from_micros(1),
             sync_timeout: std::time::Duration::from_secs(10),
-            debug: false,
+            lightweight: false,
         }
     }
 }

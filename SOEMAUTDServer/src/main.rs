@@ -65,14 +65,14 @@ struct Arg {
     /// Timeout in ms
     #[clap(short = 't', long = "timeout", default_value = "20")]
     timeout: u64,
-    #[clap(short = 'l', long = "lightweight", default_value = "false")]
-    lightweight: bool,
     /// Sync tolerance in us
     #[clap(long = "sync_tolerance", default_value = "1")]
     sync_tolerance: u64,
     /// Sync timeout in s
     #[clap(short = 'o', long = "sync_timeout", default_value = "10")]
     sync_timeout: u64,
+    #[clap(short = 'l', long = "lightweight", default_value = "false")]
+    lightweight: bool,
 }
 
 #[derive(Subcommand)]

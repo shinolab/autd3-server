@@ -25,7 +25,7 @@ export interface SOEMOptions {
     sync_tolerance: Duration;
     sync_timeout: Duration;
     timeout: Duration;
-    debug: boolean;
+    lightweight: boolean;
 }
 
 export interface SimulatorOptions {
