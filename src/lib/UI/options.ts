@@ -11,7 +11,6 @@ export interface TwinCATOptions {
     sync0: number;
     task: number;
     base: number;
-    mode: SyncMode;
     keep: boolean;
 }
 
@@ -21,9 +20,10 @@ export interface SOEMOptions {
     sync0: number;
     send: number;
     buf_size: number;
-    mode: SyncMode;
     timer_strategy: TimerStrategy;
     state_check_interval: Duration;
+    sync_tolerance: Duration;
+    sync_timeout: Duration;
     timeout: Duration;
     debug: boolean;
 }

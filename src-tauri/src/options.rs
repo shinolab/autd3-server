@@ -1,6 +1,5 @@
 use serde::{Deserialize, Serialize};
 
-use autd3_driver::ethercat::SyncMode;
 use autd3_link_soem::TimerStrategy;
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -9,7 +8,6 @@ pub struct TwinCATOptions {
     pub sync0: u32,
     pub task: u32,
     pub base: u32,
-    pub mode: SyncMode,
     pub keep: bool,
 }
 
@@ -20,7 +18,6 @@ impl Default for TwinCATOptions {
             sync0: 2,
             task: 2,
             base: 1,
-            mode: SyncMode::DC,
             keep: false,
         }
     }
@@ -33,9 +30,10 @@ pub struct SOEMOptions {
     pub sync0: u32,
     pub send: u32,
     pub buf_size: usize,
-    pub mode: SyncMode,
     pub timer_strategy: TimerStrategy,
     pub state_check_interval: std::time::Duration,
+    pub sync_tolerance: std::time::Duration,
+    pub sync_timeout: std::time::Duration,
     pub timeout: std::time::Duration,
     pub debug: bool,
 }
@@ -48,10 +46,11 @@ impl Default for SOEMOptions {
             sync0: 2,
             send: 2,
             buf_size: 32,
-            mode: SyncMode::FreeRun,
             timer_strategy: TimerStrategy::Sleep,
             state_check_interval: std::time::Duration::from_millis(500),
             timeout: std::time::Duration::from_millis(200),
+            sync_tolerance: std::time::Duration::from_micros(1),
+            sync_timeout: std::time::Duration::from_secs(10),
             debug: false,
         }
     }

@@ -58,7 +58,10 @@ async fn load_settings(handle: tauri::AppHandle) -> Result<Options, String> {
         file.read_to_string(&mut contents)
             .await
             .map_err(|e| e.to_string())?;
-        serde_json::from_str(&contents).map_err(|e| e.to_string())?
+        match serde_json::from_str(&contents) {
+            Ok(options) => options,
+            Err(_) => Default::default(),
+        }
     } else {
         Default::default()
     };
@@ -163,11 +166,6 @@ async fn run_twincat_server(
         twincat_options.task.to_string(),
         "-b".to_string(),
         twincat_options.base.to_string(),
-        "-m".to_string(),
-        match twincat_options.mode {
-            autd3_driver::ethercat::SyncMode::DC => "DC".to_string(),
-            autd3_driver::ethercat::SyncMode::FreeRun => "FreeRun".to_string(),
-        },
     ];
     if twincat_options.keep {
         args.push("-k".to_string());

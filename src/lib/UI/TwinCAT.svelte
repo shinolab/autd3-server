@@ -1,23 +1,17 @@
 <script lang="ts">
   import type { TwinCATOptions } from "./options.ts";
-  import { SyncModeValues } from "./options.ts";
 
-  import { Command, Child } from "@tauri-apps/api/shell";
-  import { consoleOutputQueue } from "./console_output.ts";
-
-  import { msToDuration, msFromDuration } from "./utils/duration.ts";
+  import { Child } from "@tauri-apps/api/shell";
 
   import { invoke } from "@tauri-apps/api";
 
   import Button from "./utils/Button.svelte";
-  import Select from "./utils/Select.svelte";
   import CheckBox from "./utils/CheckBox.svelte";
   import NumberInput from "./utils/NumberInput.svelte";
   import IpInput from "./utils/IpInput.svelte";
 
   export let twincatOptions: TwinCATOptions;
 
-  let command;
   let child: null | Child = null;
   let running = false;
 
@@ -36,14 +30,6 @@
     }
 
     running = false;
-  };
-
-  let handleCloseClick = async () => {
-    if (child !== null) {
-      await child.kill();
-      child = null;
-      running = false;
-    }
   };
 
   let handleOpenXaeShellClick = async () => {
@@ -75,9 +61,6 @@
 
   <label for="base">CPU base time:</label>
   <NumberInput id="base" bind:value={twincatOptions.base} min="1" step="1" />
-
-  <label for="mode">Sync mode:</label>
-  <Select id="mode" bind:value={twincatOptions.mode} values={SyncModeValues} />
 
   <label for="keep">Keep XAE Shell open:</label>
   <CheckBox id="keep" bind:checked={twincatOptions.keep} />

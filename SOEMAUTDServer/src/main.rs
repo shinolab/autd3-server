@@ -68,7 +68,7 @@ struct Arg {
     #[clap(short = 'l', long = "lightweight", default_value = "false")]
     lightweight: bool,
     /// Sync tolerance in us
-    #[clap(short = 'm', long = "sync_tolerance", default_value = "1")]
+    #[clap(long = "sync_tolerance", default_value = "1")]
     sync_tolerance: u64,
     /// Sync timeout in s
     #[clap(short = 'o', long = "sync_timeout", default_value = "10")]

@@ -11,24 +11,20 @@
   import CheckBox from "./utils/CheckBox.svelte";
   import NumberInput from "./utils/NumberInput.svelte";
 
-  import { msToDuration, msFromDuration } from "./utils/duration.ts";
+  import {
+    msToDuration,
+    msFromDuration,
+    usFromDuration,
+    usToDuration,
+    sToDuration,
+    sFromDuration,
+  } from "./utils/duration.ts";
 
   export let soemOptions: SOEMOptions;
   export let adapters: string[] = [];
 
   let command;
   let child: null | Child = null;
-
-  let parseMode = (mode: SyncMode) => {
-    switch (mode) {
-      case "DC":
-        return "dc";
-      case "FreeRun":
-        return "free-run";
-      default:
-        return "free-run";
-    }
-  };
 
   let parseStrategy = (strategy: TimerStrategy) => {
     switch (strategy) {
@@ -50,6 +46,14 @@
   let timeoutMs = msFromDuration(soemOptions.timeout);
   $: {
     soemOptions.timeout = msToDuration(timeoutMs);
+  }
+  let syncToleranceUs = usFromDuration(soemOptions.sync_tolerance);
+  $: {
+    soemOptions.sync_tolerance = usToDuration(syncToleranceUs);
+  }
+  let syncTimeoutS = sFromDuration(soemOptions.sync_timeout);
+  $: {
+    soemOptions.sync_timeout = sToDuration(syncTimeoutS);
   }
 
   let adapterNames: string[] = [];
@@ -78,14 +82,16 @@
       soemOptions.send.toString(),
       "-b",
       soemOptions.buf_size.toString(),
-      "-m",
-      parseMode(soemOptions.mode),
       "-w",
       parseStrategy(soemOptions.timer_strategy),
       "-e",
       stateCheckIntervalMs.toString(),
       "-t",
       timeoutMs.toString(),
+      "--sync_tolerance",
+      syncToleranceUs.toString(),
+      "--sync_timeout",
+      syncTimeoutS.toString(),
     ];
     if (soemOptions.debug) {
       args.push("-d");
@@ -156,9 +162,6 @@
   <label for="send">Send cycle:</label>
   <NumberInput id="send" bind:value={soemOptions.send} min="1" step="1" />
 
-  <label for="mode">Sync mode:</label>
-  <Select id="mode" bind:value={soemOptions.mode} values={SyncModeValues} />
-
   <label for="timer_strategy">Timer strategy:</label>
   <Select
     id="timer_strategy"
@@ -173,6 +176,17 @@
     min="1"
     step="1"
   />
+
+  <label for="syncToleranceUs">Sync tolerance [us]:</label>
+  <NumberInput
+    id="syncToleranceUs"
+    bind:value={syncToleranceUs}
+    min="1"
+    step="1"
+  />
+
+  <label for="syncTimeoutS">Sync timeout [s]:</label>
+  <NumberInput id="syncTimeoutS" bind:value={syncTimeoutS} min="1" step="1" />
 
   <label for="timeoutMs">Timeout [ms]:</label>
   <NumberInput id="timeoutMs" bind:value={timeoutMs} min="1" step="1" />
