@@ -4,6 +4,7 @@
   import { resolveResource } from "@tauri-apps/api/path";
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
+  import { platform } from "@tauri-apps/api/os";
   import { Command, Child } from "@tauri-apps/api/shell";
   import { invoke } from "@tauri-apps/api";
   import { consoleOutputQueue } from "./console_output.ts";
@@ -95,14 +96,37 @@
     cachedGPUs.subscribe((v) => {
       gpus = v;
     })();
-    if (!gpus) {
-      gpus = (await Command.sidecar("simulator", "list").execute()).stdout;
+    if (gpus == null) {
+      let { stdout, stderr } = await Command.sidecar(
+        "simulator",
+        "list",
+      ).execute();
+      if (stderr) {
+        consoleOutputQueue.update((v) => {
+          return [...v, stderr.trimEnd()];
+        });
+        if ((await platform()) == "darwin") {
+          consoleOutputQueue.update((v) => {
+            return [
+              ...v,
+              "If you are using macOS, please install VulkanSDK and try again.",
+            ];
+          });
+        }
+        gpus = "";
+      } else {
+        gpus = stdout;
+      }
       cachedGPUs.set(gpus);
     }
-    availableGpus = gpus
-      .trimEnd()
-      .split("\n")
-      .map((s) => s.trim().replace(/ \(type .*\)$/g, ""));
+    if (gpus) {
+      availableGpus = gpus
+        .trimEnd()
+        .split("\n")
+        .map((s) => s.trim().replace(/ \(type .*\)$/g, ""));
+    } else {
+      availableGpus = [];
+    }
     gpuName = (
       availableGpus.find(
         (gpu) =>
