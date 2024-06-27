@@ -1,6 +1,6 @@
 # TwinCATAUTDServer
 
-TwinCAT AUTD Server for `link::TwinCAT` and `link::RemoteTwinCAT`.
+TwinCAT AUTD3 Server for `link::TwinCAT` and `link::RemoteTwinCAT`.
 
 # Usage
 

@@ -1,4 +1,4 @@
-# AUTD Server
+# AUTD3 Server
 
 # Requirements
 

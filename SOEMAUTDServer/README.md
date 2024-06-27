@@ -1,4 +1,4 @@
-# AUTD Server for RemoteSOEM link
+# AUTD3 Server for RemoteSOEM link
 
 # Dependencies
 

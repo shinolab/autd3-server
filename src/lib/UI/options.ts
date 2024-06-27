@@ -12,6 +12,8 @@ export interface TwinCATOptions {
     task: number;
     base: number;
     keep: boolean;
+    lightweight: boolean;
+    lightweight_port: number;
 }
 
 export interface SOEMOptions {
@@ -35,6 +37,8 @@ export interface SimulatorOptions {
     window_width: number;
     window_height: number;
     unity: boolean;
+    lightweight: boolean;
+    lightweight_port: number;
 }
 
 export interface Options {

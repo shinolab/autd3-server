@@ -147,19 +147,22 @@ def server_build(args):
         ).check_returncode()
     if config.is_windows():
         shutil.copy(
-            "src-tauri/target/release/simulator.exe",
-            "src-tauri/target/release/simulator-unity.exe",
+            "target/release/simulator.exe",
+            "target/release/simulator-unity.exe",
         )
     else:
         shutil.copy(
-            "src-tauri/target/release/simulator",
-            "src-tauri/target/release/simulator-unity",
+            "target/release/simulator",
+            "target/release/simulator-unity",
         )
 
     with working_dir("simulator"):
         subprocess.run(["cargo", "build", "--release"]).check_returncode()
 
     with working_dir("SOEMAUTDServer"):
+        subprocess.run(["cargo", "build", "--release"]).check_returncode()
+
+    with working_dir("TwinCATAUTDServerLightweight"):
         subprocess.run(["cargo", "build", "--release"]).check_returncode()
 
     subprocess.run(["npm", "install"], shell=shell).check_returncode()
@@ -186,7 +189,8 @@ def server_clear(args):
             rm_glob_f("LICENSE*")
             rm_glob_f("simulator*")
             rm_glob_f("SOEMAUTDServer*")
-            subprocess.run(["cargo", "clean"]).check_returncode()
+
+        subprocess.run(["cargo", "clean"]).check_returncode()
 
 
 def util_update_ver(args):
@@ -268,8 +272,8 @@ def util_update_ver(args):
                 flags=re.MULTILINE,
             )
             content = re.sub(
-                r'"title": "AUTD Server v(.*)"',
-                f'"title": "AUTD Server v{version}"',
+                r'"title": "AUTD3 Server v(.*)"',
+                f'"title": "AUTD3 Server v{version}"',
                 content,
                 flags=re.MULTILINE,
             )
@@ -277,6 +281,9 @@ def util_update_ver(args):
             f.write(content)
 
         with working_dir("SOEMAUTDServer"):
+            subprocess.run(["cargo", "update"]).check_returncode()
+
+        with working_dir("TwinCATAUTDServerLightweight"):
             subprocess.run(["cargo", "update"]).check_returncode()
 
         with working_dir("simulator"):

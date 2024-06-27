@@ -20,11 +20,20 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     )?;
 
     std::fs::copy(
-        manifest_dir.join(format!("./target/release/simulator{}", ext)),
+        manifest_dir.join(format!("../target/release/simulator{}", ext)),
         manifest_dir.join(format!("simulator-{}{}", std::env::var("TARGET")?, ext)),
     )?;
     std::fs::copy(
-        manifest_dir.join(format!("./target/release/SOEMAUTDServer{}", ext)),
+        manifest_dir.join(format!("../target/release/simulator-unity{}", ext)),
+        manifest_dir.join(format!(
+            "simulator-unity-{}{}",
+            std::env::var("TARGET")?,
+            ext
+        )),
+    )?;
+
+    std::fs::copy(
+        manifest_dir.join(format!("../target/release/SOEMAUTDServer{}", ext)),
         manifest_dir.join(format!(
             "SOEMAUTDServer-{}{}",
             std::env::var("TARGET")?,
@@ -33,9 +42,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     )?;
 
     std::fs::copy(
-        manifest_dir.join(format!("./target/release/simulator-unity{}", ext)),
         manifest_dir.join(format!(
-            "simulator-unity-{}{}",
+            "../target/release/TwinCATAUTDServerLightweight{}",
+            ext
+        )),
+        manifest_dir.join(format!(
+            "TwinCATAUTDServerLightweight-{}{}",
             std::env::var("TARGET")?,
             ext
         )),
@@ -94,6 +106,21 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         )?;
         writeln!(writer)?;
         write!(writer, "SOEMAUTDServer ")?;
+        writer.write_all(file_content.as_bytes())?;
+    }
+
+    {
+        let mut file_content = String::new();
+        File::open(manifest_dir.join("../TwinCATAUTDServerLightweight/ThirdPartyNotice.txt"))
+            .map(BufReader::new)?
+            .read_to_string(&mut file_content)?;
+        writeln!(writer)?;
+        writeln!(
+            writer,
+            "========================================================="
+        )?;
+        writeln!(writer)?;
+        write!(writer, "TwinCATAUTDServerLightweight ")?;
         writer.write_all(file_content.as_bytes())?;
     }
 

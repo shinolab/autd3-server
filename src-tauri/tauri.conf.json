@@ -7,8 +7,8 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "AUTD Server",
-    "version": "25.3.2"
+    "productName": "AUTD3 Server",
+    "version": "26.0.0"
   },
   "tauri": {
     "allowlist": {
@@ -51,6 +51,11 @@
             "name": "SOEMAUTDServer",
             "sidecar": true,
             "args": true
+          },
+          {
+            "name": "TwinCATAUTDServerLightweight",
+            "sidecar": true,
+            "args": true
           }
         ]
       },
@@ -91,7 +96,7 @@
       ],
       "copyright": "Copyright (c) 2023-2024 Shun Suzuki. All rights reserved.",
       "category": "DeveloperTool",
-      "shortDescription": "AUTD Server application",
+      "shortDescription": "AUTD3 Server application",
       "longDescription": "",
       "deb": {
         "depends": [],
@@ -111,7 +116,8 @@
       "externalBin": [
         "simulator",
         "simulator-unity",
-        "SOEMAUTDServer"
+        "SOEMAUTDServer",
+        "TwinCATAUTDServerLightweight"
       ],
       "windows": {
         "certificateThumbprint": null,
@@ -133,7 +139,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "AUTD Server v25.3.2",
+        "title": "AUTD3 Server v26.0.0-rc.0",
         "width": 800
       }
     ]

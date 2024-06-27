@@ -93,8 +93,7 @@ impl ecat_server::Ecat for SOEMServer {
         &self,
         request: Request<TxRawData>,
     ) -> Result<Response<SendResponse>, Status> {
-        let tx = TxDatagram::from_msg(&request.into_inner())
-            .ok_or(Status::invalid_argument("Invalid data"))?;
+        let tx = TxDatagram::from_msg(&request.into_inner())?;
         Ok(Response::new(SendResponse {
             success: Link::send(&mut *self.soem.write().await, &tx)
                 .await
@@ -200,10 +199,7 @@ async fn main_() -> anyhow::Result<()> {
                 tracing::info!("Starting SOEM server...");
 
                 let soem = f()
-                    .open(&autd3_driver::geometry::Geometry::new(
-                        vec![],
-                        autd3_driver::defined::FREQ_40K,
-                    ))
+                    .open(&autd3_driver::geometry::Geometry::new(vec![]))
                     .await?;
                 let num_dev = SOEM::num_devices();
 

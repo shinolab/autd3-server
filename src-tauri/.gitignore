@@ -3,6 +3,7 @@
 /target/
 simulator-*
 SOEMAUTDServer-*
+TwinCATAUTDServerLightweight-*
 NOTICE*
 LICENSE*
 assets/

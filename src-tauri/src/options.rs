@@ -9,6 +9,8 @@ pub struct TwinCATOptions {
     pub task: u32,
     pub base: u32,
     pub keep: bool,
+    pub lightweight: bool,
+    pub lightweight_port: u16,
 }
 
 impl Default for TwinCATOptions {
@@ -19,6 +21,8 @@ impl Default for TwinCATOptions {
             task: 2,
             base: 1,
             keep: false,
+            lightweight: false,
+            lightweight_port: 8080,
         }
     }
 }
@@ -63,8 +67,9 @@ pub struct SimulatorOptions {
     pub gpu_idx: i32,
     pub window_width: u32,
     pub window_height: u32,
-    #[serde(default)]
     pub unity: bool,
+    pub lightweight: bool,
+    pub lightweight_port: u16,
 }
 
 impl Default for SimulatorOptions {
@@ -76,6 +81,8 @@ impl Default for SimulatorOptions {
             window_width: 800,
             window_height: 600,
             unity: false,
+            lightweight: false,
+            lightweight_port: 8081,
         }
     }
 }

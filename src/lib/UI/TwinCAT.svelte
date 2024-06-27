@@ -1,9 +1,10 @@
 <script lang="ts">
   import type { TwinCATOptions } from "./options.ts";
 
-  import { Child } from "@tauri-apps/api/shell";
+  import { Command, Child } from "@tauri-apps/api/shell";
 
   import { invoke } from "@tauri-apps/api";
+  import { consoleOutputQueue } from "./console_output.ts";
 
   import Button from "./utils/Button.svelte";
   import CheckBox from "./utils/CheckBox.svelte";
@@ -12,10 +13,12 @@
 
   export let twincatOptions: TwinCATOptions;
 
+  let command;
   let child: null | Child = null;
   let running = false;
 
   let handleRunClick = async () => {
+    await handleCloseClick();
     running = true;
 
     if (twincatOptions) {
@@ -29,7 +32,32 @@
       }
     }
 
+    if (twincatOptions.lightweight) {
+      const args: string[] = ["-p", twincatOptions.lightweight_port.toString()];
+      command = Command.sidecar("TwinCATAUTDServerLightweight", args);
+      child = await command.spawn();
+      command.stdout.on("data", (line) =>
+        consoleOutputQueue.update((v) => {
+          return [...v, line.trimEnd()];
+        }),
+      );
+      command.stderr.on("data", (line) =>
+        consoleOutputQueue.update((v) => {
+          return [...v, line.trimEnd()];
+        }),
+      );
+      command.on("error", () => handleCloseClick());
+      command.on("close", () => handleCloseClick());
+    }
+
     running = false;
+  };
+
+  let handleCloseClick = async () => {
+    if (child !== null) {
+      await child.kill();
+      child = null;
+    }
   };
 
   let handleOpenXaeShellClick = async () => {
@@ -64,6 +92,20 @@
 
   <label for="keep">Keep XAE Shell open:</label>
   <CheckBox id="keep" bind:checked={twincatOptions.keep} />
+
+  <label for="lightweight">Lightweight mode:</label>
+  <CheckBox id="lightweight" bind:checked={twincatOptions.lightweight} />
+
+  {#if twincatOptions.lightweight}
+    <label for="lightweight_port">Lightweight port:</label>
+    <NumberInput
+      id="lightweight_port"
+      bind:value={twincatOptions.lightweight_port}
+      min="0"
+      max="65535"
+      step="1"
+    />
+  {/if}
 
   <Button label="Run" click={handleRunClick} disabled={running} />
   <Button label="Open XAE Shell" click={handleOpenXaeShellClick} />

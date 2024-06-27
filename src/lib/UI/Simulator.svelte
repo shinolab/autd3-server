@@ -62,6 +62,12 @@
       args.push("-g");
       args.push(simulatorOptions.gpu_idx.toString());
     }
+    if (simulatorOptions.lightweight) {
+      args.push("--lightweight");
+      args.push("--lightweight_port");
+      args.push(simulatorOptions.lightweight_port.toString());
+    }
+
     command = simulatorOptions.unity
       ? Command.sidecar("simulator-unity", args)
       : Command.sidecar("simulator", args);
@@ -172,6 +178,20 @@
 
   <label for="unity">Unity:</label>
   <CheckBox id="unity" bind:checked={simulatorOptions.unity} />
+
+  <label for="lightweight">Lightweight mode:</label>
+  <CheckBox id="lightweight" bind:checked={simulatorOptions.lightweight} />
+
+  {#if simulatorOptions.lightweight}
+    <label for="lightweight_port">Lightweight port:</label>
+    <NumberInput
+      id="lightweight_port"
+      bind:value={simulatorOptions.lightweight_port}
+      min="0"
+      max="65535"
+      step="1"
+    />
+  {/if}
 
   <Button label="Run" click={handleRunClick} disabled={!!child} />
   <Button label="Close" click={handleCloseClick} disabled={!child} />

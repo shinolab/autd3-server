@@ -35,6 +35,13 @@ https://github.com/imgui-rs/imgui-rs",
     )? || changed;
 
     let changed = autd3_license_check::check(
+        Path::new(env!("CARGO_MANIFEST_DIR")).join("../../TwinCATAUTDServerLightweight/Cargo.toml"),
+        "ThirdPartyNotice",
+        &license_file_map,
+        &[],
+    )? || changed;
+
+    let changed = autd3_license_check::check(
         Path::new(env!("CARGO_MANIFEST_DIR")).join("../../src-tauri/Cargo.toml"),
         "ThirdPartyNotice",
         &license_file_map,
