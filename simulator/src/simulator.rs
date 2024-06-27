@@ -103,17 +103,18 @@ impl simulator_server::Simulator for SimulatorServer {
     }
 }
 
-/// AUTD Simulator
 #[derive(Default)]
 pub struct Simulator {
     window_width: Option<u32>,
     window_height: Option<u32>,
     vsync: Option<bool>,
     port: Option<u16>,
+    lighweight_port: Option<u16>,
     gpu_idx: Option<i32>,
     settings: ViewerSettings,
     resource_path: PathBuf,
     config_path: Option<PathBuf>,
+    lightweight: bool,
 }
 
 impl Simulator {
@@ -123,58 +124,58 @@ impl Simulator {
             window_height: None,
             vsync: None,
             port: None,
+            lighweight_port: None,
             gpu_idx: None,
             settings: ViewerSettings::default(),
             resource_path: resource_path.as_ref().to_owned(),
             config_path: None,
+            lightweight: false,
         }
     }
 
-    /// Set window size
     pub const fn with_window_size(mut self, width: u32, height: u32) -> Self {
         self.window_width = Some(width);
         self.window_height = Some(height);
         self
     }
 
-    /// Set vsync
     pub const fn with_vsync(mut self, vsync: bool) -> Self {
         self.vsync = Some(vsync);
         self
     }
 
-    /// Set port
     pub const fn with_port(mut self, port: u16) -> Self {
         self.port = Some(port);
         self
     }
 
-    /// Set GPU index
-    ///
-    /// # Arguments
-    ///
-    /// * `gpu_idx` - GPU index. If -1, use the most suitable GPU.
-    ///
+    pub const fn with_lightweight_port(mut self, port: u16) -> Self {
+        self.lighweight_port = Some(port);
+        self
+    }
+
     pub const fn with_gpu_idx(mut self, gpu_idx: i32) -> Self {
         self.gpu_idx = Some(gpu_idx);
         self
     }
 
-    /// Set viewer settings
     pub fn with_settings(mut self, settings: ViewerSettings) -> Self {
         self.settings = settings;
         self
     }
 
-    /// Set config path where settings are saved
     pub fn with_config_path<S: AsRef<OsStr> + Sized>(mut self, config_path: S) -> Self {
         self.config_path = Some(Path::new(&config_path).to_owned());
         self
     }
 
-    /// Get viewer settings
     pub const fn get_settings(&self) -> &ViewerSettings {
         &self.settings
+    }
+
+    pub const fn enable_lightweight(mut self) -> Self {
+        self.lightweight = true;
+        self
     }
 
     pub fn run(&mut self) -> anyhow::Result<i32> {
@@ -190,31 +191,67 @@ impl Simulator {
             let rx_buf = rx_buf.clone();
             move || {
                 tracing::info!("Waiting for client connection on http://0.0.0.0:{}", port);
-                let body = async {
-                    Server::builder()
-                        .add_service(simulator_server::SimulatorServer::new(SimulatorServer {
-                            rx_buf,
-                            sender: tx,
-                        }))
-                        .serve_with_shutdown(
-                            format!("0.0.0.0:{port}")
-                                .to_socket_addrs()
-                                .unwrap()
-                                .next()
-                                .unwrap(),
-                            rx_shutdown.map(drop),
-                        )
-                        .await
-                };
                 Builder::new_multi_thread()
                     .enable_all()
                     .build()
                     .unwrap()
-                    .block_on(body)
+                    .block_on(async {
+                        Server::builder()
+                            .add_service(simulator_server::SimulatorServer::new(SimulatorServer {
+                                rx_buf,
+                                sender: tx,
+                            }))
+                            .serve_with_shutdown(
+                                format!("0.0.0.0:{port}")
+                                    .to_socket_addrs()
+                                    .unwrap()
+                                    .next()
+                                    .unwrap(),
+                                rx_shutdown.map(drop),
+                            )
+                            .await
+                    })
             }
         });
 
-        self.run_simulator(server_th, rx_buf, rx, tx_shutdown)
+        let lightweight_server = if self.lightweight {
+            let (tx_shutdown_lightweigh, rx_shutdown_lightweight) = oneshot::channel::<()>();
+            let lighweight_port = self
+                .lighweight_port
+                .unwrap_or(self.settings.lighweight_port);
+            Some((
+                std::thread::spawn({
+                    move || {
+                        use autd3_protobuf::{lightweight::LightweightServer, *};
+                        Builder::new_multi_thread()
+                            .enable_all()
+                            .build()
+                            .unwrap()
+                            .block_on(async {
+                                let server = LightweightServer::new(move || {
+                                    autd3_link_simulator::Simulator::builder(port)
+                                });
+                                Server::builder()
+                                    .add_service(ecat_light_server::EcatLightServer::new(server))
+                                    .serve_with_shutdown(
+                                        format!("0.0.0.0:{}", lighweight_port)
+                                            .to_socket_addrs()
+                                            .unwrap()
+                                            .next()
+                                            .unwrap(),
+                                        rx_shutdown_lightweight.map(drop),
+                                    )
+                                    .await
+                            })
+                    }
+                }),
+                tx_shutdown_lightweigh,
+            ))
+        } else {
+            None
+        };
+
+        self.run_simulator(server_th, rx_buf, rx, tx_shutdown, lightweight_server)
     }
 
     fn run_simulator(
@@ -223,6 +260,10 @@ impl Simulator {
         rx_buf: Arc<RwLock<Vec<autd3_driver::firmware::cpu::RxMessage>>>,
         receiver: Receiver<Signal>,
         shutdown: tokio::sync::oneshot::Sender<()>,
+        lightweight_server: Option<(
+            std::thread::JoinHandle<Result<(), tonic::transport::Error>>,
+            tokio::sync::oneshot::Sender<()>,
+        )>,
     ) -> anyhow::Result<i32> {
         let mut event_loop = EventLoopBuilder::<()>::with_user_event().build();
 
@@ -276,8 +317,7 @@ impl Simulator {
                         sources.clear();
                         cpus.clear();
 
-                        let geometry = autd3_driver::geometry::Geometry::from_msg(&geometry)
-                            .ok_or(AUTDProtoBufError::DataParseError)?;
+                        let geometry = autd3_driver::geometry::Geometry::from_msg(&geometry)?;
                         geometry.iter().for_each(|dev| {
                             let r = dev.rotation();
                             dev.iter().for_each(|tr| {
@@ -328,8 +368,7 @@ impl Simulator {
                         is_initialized = true;
                     }
                     Ok(Signal::UpdateGeometry(geometry)) => {
-                        let geometry = autd3_driver::geometry::Geometry::from_msg(&geometry)
-                            .ok_or(AUTDProtoBufError::DataParseError)?;
+                        let geometry = autd3_driver::geometry::Geometry::from_msg(&geometry)?;
                         geometry
                             .iter()
                             .flat_map(|dev| {
@@ -350,8 +389,7 @@ impl Simulator {
                         trans_viewer.update_source_pos(&sources)?;
                     }
                     Ok(Signal::Send(raw)) => {
-                        let tx =
-                            TxDatagram::from_msg(&raw).ok_or(AUTDProtoBufError::DataParseError)?;
+                        let tx = TxDatagram::from_msg(&raw)?;
                         cpus.iter_mut().for_each(|cpu| {
                             cpu.send(&tx);
                         });
@@ -617,6 +655,16 @@ impl Simulator {
                 *control_flow = ControlFlow::Exit;
             }
         });
+
+        if let Some((server_th, tx_shutdown_lightweigh)) = lightweight_server {
+            let _ = tx_shutdown_lightweigh.send(());
+            if let Err(e) = server_th.join().unwrap() {
+                match e.source() {
+                    Some(e) => tracing::error!("Server error: {}", e),
+                    None => tracing::error!("Server error: {}", e),
+                }
+            }
+        }
 
         let _ = shutdown.send(());
         if let Err(e) = server_th.join().unwrap() {

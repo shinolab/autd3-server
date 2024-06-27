@@ -735,6 +735,7 @@ impl ImGuiViewer {
                                                 vec![match cpu.fpga().current_mod_segment() {
                                                     autd3::derive::Segment::S0 => 0.0,
                                                     autd3::derive::Segment::S1 => 1.0,
+                                                    _ => unimplemented!(),
                                                 }; ULTRASOUND_PERIOD as usize]
 
                                             }
@@ -749,6 +750,7 @@ impl ImGuiViewer {
                                                 vec![match cpu.fpga().current_stm_segment() {
                                                     autd3::derive::Segment::S0 => 0.0,
                                                     autd3::derive::Segment::S1 => 1.0,
+                                                    _ => unimplemented!(),
                                                 }; ULTRASOUND_PERIOD as usize]
 
                                             }

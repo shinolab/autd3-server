@@ -57,6 +57,8 @@ pub struct ViewerSettings {
     pub auto_play: bool,
     pub image_save_path: String,
     pub port: u16,
+    #[serde(default = "default_lightweight_port")]
+    pub lighweight_port: u16,
     pub camera_move_speed: f32,
     #[serde(default)]
     pub view_device: bool,
@@ -74,6 +76,10 @@ fn default_time_scale() -> f32 {
 
 fn default_slice_show() -> bool {
     true
+}
+
+fn default_lightweight_port() -> u16 {
+    8081
 }
 
 impl ViewerSettings {
@@ -154,6 +160,7 @@ impl Default for ViewerSettings {
             auto_play: false,
             image_save_path,
             port: 8080,
+            lighweight_port: 8081,
             camera_move_speed: 10. * MILLIMETER,
             view_device: false,
             time_scale: 1.0,

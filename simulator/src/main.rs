@@ -65,6 +65,14 @@ struct Arg {
     /// Debug mode
     #[arg(short = 'd', long = "debug", default_value = "false")]
     debug: bool,
+
+    /// lightweight mode
+    #[arg(long = "lightweight", default_value = "false")]
+    lightweight: bool,
+
+    /// lightweight port
+    #[arg(long = "lightweight_port")]
+    lightweight_port: Option<u16>,
 }
 
 #[derive(Subcommand)]
@@ -97,6 +105,8 @@ fn main() -> anyhow::Result<()> {
                 Path::new(&arg.setting).to_owned()
             };
             let vsync = arg.vsync;
+            let lightweight = arg.lightweight;
+            let lightweight_port = arg.lightweight_port;
 
             let mut fmt = tracing_subscriber::fmt();
             if arg.debug {
@@ -132,6 +142,14 @@ fn main() -> anyhow::Result<()> {
 
             if let Some(path) = &arg.config_path {
                 simulator = simulator.with_config_path(path);
+            }
+
+            if lightweight {
+                simulator = simulator.enable_lightweight();
+            }
+
+            if let Some(port) = lightweight_port {
+                simulator = simulator.with_lightweight_port(port);
             }
 
             simulator.run()?;
