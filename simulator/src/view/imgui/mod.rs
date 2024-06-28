@@ -435,7 +435,7 @@ impl ImGuiViewer {
                                 std::f32::MAX / 2.,
                             ) {
                                 cpus.iter().for_each(|cpu| {
-                                    sources.drives_mut().skip(body_pointer[cpu.idx()]).for_each(
+                                    sources.drives_mut().skip(body_pointer[cpu.idx()]).take(cpu.num_transducers()).for_each(
                                         |s| {
                                             s.set_wave_number(
                                                 cpu.fpga().ultrasound_freq(),
@@ -463,6 +463,7 @@ impl ImGuiViewer {
                                     sources
                                         .visibilities_mut()
                                         .skip(body_pointer[i])
+                                        .take(cpu.num_transducers())
                                         .for_each(|s| *s = v);
                                 }
                                 ui.same_line();
@@ -472,6 +473,7 @@ impl ImGuiViewer {
                                     sources
                                         .drives_mut()
                                         .skip(body_pointer[i])
+                                        .take(cpu.num_transducers())
                                         .for_each(|s| s.enable = v);
                                 }
                                 ui.same_line();
