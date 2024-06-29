@@ -106,27 +106,27 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 26.0.0-rc.0 (MIT)
+autd3 26.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 26.0.0-rc.0 (MIT)
+autd3-derive 26.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 26.0.0-rc.0 (MIT)
+autd3-driver 26.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 26.0.0-rc.0 (MIT)
+autd3-firmware-emulator 26.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 26.0.0-rc.0 (MIT)
+autd3-gain-holo 26.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 26.0.0-rc.0
+autd3-link-soem 26.0.0
 https://github.com/shinolab/autd3-rs
 
 ---
@@ -192,11 +192,11 @@ SOEM write to Beckhoff Automation GmbH, Eiserstrasse 5, D-33415 Verl, Germany
 
 ---------------------------------------------------------
 
-autd3-protobuf 26.0.0-rc.0 (MIT)
+autd3-protobuf 26.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-server 26.0.0-rc.0 (MIT)
+autd3-server 26.0.0 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -872,7 +872,7 @@ lock_api 0.4.12 (Apache-2.0 OR MIT)
 https://github.com/Amanieu/parking_lot
 ---------------------------------------------------------
 
-log 0.4.21 (Apache-2.0 OR MIT)
+log 0.4.22 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/log
 ---------------------------------------------------------
 
@@ -1048,7 +1048,7 @@ objc_id 0.1.1 (MIT)
 http://github.com/SSheldon/rust-objc-id
 ---------------------------------------------------------
 
-object 0.36.0 (Apache-2.0 OR MIT)
+object 0.36.1 (Apache-2.0 OR MIT)
 https://github.com/gimli-rs/object
 ---------------------------------------------------------
 
