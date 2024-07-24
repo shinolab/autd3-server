@@ -24,6 +24,6 @@
     "tslib": "^2.6.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.4",
-    "@tauri-apps/cli": "^1.4.0"
+    "@tauri-apps/cli": "^1.6.0"
   }
 }
