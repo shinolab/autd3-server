@@ -118,31 +118,31 @@ atomic-polyfill 1.0.3 (Apache-2.0 OR MIT)
 https://github.com/embassy-rs/atomic-polyfill
 ---------------------------------------------------------
 
-autd3 26.0.0 (MIT)
+autd3 27.0.0-alpha.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 26.0.0 (MIT)
+autd3-derive 27.0.0-alpha.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 26.0.0 (MIT)
+autd3-driver 27.0.0-alpha.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 26.0.0 (MIT)
+autd3-firmware-emulator 27.0.0-alpha.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 26.0.0 (MIT)
+autd3-gain-holo 27.0.0-alpha.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-simulator 26.0.0 (MIT)
+autd3-link-simulator 27.0.0-alpha.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-protobuf 26.0.0 (MIT)
+autd3-protobuf 27.0.0-alpha.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -1184,7 +1184,7 @@ simd_helpers 0.1.0 (MIT)
 https://github.com/lu-zero/simd_helpers
 ---------------------------------------------------------
 
-simulator 26.0.0 (MIT)
+simulator 27.0.0-alpha.1 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 

@@ -2,6 +2,8 @@
 
 mod log_formatter;
 
+use std::num::{NonZeroU64, NonZeroUsize};
+
 use log_formatter::LogFormatter;
 
 use autd3_driver::{
@@ -49,13 +51,13 @@ struct Arg {
     port: u16,
     /// Sync0 cycle time in units of 500us
     #[clap(short = 's', long = "sync0", default_value = "2")]
-    sync0: u64,
+    sync0: NonZeroU64,
     /// Send cycle time in units of 500us
     #[clap(short = 'c', long = "send", default_value = "2")]
-    send: u64,
+    send: NonZeroU64,
     /// Buffer size
     #[clap(short = 'b', long = "buffer_size", default_value = "32")]
-    buf_size: usize,
+    buf_size: NonZeroUsize,
     /// Timer strategy
     #[clap(short = 'w', long = "timer", default_value = "sleep")]
     timer_strategy: TimerStrategyArg,

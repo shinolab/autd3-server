@@ -1,9 +1,9 @@
 mod components;
 
-use autd3::derive::AUTDInternalError;
+use autd3::{derive::AUTDInternalError, prelude::ULTRASOUND_FREQ};
 use autd3_driver::{
+    defined::ULTRASOUND_PERIOD_COUNT,
     ethercat::{DcSysTime, ECAT_DC_SYS_TIME_BASE},
-    firmware::fpga::ULTRASOUND_PERIOD,
 };
 use components::*;
 
@@ -438,10 +438,9 @@ impl ImGuiViewer {
                                     sources.drives_mut().skip(body_pointer[cpu.idx()]).take(cpu.num_transducers()).for_each(
                                         |s| {
                                             s.set_wave_number(
-                                                cpu.fpga().ultrasound_freq(),
                                                 settings.sound_speed,
                                             );
-                                        },
+                                        }
                                     );
                                 });
                                 update_flag.set(UpdateFlag::UPDATE_SOURCE_DRIVE, true);
@@ -556,7 +555,7 @@ impl ImGuiViewer {
                                             "Frequency division: {}",
                                             cpu.fpga().modulation_freq_division(segment)
                                         ));
-                                        let sampling_freq = cpu.fpga().fpga_clk_freq().hz() as f32
+                                        let sampling_freq = ULTRASOUND_FREQ.hz() as f32
                                             / cpu.fpga().modulation_freq_division(segment) as f32;
                                         ui.text(format!(
                                             "Sampling Frequency: {:.3} [Hz]",
@@ -564,7 +563,7 @@ impl ImGuiViewer {
                                         ));
                                         let sampling_period = 1000000.0
                                             * cpu.fpga().modulation_freq_division(segment) as f32
-                                            / cpu.fpga().fpga_clk_freq().hz() as f32;
+                                            /ULTRASOUND_FREQ.hz() as f32;
                                         ui.text(format!(
                                             "Sampling period: {:.3} [us]",
                                             sampling_period
@@ -669,7 +668,7 @@ impl ImGuiViewer {
                                                 "Frequency division: {}",
                                                 cpu.fpga().stm_freq_division(segment)
                                             ));
-                                            let sampling_freq = cpu.fpga().fpga_clk_freq().hz()
+                                            let sampling_freq =ULTRASOUND_FREQ.hz()
                                                 as f32
                                                 / cpu.fpga().stm_freq_division(segment) as f32;
                                             ui.text(format!(
@@ -678,7 +677,7 @@ impl ImGuiViewer {
                                             ));
                                             let sampling_period = 1000000.0
                                                 * cpu.fpga().stm_freq_division(segment) as f32
-                                                / cpu.fpga().fpga_clk_freq().hz() as f32;
+                                                / ULTRASOUND_FREQ.hz() as f32;
                                             ui.text(format!(
                                                 "Sampling period: {:.3} [us]",
                                                 sampling_period
@@ -701,12 +700,12 @@ impl ImGuiViewer {
                                         let debug_values = cpu.fpga().debug_values();
                                         let gpio_out = |ty, value| match ty {
                                             autd3_firmware_emulator::fpga::params::DBG_NONE => {
-                                                vec![0.0; ULTRASOUND_PERIOD as usize]
+                                                vec![0.0; ULTRASOUND_PERIOD_COUNT]
                                             }
                                             autd3_firmware_emulator::fpga::params::DBG_BASE_SIG => {
                                                 [
-                                                    vec![0.0; ULTRASOUND_PERIOD as usize / 2],
-                                                    vec![1.0; ULTRASOUND_PERIOD as usize / 2],
+                                                    vec![0.0; ULTRASOUND_PERIOD_COUNT / 2],
+                                                    vec![1.0; ULTRASOUND_PERIOD_COUNT / 2],
                                                 ]
                                                 .concat()
                                             }
@@ -717,7 +716,7 @@ impl ImGuiViewer {
                                                     } else {
                                                         0.0
                                                     };
-                                                    ULTRASOUND_PERIOD as usize
+                                                    ULTRASOUND_PERIOD_COUNT
                                                 ]
                                             }
                                             autd3_firmware_emulator::fpga::params::DBG_FORCE_FAN => {
@@ -727,18 +726,18 @@ impl ImGuiViewer {
                                                     } else {
                                                         0.0
                                                     };
-                                                    ULTRASOUND_PERIOD as usize
+                                                    ULTRASOUND_PERIOD_COUNT
                                                 ]
                                             }
                                             autd3_firmware_emulator::fpga::params::DBG_SYNC => {
-                                                vec![0.0; ULTRASOUND_PERIOD as usize]
+                                                vec![0.0; ULTRASOUND_PERIOD_COUNT]
                                             }
                                             autd3_firmware_emulator::fpga::params::DBG_MOD_SEGMENT => {
                                                 vec![match cpu.fpga().current_mod_segment() {
                                                     autd3::derive::Segment::S0 => 0.0,
                                                     autd3::derive::Segment::S1 => 1.0,
                                                     _ => unimplemented!(),
-                                                }; ULTRASOUND_PERIOD as usize]
+                                                }; ULTRASOUND_PERIOD_COUNT]
 
                                             }
                                             autd3_firmware_emulator::fpga::params::DBG_MOD_IDX => {
@@ -746,14 +745,14 @@ impl ImGuiViewer {
                                                     1.0
                                                 } else {
                                                     0.0
-                                                }; ULTRASOUND_PERIOD as usize]
+                                                }; ULTRASOUND_PERIOD_COUNT]
                                             }
                                             autd3_firmware_emulator::fpga::params::DBG_STM_SEGMENT => {
                                                 vec![match cpu.fpga().current_stm_segment() {
                                                     autd3::derive::Segment::S0 => 0.0,
                                                     autd3::derive::Segment::S1 => 1.0,
                                                     _ => unimplemented!(),
-                                                }; ULTRASOUND_PERIOD as usize]
+                                                }; ULTRASOUND_PERIOD_COUNT]
 
                                             }
                                             autd3_firmware_emulator::fpga::params::DBG_STM_IDX => {
@@ -761,23 +760,24 @@ impl ImGuiViewer {
                                                     1.0
                                                 } else {
                                                     0.0
-                                                }; ULTRASOUND_PERIOD as usize]
+                                                }; ULTRASOUND_PERIOD_COUNT]
                                             }
                                             autd3_firmware_emulator::fpga::params::DBG_IS_STM_MODE => {
                                                 vec![if cpu.fpga().stm_cycle(cpu.fpga().current_stm_segment()) != 1 {
                                                     1.0
                                                 } else {
                                                     0.0
-                                                }; ULTRASOUND_PERIOD as usize]
+                                                }; ULTRASOUND_PERIOD_COUNT]
                                             }
                                             autd3_firmware_emulator::fpga::params::DBG_PWM_OUT => {
                                                 let d = cpu.fpga().drives(cpu.fpga().current_stm_segment(),  cpu.fpga().current_stm_idx())[value as usize];
                                                 let m = cpu.fpga().modulation_at(cpu.fpga().current_mod_segment(), cpu.fpga().current_mod_idx());
                                                 let phase = d.phase().value() as u32;
                                                 let pulse_width = cpu.fpga().to_pulse_width(d.intensity(), m.into()) as u32;
-                                                let rise = (ULTRASOUND_PERIOD-phase*2-pulse_width/2+ULTRASOUND_PERIOD)%ULTRASOUND_PERIOD;
-                                                let fall = (ULTRASOUND_PERIOD-phase*2+(pulse_width+1)/2+ULTRASOUND_PERIOD)%ULTRASOUND_PERIOD;
-                                                (0..ULTRASOUND_PERIOD).map(|t|
+                                                const T:u32 = ULTRASOUND_PERIOD_COUNT as u32;
+                                                let rise = (T-phase*2-pulse_width/2+T)%T;
+                                                let fall = (T-phase*2+(pulse_width+1)/2+T)%T;
+                                                (0..T).map(|t|
                                                     if rise <= fall {
                                                         if (rise <= t) && (t < fall) {
                                                             1.0
@@ -794,7 +794,7 @@ impl ImGuiViewer {
                                                 ).collect()
                                             }
                                             autd3_firmware_emulator::fpga::params::DBG_DIRECT => {
-                                                vec![value as f32; ULTRASOUND_PERIOD as usize]
+                                                vec![value as f32; ULTRASOUND_PERIOD_COUNT]
                                             }
                                             _ => unreachable!()
                                         };

@@ -18,7 +18,7 @@ use crate::{
     Quaternion, Vector3,
 };
 use autd3_driver::{
-    defined::{Hz, T4010A1_AMPLITUDE},
+    defined::{T4010A1_AMPLITUDE, ULTRASOUND_PERIOD_COUNT},
     firmware::cpu::TxDatagram,
 };
 use autd3_firmware_emulator::CPUEmulator;
@@ -229,7 +229,9 @@ impl Simulator {
                             .unwrap()
                             .block_on(async {
                                 let server = LightweightServer::new(move || {
-                                    autd3_link_simulator::Simulator::builder(port)
+                                    autd3_link_simulator::Simulator::builder(
+                                        format!("127.0.0.1:{}", port).parse().unwrap(),
+                                    )
                                 });
                                 Server::builder()
                                     .add_service(ecat_light_server::EcatLightServer::new(server))
@@ -327,13 +329,7 @@ impl Simulator {
                                     to_gl_rot(Quaternion::new(
                                         r.w as _, r.i as _, r.j as _, r.k as _,
                                     )),
-                                    Drive::new(
-                                        1.0,
-                                        0.0,
-                                        1.0,
-                                        40000 * Hz,
-                                        self.settings.sound_speed,
-                                    ),
+                                    Drive::new(1.0, 0.0, 1.0, self.settings.sound_speed),
                                     1.0,
                                 );
                             });
@@ -555,13 +551,10 @@ impl Simulator {
                                                         m.into(),
                                                     )
                                                         as f32
-                                                    / 512.0)
+                                                    / ULTRASOUND_PERIOD_COUNT as f32)
                                                     .sin();
                                                 d.phase = drives[i].phase().radian() as f32;
-                                                d.set_wave_number(
-                                                    cpu.fpga().ultrasound_freq(),
-                                                    self.settings.sound_speed,
-                                                );
+                                                d.set_wave_number(self.settings.sound_speed);
                                             });
 
                                         Ok(())
