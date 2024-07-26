@@ -118,6 +118,10 @@ atomic-polyfill 1.0.3 (Apache-2.0 OR MIT)
 https://github.com/embassy-rs/atomic-polyfill
 ---------------------------------------------------------
 
+atomic-waker 1.1.2 (Apache-2.0 OR MIT)
+https://github.com/smol-rs/atomic-waker
+---------------------------------------------------------
+
 autd3 27.0.0-alpha.3 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
@@ -158,11 +162,11 @@ avif-serialize 0.8.1 (BSD-3-Clause)
 https://github.com/kornelski/avif-serialize
 ---------------------------------------------------------
 
-axum 0.6.20 (MIT)
+axum 0.7.5 (MIT)
 https://github.com/tokio-rs/axum
 ---------------------------------------------------------
 
-axum-core 0.3.4 (MIT)
+axum-core 0.4.3 (MIT)
 https://github.com/tokio-rs/axum
 ---------------------------------------------------------
 
@@ -174,15 +178,19 @@ base64 0.13.1 (Apache-2.0 OR MIT)
 https://github.com/marshallpierce/rust-base64
 ---------------------------------------------------------
 
-base64 0.21.7 (Apache-2.0 OR MIT)
+base64 0.22.1 (Apache-2.0 OR MIT)
 https://github.com/marshallpierce/rust-base64
+---------------------------------------------------------
+
+bit-vec 0.8.0 (Apache-2.0 OR MIT)
+https://github.com/contain-rs/bit-vec
 ---------------------------------------------------------
 
 bit_field 0.10.2 (Apache-2.0 OR MIT)
 https://github.com/phil-opp/rust-bit-field
 ---------------------------------------------------------
 
-bitfield-struct 0.6.2 (MIT)
+bitfield-struct 0.8.0 (MIT)
 https://github.com/wrenger/bitfield-struct-rs.git
 ---------------------------------------------------------
 
@@ -196,10 +204,6 @@ https://github.com/bitflags/bitflags
 
 bitstream-io 2.4.2 (Apache-2.0 OR MIT)
 https://github.com/tuffy/bitstream-io
----------------------------------------------------------
-
-bitvec 1.0.1 (MIT)
-https://github.com/bitvecto-rs/bitvec
 ---------------------------------------------------------
 
 block-sys 0.1.0-beta.1 (MIT)
@@ -274,15 +278,15 @@ chrono 0.4.38 (Apache-2.0 OR MIT)
 https://github.com/chronotope/chrono
 ---------------------------------------------------------
 
-clap 4.5.8 (Apache-2.0 OR MIT)
+clap 4.5.11 (Apache-2.0 OR MIT)
 https://github.com/clap-rs/clap
 ---------------------------------------------------------
 
-clap_builder 4.5.8 (Apache-2.0 OR MIT)
+clap_builder 4.5.11 (Apache-2.0 OR MIT)
 https://github.com/clap-rs/clap
 ---------------------------------------------------------
 
-clap_derive 4.5.8 (Apache-2.0 OR MIT)
+clap_derive 4.5.11 (Apache-2.0 OR MIT)
 https://github.com/clap-rs/clap
 ---------------------------------------------------------
 
@@ -441,10 +445,6 @@ foreign-types-shared 0.1.1 (Apache-2.0 OR MIT)
 https://github.com/sfackler/foreign-types
 ---------------------------------------------------------
 
-funty 2.0.0 (MIT)
-https://github.com/myrrlyn/funty
----------------------------------------------------------
-
 futures-channel 0.3.30 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/futures-rs
 ---------------------------------------------------------
@@ -509,7 +509,7 @@ gltf-json 1.4.1 (Apache-2.0 OR MIT)
 https://github.com/gltf-rs/gltf
 ---------------------------------------------------------
 
-h2 0.3.26 (MIT)
+h2 0.4.5 (MIT)
 https://github.com/hyperium/h2
 ---------------------------------------------------------
 
@@ -545,11 +545,15 @@ hermit-abi 0.3.9 (Apache-2.0 OR MIT)
 https://github.com/hermit-os/hermit-rs
 ---------------------------------------------------------
 
-http 0.2.12 (Apache-2.0 OR MIT)
+http 1.1.0 (Apache-2.0 OR MIT)
 https://github.com/hyperium/http
 ---------------------------------------------------------
 
-http-body 0.4.6 (MIT)
+http-body 1.0.1 (MIT)
+https://github.com/hyperium/http-body
+---------------------------------------------------------
+
+http-body-util 0.1.2 (MIT)
 https://github.com/hyperium/http-body
 ---------------------------------------------------------
 
@@ -561,12 +565,16 @@ httpdate 1.0.3 (Apache-2.0 OR MIT)
 https://github.com/pyfisch/httpdate
 ---------------------------------------------------------
 
-hyper 0.14.29 (MIT)
+hyper 1.4.1 (MIT)
 https://github.com/hyperium/hyper
 ---------------------------------------------------------
 
-hyper-timeout 0.4.1 (Apache-2.0 OR MIT)
+hyper-timeout 0.5.1 (Apache-2.0 OR MIT)
 https://github.com/hjr3/hyper-timeout
+---------------------------------------------------------
+
+hyper-util 0.1.6 (MIT)
+https://github.com/hyperium/hyper-util
 ---------------------------------------------------------
 
 iana-time-zone 0.1.60 (Apache-2.0 OR MIT)
@@ -617,10 +625,6 @@ interpolate_name 0.2.4 (MIT)
 https://github.com/lu-zero/interpolate_name
 ---------------------------------------------------------
 
-is_sorted 0.1.1 (Apache-2.0 OR MIT)
-https://github.com/gnzlbg/is_sorted
----------------------------------------------------------
-
 is_terminal_polyfill 1.70.0 (Apache-2.0 OR MIT)
 https://github.com/polyfill-rs/is_terminal_polyfill
 ---------------------------------------------------------
@@ -630,6 +634,10 @@ https://github.com/rust-itertools/itertools
 ---------------------------------------------------------
 
 itertools 0.12.1 (Apache-2.0 OR MIT)
+https://github.com/rust-itertools/itertools
+---------------------------------------------------------
+
+itertools 0.13.0 (Apache-2.0 OR MIT)
 https://github.com/rust-itertools/itertools
 ---------------------------------------------------------
 
@@ -757,7 +765,15 @@ mio 0.8.11 (MIT)
 https://github.com/tokio-rs/mio
 ---------------------------------------------------------
 
+mio 1.0.1 (MIT)
+https://github.com/tokio-rs/mio
+---------------------------------------------------------
+
 nalgebra 0.32.6 (BSD-3-Clause)
+https://github.com/dimforge/nalgebra
+---------------------------------------------------------
+
+nalgebra 0.33.0 (Apache-2.0)
 https://github.com/dimforge/nalgebra
 ---------------------------------------------------------
 
@@ -835,10 +851,6 @@ https://github.com/rust-num/num-rational
 
 num-traits 0.2.19 (Apache-2.0 OR MIT)
 https://github.com/rust-num/num-traits
----------------------------------------------------------
-
-num_cpus 1.16.0 (Apache-2.0 OR MIT)
-https://github.com/seanmonstar/num_cpus
 ---------------------------------------------------------
 
 num_enum 0.5.11 (Apache-2.0 OR BSD-3-Clause OR MIT)
@@ -981,11 +993,11 @@ profiling-procmacros 1.0.15 (Apache-2.0 OR MIT)
 https://github.com/aclysma/profiling
 ---------------------------------------------------------
 
-prost 0.12.6 (Apache-2.0)
+prost 0.13.1 (Apache-2.0)
 https://github.com/tokio-rs/prost
 ---------------------------------------------------------
 
-prost-derive 0.12.6 (Apache-2.0)
+prost-derive 0.13.1 (Apache-2.0)
 https://github.com/tokio-rs/prost
 ---------------------------------------------------------
 
@@ -1003,10 +1015,6 @@ http://github.com/tailhook/quick-error
 
 quote 1.0.36 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/quote
----------------------------------------------------------
-
-radium 0.7.0 (MIT)
-https://github.com/bitvecto-rs/radium
 ---------------------------------------------------------
 
 rand 0.8.5 (Apache-2.0 OR MIT)
@@ -1140,15 +1148,15 @@ seq-macro 0.3.5 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/seq-macro
 ---------------------------------------------------------
 
-serde 1.0.203 (Apache-2.0 OR MIT)
+serde 1.0.204 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
-serde_derive 1.0.203 (Apache-2.0 OR MIT)
+serde_derive 1.0.204 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
-serde_json 1.0.118 (Apache-2.0 OR MIT)
+serde_json 1.0.120 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/json
 ---------------------------------------------------------
 
@@ -1173,6 +1181,10 @@ https://github.com/vorner/signal-hook
 ---------------------------------------------------------
 
 simba 0.8.1 (Apache-2.0)
+https://github.com/dimforge/simba
+---------------------------------------------------------
+
+simba 0.9.0 (Apache-2.0)
 https://github.com/dimforge/simba
 ---------------------------------------------------------
 
@@ -1244,12 +1256,12 @@ sync_wrapper 0.1.2 (Apache-2.0)
 https://github.com/Actyx/sync_wrapper
 ---------------------------------------------------------
 
-system-deps 6.2.2 (Apache-2.0 OR MIT)
-https://github.com/gdesmott/system-deps
+sync_wrapper 1.0.1 (Apache-2.0)
+https://github.com/Actyx/sync_wrapper
 ---------------------------------------------------------
 
-tap 1.0.1 (MIT)
-https://github.com/myrrlyn/tap
+system-deps 6.2.2 (Apache-2.0 OR MIT)
+https://github.com/gdesmott/system-deps
 ---------------------------------------------------------
 
 target-lexicon 0.12.14 (Apache-2.0 WITH LLVM-exception)
@@ -1292,15 +1304,11 @@ tiny-skia-path 0.8.4 (BSD-3-Clause)
 https://github.com/RazrFalcon/tiny-skia/path
 ---------------------------------------------------------
 
-tokio 1.38.0 (MIT)
+tokio 1.39.1 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
-tokio-io-timeout 1.2.0 (Apache-2.0 OR MIT)
-https://github.com/sfackler/tokio-io-timeout
----------------------------------------------------------
-
-tokio-macros 2.3.0 (MIT)
+tokio-macros 2.4.0 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
@@ -1328,7 +1336,7 @@ toml_edit 0.22.14 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
-tonic 0.11.0 (MIT)
+tonic 0.12.1 (MIT)
 https://github.com/hyperium/tonic
 ---------------------------------------------------------
 
@@ -1508,7 +1516,7 @@ winapi-x86_64-pc-windows-gnu 0.4.0 (Apache-2.0 OR MIT)
 https://github.com/retep998/winapi-rs
 ---------------------------------------------------------
 
-windows 0.57.0 (Apache-2.0 OR MIT)
+windows 0.58.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1516,19 +1524,23 @@ windows-core 0.52.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-core 0.57.0 (Apache-2.0 OR MIT)
+windows-core 0.58.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-implement 0.57.0 (Apache-2.0 OR MIT)
+windows-implement 0.58.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-interface 0.57.0 (Apache-2.0 OR MIT)
+windows-interface 0.58.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-result 0.1.2 (Apache-2.0 OR MIT)
+windows-result 0.2.0 (Apache-2.0 OR MIT)
+https://github.com/microsoft/windows-rs
+---------------------------------------------------------
+
+windows-strings 0.1.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1552,7 +1564,7 @@ windows-targets 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-targets 0.52.5 (Apache-2.0 OR MIT)
+windows-targets 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1564,7 +1576,7 @@ windows_aarch64_gnullvm 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_aarch64_gnullvm 0.52.5 (Apache-2.0 OR MIT)
+windows_aarch64_gnullvm 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1576,7 +1588,7 @@ windows_aarch64_msvc 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_aarch64_msvc 0.52.5 (Apache-2.0 OR MIT)
+windows_aarch64_msvc 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1588,11 +1600,11 @@ windows_i686_gnu 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_i686_gnu 0.52.5 (Apache-2.0 OR MIT)
+windows_i686_gnu 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_i686_gnullvm 0.52.5 (Apache-2.0 OR MIT)
+windows_i686_gnullvm 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1604,7 +1616,7 @@ windows_i686_msvc 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_i686_msvc 0.52.5 (Apache-2.0 OR MIT)
+windows_i686_msvc 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1616,7 +1628,7 @@ windows_x86_64_gnu 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_gnu 0.52.5 (Apache-2.0 OR MIT)
+windows_x86_64_gnu 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1628,7 +1640,7 @@ windows_x86_64_gnullvm 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_gnullvm 0.52.5 (Apache-2.0 OR MIT)
+windows_x86_64_gnullvm 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1640,7 +1652,7 @@ windows_x86_64_msvc 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_msvc 0.52.5 (Apache-2.0 OR MIT)
+windows_x86_64_msvc 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1654,10 +1666,6 @@ https://github.com/winnow-rs/winnow
 
 winnow 0.6.13 (MIT)
 https://github.com/winnow-rs/winnow
----------------------------------------------------------
-
-wyz 0.5.1 (MIT)
-https://github.com/myrrlyn/wyz
 ---------------------------------------------------------
 
 x11-dl 2.21.0 (MIT)
