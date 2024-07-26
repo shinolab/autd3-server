@@ -53,17 +53,3 @@ jobs:
           python3 build.py build
           python3 build.py lint
         if: ${{ needs.changed-files.outputs.src == 'true' }}
-
-  auto-merge:
-    needs:
-      - test
-    permissions:
-      pull-requests: write
-      contents: write
-    runs-on: ubuntu-latest
-    if: ${{ always() && !cancelled() && !failure() && github.actor == 'dependabot[bot]' }}
-    steps:
-      - run: gh pr merge --auto "$PR_URL"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
