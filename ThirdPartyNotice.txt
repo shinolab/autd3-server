@@ -50,7 +50,7 @@ braces 3.0.3 MIT
 micromatch/braces
 ---------------------------------------------------------
 
-buffer-crc32 0.2.13 MIT
+buffer-crc32 1.0.0 MIT
 git://github.com/brianloveswords/buffer-crc32.git
 ---------------------------------------------------------
 
@@ -72,10 +72,6 @@ git://github.com/stefanpenner/es6-promise.git
 
 estree-walker 3.0.3 MIT
 https://github.com/Rich-Harris/estree-walker
----------------------------------------------------------
-
-fastq 1.17.1 ISC
-git+https://github.com/mcollina/fastq.git
 ---------------------------------------------------------
 
 fill-range 7.1.1 MIT
@@ -126,10 +122,6 @@ mdn-data 2.0.30 CC0-1.0
 https://github.com/mdn/data.git
 ---------------------------------------------------------
 
-micromatch 4.0.5 MIT
-micromatch/micromatch
----------------------------------------------------------
-
 minimatch 3.1.2 ISC
 git://github.com/isaacs/minimatch.git
 ---------------------------------------------------------
@@ -166,10 +158,6 @@ readdirp 3.6.0 MIT
 git://github.com/paulmillr/readdirp.git
 ---------------------------------------------------------
 
-reusify 1.0.4 MIT
-git+https://github.com/mcollina/reusify.git
----------------------------------------------------------
-
 rimraf 2.7.1 ISC
 git://github.com/isaacs/rimraf.git
 ---------------------------------------------------------
@@ -182,7 +170,7 @@ sander 0.5.1 MIT
 https://github.com/rich-harris/sander
 ---------------------------------------------------------
 
-sorcery 0.11.0 MIT
+sorcery 0.11.1 MIT
 https://github.com/Rich-Harris/sorcery
 ---------------------------------------------------------
 
@@ -190,11 +178,15 @@ source-map-js 1.2.0 BSD-3-Clause
 7rulnik/source-map-js
 ---------------------------------------------------------
 
-svelte 4.2.15 MIT
+svelte 4.2.18 MIT
 https://github.com/sveltejs/svelte.git
 ---------------------------------------------------------
 
-svelte-check 3.6.9 MIT
+svelte-preprocess 5.1.4 MIT
+https://github.com/sveltejs/svelte-preprocess
+---------------------------------------------------------
+
+svelte-check 3.8.4 MIT
 git+https://github.com/sveltejs/language-tools.git
 ---------------------------------------------------------
 
@@ -202,7 +194,7 @@ svelte-hmr 0.15.3 ISC
 https://github.com/sveltejs/svelte-hmr
 ---------------------------------------------------------
 
-svelte-preprocess 5.1.4 MIT
+svelte-preprocess 6.0.2 MIT
 https://github.com/sveltejs/svelte-preprocess
 ---------------------------------------------------------
 
@@ -218,7 +210,7 @@ to-regex-range 5.0.1 MIT
 micromatch/to-regex-range
 ---------------------------------------------------------
 
-tslib 2.6.2 0BSD
+tslib 2.6.3 0BSD
 https://github.com/Microsoft/tslib.git
 ---------------------------------------------------------
 
