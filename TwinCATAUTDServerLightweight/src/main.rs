@@ -29,7 +29,7 @@ async fn main_() -> anyhow::Result<()> {
 
     let port = arg.port;
 
-    let server = LightweightServer::new(|| TwinCAT::builder());
+    let server = LightweightServer::new(TwinCAT::builder);
 
     let (tx, mut rx) = mpsc::channel(1);
     ctrlc::set_handler(move || {

@@ -48,27 +48,14 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
         if: ${{ needs.changed-files.outputs.src == 'true' }}
-      - name: build server
-        run: |
+      - run: |
           python3 build.py build
+          python3 build.py lint
         if: ${{ needs.changed-files.outputs.src == 'true' }}
-
-  lint:
-    needs: changed-files
-    if: ${{ needs.changed-files.outputs.src == 'true' }}
-    name: lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup-build
-        with:
-          os: ubuntu-latest
-      - run: python3 build.py lint
 
   auto-merge:
     needs:
       - test
-      - lint
     permissions:
       pull-requests: write
       contents: write

@@ -173,7 +173,6 @@ def server_build(args):
 def server_lint(args):
     with working_dir("."):
         command = ["cargo", "clippy"]
-        command[1] = "clippy"
         command.append("--tests")
         command.append("--workspace")
         command.append("--")

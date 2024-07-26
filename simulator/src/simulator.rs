@@ -256,6 +256,7 @@ impl Simulator {
         self.run_simulator(server_th, rx_buf, rx, tx_shutdown, lightweight_server)
     }
 
+    #[allow(clippy::type_complexity)]
     fn run_simulator(
         &mut self,
         server_th: std::thread::JoinHandle<Result<(), tonic::transport::Error>>,
@@ -546,14 +547,13 @@ impl Simulator {
                                             .enumerate()
                                             .for_each(|(i, d)| {
                                                 d.amp = (PI
-                                                    * cpu.fpga().to_pulse_width(
-                                                        drives[i].intensity(),
-                                                        m.into(),
-                                                    )
+                                                    * cpu
+                                                        .fpga()
+                                                        .to_pulse_width(drives[i].intensity(), m)
                                                         as f32
                                                     / ULTRASOUND_PERIOD_COUNT as f32)
                                                     .sin();
-                                                d.phase = drives[i].phase().radian() as f32;
+                                                d.phase = drives[i].phase().radian();
                                                 d.set_wave_number(self.settings.sound_speed);
                                             });
 
@@ -598,8 +598,7 @@ impl Simulator {
 
                                 let config = Config {
                                     source_num: sources.len() as _,
-                                    color_scale: T4010A1_AMPLITUDE as f32
-                                        / self.settings.pressure_max,
+                                    color_scale: T4010A1_AMPLITUDE / self.settings.pressure_max,
                                     width: (self.settings.slice_width
                                         / self.settings.slice_pixel_size)
                                         as _,
