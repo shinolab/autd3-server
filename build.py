@@ -170,6 +170,18 @@ def server_build(args):
         subprocess.run(["npm", "run", "tauri", "build"], shell=shell).check_returncode()
 
 
+def server_lint(args):
+    with working_dir("."):
+        command = ["cargo", "clippy"]
+        command[1] = "clippy"
+        command.append("--tests")
+        command.append("--workspace")
+        command.append("--")
+        command.append("-D")
+        command.append("warnings")
+        subprocess.run(command).check_returncode()
+
+
 def server_clear(args):
     config = Config(args)
 
@@ -315,6 +327,10 @@ if __name__ == "__main__":
             help="build external dependencies only",
         )
         parser_server_build.set_defaults(handler=server_build)
+
+        # lint
+        parser_server_lint = subparsers.add_parser("lint", help="see `lint -h`")
+        parser_server_lint.set_defaults(handler=server_lint)
 
         # server clear
         parser_server_clear = subparsers.add_parser("clear", help="see `clear -h`")
