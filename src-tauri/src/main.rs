@@ -34,7 +34,7 @@ fn get_settings_file_path(handle: &tauri::AppHandle) -> std::io::Result<PathBuf>
 #[tauri::command]
 fn set_libpath(_: tauri::AppHandle) {
     if cfg!(target_os = "macos") {
-        let home = std::env::var("HOME").unwrap_or(String::new());
+        let home = std::env::var("HOME").unwrap_or_default();
         let libpath = format!("{}/lib:/usr/local/lib:/usr/lib", home);
         let fallback_path = if let Ok(path) = std::env::var("DYLD_FALLBACK_LIBRARY_PATH") {
             if path.contains(&libpath) {

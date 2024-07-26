@@ -11,17 +11,13 @@ jobs:
     name: check-license
     steps:
     - uses: actions/checkout@v4
-    - name: Sync node version and setup cache
-      uses: actions/setup-node@v4
+    - uses: actions/setup-node@v4
       with:
         node-version: 'lts/*'
         cache: 'npm'
         cache-dependency-path: package-lock.json
-    - name: install frontend dependencies
-      run: |
-        npm install
-    - name: Check license
-      run: |
+    - run: npm install
+    - run: |
         git submodule update --init tools/autd3-license-check
         cd tools/license-checker
         cargo run
@@ -31,29 +27,24 @@ jobs:
     name: create-github-release
     runs-on: ubuntu-latest
     steps:
-    - name: Create Release
-      id: create_release
+    - id: create_release
       uses: ncipollo/release-action@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         draft: false
         prerelease: false
-    - name: Output Release URL File
-      run: |
+    - run: |
         echo "${{ steps.create_release.outputs.upload_url }}" > release_url.txt
         echo "${{ steps.create_release.outputs.id }}" > release_id.txt
-    - name: Save Release URL File for publish
-      uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v1
       with:
         name: release_url
         path: release_url.txt
-    - name: Save Release URL File for publish
-      uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v1
       with:
         name: release_id
         path: release_id.txt
  
-
   publish-server:
     name: publish-server-${{ matrix.os }}
     needs: [release]
@@ -63,37 +54,26 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
-
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup
-        uses: ./.github/actions/setup-build
+      - uses: ./.github/actions/setup-build
         with:
           os: ${{ matrix.os }}
-
-      - name: install dependencies (ubuntu only)
-        if: matrix.os == 'ubuntu-latest'
+      - if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev librsvg2-dev
-
-      - name: Sync node version and setup cache
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           cache: 'npm'
           cache-dependency-path: package-lock.json
-      - name: build
-        run: |
-          python3 build.py build --external-only
-      - name: Load Release ID File from release job
-        uses: actions/download-artifact@v1
+      - run: python3 build.py build --external-only
+      - uses: actions/download-artifact@v1
         with:
           name: release_id
-      - name: Get Release File Name & Upload URL
-        id: get_release_info
+      - id: get_release_info
         uses: juliangruber/read-file-action@v1
         with:
           path: ./release_id/release_id.txt

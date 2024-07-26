@@ -361,11 +361,7 @@ impl TransViewer {
                 .iter_mut()
                 .zip(sources.positions().zip(sources.rotations()))
                 .for_each(|(d, (pos, rot))| {
-                    // d.model = (Matrix4::from_translation(pos.truncate())
-                    //     * Matrix4::from_scale(0.5 * AUTD3::TRANS_SPACING as f32)
-                    //     * Matrix4::from(*rot))
-                    // .into();
-                    let s = 0.5 * AUTD3::TRANS_SPACING as f32;
+                    let s = 0.5 * AUTD3::TRANS_SPACING;
                     let mut m = Matrix4::from_scale(s);
                     m[3][0] = pos[0];
                     m[3][1] = pos[1];

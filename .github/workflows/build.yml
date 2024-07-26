@@ -1,65 +1,69 @@
 name: build
 
 on:
-  push:
-    branches:
-      - 'develop'
   pull_request:
-    types: [opened, reopened, review_requested]
+    branches: [ "main" ]
+  merge_group:
+    types: [ checks_requested ]
 
 jobs:
-  check-src:
+
+  changed-files:
+    name: changed-files
     runs-on: ubuntu-latest
-    name: check if server files changed
     outputs:
-      status: ${{ steps.changed-files.outputs.modified_files }}
+      src: ${{ steps.changed-files-yaml.outputs.src_any_changed }}
+      lightweight: ${{ steps.changed-files-yaml.outputs.lightweight_any_changed }}
+      miri: ${{ steps.changed-files-yaml.outputs.miri_any_changed }}
     steps:
       - uses: actions/checkout@v4
-      - uses: tj-actions/changed-files@v42
-        id: changed-files
+      - id: changed-files-yaml
+        uses: tj-actions/changed-files@v44
         with:
-          files: |
-            .github/actions/setup-build/action.yml
-            .github/workflows/build.yml
-            ./**/*.rs
-            ./**/*.toml
-            ./**/*.ts
-            ./**/*.svelte
-            ./package.json
+          files_yaml: |
+            src:
+              - '**/*.rs'
+              - '**/Cargo.toml'
+              - '**/*.ts'
+              - '**/*.svelte'
+              - 'package.json'
 
-  build-server:
-    needs: check-src
-    name: build-server
+  test:
+    needs: changed-files
+    name: test-on-${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
-
-    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup
-        if: needs.check-src.outputs.status
-        uses: ./.github/actions/setup-build
+        if: ${{ needs.changed-files.outputs.src == 'true' }}
+      - uses: ./.github/actions/setup-build
         with:
           os: ${{ matrix.os }}
-
-      - name: install dependencies (ubuntu only)
-        if: needs.check-src.outputs.status && matrix.os == 'ubuntu-latest'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev librsvg2-dev
-
-      - name: Sync node version and setup cache
-        if: needs.check-src.outputs.status
-        uses: actions/setup-node@v4
+        if: ${{ needs.changed-files.outputs.src == 'true' }}
+      - uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           cache: 'npm'
           cache-dependency-path: package-lock.json
-  
-      - name: build server
-        if: needs.check-src.outputs.status
-        run: |
+        if: ${{ needs.changed-files.outputs.src == 'true' }}
+      - run: |
           python3 build.py build
+          python3 build.py lint
+        if: ${{ needs.changed-files.outputs.src == 'true' }}
+
+  auto-merge:
+    needs:
+      - test
+    permissions:
+      pull-requests: write
+      contents: write
+    runs-on: ubuntu-latest
+    if: ${{ always() && !cancelled() && !failure() && github.actor == 'dependabot[bot]' }}
+    steps:
+      - run: gh pr merge --auto "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
