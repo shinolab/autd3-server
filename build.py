@@ -135,50 +135,93 @@ def server_build(args):
 
     shell = True if config.is_windows() else False
 
-    with working_dir("simulator"):
-        subprocess.run(
-            [
-                "cargo",
-                "build",
-                "--release",
-                "--features",
-                "unity",
-            ]
-        ).check_returncode()
-    if config.is_windows():
-        shutil.copy(
-            "target/release/simulator.exe",
-            "target/release/simulator-unity.exe",
-        )
-    else:
-        shutil.copy(
-            "target/release/simulator",
-            "target/release/simulator-unity",
-        )
+    if args.simulator:
+        with working_dir("simulator"):
+            subprocess.run(
+                [
+                    "cargo",
+                    "build",
+                    "--release",
+                    "--features",
+                    "unity",
+                ]
+            ).check_returncode()
+        if config.is_windows():
+            shutil.copy(
+                "target/release/simulator.exe",
+                "target/release/simulator-unity.exe",
+            )
+        else:
+            shutil.copy(
+                "target/release/simulator",
+                "target/release/simulator-unity",
+            )
 
-    with working_dir("simulator"):
-        subprocess.run(["cargo", "build", "--release"]).check_returncode()
+        with working_dir("simulator"):
+            subprocess.run(["cargo", "build", "--release"]).check_returncode()
 
-    with working_dir("SOEMAUTDServer"):
-        subprocess.run(["cargo", "build", "--release"]).check_returncode()
+    if args.soem:
+        with working_dir("SOEMAUTDServer"):
+            subprocess.run(["cargo", "build", "--release"]).check_returncode()
 
-    with working_dir("TwinCATAUTDServerLightweight"):
-        subprocess.run(["cargo", "build", "--release"]).check_returncode()
+    if args.twincat:
+        with working_dir("TwinCATAUTDServerLightweight"):
+            subprocess.run(["cargo", "build", "--release"]).check_returncode()
 
-    subprocess.run(["npm", "install"], shell=shell).check_returncode()
-    if not args.external_only:
+    if args.main:
+        subprocess.run(["npm", "install"], shell=shell).check_returncode()
+
+        def create_dummy_if_not_exists(file):
+            if config.is_windows():
+                file += ".exe"
+            if not os.path.exists(file):
+                with open(file, "w") as f:
+                    f.write("")
+
+        create_dummy_if_not_exists("target/release/simulator-unity")
+        create_dummy_if_not_exists("target/release/simulator")
+        create_dummy_if_not_exists("target/release/SOEMAUTDServer")
+        create_dummy_if_not_exists("target/release/TwinCATAUTDServerLightweight")
+
         subprocess.run(["npm", "run", "tauri", "build"], shell=shell).check_returncode()
 
 
 def server_lint(args):
-    with working_dir("."):
-        command = ["cargo", "clippy"]
-        command.append("--tests")
-        command.append("--workspace")
-        command.append("--")
-        command.append("-D")
-        command.append("warnings")
-        subprocess.run(command).check_returncode()
+    if args.simulator:
+        with working_dir("simulator"):
+            command = ["cargo", "clippy"]
+            command.append("--tests")
+            command.append("--")
+            command.append("-D")
+            command.append("warnings")
+            subprocess.run(command).check_returncode()
+
+    if args.soem:
+        with working_dir("SOEMAUTDServer"):
+            command = ["cargo", "clippy"]
+            command.append("--tests")
+            command.append("--")
+            command.append("-D")
+            command.append("warnings")
+            subprocess.run(command).check_returncode()
+
+    if args.twincat:
+        with working_dir("TwinCATAUTDServerLightweight"):
+            command = ["cargo", "clippy"]
+            command.append("--tests")
+            command.append("--")
+            command.append("-D")
+            command.append("warnings")
+            subprocess.run(command).check_returncode()
+
+    if args.main:
+        with working_dir("src-tauri"):
+            command = ["cargo", "clippy"]
+            command.append("--tests")
+            command.append("--")
+            command.append("-D")
+            command.append("warnings")
+            subprocess.run(command).check_returncode()
 
 
 def server_clear(args):
@@ -321,14 +364,33 @@ if __name__ == "__main__":
         # build
         parser_server_build = subparsers.add_parser("build", help="see `build -h`")
         parser_server_build.add_argument(
-            "--external-only",
-            action="store_true",
-            help="build external dependencies only",
+            "--simulator", action="store_true", help="build simulator"
+        )
+        parser_server_build.add_argument(
+            "--soem", action="store_true", help="build SOEM Server"
+        )
+        parser_server_build.add_argument(
+            "--twincat", action="store_true", help="build TwinCAT Server"
+        )
+        parser_server_build.add_argument(
+            "--main", action="store_true", help="build main app"
         )
         parser_server_build.set_defaults(handler=server_build)
 
         # lint
         parser_server_lint = subparsers.add_parser("lint", help="see `lint -h`")
+        parser_server_lint.add_argument(
+            "--simulator", action="store_true", help="build simulator"
+        )
+        parser_server_lint.add_argument(
+            "--soem", action="store_true", help="build SOEM Server"
+        )
+        parser_server_lint.add_argument(
+            "--twincat", action="store_true", help="build TwinCAT Server"
+        )
+        parser_server_lint.add_argument(
+            "--main", action="store_true", help="build main app"
+        )
         parser_server_lint.set_defaults(handler=server_lint)
 
         # server clear
