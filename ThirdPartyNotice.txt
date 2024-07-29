@@ -214,7 +214,7 @@ tslib 2.6.3 0BSD
 https://github.com/Microsoft/tslib.git
 ---------------------------------------------------------
 
-typescript 5.4.5 Apache-2.0
+typescript 5.5.4 Apache-2.0
 https://github.com/Microsoft/TypeScript.git
 ---------------------------------------------------------
 
