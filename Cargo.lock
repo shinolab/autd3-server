@@ -589,7 +589,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4a75beeb38f10255ab6eab85631f00d89e52f26fbc45c69c6453fffe88754c4c"
 dependencies = [
  "autd3-driver",
- "libloading 0.8.4",
+ "libloading 0.8.5",
  "thiserror",
 ]
 
@@ -615,7 +615,7 @@ version = "27.0.0-alpha.3"
 dependencies = [
  "autd3-driver",
  "autd3-link-soem",
- "libloading 0.8.4",
+ "libloading 0.8.5",
  "serde",
  "serde_json",
  "tauri",
@@ -1492,7 +1492,7 @@ version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "330c60081dcc4c72131f8eb70510f1ac07223e5d4163db481a04a0befcffa412"
 dependencies = [
- "libloading 0.8.4",
+ "libloading 0.7.4",
 ]
 
 [[package]]
@@ -2847,9 +2847,9 @@ dependencies = [
 
 [[package]]
 name = "libloading"
-version = "0.8.4"
+version = "0.8.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e310b3a6b5907f99202fcdb4960ff45b93735d7c7d96b760fcff8db2dc0e103d"
+checksum = "4979f22fdb869068da03c9f7528f8297c6fd2606bc3a4affe42e6a823fdb8da4"
 dependencies = [
  "cfg-if",
  "windows-targets 0.52.6",
@@ -5919,7 +5919,7 @@ dependencies = [
  "half",
  "heck 0.4.1",
  "indexmap 2.2.6",
- "libloading 0.8.4",
+ "libloading 0.8.5",
  "objc",
  "once_cell",
  "parking_lot",

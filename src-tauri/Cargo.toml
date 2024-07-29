@@ -26,7 +26,7 @@ autd3-driver = { version = "27.0.0-alpha.3", features = ["serde"] }
 autd3-link-soem = { version = "27.0.0-alpha.3", features = ["serde"] }
 
 [target.'cfg(windows)'.dependencies]
-libloading = "0.8.0"
+libloading = "0.8.5"
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem and the built-in dev server is disabled.
