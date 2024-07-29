@@ -3,34 +3,51 @@ name: build
 on:
   pull_request:
     branches: [ "main" ]
-  merge_group:
-    types: [ checks_requested ]
+  push:
+    branches: [ "main" ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-
   changed-files:
     name: changed-files
     runs-on: ubuntu-latest
     outputs:
-      src: ${{ steps.changed-files-yaml.outputs.src_any_changed }}
-      lightweight: ${{ steps.changed-files-yaml.outputs.lightweight_any_changed }}
-      miri: ${{ steps.changed-files-yaml.outputs.miri_any_changed }}
+      simulator: ${{ steps.changed-files-yaml.outputs.simulator_any_changed }}
+      soem: ${{ steps.changed-files-yaml.outputs.soem_any_changed }}
+      twincat: ${{ steps.changed-files-yaml.outputs.twincat_any_changed }}
+      main: ${{ steps.changed-files-yaml.outputs.main_any_changed }}
     steps:
       - uses: actions/checkout@v4
       - id: changed-files-yaml
         uses: tj-actions/changed-files@v44
         with:
           files_yaml: |
-            src:
-              - '**/*.rs'
-              - '**/Cargo.toml'
+            simulator:
+              - 'simulator/**/*.rs'
+              - 'simulator/Cargo.toml'
+            soem:
+              - 'SOEMAUTDServer/**/*.rs'
+              - 'SOEMAUTDServer/Cargo.toml'
+            twincat:
+              - 'TwinCATAUTDServerLightweight/**/*.rs'
+              - 'TwinCATAUTDServerLightweight/Cargo.toml'
+            main:
+              - 'src-tauri/**/*.rs'
+              - 'src-tauri/Cargo.toml'
+              - 'src/**/*.svelte'
               - '**/*.ts'
-              - '**/*.svelte'
+              - '**/*.js'
+              - '**/*.html'
               - 'package.json'
+              - 'tsconfig.json'
+              - 'tsconfig.node.json'
 
-  test:
+  test-simulator:
     needs: changed-files
-    name: test-on-${{ matrix.os }}
+    name: test-simulator-on-${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -38,18 +55,95 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v4
-        if: ${{ needs.changed-files.outputs.src == 'true' }}
+        if: ${{ needs.changed-files.outputs.simulator == 'true' }}
       - uses: ./.github/actions/setup-build
         with:
           os: ${{ matrix.os }}
-        if: ${{ needs.changed-files.outputs.src == 'true' }}
+        if: ${{ needs.changed-files.outputs.simulator == 'true' }}
+      - run: |
+          python3 build.py build --simulator
+          python3 build.py lint --simulator
+        if: ${{ needs.changed-files.outputs.simulator == 'true' }}
+
+  test-soem:
+    needs: changed-files
+    name: test-soem-on-${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+        if: ${{ needs.changed-files.outputs.soem == 'true' }}
+      - uses: ./.github/actions/setup-build
+        with:
+          os: ${{ matrix.os }}
+        if: ${{ needs.changed-files.outputs.soem == 'true' }}
+      - run: |
+          python3 build.py build --soem
+          python3 build.py lint --soem
+        if: ${{ needs.changed-files.outputs.soem == 'true' }}
+
+  test-twincat:
+    needs: changed-files
+    name: test-twincat-on-${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+        if: ${{ needs.changed-files.outputs.twincat == 'true' }}
+      - uses: ./.github/actions/setup-build
+        with:
+          os: ${{ matrix.os }}
+        if: ${{ needs.changed-files.outputs.twincat == 'true' }}
+      - run: |
+          python3 build.py build --twincat
+          python3 build.py lint --twincat
+        if: ${{ needs.changed-files.outputs.twincat == 'true' }}
+
+  test-main:
+    needs: changed-files
+    name: test-main-on-${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+        if: ${{ needs.changed-files.outputs.main == 'true' }}
+      - uses: ./.github/actions/setup-build
+        with:
+          os: ${{ matrix.os }}
+        if: ${{ needs.changed-files.outputs.main == 'true' }}
       - uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           cache: 'npm'
           cache-dependency-path: package-lock.json
-        if: ${{ needs.changed-files.outputs.src == 'true' }}
+        if: ${{ needs.changed-files.outputs.main == 'true' }}
       - run: |
-          python3 build.py build
-          python3 build.py lint
-        if: ${{ needs.changed-files.outputs.src == 'true' }}
+          python3 build.py build --main
+          python3 build.py lint --main
+        if: ${{ needs.changed-files.outputs.main == 'true' }}
+
+  auto-merge:
+    needs:
+      - test-simulator
+      - test-soem
+      - test-twincat
+      - test-main
+    permissions:
+      pull-requests: write
+      contents: write
+    runs-on: ubuntu-latest
+    if: ${{ always() && !cancelled() && !failure() && github.actor == 'dependabot[bot]' }}
+    steps:
+      - run: gh pr merge --rebase --auto "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
