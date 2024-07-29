@@ -36,11 +36,11 @@ jobs:
     - run: |
         echo "${{ steps.create_release.outputs.upload_url }}" > release_url.txt
         echo "${{ steps.create_release.outputs.id }}" > release_id.txt
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v4
       with:
         name: release_url
         path: release_url.txt
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v4
       with:
         name: release_id
         path: release_id.txt
@@ -69,8 +69,8 @@ jobs:
           node-version: 'lts/*'
           cache: 'npm'
           cache-dependency-path: package-lock.json
-      - run: python3 build.py build --external-only
-      - uses: actions/download-artifact@v1
+      - run: python3 build.py build --simulator --soem --twincat
+      - uses: actions/download-artifact@v4
         with:
           name: release_id
       - id: get_release_info
