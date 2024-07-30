@@ -585,7 +585,7 @@ iana-time-zone-haiku 0.1.2 (Apache-2.0 OR MIT)
 https://github.com/strawlab/iana-time-zone
 ---------------------------------------------------------
 
-image 0.25.1 (Apache-2.0 OR MIT)
+image 0.25.2 (Apache-2.0 OR MIT)
 https://github.com/image-rs/image
 ---------------------------------------------------------
 
@@ -681,7 +681,7 @@ libloading 0.7.4 (ISC)
 https://github.com/nagisa/rust_libloading/
 ---------------------------------------------------------
 
-libloading 0.8.4 (ISC)
+libloading 0.8.5 (ISC)
 https://github.com/nagisa/rust_libloading/
 ---------------------------------------------------------
 
@@ -1156,7 +1156,7 @@ serde_derive 1.0.204 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
-serde_json 1.0.120 (Apache-2.0 OR MIT)
+serde_json 1.0.121 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/json
 ---------------------------------------------------------
 
@@ -1304,7 +1304,7 @@ tiny-skia-path 0.8.4 (BSD-3-Clause)
 https://github.com/RazrFalcon/tiny-skia/path
 ---------------------------------------------------------
 
-tokio 1.39.1 (MIT)
+tokio 1.39.2 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 

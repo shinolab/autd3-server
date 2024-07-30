@@ -70,6 +70,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
       - run: python3 build.py build --simulator --soem --twincat
+      - run: npm install
       - uses: actions/download-artifact@v4
         with:
           name: release_id

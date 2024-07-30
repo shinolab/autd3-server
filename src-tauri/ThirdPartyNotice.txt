@@ -852,7 +852,7 @@ libc 0.2.155 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/libc
 ---------------------------------------------------------
 
-libloading 0.8.4 (ISC)
+libloading 0.8.5 (ISC)
 https://github.com/nagisa/rust_libloading/
 ---------------------------------------------------------
 
@@ -1376,7 +1376,7 @@ serde_derive 1.0.204 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
-serde_json 1.0.120 (Apache-2.0 OR MIT)
+serde_json 1.0.121 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/json
 ---------------------------------------------------------
 
@@ -1530,7 +1530,7 @@ target-lexicon 0.12.14 (Apache-2.0 WITH LLVM-exception)
 https://github.com/bytecodealliance/target-lexicon
 ---------------------------------------------------------
 
-tauri 1.6.8 (Apache-2.0 OR MIT)
+tauri 1.7.1 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
@@ -1538,19 +1538,19 @@ tauri-build 1.5.3 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri/tree/dev/core/tauri-build
 ---------------------------------------------------------
 
-tauri-codegen 1.4.3 (Apache-2.0 OR MIT)
+tauri-codegen 1.4.4 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri/tree/dev/core/tauri-codegen
 ---------------------------------------------------------
 
-tauri-macros 1.4.4 (Apache-2.0 OR MIT)
+tauri-macros 1.4.5 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
-tauri-runtime 0.14.3 (Apache-2.0 OR MIT)
+tauri-runtime 0.14.4 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
-tauri-runtime-wry 0.14.8 (Apache-2.0 OR MIT)
+tauri-runtime-wry 0.14.9 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
@@ -1614,7 +1614,7 @@ tinyvec_macros 0.1.1 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Soveu/tinyvec_macros
 ---------------------------------------------------------
 
-tokio 1.39.1 (MIT)
+tokio 1.39.2 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
