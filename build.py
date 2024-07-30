@@ -4,6 +4,7 @@ import argparse
 import contextlib
 import glob
 import os
+import pathlib
 import platform
 import re
 import shutil
@@ -172,11 +173,11 @@ def server_build(args):
         subprocess.run(["npm", "install"], shell=shell).check_returncode()
 
         def create_dummy_if_not_exists(file):
+            path = pathlib.Path(file)
             if config.is_windows():
-                file += ".exe"
-            if not os.path.exists(file):
-                with open(file, "w") as f:
-                    f.write("")
+                path = path.with_suffix(".exe")
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.touch()
 
         create_dummy_if_not_exists("target/release/simulator-unity")
         create_dummy_if_not_exists("target/release/simulator")
