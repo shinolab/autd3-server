@@ -414,7 +414,7 @@ libc 0.2.155 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/libc
 ---------------------------------------------------------
 
-libloading 0.8.4 (ISC)
+libloading 0.8.5 (ISC)
 https://github.com/nagisa/rust_libloading/
 ---------------------------------------------------------
 
@@ -718,7 +718,7 @@ time-macros 0.2.18 (Apache-2.0 OR MIT)
 https://github.com/time-rs/time
 ---------------------------------------------------------
 
-tokio 1.39.1 (MIT)
+tokio 1.39.2 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
