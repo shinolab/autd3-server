@@ -46,7 +46,7 @@ void main() {
         if(idx >= config.source_num) break; 
         vec3 tp = vec3(source_pos.pos[idx]); 
         float r = length(point - tp); 
-        float p = source_drive.drive[idx].y - source_drive.drive[idx].w * r; 
+        float p = -source_drive.drive[idx].y - source_drive.drive[idx].w * r; 
         float amp = source_drive.drive[idx].z * source_drive.drive[idx].x / (4 * PI * r); 
         re += amp * cos(p); 
         im += amp * sin(p); 
