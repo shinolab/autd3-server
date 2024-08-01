@@ -1,6 +1,9 @@
 mod components;
 
-use autd3::{derive::AUTDInternalError, prelude::ULTRASOUND_FREQ};
+use autd3::{
+    derive::AUTDInternalError,
+    prelude::{ULTRASOUND_FREQ, ULTRASOUND_PERIOD},
+};
 use autd3_driver::{
     defined::ULTRASOUND_PERIOD_COUNT,
     ethercat::{DcSysTime, ECAT_DC_SYS_TIME_BASE},
@@ -520,12 +523,12 @@ impl ImGuiViewer {
                                     ) {
                                         if cpu.fpga().silencer_fixed_completion_steps_mode() {
                                             ui.text(format!(
-                                                "Completion steps intensity: {}",
-                                                cpu.fpga().silencer_completion_steps_intensity()
+                                                "Completion time intensity: {:?}",
+                                                cpu.fpga().silencer_completion_steps_intensity() as u32 * ULTRASOUND_PERIOD
                                             ));
                                             ui.text(format!(
-                                                "Completion steps phase: {}",
-                                                cpu.fpga().silencer_completion_steps_phase()
+                                                "Completion time phase: {:?}",
+                                                cpu.fpga().silencer_completion_steps_phase() as u32 * ULTRASOUND_PERIOD
                                             ));
                                         } else {
                                             ui.text(format!(
@@ -563,7 +566,7 @@ impl ImGuiViewer {
                                         ));
                                         let sampling_period = 1000000.0
                                             * cpu.fpga().modulation_freq_division(segment) as f32
-                                            /ULTRASOUND_FREQ.hz() as f32;
+                                            / ULTRASOUND_FREQ.hz() as f32;
                                         ui.text(format!(
                                             "Sampling period: {:.3} [us]",
                                             sampling_period
@@ -644,13 +647,13 @@ impl ImGuiViewer {
                                             #[cfg(feature = "use_meter")]
                                             ui.text(format!(
                                                 "Sound speed: {:.3} [m/s]",
-                                                cpu.fpga().sound_speed(segment) as f32 / 1024.0
+                                                cpu.fpga().sound_speed(segment) as f32 / 64.0
                                             ));
                                             #[cfg(not(feature = "use_meter"))]
                                             ui.text(format!(
                                                 "Sound speed: {:.3} [mm/s]",
                                                 cpu.fpga().sound_speed(segment) as f32 * 1000.
-                                                    / 1024.0
+                                                    / 64.0
                                             ));
                                         }
 
