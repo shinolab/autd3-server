@@ -769,13 +769,13 @@ impl ImGuiViewer {
                                                 }; ULTRASOUND_PERIOD_COUNT]
                                             }
                                             autd3_firmware_emulator::fpga::params::DBG_PWM_OUT => {
-                                                let d = cpu.fpga().drives(cpu.fpga().current_stm_segment(),  cpu.fpga().current_stm_idx())[value as usize];
+                                                let d = cpu.fpga().drives(cpu.fpga().current_stm_segment(), cpu.fpga().current_stm_idx())[value as usize];
                                                 let m = cpu.fpga().modulation_at(cpu.fpga().current_mod_segment(), cpu.fpga().current_mod_idx());
                                                 let phase = d.phase().value() as u32;
                                                 let pulse_width = cpu.fpga().to_pulse_width(d.intensity(), m) as u32;
                                                 const T:u32 = ULTRASOUND_PERIOD_COUNT as u32;
-                                                let rise = (T-phase*2-pulse_width/2+T)%T;
-                                                let fall = (T-phase*2+(pulse_width+1)/2+T)%T;
+                                                let rise = (phase-pulse_width/2+T)%T;
+                                                let fall = (phase+(pulse_width+1)/2+T)%T;
                                                 #[allow(clippy::collapsible_else_if)]
                                                 (0..T).map(|t|
                                                     if rise <= fall {
@@ -824,7 +824,7 @@ impl ImGuiViewer {
 
                             ui.checkbox("Auto play", &mut settings.auto_play);
 
-                            ui.text(format!("System time: {} [ns]", self.real_time));
+                            ui.text(format!("System time: {}ns", self.real_time));
                             if settings.auto_play {
                                 drag_float(
                                     "Time scale",
