@@ -561,18 +561,16 @@ impl ImGuiViewer {
                                         let sampling_freq = ULTRASOUND_FREQ.hz() as f32
                                             / cpu.fpga().modulation_freq_division(segment) as f32;
                                         ui.text(format!(
-                                            "Sampling Frequency: {:.3} [Hz]",
+                                            "Sampling Frequency: {:.3}Hz",
                                             sampling_freq
                                         ));
-                                        let sampling_period = 1000000.0
-                                            * cpu.fpga().modulation_freq_division(segment) as f32
-                                            / ULTRASOUND_FREQ.hz() as f32;
+                                        let sampling_period = ULTRASOUND_PERIOD * cpu.fpga().modulation_freq_division(segment) as u32;
                                         ui.text(format!(
-                                            "Sampling period: {:.3} [us]",
+                                            "Sampling period: {:?}",
                                             sampling_period
                                         ));
-                                        let period = sampling_period * mod_size as f32;
-                                        ui.text(format!("Period: {:.3} [us]", period));
+                                        let period = sampling_period * mod_size as u32;
+                                        ui.text(format!("Period: {:?}", period));
 
                                         ui.text(format!(
                                             "Current Index: {}",
@@ -646,12 +644,12 @@ impl ImGuiViewer {
                                             ui.text("Focus STM");
                                             #[cfg(feature = "use_meter")]
                                             ui.text(format!(
-                                                "Sound speed: {:.3} [m/s]",
+                                                "Sound speed: {:.3}m/s",
                                                 cpu.fpga().sound_speed(segment) as f32 / 64.0
                                             ));
                                             #[cfg(not(feature = "use_meter"))]
                                             ui.text(format!(
-                                                "Sound speed: {:.3} [mm/s]",
+                                                "Sound speed: {:.3}mm/s",
                                                 cpu.fpga().sound_speed(segment) as f32 * 1000.
                                                     / 64.0
                                             ));
@@ -671,22 +669,20 @@ impl ImGuiViewer {
                                                 "Frequency division: {}",
                                                 cpu.fpga().stm_freq_division(segment)
                                             ));
-                                            let sampling_freq =ULTRASOUND_FREQ.hz()
+                                            let sampling_freq = ULTRASOUND_FREQ.hz()
                                                 as f32
                                                 / cpu.fpga().stm_freq_division(segment) as f32;
                                             ui.text(format!(
-                                                "Sampling Frequency: {:.3} [Hz]",
+                                                "Sampling Frequency: {:.3}Hz",
                                                 sampling_freq
                                             ));
-                                            let sampling_period = 1000000.0
-                                                * cpu.fpga().stm_freq_division(segment) as f32
-                                                / ULTRASOUND_FREQ.hz() as f32;
+                                            let sampling_period = ULTRASOUND_PERIOD * cpu.fpga().stm_freq_division(segment) as u32;
                                             ui.text(format!(
-                                                "Sampling period: {:.3} [us]",
+                                                "Sampling period: {:?}",
                                                 sampling_period
                                             ));
-                                            let period = sampling_period / stm_size as f32;
-                                            ui.text(format!("Period: {:.3} [us]", period));
+                                            let period = sampling_period * stm_size as u32;
+                                            ui.text(format!("Period: {:?}", period));
 
                                             ui.text(format!(
                                                 "Current Index: {}",
