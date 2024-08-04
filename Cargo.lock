@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "SOEMAUTDServer"
-version = "27.0.0-rc.4"
+version = "27.0.0-rc.6"
 dependencies = [
  "anyhow",
  "autd3-driver",
@@ -22,7 +22,7 @@ dependencies = [
 
 [[package]]
 name = "TwinCATAUTDServerLightweight"
-version = "27.0.0-rc.4"
+version = "27.0.0-rc.6"
 dependencies = [
  "anyhow",
  "autd3-link-twincat",
@@ -78,7 +78,7 @@ dependencies = [
  "getrandom 0.2.15",
  "once_cell",
  "version_check",
- "zerocopy 0.7.35",
+ "zerocopy",
 ]
 
 [[package]]
@@ -468,9 +468,9 @@ checksum = "1505bd5d3d116872e7271a6d4e16d81d0c8570876c8de68093a09ac269d8aac0"
 
 [[package]]
 name = "autd3"
-version = "27.0.0-rc.4"
+version = "27.0.0-rc.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1513a88cd109e907727d02912037789fc6888e864ef90211e0c02ccdc8f864a7"
+checksum = "80e09692c6784517997bb4a8472f13519bc9b4b0bf0a59979f6e92104aaa2713"
 dependencies = [
  "autd3-driver",
  "autd3-firmware-emulator",
@@ -485,9 +485,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-derive"
-version = "27.0.0-rc.4"
+version = "27.0.0-rc.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e6182bece63cb904e5857739c62368a4df1d9149e4e007d0fa29fac057419538"
+checksum = "215f39196cd6de7268867d2944fc788282c90728350aa08e5877122ef898bb31"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -497,9 +497,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-driver"
-version = "27.0.0-rc.4"
+version = "27.0.0-rc.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9bd8e4b4a43c6ee197f50cff8e0ac0cdbebce0d14dbd963d3ce44f3d803c8940"
+checksum = "0b9e61a7b205a17bf5e1788826691dae25738d9e6a9439742d550824101de72a"
 dependencies = [
  "async-trait",
  "autd3-derive",
@@ -522,9 +522,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-firmware-emulator"
-version = "27.0.0-rc.4"
+version = "27.0.0-rc.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8f6547fbeba4531741183217a96127b09ea5b81f2ca2e330aad4097d134e6433"
+checksum = "2dc3feb8c3c9fd7c32dedb59871e397d4e146033897a0f04c4c4b3acce818afd"
 dependencies = [
  "autd3-driver",
  "num-integer",
@@ -534,9 +534,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-gain-holo"
-version = "27.0.0-rc.4"
+version = "27.0.0-rc.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "29832a94dd93a4c7680cb56ef3f6e36ab03720f05727c99de14077fb5fe05838"
+checksum = "db0a281f584798f129988bbb452d910c9b05bdd927f0ea2f8b6fb80637f93108"
 dependencies = [
  "autd3-driver",
  "bit-vec",
@@ -549,9 +549,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-simulator"
-version = "27.0.0-rc.4"
+version = "27.0.0-rc.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "335f83e78c859d3f0ff83efe14b69bd93062f7a406cbaaf3a57150121bce1e33"
+checksum = "79dfae8d569308ced68dd92938c40db89df9ced9873fa36c6032caf3e8a9ed24"
 dependencies = [
  "autd3-driver",
  "autd3-protobuf",
@@ -561,9 +561,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-soem"
-version = "27.0.0-rc.4"
+version = "27.0.0-rc.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e9156dd1c39eed53567e30c0336a0a539598a3cd669b1c002b2ed18a161a967f"
+checksum = "cd6c983a62d73b90a42b08c83846e76a334b12e6dc215f3c0f3f3b61065c130d"
 dependencies = [
  "async-channel",
  "autd3-driver",
@@ -584,9 +584,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-twincat"
-version = "27.0.0-rc.4"
+version = "27.0.0-rc.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "79b3736b95534d6a67bdcd4e4d9295233e95c45f0be4e0ee526a91b5389aa914"
+checksum = "67d9aa5148f0983ece1a678276c05ab51916aa11b3ff17c8b55f7a9a9088e802"
 dependencies = [
  "autd3-driver",
  "libloading 0.8.5",
@@ -595,9 +595,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-protobuf"
-version = "27.0.0-rc.4"
+version = "27.0.0-rc.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f092d8318cffb72dbaeb3ef9568b7aaf04b20ad2d530f4484d19f6c59a697e3c"
+checksum = "53c90509c518ff3486493411af2eb6aba0c4ca0d54771c539ff9bf5b420ccb4e"
 dependencies = [
  "autd3",
  "autd3-driver",
@@ -611,7 +611,7 @@ dependencies = [
 
 [[package]]
 name = "autd3-server"
-version = "27.0.0-rc.4"
+version = "27.0.0-rc.6"
 dependencies = [
  "autd3-driver",
  "autd3-link-soem",
@@ -1523,9 +1523,9 @@ dependencies = [
 
 [[package]]
 name = "dunce"
-version = "1.0.4"
+version = "1.0.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "56ce8c6da7551ec6c462cbaf3bfbc75131ebbfa1c944aeaa9dab51ca1c5f0c3b"
+checksum = "92773504d58c093f6de2459af4af33faa518c13451eb8f2b5698ed3d36e7c813"
 
 [[package]]
 name = "earcutr"
@@ -1691,9 +1691,9 @@ dependencies = [
 
 [[package]]
 name = "flate2"
-version = "1.0.30"
+version = "1.0.31"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5f54427cfd1c7829e2a139fcefea601bf088ebca651d2bf53ebc600eac295dae"
+checksum = "7f211bbe8e69bbd0cfdea405084f128ae8b4aaa6b0b522fc8f2b009084797920"
 dependencies = [
  "crc32fast",
  "miniz_oxide",
@@ -3930,11 +3930,11 @@ checksum = "439ee305def115ba05938db6eb1644ff94165c5ab5e9420d1c1bcedbba909391"
 
 [[package]]
 name = "ppv-lite86"
-version = "0.2.18"
+version = "0.2.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dee4364d9f3b902ef14fab8a1ddffb783a1cb6b4bba3bfc1fa3922732c7de97f"
+checksum = "77957b295656769bb8ad2b6a6b09d897d94f05c41b069aede1fcdaa675eaea04"
 dependencies = [
- "zerocopy 0.6.6",
+ "zerocopy",
 ]
 
 [[package]]
@@ -4296,9 +4296,9 @@ dependencies = [
 
 [[package]]
 name = "regex"
-version = "1.10.5"
+version = "1.10.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b91213439dad192326a0d7c6ee3955910425f441d7038e0d6933b0aec5c4517f"
+checksum = "4219d74c6b67a3654a9fbebc4b419e22126d13d2f3c4a07ee0cb61ff79a79619"
 dependencies = [
  "aho-corasick",
  "memchr",
@@ -4364,9 +4364,9 @@ dependencies = [
 
 [[package]]
 name = "rgb"
-version = "0.8.45"
+version = "0.8.47"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ade4539f42266ded9e755c605bdddf546242b2c961b03b06a7375260788a0523"
+checksum = "e12bc8d2f72df26a5d3178022df33720fbede0d31d82c7291662eff89836994d"
 dependencies = [
  "bytemuck",
 ]
@@ -4762,7 +4762,7 @@ dependencies = [
 
 [[package]]
 name = "simulator"
-version = "27.0.0-rc.4"
+version = "27.0.0-rc.6"
 dependencies = [
  "anyhow",
  "autd3",
@@ -5336,12 +5336,13 @@ dependencies = [
 
 [[package]]
 name = "tempfile"
-version = "3.10.1"
+version = "3.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "85b77fafb263dd9d05cbeac119526425676db3784113aa9295c88498cbf8bff1"
+checksum = "b8fcd239983515c23a32fb82099f97d0b11b8c72f654ed659363a95c3dad7a53"
 dependencies = [
  "cfg-if",
  "fastrand",
+ "once_cell",
  "rustix",
  "windows-sys 0.52.0",
 ]
@@ -6282,11 +6283,11 @@ checksum = "ac3b87c63620426dd9b991e5ce0329eff545bccbbb34f3be09ff6fb6ab51b7b6"
 
 [[package]]
 name = "winapi-util"
-version = "0.1.8"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4d4cc384e1e73b93bafa6fb4f1df8c41695c8a91cf9c4c64358067d15a7b6c6b"
+checksum = "cf221c93e13a30d793f7645a0e7762c55d169dbb0a49671918a2319d289b10bb"
 dependencies = [
- "windows-sys 0.52.0",
+ "windows-sys 0.59.0",
 ]
 
 [[package]]
@@ -6997,32 +6998,12 @@ dependencies = [
 
 [[package]]
 name = "zerocopy"
-version = "0.6.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "854e949ac82d619ee9a14c66a1b674ac730422372ccb759ce0c39cabcf2bf8e6"
-dependencies = [
- "byteorder",
- "zerocopy-derive 0.6.6",
-]
-
-[[package]]
-name = "zerocopy"
 version = "0.7.35"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1b9b4fd18abc82b8136838da5d50bae7bdea537c574d8dc1a34ed098d6c166f0"
 dependencies = [
- "zerocopy-derive 0.7.35",
-]
-
-[[package]]
-name = "zerocopy-derive"
-version = "0.6.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "125139de3f6b9d625c39e2efdd73d41bdac468ccd556556440e322be0e1bbd91"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.72",
+ "byteorder",
+ "zerocopy-derive",
 ]
 
 [[package]]
