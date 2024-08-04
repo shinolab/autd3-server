@@ -122,31 +122,31 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 27.0.0-rc.4 (MIT)
+autd3 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 27.0.0-rc.4 (MIT)
+autd3-derive 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 27.0.0-rc.4 (MIT)
+autd3-driver 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 27.0.0-rc.4 (MIT)
+autd3-firmware-emulator 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 27.0.0-rc.4 (MIT)
+autd3-gain-holo 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-simulator 27.0.0-rc.4 (MIT)
+autd3-link-simulator 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-protobuf 27.0.0-rc.4 (MIT)
+autd3-protobuf 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -417,7 +417,7 @@ fdeflate 0.3.4 (Apache-2.0 OR MIT)
 https://github.com/image-rs/fdeflate
 ---------------------------------------------------------
 
-flate2 1.0.30 (Apache-2.0 OR MIT)
+flate2 1.0.31 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/flate2-rs
 ---------------------------------------------------------
 
@@ -973,7 +973,7 @@ powerfmt 0.2.0 (Apache-2.0 OR MIT)
 https://github.com/jhpratt/powerfmt
 ---------------------------------------------------------
 
-ppv-lite86 0.2.18 (Apache-2.0 OR MIT)
+ppv-lite86 0.2.20 (Apache-2.0 OR MIT)
 https://github.com/cryptocorrosion/cryptocorrosion
 ---------------------------------------------------------
 
@@ -1069,7 +1069,7 @@ redox_users 0.4.5 (MIT)
 https://gitlab.redox-os.org/redox-os/users
 ---------------------------------------------------------
 
-regex 1.10.5 (Apache-2.0 OR MIT)
+regex 1.10.6 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/regex
 ---------------------------------------------------------
 
@@ -1089,7 +1089,7 @@ regex-syntax 0.8.4 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/regex/tree/master/regex-syntax
 ---------------------------------------------------------
 
-rgb 0.8.45 (MIT)
+rgb 0.8.47 (MIT)
 https://github.com/kornelski/rust-rgb
 ---------------------------------------------------------
 
@@ -1196,7 +1196,7 @@ simd_helpers 0.1.0 (MIT)
 https://github.com/lu-zero/simd_helpers
 ---------------------------------------------------------
 
-simulator 27.0.0-rc.4 (MIT)
+simulator 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -1684,15 +1684,7 @@ xmlparser 0.13.6 (Apache-2.0 OR MIT)
 https://github.com/RazrFalcon/xmlparser
 ---------------------------------------------------------
 
-zerocopy 0.6.6 (BSD-2-Clause)
-https://github.com/google/zerocopy
----------------------------------------------------------
-
 zerocopy 0.7.35 (Apache-2.0 OR BSD-2-Clause OR MIT)
-https://github.com/google/zerocopy
----------------------------------------------------------
-
-zerocopy-derive 0.6.6 (BSD-2-Clause)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 

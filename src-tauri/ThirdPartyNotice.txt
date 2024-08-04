@@ -106,27 +106,27 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 27.0.0-rc.4 (MIT)
+autd3 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 27.0.0-rc.4 (MIT)
+autd3-derive 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 27.0.0-rc.4 (MIT)
+autd3-driver 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 27.0.0-rc.4 (MIT)
+autd3-firmware-emulator 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 27.0.0-rc.4 (MIT)
+autd3-gain-holo 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 27.0.0-rc.4
+autd3-link-soem 27.0.0-rc.6
 https://github.com/shinolab/autd3-rs
 
 ---
@@ -192,11 +192,11 @@ SOEM write to Beckhoff Automation GmbH, Eiserstrasse 5, D-33415 Verl, Germany
 
 ---------------------------------------------------------
 
-autd3-protobuf 27.0.0-rc.4 (MIT)
+autd3-protobuf 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-server 27.0.0-rc.4 (MIT)
+autd3-server 27.0.0-rc.6 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -460,7 +460,7 @@ dtoa-short 0.3.5 (MPL-2.0)
 https://github.com/upsuper/dtoa-short
 ---------------------------------------------------------
 
-dunce 1.0.4 (Apache-2.0 OR CC0-1.0 OR MIT-0)
+dunce 1.0.5 (Apache-2.0 OR CC0-1.0 OR MIT-0)
 https://gitlab.com/kornelski/dunce
 ---------------------------------------------------------
 
@@ -524,7 +524,7 @@ filetime 0.2.23 (Apache-2.0 OR MIT)
 https://github.com/alexcrichton/filetime
 ---------------------------------------------------------
 
-flate2 1.0.30 (Apache-2.0 OR MIT)
+flate2 1.0.31 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/flate2-rs
 ---------------------------------------------------------
 
@@ -1184,7 +1184,7 @@ powerfmt 0.2.0 (Apache-2.0 OR MIT)
 https://github.com/jhpratt/powerfmt
 ---------------------------------------------------------
 
-ppv-lite86 0.2.18 (Apache-2.0 OR MIT)
+ppv-lite86 0.2.20 (Apache-2.0 OR MIT)
 https://github.com/cryptocorrosion/cryptocorrosion
 ---------------------------------------------------------
 
@@ -1296,7 +1296,7 @@ redox_users 0.4.5 (MIT)
 https://gitlab.redox-os.org/redox-os/users
 ---------------------------------------------------------
 
-regex 1.10.5 (Apache-2.0 OR MIT)
+regex 1.10.6 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/regex
 ---------------------------------------------------------
 
@@ -1566,7 +1566,7 @@ tauri-winrt-notification 0.2.1 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/winrt-notification
 ---------------------------------------------------------
 
-tempfile 3.10.1 (Apache-2.0 OR MIT)
+tempfile 3.11.0 (Apache-2.0 OR MIT)
 https://github.com/Stebalien/tempfile
 ---------------------------------------------------------
 
@@ -1838,7 +1838,7 @@ winapi-i686-pc-windows-gnu 0.4.0 (Apache-2.0 OR MIT)
 https://github.com/retep998/winapi-rs
 ---------------------------------------------------------
 
-winapi-util 0.1.8 (MIT OR Unlicense)
+winapi-util 0.1.9 (MIT OR Unlicense)
 https://github.com/BurntSushi/winapi-util
 ---------------------------------------------------------
 
@@ -2126,11 +2126,11 @@ zbus_names 3.0.0 (MIT)
 https://github.com/dbus2/zbus/
 ---------------------------------------------------------
 
-zerocopy 0.6.6 (BSD-2-Clause)
+zerocopy 0.7.35 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
-zerocopy-derive 0.6.6 (BSD-2-Clause)
+zerocopy-derive 0.7.35 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
