@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "SOEMAUTDServer"
-version = "27.0.0-rc.6"
+version = "27.0.0"
 dependencies = [
  "anyhow",
  "autd3-driver",
@@ -22,7 +22,7 @@ dependencies = [
 
 [[package]]
 name = "TwinCATAUTDServerLightweight"
-version = "27.0.0-rc.6"
+version = "27.0.0"
 dependencies = [
  "anyhow",
  "autd3-link-twincat",
@@ -468,9 +468,9 @@ checksum = "1505bd5d3d116872e7271a6d4e16d81d0c8570876c8de68093a09ac269d8aac0"
 
 [[package]]
 name = "autd3"
-version = "27.0.0-rc.6"
+version = "27.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "80e09692c6784517997bb4a8472f13519bc9b4b0bf0a59979f6e92104aaa2713"
+checksum = "c34d30a0bd35bbff0fa816c4a6fd2d2eba842452f7cfcc4cda2066c43cbfe3f0"
 dependencies = [
  "autd3-driver",
  "autd3-firmware-emulator",
@@ -485,9 +485,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-derive"
-version = "27.0.0-rc.6"
+version = "27.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "215f39196cd6de7268867d2944fc788282c90728350aa08e5877122ef898bb31"
+checksum = "075e7e02bd2cd97771e978a0b33163a8203e368825e9f7dc0865520a36167f9a"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -497,9 +497,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-driver"
-version = "27.0.0-rc.6"
+version = "27.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0b9e61a7b205a17bf5e1788826691dae25738d9e6a9439742d550824101de72a"
+checksum = "e07c4f3e0ffccc937e7f48785edde05ac99a77737a1f87d3c70bc64100ca1841"
 dependencies = [
  "async-trait",
  "autd3-derive",
@@ -522,9 +522,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-firmware-emulator"
-version = "27.0.0-rc.6"
+version = "27.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2dc3feb8c3c9fd7c32dedb59871e397d4e146033897a0f04c4c4b3acce818afd"
+checksum = "fc718385758ce79e63241f487b7e27883583c1616d12bde1d5d8c5487b1dcbbe"
 dependencies = [
  "autd3-driver",
  "num-integer",
@@ -534,9 +534,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-gain-holo"
-version = "27.0.0-rc.6"
+version = "27.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "db0a281f584798f129988bbb452d910c9b05bdd927f0ea2f8b6fb80637f93108"
+checksum = "59aaff5c32c52d7fc437f40d395e046e76c5ddc5b5d10ed31dea4daf8b3d766f"
 dependencies = [
  "autd3-driver",
  "bit-vec",
@@ -549,9 +549,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-simulator"
-version = "27.0.0-rc.6"
+version = "27.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "79dfae8d569308ced68dd92938c40db89df9ced9873fa36c6032caf3e8a9ed24"
+checksum = "f1ce02bb8df5a4de6037c4245b7dfec67b9ab5e7a6f83c4b56ba3f873baa64e4"
 dependencies = [
  "autd3-driver",
  "autd3-protobuf",
@@ -561,9 +561,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-soem"
-version = "27.0.0-rc.6"
+version = "27.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cd6c983a62d73b90a42b08c83846e76a334b12e6dc215f3c0f3f3b61065c130d"
+checksum = "6d71e4d817ff6cbb5d751e7914d378ca62fd93b626ad557c392921de3c809da0"
 dependencies = [
  "async-channel",
  "autd3-driver",
@@ -584,9 +584,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-twincat"
-version = "27.0.0-rc.6"
+version = "27.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "67d9aa5148f0983ece1a678276c05ab51916aa11b3ff17c8b55f7a9a9088e802"
+checksum = "068ee6bb1aa6dada3dc885cc2b4f1e47e2019e2ec9f9602436455c9a51005309"
 dependencies = [
  "autd3-driver",
  "libloading 0.8.5",
@@ -595,9 +595,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-protobuf"
-version = "27.0.0-rc.6"
+version = "27.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "53c90509c518ff3486493411af2eb6aba0c4ca0d54771c539ff9bf5b420ccb4e"
+checksum = "fd2ecf633c447704ce0c2f30082d52e5eb28ec3f8c78626aace719045416876d"
 dependencies = [
  "autd3",
  "autd3-driver",
@@ -611,7 +611,7 @@ dependencies = [
 
 [[package]]
 name = "autd3-server"
-version = "27.0.0-rc.6"
+version = "27.0.0"
 dependencies = [
  "autd3-driver",
  "autd3-link-soem",
@@ -964,9 +964,9 @@ dependencies = [
 
 [[package]]
 name = "cc"
-version = "1.1.7"
+version = "1.1.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "26a5c3fd7bfa1ce3897a3a3501d362b2d87b7f2583ebcb4a949ec25911025cbc"
+checksum = "504bdec147f2cc13c8b57ed9401fd8a147cc66b67ad5cb241394244f2c947549"
 dependencies = [
  "jobserver",
  "libc",
@@ -1059,9 +1059,9 @@ dependencies = [
 
 [[package]]
 name = "clap"
-version = "4.5.13"
+version = "4.5.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0fbb260a053428790f3de475e304ff84cdbc4face759ea7a3e64c1edd938a7fc"
+checksum = "c937d4061031a6d0c8da4b9a4f98a172fc2976dfb1c19213a9cf7d0d3c837e36"
 dependencies = [
  "clap_builder",
  "clap_derive",
@@ -1069,9 +1069,9 @@ dependencies = [
 
 [[package]]
 name = "clap_builder"
-version = "4.5.13"
+version = "4.5.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "64b17d7ea74e9f833c7dbf2cbe4fb12ff26783eda4782a8975b72f895c9b4d99"
+checksum = "85379ba512b21a328adf887e85f7742d12e96eb31f3ef077df4ffc26b506ffed"
 dependencies = [
  "anstream",
  "anstyle",
@@ -2456,9 +2456,9 @@ dependencies = [
 
 [[package]]
 name = "hyper-util"
-version = "0.1.6"
+version = "0.1.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3ab92f4f49ee4fb4f997c784b7a2e0fa70050211e0b6a287f898c3c9785ca956"
+checksum = "cde7055719c54e36e95e8719f95883f22072a48ede39db7fc17a4e1d5281e9b9"
 dependencies = [
  "bytes",
  "futures-channel",
@@ -3521,9 +3521,9 @@ dependencies = [
 
 [[package]]
 name = "object"
-version = "0.36.2"
+version = "0.36.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3f203fa8daa7bb185f760ae12bd8e097f63d17041dcdcaf675ac54cdf863170e"
+checksum = "27b64972346851a39438c60b341ebc01bba47464ae329e55cf343eb93964efd9"
 dependencies = [
  "memchr",
 ]
@@ -4212,9 +4212,9 @@ dependencies = [
 
 [[package]]
 name = "ravif"
-version = "0.11.9"
+version = "0.11.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5797d09f9bd33604689e87e8380df4951d4912f01b63f71205e2abd4ae25e6b6"
+checksum = "a8f0bfd976333248de2078d350bfdf182ff96e168a24d23d2436cef320dd4bdd"
 dependencies = [
  "avif-serialize",
  "imgref",
@@ -4364,9 +4364,9 @@ dependencies = [
 
 [[package]]
 name = "rgb"
-version = "0.8.47"
+version = "0.8.48"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e12bc8d2f72df26a5d3178022df33720fbede0d31d82c7291662eff89836994d"
+checksum = "0f86ae463694029097b846d8f99fd5536740602ae00022c0c50c5600720b2f71"
 dependencies = [
  "bytemuck",
 ]
@@ -4535,18 +4535,18 @@ checksum = "a3f0bf26fd526d2a95683cd0f87bf103b8539e2ca1ef48ce002d67aad59aa0b4"
 
 [[package]]
 name = "serde"
-version = "1.0.204"
+version = "1.0.205"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bc76f558e0cbb2a839d37354c575f1dc3fdc6546b5be373ba43d95f231bf7c12"
+checksum = "e33aedb1a7135da52b7c21791455563facbbcc43d0f0f66165b42c21b3dfb150"
 dependencies = [
  "serde_derive",
 ]
 
 [[package]]
 name = "serde_derive"
-version = "1.0.204"
+version = "1.0.205"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e0cd7e117be63d3c3678776753929474f3b04a43a080c744d6b0ae2a8c28e222"
+checksum = "692d6f5ac90220161d6774db30c662202721e64aed9058d2c394f451261420c1"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -4762,7 +4762,7 @@ dependencies = [
 
 [[package]]
 name = "simulator"
-version = "27.0.0-rc.6"
+version = "27.0.0"
 dependencies = [
  "anyhow",
  "autd3",
@@ -5336,15 +5336,15 @@ dependencies = [
 
 [[package]]
 name = "tempfile"
-version = "3.11.0"
+version = "3.12.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b8fcd239983515c23a32fb82099f97d0b11b8c72f654ed659363a95c3dad7a53"
+checksum = "04cbcdd0c794ebb0d4cf35e88edd2f7d2c4c3e9a5a6dab322839b321c6a87a64"
 dependencies = [
  "cfg-if",
  "fastrand",
  "once_cell",
  "rustix",
- "windows-sys 0.52.0",
+ "windows-sys 0.59.0",
 ]
 
 [[package]]
@@ -5752,9 +5752,9 @@ checksum = "e421abadd41a4225275504ea4d6566923418b7f05506fbc9c0fe86ba7396114b"
 
 [[package]]
 name = "ttf-parser"
-version = "0.24.0"
+version = "0.24.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8686b91785aff82828ed725225925b33b4fde44c4bb15876e5f7c832724c420a"
+checksum = "5be21190ff5d38e8b4a2d3b6a3ae57f612cc39c96e83cedeaf7abc338a8bac4a"
 
 [[package]]
 name = "tynm"
@@ -6924,9 +6924,9 @@ dependencies = [
 
 [[package]]
 name = "xml-rs"
-version = "0.8.20"
+version = "0.8.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "791978798f0597cfc70478424c2b4fdc2b7a8024aaff78497ef00f24ef674193"
+checksum = "539a77ee7c0de333dcc6da69b177380a0b81e0dacfa4f7344c465a36871ee601"
 
 [[package]]
 name = "xmlparser"
