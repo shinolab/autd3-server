@@ -6,7 +6,7 @@ The license terms for each of these components are provided later in this notice
 
 ---------------------------------------------------------
 
-TwinCATAUTDServerLightweight 27.0.0-rc.6 (MIT)
+TwinCATAUTDServerLightweight 27.0.0 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -202,7 +202,7 @@ bytes 1.7.1 (MIT)
 https://github.com/tokio-rs/bytes
 ---------------------------------------------------------
 
-cc 1.1.7 (Apache-2.0 OR MIT)
+cc 1.1.8 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/cc-rs
 ---------------------------------------------------------
 
@@ -218,11 +218,11 @@ chrono 0.4.38 (Apache-2.0 OR MIT)
 https://github.com/chronotope/chrono
 ---------------------------------------------------------
 
-clap 4.5.13 (Apache-2.0 OR MIT)
+clap 4.5.14 (Apache-2.0 OR MIT)
 https://github.com/clap-rs/clap
 ---------------------------------------------------------
 
-clap_builder 4.5.13 (Apache-2.0 OR MIT)
+clap_builder 4.5.14 (Apache-2.0 OR MIT)
 https://github.com/clap-rs/clap
 ---------------------------------------------------------
 
@@ -370,7 +370,7 @@ hyper-timeout 0.5.1 (Apache-2.0 OR MIT)
 https://github.com/hjr3/hyper-timeout
 ---------------------------------------------------------
 
-hyper-util 0.1.6 (MIT)
+hyper-util 0.1.7 (MIT)
 https://github.com/hyperium/hyper-util
 ---------------------------------------------------------
 
@@ -510,7 +510,7 @@ num-traits 0.2.19 (Apache-2.0 OR MIT)
 https://github.com/rust-num/num-traits
 ---------------------------------------------------------
 
-object 0.36.2 (Apache-2.0 OR MIT)
+object 0.36.3 (Apache-2.0 OR MIT)
 https://github.com/gimli-rs/object
 ---------------------------------------------------------
 
@@ -638,11 +638,11 @@ seq-macro 0.3.5 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/seq-macro
 ---------------------------------------------------------
 
-serde 1.0.204 (Apache-2.0 OR MIT)
+serde 1.0.205 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
-serde_derive 1.0.204 (Apache-2.0 OR MIT)
+serde_derive 1.0.205 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 

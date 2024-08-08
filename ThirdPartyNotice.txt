@@ -186,7 +186,7 @@ svelte-preprocess 5.1.4 MIT
 https://github.com/sveltejs/svelte-preprocess
 ---------------------------------------------------------
 
-svelte-check 3.8.4 MIT
+svelte-check 3.8.5 MIT
 git+https://github.com/sveltejs/language-tools.git
 ---------------------------------------------------------
 
