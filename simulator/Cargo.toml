@@ -19,7 +19,7 @@ bitflags = "2.3.1"
 bytemuck = { version = "1.13.1", features = ["derive", "extern_crate_std", "min_const_generics"] }
 camera_controllers = "0.34.0"
 cgmath = "0.18.0"
-clap = { version = "4.5.11", features = ["derive"] }
+clap = { version = "4.5.15", features = ["derive"] }
 png = "0.17.8"
 imgui = "0.12.0"
 scarlet = "1.2.0"
