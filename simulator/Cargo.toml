@@ -30,7 +30,7 @@ vulkano-shaders = "0.34.0"
 winit = "0.28.6"
 crossbeam-channel = "0.5.8"
 image = "0.25.2"
-tokio = { version = "1.39.3", features = ["rt-multi-thread"] }
+tokio = { version = "1.40.0", features = ["rt-multi-thread"] }
 futures-util = "0.3.28"
 tonic = "0.12.2"
 anyhow = "1.0.83"
