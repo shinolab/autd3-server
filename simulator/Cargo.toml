@@ -16,7 +16,7 @@ autd3-firmware-emulator = { version = "27.0.0", features = ["async-trait"] }
 autd3-protobuf = { version = "27.0.0", features = ["lightweight"] }
 autd3-link-simulator = { version = "27.0.0", features = ["async-trait"] }
 bitflags = "2.3.1"
-bytemuck = { version = "1.17.0", features = ["derive", "extern_crate_std", "min_const_generics"] }
+bytemuck = { version = "1.17.1", features = ["derive", "extern_crate_std", "min_const_generics"] }
 camera_controllers = "0.34.0"
 cgmath = "0.18.0"
 clap = { version = "4.5.16", features = ["derive"] }
