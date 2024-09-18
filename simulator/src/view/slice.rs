@@ -9,18 +9,6 @@ struct SliceVertex {
     tex_coords: [f32; 2],
 }
 
-#[repr(C)]
-#[derive(Default, Debug, Copy, Clone, Zeroable, Pod)]
-struct Data {
-    world: [[f32; 4]; 4],
-    view: [[f32; 4]; 4],
-    proj: [[f32; 4]; 4],
-    width: u32,
-    height: u32,
-    _pad0: u32,
-    _pad1: u32,
-}
-
 mod vs {
     vulkano_shaders::shader! {
         ty: "vertex",
