@@ -58,10 +58,7 @@ async fn load_settings(handle: tauri::AppHandle) -> Result<Options, String> {
         file.read_to_string(&mut contents)
             .await
             .map_err(|e| e.to_string())?;
-        match serde_json::from_str(&contents) {
-            Ok(options) => options,
-            Err(_) => Default::default(),
-        }
+        serde_json::from_str(&contents).unwrap_or_default()
     } else {
         Default::default()
     };
