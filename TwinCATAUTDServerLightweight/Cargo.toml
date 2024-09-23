@@ -11,7 +11,7 @@ readme = "README.md"
 keywords = ["autd"]
 
 [dependencies]
-clap = { version = "4.5.17", features = ["derive"] }
+clap = { version = "4.5.18", features = ["derive"] }
 tokio = { version = "1.40.0", features = ["macros", "rt-multi-thread"] }
 autd3-protobuf = { version = "27.0.0", features = ["lightweight", "async-trait"] }
 autd3-link-twincat = { version = "27.0.0", features = ["async-trait"] }
