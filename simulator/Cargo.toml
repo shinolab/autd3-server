@@ -32,7 +32,7 @@ crossbeam-channel = "0.5.8"
 image = "0.25.2"
 tokio = { version = "1.40.0", features = ["rt-multi-thread"] }
 futures-util = "0.3.28"
-tonic = "0.12.2"
+tonic = "0.12.3"
 anyhow = "1.0.89"
 chrono = "0.4.38"
 gltf = "1.4.1"
