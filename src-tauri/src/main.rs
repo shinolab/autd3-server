@@ -7,7 +7,7 @@ use options::Options;
 
 use std::{path::PathBuf, process::Stdio};
 
-use tauri::Manager;
+use tauri::{Emitter, Manager};
 
 use tokio::{
     fs::{File, OpenOptions},
@@ -21,7 +21,7 @@ const SETTINGS_PATH: &str = "settings.json";
 fn get_settings_file_path(handle: &tauri::AppHandle) -> std::io::Result<PathBuf> {
     let mut path = handle
         .app_handle()
-        .path_resolver()
+        .path()
         .app_config_dir()
         .unwrap_or_default();
     if !path.exists() {
@@ -124,9 +124,10 @@ async fn copy_autd_xml(
     }
 
     let autd_xml_path = handle
-        .path_resolver()
-        .resolve_resource("TwinCATAUTDServer/AUTD.xml")
-        .ok_or("Can't find AUTD.xml")?;
+        .path()
+        .resource_dir()
+        .map(|resource| resource.join("TwinCATAUTDServer/AUTD.xml"))
+        .map_err(|_| "Can't find AUTD.xml")?;
 
     tokio::fs::copy(autd_xml_path, dst)
         .await
@@ -147,9 +148,10 @@ async fn run_twincat_server(
     console_emu_input_tx: tauri::State<'_, Sender<String>>,
 ) -> Result<(), String> {
     let twincat_autd_server_path = handle
-        .path_resolver()
-        .resolve_resource("TwinCATAUTDServer/TwinCATAUTDServer.exe")
-        .ok_or("Can't find TwinCATAUTDServer.exe")?;
+        .path()
+        .resource_dir()
+        .map(|resource| resource.join("TwinCATAUTDServer/TwinCATAUTDServer.exe"))
+        .map_err(|_| "Can't find TwinCATAUTDServer.exe")?;
 
     let twincat_options: options::TwinCATOptions =
         serde_json::from_str(twincat_options).map_err(|e| e.to_string())?;
@@ -234,19 +236,24 @@ async fn main() {
     let (console_emu_input_tx, mut console_emu_input_rx) = channel::<String>(32);
 
     tauri::Builder::default()
+        .plugin(tauri_plugin_os::init())
+        .plugin(tauri_plugin_shell::init())
+        .plugin(tauri_plugin_notification::init())
+        .plugin(tauri_plugin_fs::init())
+        .plugin(tauri_plugin_dialog::init())
         .manage(console_emu_input_tx)
         .setup(|app| {
             #[cfg(debug_assertions)]
             {
-                let window = app.get_window("main").unwrap();
+                let window = app.get_webview_window("main").unwrap();
                 window.open_devtools();
                 window.close_devtools();
             }
 
-            let app_handle = app.app_handle();
+            let app_handle = app.handle().clone();
             tokio::spawn(async move {
                 while let Some(s) = console_emu_input_rx.recv().await {
-                    app_handle.emit_all("console-emu", s).unwrap();
+                    app_handle.emit("console-emu", s).unwrap();
                 }
             });
 

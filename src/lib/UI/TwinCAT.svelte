@@ -1,9 +1,9 @@
 <script lang="ts">
   import type { TwinCATOptions } from "./options.ts";
 
-  import { Command, Child } from "@tauri-apps/api/shell";
+  import { Command, Child } from "@tauri-apps/plugin-shell";
 
-  import { invoke } from "@tauri-apps/api";
+  import { invoke } from "@tauri-apps/api/core";
   import { consoleOutputQueue } from "./console_output.ts";
 
   import Button from "./utils/Button.svelte";

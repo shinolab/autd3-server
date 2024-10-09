@@ -2,8 +2,8 @@
   import type { SimulatorOptions } from "./options.ts";
 
   import { onMount } from "svelte";
-  import { Command, Child } from "@tauri-apps/api/shell";
-  import { invoke } from "@tauri-apps/api";
+  import { Command, Child } from "@tauri-apps/plugin-shell";
+  import { invoke } from "@tauri-apps/api/core";
   import { consoleOutputQueue } from "./console_output.ts";
   import { appConfigDir } from "@tauri-apps/api/path";
 

@@ -4,8 +4,8 @@
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
 
-  import { invoke } from "@tauri-apps/api";
-  import { appWindow } from "@tauri-apps/api/window";
+  import { invoke } from "@tauri-apps/api/core";
+  import { getCurrentWebviewWindow } from "@tauri-apps/api/webviewWindow";
   import { TauriEvent } from "@tauri-apps/api/event";
 
   import LeftPanel from "./lib/LeftPanel.svelte";
@@ -14,6 +14,7 @@
   import License from "./lib/License.svelte";
   // @ts-ignore
   import Modal, { bind } from "svelte-simple-modal";
+  const appWindow = getCurrentWebviewWindow();
 
   const licenseModal = writable<any>(null);
   const showLicenseModal = () => licenseModal.set(bind(License, {}));
@@ -29,13 +30,15 @@
       let args = {
         options: JSON.stringify(options),
       };
+      console.log("Saving settings");
       await invoke("save_settings", args);
+      console.log("Settings saved");
     }
   };
 
   appWindow.listen(TauriEvent.WINDOW_CLOSE_REQUESTED, async () => {
     await handleUnload();
-    await appWindow.close();
+    await appWindow.destroy();
   });
 </script>
 

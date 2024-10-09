@@ -1,138 +1,80 @@
 {
-  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
+  "$schema": "https://schema.tauri.app/config/2.0.0",
   "build": {
     "beforeBuildCommand": "npm run build",
     "beforeDevCommand": "npm run dev",
-    "devPath": "http://localhost:1420",
-    "distDir": "../dist"
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:1420"
   },
-  "package": {
-    "productName": "AUTD3 Server",
-    "version": "28.0.0"
-  },
-  "tauri": {
-    "allowlist": {
-      "fs": {
-        "scope": [
-          "$RESOURCE/*"
-        ]
-      },
-      "path": {
-        "all": true
-      },
-      "os": {
-        "all": true
-      },
-      "notification": {
-        "all": true
-      },
-      "dialog": {
-        "all": true,
-        "ask": true,
-        "confirm": true,
-        "message": true,
-        "open": true,
-        "save": true
-      },
-      "shell": {
-        "sidecar": true,
-        "scope": [
-          {
-            "name": "simulator",
-            "sidecar": true,
-            "args": true
-          },
-          {
-            "name": "simulator-unity",
-            "sidecar": true,
-            "args": true
-          },
-          {
-            "name": "SOEMAUTDServer",
-            "sidecar": true,
-            "args": true
-          },
-          {
-            "name": "TwinCATAUTDServerLightweight",
-            "sidecar": true,
-            "args": true
-          }
-        ]
-      },
-      "window": {
-        "all": true
-      }
+  "bundle": {
+    "active": true,
+    "targets": [
+      "msi",
+      "deb",
+      "dmg"
+    ],
+    "windows": {
+      "certificateThumbprint": null,
+      "digestAlgorithm": "sha256",
+      "timestampUrl": "",
+      "wix": {}
     },
-    "bundle": {
-      "active": true,
-      "targets": [
-        "msi",
-        "deb",
-        "dmg"
-      ],
-      "identifier": "com.shinolab.autd3-server",
-      "publisher": "Shun Suzuki",
-      "icon": [
-        "icons/32x32.png",
-        "icons/128x128.png",
-        "icons/128x128@2x.png",
-        "icons/icon.icns",
-        "icons/icon.ico"
-      ],
-      "resources": [
-        "./LICENSE",
-        "./NOTICE",
-        "./TwinCATAUTDServer/LICENSE",
-        "./TwinCATAUTDServer/README.md",
-        "./TwinCATAUTDServer/AUTD.xml",
-        "./TwinCATAUTDServer/TwinCATAUTDServer.exe",
-        "./TwinCATAUTDServer/System.Buffers.dll",
-        "./TwinCATAUTDServer/System.CommandLine.dll",
-        "./TwinCATAUTDServer/System.Memory.dll",
-        "./TwinCATAUTDServer/System.Numerics.Vectors.dll",
-        "./TwinCATAUTDServer/System.Runtime.CompilerServices.Unsafe.dll",
-        "./TwinCATAUTDServer/TwinCAT.Ads.dll"
-      ],
-      "copyright": "Copyright (c) 2023-2024 Shun Suzuki. All rights reserved.",
-      "category": "DeveloperTool",
-      "shortDescription": "AUTD3 Server application",
-      "longDescription": "",
+    "publisher": "Shun Suzuki",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "resources": [
+      "./LICENSE",
+      "./NOTICE",
+      "./TwinCATAUTDServer/LICENSE",
+      "./TwinCATAUTDServer/README.md",
+      "./TwinCATAUTDServer/AUTD.xml",
+      "./TwinCATAUTDServer/TwinCATAUTDServer.exe",
+      "./TwinCATAUTDServer/System.Buffers.dll",
+      "./TwinCATAUTDServer/System.CommandLine.dll",
+      "./TwinCATAUTDServer/System.Memory.dll",
+      "./TwinCATAUTDServer/System.Numerics.Vectors.dll",
+      "./TwinCATAUTDServer/System.Runtime.CompilerServices.Unsafe.dll",
+      "./TwinCATAUTDServer/TwinCAT.Ads.dll"
+    ],
+    "copyright": "Copyright (c) 2023-2024 Shun Suzuki. All rights reserved.",
+    "category": "DeveloperTool",
+    "shortDescription": "AUTD3 Server application",
+    "longDescription": "",
+    "externalBin": [
+      "simulator",
+      "simulator-unity",
+      "SOEMAUTDServer",
+      "TwinCATAUTDServerLightweight"
+    ],
+    "macOS": {
+      "entitlements": null,
+      "exceptionDomain": "",
+      "frameworks": [],
+      "providerShortName": null,
+      "signingIdentity": null
+    },
+    "linux": {
       "deb": {
         "depends": [],
         "files": {
           "LICENSE": "LICENSE",
           "NOTICE": "NOTICE"
         }
-      },
-      "macOS": {
-        "entitlements": null,
-        "exceptionDomain": "",
-        "frameworks": [],
-        "providerShortName": null,
-        "signingIdentity": null,
-        "license": "LICENSE.txt"
-      },
-      "externalBin": [
-        "simulator",
-        "simulator-unity",
-        "SOEMAUTDServer",
-        "TwinCATAUTDServerLightweight"
-      ],
-      "windows": {
-        "certificateThumbprint": null,
-        "digestAlgorithm": "sha256",
-        "timestampUrl": "",
-        "wix": {
-          "license": "LICENSE.rtf"
-        }
       }
     },
-    "security": {
-      "csp": null
-    },
-    "updater": {
-      "active": false
-    },
+    "licenseFile": "LICENSE.rtf"
+  },
+  "productName": "AUTD3 Server",
+  "mainBinaryName": "AUTD3 Server",
+  "version": "28.0.0",
+  "identifier": "com.shinolab.autd3-server",
+  "plugins": {},
+  "app": {
     "windows": [
       {
         "fullscreen": false,
@@ -141,6 +83,9 @@
         "title": "AUTD3 Server v28.0.0-rc.0",
         "width": 800
       }
-    ]
+    ],
+    "security": {
+      "csp": null
+    }
   }
 }
