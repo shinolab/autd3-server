@@ -23,8 +23,6 @@ use tonic::{transport::Server, Request, Response, Status};
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
 enum TimerStrategyArg {
-    /// use native timer
-    NativeTimer,
     /// use sleep
     Sleep,
     /// use busy wait
@@ -130,7 +128,7 @@ async fn main_() -> anyhow::Result<()> {
             println!("Available interfaces:");
             let adapters = autd3_link_soem::EthernetAdapters::new();
             let name_len = adapters
-                .into_iter()
+                .iter()
                 .map(|adapter| adapter.name().len())
                 .max()
                 .unwrap_or(0);
@@ -147,7 +145,6 @@ async fn main_() -> anyhow::Result<()> {
             let sync_tolerance = std::time::Duration::from_micros(args.sync_tolerance);
             let sync_timeout = std::time::Duration::from_secs(args.sync_timeout);
             let timer_strategy = match args.timer_strategy {
-                TimerStrategyArg::NativeTimer => TimerStrategy::NativeTimer,
                 TimerStrategyArg::Sleep => TimerStrategy::Sleep,
                 TimerStrategyArg::BusyWait => TimerStrategy::BusyWait,
             };

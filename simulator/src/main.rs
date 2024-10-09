@@ -89,7 +89,7 @@ async fn main() -> anyhow::Result<()> {
             .parse("wgpu_core=off,simulator=info")?
     };
     tracing_subscriber::registry()
-        .with(fmt::layer())
+        .with(fmt::layer().with_ansi(false))
         .with(filter)
         .init();
 
@@ -109,7 +109,7 @@ async fn main() -> anyhow::Result<()> {
         }
     } else {
         tracing::info!(
-            "Settings file ({}) found, using default settings.",
+            "Settings file ({}) not found, using default settings.",
             settings_path.display()
         );
         Default::default()

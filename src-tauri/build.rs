@@ -13,12 +13,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         ""
     };
 
-    std::fs::create_dir_all(manifest_dir.join("assets"))?;
-    std::fs::copy(
-        manifest_dir.join("../simulator/assets/autd3.glb"),
-        manifest_dir.join("assets/autd3.glb"),
-    )?;
-
     std::fs::copy(
         manifest_dir.join(format!("../target/release/simulator{}", ext)),
         manifest_dir.join(format!("simulator-{}{}", std::env::var("TARGET")?, ext)),

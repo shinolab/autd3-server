@@ -3,7 +3,7 @@ import type { Duration } from "./utils/duration.js";
 export const SyncModeValues = ["DC", "FreeRun"] as const
 export type SyncMode = typeof SyncModeValues[number]
 
-export const TimerStrategyValues = ["NativeTimer", "Sleep", "BusyWait"] as const
+export const TimerStrategyValues = ["Sleep", "BusyWait"] as const
 export type TimerStrategy = typeof TimerStrategyValues[number]
 
 export interface TwinCATOptions {
@@ -33,7 +33,6 @@ export interface SOEMOptions {
 export interface SimulatorOptions {
     vsync: boolean;
     port: number;
-    gpu_idx: number;
     window_width: number;
     window_height: number;
     unity: boolean;

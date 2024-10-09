@@ -1,17 +1,13 @@
 <script lang="ts">
   import type { SimulatorOptions } from "./options.ts";
 
-  import { resolveResource } from "@tauri-apps/api/path";
   import { onMount } from "svelte";
-  import { writable } from "svelte/store";
-  import { platform } from "@tauri-apps/api/os";
   import { Command, Child } from "@tauri-apps/api/shell";
   import { invoke } from "@tauri-apps/api";
   import { consoleOutputQueue } from "./console_output.ts";
   import { appConfigDir } from "@tauri-apps/api/path";
 
   import Button from "./utils/Button.svelte";
-  import Select from "./utils/Select.svelte";
   import CheckBox from "./utils/CheckBox.svelte";
   import NumberInput from "./utils/NumberInput.svelte";
 
@@ -22,29 +18,8 @@
   let command;
   let child: null | Child = null;
 
-  let gpuName: string;
-  $: {
-    if (gpuName) {
-      const idx = availableGpusNames.indexOf(gpuName);
-      if (idx == 0 || idx == -1) {
-        simulatorOptions.gpu_idx = -1;
-      } else {
-        let gpu_idx = availableGpus[idx - 1].split(":")[0].trim();
-        simulatorOptions.gpu_idx = parseInt(gpu_idx);
-      }
-    }
-  }
-
-  const cachedGPUs = writable<string | null>(null);
-  let availableGpus: string[] = [];
-  $: availableGpusNames = ["Auto"].concat(
-    availableGpus.map((gpu) => gpu.split(":")[1].trim()),
-  );
-
   let handleRunClick = async () => {
-    const resourcePath = await resolveResource("");
     const args: string[] = [
-      "run",
       "-w",
       `${simulatorOptions.window_width},${simulatorOptions.window_height}`,
       "-p",
@@ -53,21 +28,14 @@
       simulatorOptions.vsync ? "true" : "false",
       "-s",
       "simulator_settings.json",
-      "--config_path",
+      "--setting_dir",
       appConfigDirPath,
-      "--resource_path",
-      resourcePath,
     ];
-    if (simulatorOptions.gpu_idx !== -1) {
-      args.push("-g");
-      args.push(simulatorOptions.gpu_idx.toString());
-    }
     if (simulatorOptions.lightweight) {
       args.push("--lightweight");
       args.push("--lightweight_port");
       args.push(simulatorOptions.lightweight_port.toString());
     }
-
     command = simulatorOptions.unity
       ? Command.sidecar("simulator-unity", args)
       : Command.sidecar("simulator", args);
@@ -97,50 +65,6 @@
     await invoke("set_libpath", {});
 
     appConfigDirPath = await appConfigDir();
-
-    let gpus: null | string = null;
-    cachedGPUs.subscribe((v) => {
-      gpus = v;
-    })();
-    if (gpus == null) {
-      let { stdout, stderr } = await Command.sidecar(
-        "simulator",
-        "list",
-      ).execute();
-      if (stderr) {
-        consoleOutputQueue.update((v) => {
-          return [...v, stderr.trimEnd()];
-        });
-        if ((await platform()) == "darwin") {
-          consoleOutputQueue.update((v) => {
-            return [
-              ...v,
-              "If you are using macOS, please install VulkanSDK and try again.",
-            ];
-          });
-        }
-        gpus = "";
-      } else {
-        gpus = stdout;
-      }
-      cachedGPUs.set(gpus);
-    }
-    if (gpus) {
-      availableGpus = gpus
-        .trimEnd()
-        .split("\n")
-        .map((s) => s.trim().replace(/ \(type .*\)$/g, ""));
-    } else {
-      availableGpus = [];
-    }
-    gpuName = (
-      availableGpus.find(
-        (gpu) =>
-          parseInt(gpu.split(":")[0].trim()) === simulatorOptions.gpu_idx,
-      ) ?? "0:Auto"
-    )
-      .split(":")[1]
-      .trim();
   });
 </script>
 
@@ -156,9 +80,6 @@
     max="65535"
     step="1"
   />
-
-  <label for="gpuName">GPU: </label>
-  <Select id="gpuName" bind:value={gpuName} values={availableGpusNames} />
 
   <label for="window_width">Window width:</label>
   <NumberInput

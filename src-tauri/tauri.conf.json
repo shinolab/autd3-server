@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "AUTD3 Server",
-    "version": "27.0.0"
+    "version": "28.0.0"
   },
   "tauri": {
     "allowlist": {
@@ -82,7 +82,6 @@
       "resources": [
         "./LICENSE",
         "./NOTICE",
-        "./assets/autd3.glb",
         "./TwinCATAUTDServer/LICENSE",
         "./TwinCATAUTDServer/README.md",
         "./TwinCATAUTDServer/AUTD.xml",
@@ -139,7 +138,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "AUTD3 Server v27.0.0",
+        "title": "AUTD3 Server v28.0.0-rc.0",
         "width": 800
       }
     ]

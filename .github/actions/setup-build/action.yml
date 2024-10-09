@@ -11,39 +11,9 @@ runs:
       if: needs.check-src.outputs.status
       uses: actions/setup-python@v5
       with:
-        python-version: "3.12"
+        python-version: "3.13"
       
     - name: Setup Rust
       uses: actions-rust-lang/setup-rust-toolchain@v1
       with:
         toolchain: 'stable'
-
-    - name: install shaderc
-      shell: pwsh
-      if: inputs.os == 'windows-latest'
-      run: |
-        Invoke-WebRequest -URI https://storage.googleapis.com/shaderc/artifacts/prod/graphics_shader_compiler/shaderc/windows/continuous_release_2019/44/20240430-112613/install.zip -OutFile shaderc.zip
-        Expand-Archive -Path shaderc.zip -DestinationPath shaderc
-        echo "SHADERC_LIB_DIR=$Env:GITHUB_WORKSPACE/shaderc/install/lib" >> $Env:GITHUB_ENV
-        rm shaderc.zip
-    - name: install shaderc
-      shell: bash
-      if: inputs.shaderc && inputs.os == 'ubuntu-latest'
-      run: |
-        sudo apt-get install build-essential cmake git ninja-build
-    - name: install shaderc
-      shell: bash
-      if: inputs.os == 'macos-latest'
-      run: |
-        brew install ninja
-
-    - name: install dependencies
-      shell: bash
-      if: inputs.os == 'ubuntu-latest'
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y pkg-config libfreetype6-dev libfontconfig1-dev
-        sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev librsvg2-dev
-
-    - name: setup cache
-      uses: swatinem/rust-cache@v2

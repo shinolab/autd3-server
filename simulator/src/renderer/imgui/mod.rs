@@ -47,11 +47,18 @@ pub struct ImGuiRenderer {
 }
 
 impl ImGuiRenderer {
-    pub fn new(config_path: Option<&PathBuf>, context: &Context, window: Arc<Window>) -> Self {
+    pub fn new(
+        state: &State,
+        context: &Context,
+        window: Arc<Window>,
+    ) -> Result<Self, SimulatorError> {
         let mut imgui = ImGuiContext::create();
-        if let Some(path) = config_path {
-            imgui.set_ini_filename(path.join("imgui.ini"));
+
+        let config_path = PathBuf::new().join(&state.settings_dir);
+        if !config_path.exists() {
+            std::fs::create_dir_all(&config_path)?;
         }
+        imgui.set_ini_filename(config_path.join("imgui.ini"));
 
         let mut platform = WinitPlatform::init(&mut imgui);
         platform.attach_window(imgui.io_mut(), &window, HiDpiMode::Default);
@@ -69,7 +76,7 @@ impl ImGuiRenderer {
             renderer_config,
         );
 
-        Self {
+        Ok(Self {
             imgui,
             hidpi_factor: platform.hidpi_factor() as _,
             platform,
@@ -84,7 +91,7 @@ impl ImGuiRenderer {
             time_step: 1000000,
             show_mod_plot: Vec::new(),
             mod_plot_size: Vec::new(),
-        }
+        })
     }
 
     pub fn init(&mut self, dev_num: usize) {

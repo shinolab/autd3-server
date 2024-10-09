@@ -1,4 +1,4 @@
-use std::{path::PathBuf, sync::Arc};
+use std::sync::Arc;
 
 use camera_controllers::{Camera, CameraPerspective, FirstPerson, FirstPersonSettings};
 use winit::{event::Event, window::Window};
@@ -54,7 +54,7 @@ pub struct Renderer {
 
 impl Renderer {
     pub fn new(
-        config_path: Option<&PathBuf>,
+        state: &State,
         context: &Context,
         surface: &SurfaceWrapper,
         window: Arc<Window>,
@@ -63,7 +63,7 @@ impl Renderer {
             FirstPerson::new([0., -500.0, 120.0], FirstPersonSettings::keyboard_wasd()).camera(0.);
         camera.set_yaw_pitch(0., -std::f32::consts::PI / 2.0);
         Ok(Self {
-            imgui: imgui::ImGuiRenderer::new(config_path, context, window.clone()),
+            imgui: imgui::ImGuiRenderer::new(state, context, window.clone())?,
             transducer: transducer::TransducerRenderer::new(surface, context)?,
             slice: slice::SliceRenderer::new(surface, context),
             depth_texture: DepthTexture::new(context, surface),
