@@ -1,6 +1,6 @@
 [package]
 name = "simulator"
-version = "27.0.0"
+version = "28.0.0-rc.0"
 edition = "2021"
 authors = ["shun suzuki <suzuki@hapis.k.u-tokyo.ac.jp>"]
 
@@ -10,37 +10,36 @@ repository = "https://github.com/shinolab/autd3-server"
 keywords = ["autd"]
 
 [dependencies]
-autd3 = { version = "27.0.0", features = ["async-trait"] }
-autd3-driver = { version = "27.0.0", features = ["async-trait"] }
-autd3-firmware-emulator = { version = "27.0.0", features = ["async-trait"] }
-autd3-protobuf = { version = "27.0.0", features = ["lightweight"] }
-autd3-link-simulator = { version = "27.0.0", features = ["async-trait"] }
-bitflags = "2.3.1"
-bytemuck = { version = "1.18.0", features = ["derive", "extern_crate_std", "min_const_generics"] }
+anyhow = "1.0.89"
+autd3-derive = "28.0.0-rc.0"
+autd3-driver = { version = "28.0.0-rc.0", features = ["async-trait"] }
+autd3-firmware-emulator = { version = "28.0.0-rc.0", features = ["async-trait"] }
+autd3-link-simulator = { version = "28.0.0-rc.0", features = ["async-trait"] }
+autd3-protobuf = { version = "28.0.0-rc.0", features = ["async-trait", "lightweight"] }
+bitflags = "2.6.0"
+bytemuck = { version = "1.18.0", features = ["derive"] }
 camera_controllers = "0.34.0"
-cgmath = "0.18.0"
-clap = { version = "4.5.19", features = ["derive"] }
-png = "0.17.14"
+chrono = "0.4.38"
+clap = { version = "4.5.20", features = ["derive"] }
+crossbeam-channel = "0.5.13"
+futures-util = "0.3.31"
+glam = { version = "0.29.0", features = ["bytemuck", "serde"] }
+image = { version = "0.25.2", default-features = false, features = ["png"] }
 imgui = "0.12.0"
+imgui-winit-support = "0.12.0"
 scarlet = "1.2.0"
 serde = { version = "1.0.210", features = ["derive"] }
 serde_json = "1.0.128"
-vulkano = "0.34.1"
-vulkano-shaders = "0.34.0"
-winit = "0.28.6"
-crossbeam-channel = "0.5.8"
-image = "0.25.2"
-tokio = { version = "1.40.0", features = ["rt-multi-thread"] }
-futures-util = "0.3.31"
+smallvec = "1.13.2"
+strum = { version = "0.26.3", features = ["derive"] }
+thiserror = "1.0.64"
+tokio = { version = "1.40.0", features = ["rt-multi-thread", "macros"] }
 tonic = "0.12.3"
-anyhow = "1.0.89"
-chrono = "0.4.38"
-gltf = "1.4.1"
-tracing-subscriber = "0.3.17"
-tracing = "0.1.37"
-tracing-core = "0.1.31"
-strum = { version = "0.26.2", features = ["derive"] }
-directories = "5.0.1"
+tracing = "0.1.40"
+tracing-core = "0.1.32"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+wgpu = { version = "22.1.0", features = ["serde"] }
+winit = "0.29.15"
 
 [features]
 default = []
