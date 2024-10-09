@@ -7,16 +7,11 @@ fn main() -> anyhow::Result<()> {
         Path::new(env!("CARGO_MANIFEST_DIR")).join("license-file.toml"),
     )?;
 
-    let imgui_vulkano_render = (
+    let imgui_wgpu = (
         "MIT",
-        r"imgui-vulkano-renderer 0.9.0 (MIT)
-https://github.com/Tenebryo/imgui-vulkano-renderer
+        r"imgui-wgpu-rs 0.24.0 (MIT)
+https://github.com/Yatekii/imgui-wgpu-rs
 Modification of the original version by Shun Suzuki <suzuki@hapis.k.u-tokyo.ac.jp>",
-    );
-    let imgui_winit_support = (
-        "MIT",
-        r"imgui-winit-support 0.11.0 (MIT)
-https://github.com/imgui-rs/imgui-rs",
     );
     let notofont_dep = ("OFL", "Noto Sans v2.012 (OFL)");
 
@@ -24,7 +19,7 @@ https://github.com/imgui-rs/imgui-rs",
         Path::new(env!("CARGO_MANIFEST_DIR")).join("../../simulator/Cargo.toml"),
         "ThirdPartyNotice",
         &license_file_map,
-        &[imgui_vulkano_render, imgui_winit_support, notofont_dep],
+        &[imgui_wgpu, notofont_dep],
     )?;
 
     let changed = autd3_license_check::check(

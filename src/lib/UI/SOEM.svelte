@@ -28,8 +28,6 @@
 
   let parseStrategy = (strategy: TimerStrategy) => {
     switch (strategy) {
-      case "NativeTimer":
-        return "native-timer";
       case "Sleep":
         return "sleep";
       case "BusyWait":

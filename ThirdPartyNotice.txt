@@ -10,6 +10,10 @@ The license terms for each of these components are provided later in this notice
 git+https://github.com/ampproject/remapping.git
 ---------------------------------------------------------
 
+@esbuild/win32-x64 0.18.20 MIT
+https://github.com/evanw/esbuild
+---------------------------------------------------------
+
 @jridgewell/gen-mapping 0.3.5 MIT
 https://github.com/jridgewell/gen-mapping
 ---------------------------------------------------------
@@ -38,6 +42,26 @@ git+https://github.com/sveltejs/vite-plugin-svelte.git
 git+https://github.com/sveltejs/vite-plugin-svelte.git
 ---------------------------------------------------------
 
+@tauri-apps/api 1.6.0 Apache-2.0 OR MIT
+git+https://github.com/tauri-apps/tauri.git
+---------------------------------------------------------
+
+@tauri-apps/cli 1.6.2 Apache-2.0 OR MIT
+git+https://github.com/tauri-apps/tauri.git
+---------------------------------------------------------
+
+@tsconfig/svelte 5.0.4 MIT
+https://github.com/tsconfig/bases.git
+---------------------------------------------------------
+
+@types/estree 1.0.5 MIT
+https://github.com/DefinitelyTyped/DefinitelyTyped.git
+---------------------------------------------------------
+
+acorn 8.11.3 MIT
+https://github.com/acornjs/acorn.git
+---------------------------------------------------------
+
 aria-query 5.3.0 Apache-2.0
 git+https://github.com/A11yance/aria-query.git
 ---------------------------------------------------------
@@ -46,16 +70,12 @@ axobject-query 4.0.0 Apache-2.0
 git+https://github.com/A11yance/axobject-query.git
 ---------------------------------------------------------
 
-braces 3.0.3 MIT
-micromatch/braces
----------------------------------------------------------
-
-buffer-crc32 1.0.0 MIT
-git://github.com/brianloveswords/buffer-crc32.git
----------------------------------------------------------
-
-chokidar 3.6.0 MIT
+chokidar 4.0.1 MIT
 git+https://github.com/paulmillr/chokidar.git
+---------------------------------------------------------
+
+code-red 1.0.4 MIT
+Rich-Harris/code-red
 ---------------------------------------------------------
 
 css-tree 2.3.1 MIT
@@ -66,48 +86,28 @@ debug 4.3.4 MIT
 git://github.com/debug-js/debug.git
 ---------------------------------------------------------
 
-es6-promise 3.3.1 MIT
-git://github.com/stefanpenner/es6-promise.git
+deepmerge 4.3.1 MIT
+git://github.com/TehShrike/deepmerge.git
+---------------------------------------------------------
+
+dequal 2.0.3 MIT
+lukeed/dequal
+---------------------------------------------------------
+
+esbuild 0.18.20 MIT
+https://github.com/evanw/esbuild
 ---------------------------------------------------------
 
 estree-walker 3.0.3 MIT
 https://github.com/Rich-Harris/estree-walker
 ---------------------------------------------------------
 
-fill-range 7.1.1 MIT
-jonschlinkert/fill-range
----------------------------------------------------------
-
-fs.realpath 1.0.0 ISC
-git+https://github.com/isaacs/fs.realpath.git
----------------------------------------------------------
-
-glob 7.2.3 ISC
-git://github.com/isaacs/node-glob.git
----------------------------------------------------------
-
-glob-parent 5.1.2 ISC
-gulpjs/glob-parent
----------------------------------------------------------
-
-inflight 1.0.6 ISC
-https://github.com/npm/inflight.git
----------------------------------------------------------
-
-is-extglob 2.1.1 MIT
-jonschlinkert/is-extglob
----------------------------------------------------------
-
-is-glob 4.0.3 MIT
-micromatch/is-glob
----------------------------------------------------------
-
-is-number 7.0.0 MIT
-jonschlinkert/is-number
----------------------------------------------------------
-
 is-reference 3.0.2 MIT
 git+https://github.com/Rich-Harris/is-reference.git
+---------------------------------------------------------
+
+kleur 4.1.5 MIT
+lukeed/kleur
 ---------------------------------------------------------
 
 locate-character 3.0.0 MIT
@@ -122,71 +122,59 @@ mdn-data 2.0.30 CC0-1.0
 https://github.com/mdn/data.git
 ---------------------------------------------------------
 
-minimatch 3.1.2 ISC
-git://github.com/isaacs/minimatch.git
+mri 1.2.0 MIT
+lukeed/mri
 ---------------------------------------------------------
 
-mkdirp 0.5.6 MIT
-https://github.com/substack/node-mkdirp.git
+ms 2.1.2 MIT
+zeit/ms
 ---------------------------------------------------------
 
 nanoid 3.3.7 MIT
 ai/nanoid
 ---------------------------------------------------------
 
-normalize-path 3.0.0 MIT
-jonschlinkert/normalize-path
----------------------------------------------------------
-
-once 1.4.0 ISC
-git://github.com/isaacs/once
+periscopic 3.1.0 MIT
+Rich-Harris/periscopic
 ---------------------------------------------------------
 
 picocolors 1.0.0 ISC
 alexeyraspopov/picocolors
 ---------------------------------------------------------
 
-picomatch 2.3.1 MIT
-micromatch/picomatch
----------------------------------------------------------
-
 postcss 8.4.38 MIT
 postcss/postcss
 ---------------------------------------------------------
 
-readdirp 3.6.0 MIT
+readdirp 4.0.1 MIT
 git://github.com/paulmillr/readdirp.git
 ---------------------------------------------------------
 
-rimraf 2.7.1 ISC
-git://github.com/isaacs/rimraf.git
----------------------------------------------------------
-
-rollup 3.29.4 MIT
+rollup 3.29.5 MIT
 rollup/rollup
 ---------------------------------------------------------
 
-sander 0.5.1 MIT
-https://github.com/rich-harris/sander
----------------------------------------------------------
-
-sorcery 0.11.1 MIT
-https://github.com/Rich-Harris/sorcery
+sade 1.8.1 MIT
+lukeed/sade
 ---------------------------------------------------------
 
 source-map-js 1.2.0 BSD-3-Clause
 7rulnik/source-map-js
 ---------------------------------------------------------
 
-svelte 4.2.18 MIT
+svelte 4.2.19 MIT
 https://github.com/sveltejs/svelte.git
 ---------------------------------------------------------
 
-svelte-preprocess 5.1.4 MIT
-https://github.com/sveltejs/svelte-preprocess
+fdir 6.3.0 MIT
+git+https://github.com/thecodrr/fdir.git
 ---------------------------------------------------------
 
-svelte-check 3.8.5 MIT
+picomatch 4.0.2 MIT
+micromatch/picomatch
+---------------------------------------------------------
+
+svelte-check 4.0.4 MIT
 git+https://github.com/sveltejs/language-tools.git
 ---------------------------------------------------------
 
@@ -194,7 +182,7 @@ svelte-hmr 0.15.3 ISC
 https://github.com/sveltejs/svelte-hmr
 ---------------------------------------------------------
 
-svelte-preprocess 6.0.2 MIT
+svelte-preprocess 6.0.3 MIT
 https://github.com/sveltejs/svelte-preprocess
 ---------------------------------------------------------
 
@@ -202,28 +190,28 @@ svelte-simple-modal 1.6.2 MIT
 git+https://github.com/flekschas/svelte-simple-modal.git
 ---------------------------------------------------------
 
-the-new-css-reset 1.11.2 MIT
+svelte-tabs 1.1.0 MIT
+https://github.com/joeattardi/svelte-tabs.git
+---------------------------------------------------------
+
+the-new-css-reset 1.11.3 MIT
 git+https://github.com/elad2412/the-new-css-reset.git
 ---------------------------------------------------------
 
-to-regex-range 5.0.1 MIT
-micromatch/to-regex-range
----------------------------------------------------------
-
-tslib 2.6.3 0BSD
+tslib 2.7.0 0BSD
 https://github.com/Microsoft/tslib.git
 ---------------------------------------------------------
 
-typescript 5.5.4 Apache-2.0
-https://github.com/Microsoft/TypeScript.git
+typescript 5.6.2 Apache-2.0
+https://github.com/microsoft/TypeScript.git
 ---------------------------------------------------------
 
-vite 4.5.3 MIT
+vite 4.5.5 MIT
 git+https://github.com/vitejs/vite.git
 ---------------------------------------------------------
 
-wrappy 1.0.2 ISC
-https://github.com/npm/wrappy
+vitefu 0.2.5 MIT
+https://github.com/svitejs/vitefu.git
 
 ---------------------------------------------------------
 

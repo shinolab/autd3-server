@@ -64,7 +64,6 @@ impl Default for SOEMOptions {
 pub struct SimulatorOptions {
     pub vsync: bool,
     pub port: u16,
-    pub gpu_idx: i32,
     pub window_width: u32,
     pub window_height: u32,
     pub unity: bool,
@@ -77,7 +76,6 @@ impl Default for SimulatorOptions {
         Self {
             vsync: true,
             port: 8080,
-            gpu_idx: -1,
             window_width: 800,
             window_height: 600,
             unity: false,

@@ -22,6 +22,8 @@ pub enum SimulatorError {
     ImageError(#[from] image::ImageError),
     #[error("{0}")]
     AUTDProtoBufError(#[from] autd3_protobuf::AUTDProtoBufError),
+    #[error("{0}")]
+    IoError(#[from] std::io::Error),
     #[error("Failed to find adapter")]
     NoSuitableAdapter,
 }
