@@ -3,7 +3,7 @@
   import { SyncModeValues, TimerStrategyValues } from "./options.ts";
 
   import { onMount } from "svelte";
-  import { Command, Child } from "@tauri-apps/api/shell";
+  import { Command, Child } from "@tauri-apps/plugin-shell";
   import { consoleOutputQueue } from "./console_output.ts";
 
   import Button from "./utils/Button.svelte";

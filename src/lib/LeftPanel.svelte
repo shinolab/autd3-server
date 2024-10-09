@@ -4,9 +4,9 @@
   // @ts-ignore
   import { Tabs, Tab, TabList, TabPanel } from "svelte-tabs";
 
-  import { platform } from "@tauri-apps/api/os";
-  import { invoke } from "@tauri-apps/api";
-  import { Command } from "@tauri-apps/api/shell";
+  import { platform } from "@tauri-apps/plugin-os";
+  import { invoke } from "@tauri-apps/api/core";
+  import { Command } from "@tauri-apps/plugin-shell";
 
   import TwinCAT from "./UI/TwinCAT.svelte";
   import SOEM from "./UI/SOEM.svelte";
@@ -14,11 +14,13 @@
 
   export let options: Options;
 
+  const platformName = platform();
+
   let adapters: string[] = [];
 
   async function checkAvailableTabs() {
     let twincatAvailable =
-      (await platform()) == "win32" && (await invoke("twincat_installed", {}));
+      platformName == "windows" && (await invoke("twincat_installed", {}));
 
     try {
       let ifnames: string = "";

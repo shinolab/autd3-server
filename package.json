@@ -10,20 +10,25 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@tauri-apps/api": "^1.6.0",
+    "@tauri-apps/api": "^2.0.0",
+    "@tauri-apps/plugin-dialog": "^2.0.0",
+    "@tauri-apps/plugin-fs": "^2.0.0",
+    "@tauri-apps/plugin-notification": "^2.0.0",
+    "@tauri-apps/plugin-os": "^2.0.0",
+    "@tauri-apps/plugin-shell": "^2.0.0",
     "svelte-simple-modal": "^1.6.1",
     "svelte-tabs": "^1.1.0",
     "the-new-css-reset": "^1.11.3"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "@tauri-apps/cli": "^2.0.2",
     "@tsconfig/svelte": "^5.0.0",
+    "svelte": "^4.2.19",
     "svelte-check": "^4.0.4",
     "svelte-preprocess": "^6.0.3",
     "tslib": "^2.7.0",
-    "svelte": "^4.2.19",
     "typescript": "^5.6.2",
-    "vite": "^4.4.4",
-    "@tauri-apps/cli": "^1.6.2"
+    "vite": "^4.4.4"
   }
 }
