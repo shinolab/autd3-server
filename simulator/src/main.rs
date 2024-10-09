@@ -5,9 +5,11 @@ use std::{
     path::Path,
 };
 
-use simulator::{LogFormatter, Simulator, ViewerSettings};
+use simulator::{Simulator, State};
 
-use clap::{Args, Parser, Subcommand};
+use clap::Parser;
+use tracing_core::LevelFilter;
+use tracing_subscriber::{fmt, layer::SubscriberExt, util::SubscriberInitExt, EnvFilter};
 
 fn parse_key_val<T, U>(s: &str) -> Result<(T, U), Box<dyn Error + Send + Sync + 'static>>
 where
@@ -27,13 +29,7 @@ where
 #[command(
     help_template = "Author: {author-with-newline} {about-section}Version: {version} \n\n {usage-heading} {usage} \n\n {all-args} {tab}"
 )]
-struct Cli {
-    #[command(subcommand)]
-    command: Commands,
-}
-
-#[derive(Args)]
-struct Arg {
+struct Args {
     /// Windows Size (Optional, if set, overrides settings from file)
     #[arg(short = 'w', long = "window_size", value_name = "Width,Height" , value_parser = parse_key_val::<u32, u32>)]
     window_size: Option<(u32, u32)>,
@@ -46,134 +42,112 @@ struct Arg {
     #[arg(short = 'v', long = "vsync")]
     vsync: Option<bool>,
 
-    /// GPU index (Optional, if set, overrides settings from file.)
-    #[arg(short = 'g', long = "gpu_idx")]
-    index: Option<i32>,
-
-    /// Config file path
-    #[arg(long = "config_path")]
-    config_path: Option<String>,
-
-    /// Resource path
-    #[arg(long = "resource_path", default_value = "./")]
-    resource_path: String,
+    /// Setting file dir
+    #[arg(long = "setting_dir")]
+    setting_dir: Option<String>,
 
     /// Setting file name
-    #[arg(short = 's', long = "setting", default_value = "settings.json")]
-    setting: String,
+    #[arg(short = 's', long = "setting_file", default_value = "settings.json")]
+    setting_file: String,
 
-    /// Debug mode
-    #[arg(short = 'd', long = "debug", default_value = "false")]
-    debug: bool,
-
-    /// lightweight mode
+    /// lightweight mode (Optional, if set, overrides settings from file)
     #[arg(long = "lightweight", default_value = "false")]
-    lightweight: bool,
+    lightweight: Option<bool>,
 
     /// lightweight port
     #[arg(long = "lightweight_port")]
     lightweight_port: Option<u16>,
+
+    /// Debug mode
+    #[arg(short = 'd', long = "debug", default_value = "false")]
+    debug: bool,
 }
 
-#[derive(Subcommand)]
-enum Commands {
-    /// Run simulator
-    Run(Arg),
-    /// List available GPUs
-    List,
-}
+#[tokio::main]
+async fn main() -> anyhow::Result<()> {
+    let arg = Args::parse();
 
-fn main() -> anyhow::Result<()> {
-    let cli = Cli::parse();
+    let port = arg.port;
+    let window_size = arg.window_size;
+    let settings_path = if let Some(path) = &arg.setting_dir {
+        Path::new(path).join(&arg.setting_file)
+    } else {
+        Path::new(&arg.setting_file).to_owned()
+    };
+    let vsync = arg.vsync;
+    let lightweight = arg.lightweight;
+    let lightweight_port = arg.lightweight_port;
+    let debug = arg.debug;
 
-    match &cli.command {
-        Commands::List => {
-            simulator::available_gpus()?
-                .iter()
-                .for_each(|(idx, name, ty)| {
-                    println!("\t{}: {} (type {:?})", idx, name, ty);
-                });
-        }
-        Commands::Run(arg) => {
-            let port = arg.port;
-            let gpu_idx = arg.index;
-            let window_size = arg.window_size;
-            let resource_path = Path::new(&arg.resource_path);
-            let settings_path = if let Some(path) = &arg.config_path {
-                Path::new(path).join(&arg.setting)
-            } else {
-                Path::new(&arg.setting).to_owned()
-            };
-            let vsync = arg.vsync;
-            let lightweight = arg.lightweight;
-            let lightweight_port = arg.lightweight_port;
+    let filter = if debug {
+        EnvFilter::builder()
+            .with_default_directive(LevelFilter::DEBUG.into())
+            .parse("wgpu_core=debug,simulator=debug")?
+    } else {
+        EnvFilter::builder()
+            .with_default_directive(LevelFilter::INFO.into())
+            .parse("wgpu_core=off,simulator=info")?
+    };
+    tracing_subscriber::registry()
+        .with(fmt::layer())
+        .with(filter)
+        .init();
 
-            let mut fmt = tracing_subscriber::fmt();
-            if arg.debug {
-                fmt = fmt.with_max_level(tracing::Level::DEBUG);
-            }
-            fmt.event_format(LogFormatter).init();
-
-            let settings: ViewerSettings = if settings_path.exists() {
-                let file = File::open(&settings_path)?;
-                let reader = BufReader::new(file);
-                serde_json::from_reader(reader)?
-            } else {
+    let mut state: State = if settings_path.exists() {
+        let file = File::open(&settings_path)?;
+        let reader = BufReader::new(file);
+        match serde_json::from_reader(reader) {
+            Ok(state) => state,
+            Err(e) => {
+                tracing::error!(
+                    "Failed to parse settings file ({}): {}, using default settings.",
+                    settings_path.display(),
+                    e
+                );
                 Default::default()
-            };
-
-            let mut simulator = Simulator::new(resource_path).with_settings(settings);
-
-            if let Some(port) = port {
-                simulator = simulator.with_port(port);
-            }
-
-            if let Some(gpu_idx) = gpu_idx {
-                simulator = simulator.with_gpu_idx(gpu_idx);
-            }
-
-            if let Some((width, height)) = window_size {
-                simulator = simulator.with_window_size(width, height);
-            }
-
-            if let Some(vsync) = vsync {
-                simulator = simulator.with_vsync(vsync);
-            }
-
-            if let Some(path) = &arg.config_path {
-                simulator = simulator.with_config_path(path);
-            }
-
-            if lightweight {
-                simulator = simulator.enable_lightweight();
-            }
-
-            if let Some(port) = lightweight_port {
-                simulator = simulator.with_lightweight_port(port);
-            }
-
-            simulator.run()?;
-
-            {
-                let settings = simulator.get_settings();
-
-                let settings_str = serde_json::to_string_pretty(settings)?;
-
-                if settings_path.exists() {
-                    fs::remove_file(&settings_path)?;
-                }
-
-                std::fs::create_dir_all(settings_path.parent().unwrap())?;
-
-                let mut file = OpenOptions::new()
-                    .create_new(true)
-                    .write(true)
-                    .append(false)
-                    .open(&settings_path)?;
-
-                write!(file, "{}", settings_str)?;
             }
         }
+    } else {
+        tracing::info!(
+            "Settings file ({}) found, using default settings.",
+            settings_path.display()
+        );
+        Default::default()
+    };
+
+    if let Some(port) = port {
+        state.port = port;
+    }
+    if let Some(window_size) = window_size {
+        state.window_size = window_size;
+    }
+    if let Some(vsync) = vsync {
+        state.vsync = vsync;
+    }
+    if let Some(path) = &arg.setting_dir {
+        state.settings_dir = path.clone();
+    }
+    if let Some(lightweight) = lightweight {
+        state.lightweight = lightweight;
+    }
+    if let Some(port) = lightweight_port {
+        state.lightweight_port = port;
+    }
+
+    let state = Simulator::new(state).await?.run()?;
+
+    {
+        let settings_str = serde_json::to_string_pretty(&state)?;
+        if settings_path.exists() {
+            fs::remove_file(&settings_path)?;
+        }
+        std::fs::create_dir_all(settings_path.parent().unwrap())?;
+        let mut file = OpenOptions::new()
+            .create_new(true)
+            .write(true)
+            .append(false)
+            .open(&settings_path)?;
+        write!(file, "{}", settings_str)?;
     }
 
     Ok(())
