@@ -31,7 +31,7 @@ struct Config {
     sound_speed: f32,
     num_trans: u32,
     max_pressure: f32,
-    _pad: u32,
+    scale: f32,
 }
 
 @group(0)
@@ -85,14 +85,18 @@ fn main(@builtin(global_invocation_id) id: vec3<u32>) {
 
     let x = f32(id.x) / slice_size.x - 0.5;
     let y = f32(id.y) / slice_size.y - 0.5;
-    let point = (model * vec4(x, y, 0.0, 1.0)).xyz;
+    let s = mat4x4<f32>(config.scale, 0.0, 0.0, 0.0,
+        0.0, config.scale, 0.0, 0.0,
+        0.0, 0.0, config.scale, 0.0,
+        0.0, 0.0, 0.0, 1.0);
+    let point = (model * vec4(x, y, 0.0, 1.0) * s).xyz;
 
-    let wavenum = 2 * PI * ULTRASOUND_FREQ / config.sound_speed;
+    let wavenum = 2 * PI * ULTRASOUND_FREQ / (config.sound_speed * config.scale);
 
     var re: f32 = 0.;
     var im: f32 = 0.;
     for (var i: u32 = 0; i < config.num_trans; i++) {
-        let r = distance(v_tr_pos[i], point);
+        let r = distance(v_tr_pos[i] * config.scale, point);
 
         let amp = v_tr_state[i].x;
         let phase = v_tr_state[i].y;

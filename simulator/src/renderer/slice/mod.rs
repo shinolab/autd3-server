@@ -1,3 +1,4 @@
+use autd3_driver::defined::mm;
 use bytemuck::{NoUninit, Pod, Zeroable};
 use std::{borrow::Cow, mem};
 use wgpu::{util::DeviceExt, ComputePass, RenderPass};
@@ -22,7 +23,7 @@ struct Config {
     sound_speed: f32,
     num_trans: u32,
     max_pressure: f32,
-    _pad: u32,
+    scale: f32,
 }
 
 pub struct SliceRenderer {
@@ -444,7 +445,7 @@ impl SliceRenderer {
             sound_speed: state.sound_speed,
             num_trans: state.transducers.positions.len() as u32,
             max_pressure: state.slice.pressure_max,
-            _pad: 0,
+            scale: 1. / mm,
         };
         context.queue().write_buffer(
             self.config_buf.as_ref().unwrap(),
@@ -454,18 +455,22 @@ impl SliceRenderer {
     }
 
     pub fn update_slice(&mut self, state: &State, context: &Context) {
-        let model =
-            Matrix4::from_rotation_translation(
-                to_gl_rot(state.slice.rotation()),
-                to_gl_pos(state.slice.pos),
-            ) * Matrix4::from_scale(Vector3::new(state.slice.size.x, state.slice.size.y, 1.));
+        let model = Matrix4::from_rotation_translation(
+            to_gl_rot(state.slice.rotation()),
+            to_gl_pos(state.slice.pos),
+        ) * Matrix4::from_scale(Vector3::new(
+            state.slice.size.x,
+            state.slice.size.y,
+            1. / mm,
+        ));
         context
             .queue()
             .write_buffer(&self.model_buf, 0, bytemuck::cast_slice(model.as_ref()));
+        let slice_size = Vector2::new(state.slice.size.x, state.slice.size.y) / mm;
         context.queue().write_buffer(
             &self.slice_size_buf,
             0,
-            bytemuck::cast_slice(state.slice.size.as_ref()),
+            bytemuck::cast_slice(slice_size.as_ref()),
         );
     }
 

@@ -3,7 +3,7 @@ mod components;
 use std::{collections::HashMap, path::PathBuf, sync::Arc, time::Instant};
 
 use autd3_driver::{
-    defined::{ULTRASOUND_FREQ, ULTRASOUND_PERIOD, ULTRASOUND_PERIOD_COUNT},
+    defined::{mm, ULTRASOUND_FREQ, ULTRASOUND_PERIOD, ULTRASOUND_PERIOD_COUNT},
     derive::Segment,
     ethercat::DcSysTime,
 };
@@ -26,7 +26,7 @@ use crate::{
     imgui_wgpu,
     state::State,
     update_flag::UpdateFlag,
-    SimulatorError, Vector3, MILLIMETER, ZPARITY,
+    SimulatorError, Vector3, ZPARITY,
 };
 
 pub struct ImGuiRenderer {
@@ -196,7 +196,7 @@ impl ImGuiRenderer {
                         if drag_float(
                             "X##Slice",
                             &mut state.slice.pos.x,
-                            1. * MILLIMETER,
+                            1. * mm,
                             f32::MIN / 2.,
                             f32::MAX / 2.,
                         ) {
@@ -205,7 +205,7 @@ impl ImGuiRenderer {
                         if drag_float(
                             "Y##Slice",
                             &mut state.slice.pos.y,
-                            1. * MILLIMETER,
+                            1. * mm,
                             f32::MIN / 2.,
                             f32::MAX / 2.,
                         ) {
@@ -214,7 +214,7 @@ impl ImGuiRenderer {
                         if drag_float(
                             "Z##Slice",
                             &mut state.slice.pos.z,
-                            1. * MILLIMETER,
+                            1. * mm,
                             f32::MIN / 2.,
                             f32::MAX / 2.,
                         ) {
@@ -238,18 +238,18 @@ impl ImGuiRenderer {
                         if drag_float(
                             "Width##Slice",
                             &mut state.slice.size[0],
-                            1. * MILLIMETER,
-                            1. * MILLIMETER,
-                            1024. * MILLIMETER,
+                            1. * mm,
+                            1. * mm,
+                            1024. * mm,
                         ) {
                             update_flag.set(UpdateFlag::UPDATE_SLICE_SIZE, true);
                         }
                         if drag_float(
                             "Height##Slice",
                             &mut state.slice.size[1],
-                            1. * MILLIMETER,
-                            1. * MILLIMETER,
-                            1024. * MILLIMETER,
+                            1. * mm,
+                            1. * mm,
+                            1024. * mm,
                         ) {
                             update_flag.set(UpdateFlag::UPDATE_SLICE_SIZE, true);
                         }
@@ -376,7 +376,7 @@ impl ImGuiRenderer {
                         if drag_float(
                             "X##Camera",
                             &mut state.camera.pos.x,
-                            1. * MILLIMETER,
+                            1. * mm,
                             f32::MIN / 2.,
                             f32::MAX / 2.,
                         ) {
@@ -385,7 +385,7 @@ impl ImGuiRenderer {
                         if drag_float(
                             "Y##Camera",
                             &mut state.camera.pos.y,
-                            1. * MILLIMETER,
+                            1. * mm,
                             f32::MIN / 2.,
                             f32::MAX / 2.,
                         ) {
@@ -394,7 +394,7 @@ impl ImGuiRenderer {
                         if drag_float(
                             "Z##Camera",
                             &mut state.camera.pos.z,
-                            1. * MILLIMETER,
+                            1. * mm,
                             f32::MIN / 2.,
                             f32::MAX / 2.,
                         ) {
@@ -418,8 +418,8 @@ impl ImGuiRenderer {
                             "Move speed",
                             &mut state.camera.move_speed,
                             1.,
-                            1. * MILLIMETER,
-                            100. * MILLIMETER,
+                            1. * mm,
+                            100. * mm,
                         );
                         ui.separator();
 
@@ -430,7 +430,7 @@ impl ImGuiRenderer {
                         if drag_float(
                             "Near clip",
                             &mut state.camera.near_clip,
-                            1. * MILLIMETER,
+                            1. * mm,
                             0.,
                             f32::MAX / 2.,
                         ) {
@@ -439,7 +439,7 @@ impl ImGuiRenderer {
                         if drag_float(
                             "Far clip",
                             &mut state.camera.far_clip,
-                            1. * MILLIMETER,
+                            1. * mm,
                             0.,
                             f32::MAX / 2.,
                         ) {
@@ -454,7 +454,7 @@ impl ImGuiRenderer {
                         if drag_float(
                             "Sound speed",
                             &mut state.sound_speed,
-                            1. * MILLIMETER,
+                            1. * mm,
                             0.,
                             f32::MAX / 2.,
                         ) {

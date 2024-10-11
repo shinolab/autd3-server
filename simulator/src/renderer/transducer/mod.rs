@@ -33,19 +33,19 @@ struct Vertex {
     _tex_coord: [f32; 2],
 }
 
-fn vertex(pos: [i8; 3], tc: [i16; 2]) -> Vertex {
+fn vertex(pos: [f32; 3], tc: [i16; 2]) -> Vertex {
     Vertex {
-        _pos: [pos[0] as f32, pos[1] as f32, pos[2] as f32, 1.0],
+        _pos: [pos[0], pos[1], pos[2], 1.0],
         _tex_coord: [tc[0] as f32, tc[1] as f32],
     }
 }
 
 fn create_vertices() -> (Vec<Vertex>, Vec<u16>) {
     let vertex_data = [
-        vertex([-1, -1, 0], [0, 0]),
-        vertex([1, -1, 0], [128, 0]),
-        vertex([1, 1, 0], [128, 128]),
-        vertex([-1, 1, 0], [0, 128]),
+        vertex([-0.5, -0.5, 0.], [0, 0]),
+        vertex([0.5, -0.5, 0.], [128, 0]),
+        vertex([0.5, 0.5, 0.], [128, 128]),
+        vertex([-0.5, 0.5, 0.], [0, 128]),
     ];
 
     let index_data: &[u16] = &[0, 1, 2, 2, 3, 0];
@@ -344,9 +344,12 @@ impl TransducerRenderer {
             .iter()
             .zip(state.transducers.rotations.iter())
             .map(|(p, r)| {
-                const S: f32 = 0.5 * AUTD3::TRANS_SPACING;
                 Matrix4::from_rotation_translation(*r, p.truncate())
-                    * Matrix4::from_scale(Vector3::new(S, S, 1.))
+                    * Matrix4::from_scale(Vector3::new(
+                        AUTD3::TRANS_SPACING,
+                        AUTD3::TRANS_SPACING,
+                        1.,
+                    ))
             })
             .collect::<Vec<_>>();
         context.queue().write_buffer(
