@@ -10,10 +10,6 @@ The license terms for each of these components are provided later in this notice
 git+https://github.com/ampproject/remapping.git
 ---------------------------------------------------------
 
-@esbuild/win32-x64 0.18.20 MIT
-https://github.com/evanw/esbuild
----------------------------------------------------------
-
 @jridgewell/gen-mapping 0.3.5 MIT
 https://github.com/jridgewell/gen-mapping
 ---------------------------------------------------------
@@ -34,23 +30,7 @@ git+https://github.com/jridgewell/sourcemap-codec.git
 git+https://github.com/jridgewell/trace-mapping.git
 ---------------------------------------------------------
 
-@sveltejs/vite-plugin-svelte 2.5.3 MIT
-git+https://github.com/sveltejs/vite-plugin-svelte.git
----------------------------------------------------------
-
-@sveltejs/vite-plugin-svelte-inspector 1.0.4 MIT
-git+https://github.com/sveltejs/vite-plugin-svelte.git
----------------------------------------------------------
-
-@tauri-apps/api 2.0.0 Apache-2.0 OR MIT
-git+https://github.com/tauri-apps/tauri.git
----------------------------------------------------------
-
-@tauri-apps/cli 2.0.2 Apache-2.0 OR MIT
-git+https://github.com/tauri-apps/tauri.git
----------------------------------------------------------
-
-@tauri-apps/cli-win32-x64-msvc 2.0.2 Apache-2.0 OR MIT
+@tauri-apps/api 2.0.2 Apache-2.0 OR MIT
 git+https://github.com/tauri-apps/tauri.git
 ---------------------------------------------------------
 
@@ -74,10 +54,6 @@ https://github.com/tauri-apps/plugins-workspace
 https://github.com/tauri-apps/plugins-workspace
 ---------------------------------------------------------
 
-@tsconfig/svelte 5.0.4 MIT
-https://github.com/tsconfig/bases.git
----------------------------------------------------------
-
 @types/estree 1.0.5 MIT
 https://github.com/DefinitelyTyped/DefinitelyTyped.git
 ---------------------------------------------------------
@@ -94,10 +70,6 @@ axobject-query 4.0.0 Apache-2.0
 git+https://github.com/A11yance/axobject-query.git
 ---------------------------------------------------------
 
-chokidar 4.0.1 MIT
-git+https://github.com/paulmillr/chokidar.git
----------------------------------------------------------
-
 code-red 1.0.4 MIT
 Rich-Harris/code-red
 ---------------------------------------------------------
@@ -106,20 +78,8 @@ css-tree 2.3.1 MIT
 csstree/csstree
 ---------------------------------------------------------
 
-debug 4.3.4 MIT
-git://github.com/debug-js/debug.git
----------------------------------------------------------
-
-deepmerge 4.3.1 MIT
-git://github.com/TehShrike/deepmerge.git
----------------------------------------------------------
-
 dequal 2.0.3 MIT
 lukeed/dequal
----------------------------------------------------------
-
-esbuild 0.18.20 MIT
-https://github.com/evanw/esbuild
 ---------------------------------------------------------
 
 estree-walker 3.0.3 MIT
@@ -128,10 +88,6 @@ https://github.com/Rich-Harris/estree-walker
 
 is-reference 3.0.2 MIT
 git+https://github.com/Rich-Harris/is-reference.git
----------------------------------------------------------
-
-kleur 4.1.5 MIT
-lukeed/kleur
 ---------------------------------------------------------
 
 locate-character 3.0.0 MIT
@@ -146,40 +102,8 @@ mdn-data 2.0.30 CC0-1.0
 https://github.com/mdn/data.git
 ---------------------------------------------------------
 
-mri 1.2.0 MIT
-lukeed/mri
----------------------------------------------------------
-
-ms 2.1.2 MIT
-zeit/ms
----------------------------------------------------------
-
-nanoid 3.3.7 MIT
-ai/nanoid
----------------------------------------------------------
-
 periscopic 3.1.0 MIT
 Rich-Harris/periscopic
----------------------------------------------------------
-
-picocolors 1.0.0 ISC
-alexeyraspopov/picocolors
----------------------------------------------------------
-
-postcss 8.4.38 MIT
-postcss/postcss
----------------------------------------------------------
-
-readdirp 4.0.1 MIT
-git://github.com/paulmillr/readdirp.git
----------------------------------------------------------
-
-rollup 3.29.5 MIT
-rollup/rollup
----------------------------------------------------------
-
-sade 1.8.1 MIT
-lukeed/sade
 ---------------------------------------------------------
 
 source-map-js 1.2.0 BSD-3-Clause
@@ -198,18 +122,6 @@ picomatch 4.0.2 MIT
 micromatch/picomatch
 ---------------------------------------------------------
 
-svelte-check 4.0.4 MIT
-git+https://github.com/sveltejs/language-tools.git
----------------------------------------------------------
-
-svelte-hmr 0.15.3 ISC
-https://github.com/sveltejs/svelte-hmr
----------------------------------------------------------
-
-svelte-preprocess 6.0.3 MIT
-https://github.com/sveltejs/svelte-preprocess
----------------------------------------------------------
-
 svelte-simple-modal 1.6.2 MIT
 git+https://github.com/flekschas/svelte-simple-modal.git
 ---------------------------------------------------------
@@ -220,39 +132,7 @@ https://github.com/joeattardi/svelte-tabs.git
 
 the-new-css-reset 1.11.3 MIT
 git+https://github.com/elad2412/the-new-css-reset.git
----------------------------------------------------------
 
-tslib 2.7.0 0BSD
-https://github.com/Microsoft/tslib.git
----------------------------------------------------------
-
-typescript 5.6.2 Apache-2.0
-https://github.com/microsoft/TypeScript.git
----------------------------------------------------------
-
-vite 4.5.5 MIT
-git+https://github.com/vitejs/vite.git
----------------------------------------------------------
-
-vitefu 0.2.5 MIT
-https://github.com/svitejs/vitefu.git
-
----------------------------------------------------------
-
-0BSD
-
----
-
-Permission to use, copy, modify, and/or distribute this software for
-any purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
-WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
-OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE
-FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY
-DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN
-AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
-OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ---------------------------------------------------------
 
 Apache-2.0
@@ -602,15 +482,6 @@ express Statement of Purpose.
  d. Affirmer understands and acknowledges that Creative Commons is not a
     party to this document and has no duty or obligation with respect to
     this CC0 or use of the Work.
----------------------------------------------------------
-
-ISC
-
----
-
-Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ---------------------------------------------------------
 
 MIT
