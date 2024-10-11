@@ -21,9 +21,6 @@ pub type Quaternion = glam::Quat;
 pub type Matrix3 = glam::Mat3;
 pub type Matrix4 = glam::Mat4;
 
-const METER: f32 = autd3_driver::defined::METER;
-const MILLIMETER: f32 = autd3_driver::defined::MILLIMETER;
-
 #[cfg(feature = "left_handed")]
 pub(crate) const ZPARITY: f32 = -1.;
 #[cfg(not(feature = "left_handed"))]

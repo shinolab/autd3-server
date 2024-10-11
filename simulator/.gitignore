@@ -1,2 +1,2 @@
-imgui.ini
-settings.json
+*.ini
+*.json

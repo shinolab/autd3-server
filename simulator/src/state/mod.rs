@@ -1,7 +1,7 @@
 use std::f32::consts::PI;
 
 use autd3_driver::{
-    defined::ULTRASOUND_PERIOD_COUNT,
+    defined::{mm, ULTRASOUND_PERIOD_COUNT},
     ethercat::{DcSysTime, ECAT_DC_SYS_TIME_BASE},
     geometry::{self},
 };
@@ -9,9 +9,7 @@ use autd3_firmware_emulator::CPUEmulator;
 use glam::EulerRot;
 use serde::{Deserialize, Serialize};
 
-use crate::{
-    common::color_map::ColorMap, Quaternion, Vector2, Vector3, METER, MILLIMETER, ZPARITY,
-};
+use crate::{common::color_map::ColorMap, Quaternion, Vector2, Vector3, ZPARITY};
 
 mod transducers;
 
@@ -85,22 +83,22 @@ impl std::default::Default for State {
             window_size: (800, 600),
             transducers: transducers::Transducers::new(),
             camera: CameraState {
-                pos: Vector3::new(86.6252, -533.2867, 150.0 * ZPARITY),
+                pos: Vector3::new(86.6252 * mm, -533.2867 * mm, 150.0 * mm * ZPARITY),
                 rot: Vector3::new(90.0 * ZPARITY, 0., 0.),
                 fov: 45.,
-                near_clip: 0.1,
-                far_clip: 1000.,
-                move_speed: 10. * MILLIMETER,
+                near_clip: 0.1 * mm,
+                far_clip: 1000. * mm,
+                move_speed: 10. * mm,
             },
             slice: SliceState {
-                pos: Vector3::new(86.6252, 66.7133, 150.0 * ZPARITY),
+                pos: Vector3::new(86.6252 * mm, 66.7133 * mm, 150.0 * mm * ZPARITY),
                 rot: Vector3::new(90.0 * ZPARITY, 0., 0.),
-                size: Vector2::new(300.0, 300.0),
+                size: Vector2::new(300.0 * mm, 300.0 * mm),
                 color_map: ColorMap::Inferno,
                 pressure_max: 5000.,
             },
             background: [0.3, 0.3, 0.3, 1.0],
-            sound_speed: 340.0 * METER,
+            sound_speed: 340.0e3 * mm,
             mod_enable: false,
             auto_play: false,
             real_time: DcSysTime::now().sys_time(),
