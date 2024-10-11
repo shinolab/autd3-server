@@ -109,7 +109,7 @@ impl Simulator {
                 ..
             } => match window_event {
                 WindowEvent::Resized(size) => {
-                    tracing::info!("Surface resize {size:?}");
+                    tracing::trace!("Surface resize {size:?}");
                     state.window_size = (size.width, size.height);
                     surface.resize(context, size);
                     renderer.resize(context, state, surface, window.clone(), &event);
