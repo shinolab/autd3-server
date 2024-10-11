@@ -42,12 +42,36 @@ git+https://github.com/sveltejs/vite-plugin-svelte.git
 git+https://github.com/sveltejs/vite-plugin-svelte.git
 ---------------------------------------------------------
 
-@tauri-apps/api 1.6.0 Apache-2.0 OR MIT
+@tauri-apps/api 2.0.0 Apache-2.0 OR MIT
 git+https://github.com/tauri-apps/tauri.git
 ---------------------------------------------------------
 
-@tauri-apps/cli 1.6.2 Apache-2.0 OR MIT
+@tauri-apps/cli 2.0.2 Apache-2.0 OR MIT
 git+https://github.com/tauri-apps/tauri.git
+---------------------------------------------------------
+
+@tauri-apps/cli-win32-x64-msvc 2.0.2 Apache-2.0 OR MIT
+git+https://github.com/tauri-apps/tauri.git
+---------------------------------------------------------
+
+@tauri-apps/plugin-dialog 2.0.0 MIT OR Apache-2.0
+https://github.com/tauri-apps/plugins-workspace
+---------------------------------------------------------
+
+@tauri-apps/plugin-fs 2.0.0 MIT OR Apache-2.0
+https://github.com/tauri-apps/plugins-workspace
+---------------------------------------------------------
+
+@tauri-apps/plugin-notification 2.0.0 MIT OR Apache-2.0
+https://github.com/tauri-apps/plugins-workspace
+---------------------------------------------------------
+
+@tauri-apps/plugin-os 2.0.0 MIT OR Apache-2.0
+https://github.com/tauri-apps/plugins-workspace
+---------------------------------------------------------
+
+@tauri-apps/plugin-shell 2.0.0 MIT OR Apache-2.0
+https://github.com/tauri-apps/plugins-workspace
 ---------------------------------------------------------
 
 @tsconfig/svelte 5.0.4 MIT

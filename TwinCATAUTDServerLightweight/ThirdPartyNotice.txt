@@ -430,10 +430,6 @@ memchr 2.7.4 (MIT OR Unlicense)
 https://github.com/BurntSushi/memchr
 ---------------------------------------------------------
 
-memoffset 0.9.1 (MIT)
-https://github.com/Gilnaa/memoffset
----------------------------------------------------------
-
 mime 0.3.17 (Apache-2.0 OR MIT)
 https://github.com/hyperium/mime
 ---------------------------------------------------------
