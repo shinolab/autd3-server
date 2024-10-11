@@ -88,7 +88,7 @@ impl std::default::Default for State {
                 fov: 45.,
                 near_clip: 0.1 * mm,
                 far_clip: 1000. * mm,
-                move_speed: 10. * mm,
+                move_speed: 1. * mm,
             },
             slice: SliceState {
                 pos: Vector3::new(86.6252 * mm, 66.7133 * mm, 150.0 * mm * ZPARITY),

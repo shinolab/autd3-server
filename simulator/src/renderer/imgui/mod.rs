@@ -3,14 +3,14 @@ mod components;
 use std::{collections::HashMap, path::PathBuf, sync::Arc, time::Instant};
 
 use autd3_driver::{
-    defined::{mm, ULTRASOUND_FREQ, ULTRASOUND_PERIOD, ULTRASOUND_PERIOD_COUNT},
+    defined::{mm, METER, ULTRASOUND_FREQ, ULTRASOUND_PERIOD, ULTRASOUND_PERIOD_COUNT},
     derive::Segment,
     ethercat::DcSysTime,
 };
 use autd3_firmware_emulator::CPUEmulator;
 use components::*;
 
-use glam::EulerRot;
+use glam::{EulerRot, Quat};
 use imgui::Context as ImGuiContext;
 use imgui::{
     ColorEditFlags, FontConfig, FontGlyphRanges, FontSource, TextureId, TreeNodeFlags, Ui,
@@ -21,12 +21,8 @@ use wgpu::{Extent3d, RenderPass};
 use winit::{event::Event, window::Window};
 
 use crate::{
-    common::{color_map::ColorMap, transform::quaternion_to},
-    context::Context,
-    imgui_wgpu,
-    state::State,
-    update_flag::UpdateFlag,
-    SimulatorError, Vector3, ZPARITY,
+    common::color_map::ColorMap, context::Context, imgui_wgpu, state::State,
+    update_flag::UpdateFlag, Matrix4, SimulatorError, Vector3, ZPARITY,
 };
 
 pub struct ImGuiRenderer {
@@ -131,23 +127,25 @@ impl ImGuiRenderer {
 
         if !ui.io().want_capture_mouse {
             let mouse_delta = ui.io().mouse_delta;
-            if ui.io().mouse_down[0] {
+            if ui.io().mouse_down[2] {
                 if ui.io().key_shift {
-                    let delta_x = mouse_delta[0] * state.camera.move_speed / 3000.;
-                    let delta_y = mouse_delta[1] * state.camera.move_speed / 3000.;
-                    let to = -r * delta_x + u * delta_y + f;
-                    let (rx, ry, rz) = (quaternion_to(f, to) * rotation).to_euler(EulerRot::XYZ);
-                    state.camera.rot.x = rx.to_degrees();
-                    state.camera.rot.y = ry.to_degrees();
-                    state.camera.rot.z = rz.to_degrees();
-                    update_flag.set(UpdateFlag::UPDATE_CAMERA, true);
-                } else {
-                    let delta_x = mouse_delta[0] * state.camera.move_speed / 10.;
-                    let delta_y = mouse_delta[1] * state.camera.move_speed / 10.;
+                    let delta_x = mouse_delta[0] * state.camera.move_speed;
+                    let delta_y = mouse_delta[1] * state.camera.move_speed;
                     let trans = -r * delta_x + u * delta_y;
                     state.camera.pos.x += trans.x;
                     state.camera.pos.y += trans.y;
                     state.camera.pos.z += trans.z;
+                    update_flag.set(UpdateFlag::UPDATE_CAMERA, true);
+                } else {
+                    let delta_x = -mouse_delta[0] * state.camera.move_speed / METER * ZPARITY;
+                    let delta_y = -mouse_delta[1] * state.camera.move_speed / METER * ZPARITY;
+
+                    let rot = Quat::from_euler(glam::EulerRot::XYZ, delta_y, delta_x, 0.0);
+
+                    let (rx, ry, rz) = (rotation * rot).to_euler(EulerRot::XYZ);
+                    state.camera.rot.x = rx.to_degrees();
+                    state.camera.rot.y = ry.to_degrees();
+                    state.camera.rot.z = rz.to_degrees();
                     update_flag.set(UpdateFlag::UPDATE_CAMERA, true);
                 }
             }
