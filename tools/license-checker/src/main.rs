@@ -45,6 +45,7 @@ Modification of the original version by Shun Suzuki <suzuki@hapis.k.u-tokyo.ac.j
 
     let changed = autd3_license_check::check_npm(
         Path::new(env!("CARGO_MANIFEST_DIR")).join("../../node_modules"),
+        Path::new(env!("CARGO_MANIFEST_DIR")).join("../../package-lock.json"),
         "ThirdPartyNotice",
     )? || changed;
 
