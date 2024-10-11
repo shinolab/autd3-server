@@ -22,7 +22,7 @@ use winit::{event::Event, window::Window};
 
 use crate::{
     common::color_map::ColorMap, context::Context, imgui_wgpu, state::State,
-    update_flag::UpdateFlag, Matrix4, SimulatorError, Vector3, ZPARITY,
+    update_flag::UpdateFlag, SimulatorError, Vector3, ZPARITY,
 };
 
 pub struct ImGuiRenderer {
