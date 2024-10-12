@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "SOEMAUTDServer"
-version = "28.0.0-rc.0"
+version = "28.0.0-rc.1"
 dependencies = [
  "anyhow",
  "autd3-driver",
@@ -22,7 +22,7 @@ dependencies = [
 
 [[package]]
 name = "TwinCATAUTDServerLightweight"
-version = "28.0.0-rc.0"
+version = "28.0.0-rc.1"
 dependencies = [
  "anyhow",
  "autd3-link-twincat",
@@ -473,9 +473,9 @@ checksum = "1505bd5d3d116872e7271a6d4e16d81d0c8570876c8de68093a09ac269d8aac0"
 
 [[package]]
 name = "autd3"
-version = "28.0.0-rc.0"
+version = "28.0.0-rc.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "83a4fe747aea45e10a5f91fdeb30b2582adb95fc1127acf746a1f01852241e37"
+checksum = "90ba3034c73a8332904c83f03847009060e49eabd8522f8a3f3d8afb003ba341"
 dependencies = [
  "autd3-driver",
  "autd3-firmware-emulator",
@@ -493,9 +493,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-derive"
-version = "28.0.0-rc.0"
+version = "28.0.0-rc.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "37b1f58d687a059918799e6430a32b783029ad5c57ba731fd32116e26c8454ee"
+checksum = "0927f6cf277806d7e4002267118c48c11befe46a88d6a67b764d66061d129a31"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -505,9 +505,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-driver"
-version = "28.0.0-rc.0"
+version = "28.0.0-rc.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "756e8a08d677e948c9f139fb4c72c9cc3013625268ebbbc49d89cfef3aa4a148"
+checksum = "89e51565b2a92a7b8e009a9ad9140f930f0cd6deac9a318b37f9d79bc2589566"
 dependencies = [
  "async-trait",
  "autd3-derive",
@@ -530,9 +530,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-firmware-emulator"
-version = "28.0.0-rc.0"
+version = "28.0.0-rc.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0dcb5d52e0d44c2a409b98288a690010abf50d817567ac65e839f74b46489188"
+checksum = "9075be9222367fd6e534dba6ff23aa274b7ad7e1c41c1861f01d39b7b6d252ef"
 dependencies = [
  "autd3-derive",
  "autd3-driver",
@@ -543,9 +543,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-gain-holo"
-version = "28.0.0-rc.0"
+version = "28.0.0-rc.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "976687be1840bbf51e2a0b1ecf4a0953ce3df0143eb5ad10303abfa1eb6626fa"
+checksum = "8672814f78ec1945823f75b80870086cd9f5bc8ebd6e7754934837d696e7012d"
 dependencies = [
  "autd3-driver",
  "bit-vec 0.8.0",
@@ -559,20 +559,21 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-simulator"
-version = "28.0.0-rc.0"
+version = "28.0.0-rc.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e8dcec66990702fbf27bcb275ccf030c1e25e255c365a2aa37a1fa7886b72925"
+checksum = "5232bd52bd352abd973bed7696197b2512dc20f732aa532a0d5ffc5197739128"
 dependencies = [
  "autd3-driver",
  "autd3-protobuf",
  "tonic",
+ "tracing",
 ]
 
 [[package]]
 name = "autd3-link-soem"
-version = "28.0.0-rc.0"
+version = "28.0.0-rc.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "871d8fe98b1c11dd955db79907ea2ca9b1f9e668c9ded6a7888ac34d7d50c3ae"
+checksum = "7769f8e38f232fbfd6f462a9d6d93ff0ada6f2e6566856573fdebc293d3732d6"
 dependencies = [
  "anyhow",
  "async-channel",
@@ -594,9 +595,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-twincat"
-version = "28.0.0-rc.0"
+version = "28.0.0-rc.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "20cd3485c178a8a898f41db58f50578d507b35566dfa138ee5e0b0b30cf58ae0"
+checksum = "81401fc2bffebc4b9f8aaa6e8cce0c3d91b1120da5fd272417d26118e5740146"
 dependencies = [
  "autd3-driver",
  "libloading 0.8.5",
@@ -605,9 +606,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-protobuf"
-version = "28.0.0-rc.0"
+version = "28.0.0-rc.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4f3bfd7fc946a4930e86c68ded20f2ebc4ad0d592873146c1694458fdcf6ab90"
+checksum = "e930e4fd1d57a72af1ed003128a072a39a6abf1f93dad30c309bcfd729f1a55c"
 dependencies = [
  "autd3",
  "autd3-driver",
@@ -621,7 +622,7 @@ dependencies = [
 
 [[package]]
 name = "autd3-server"
-version = "28.0.0-rc.0"
+version = "28.0.0-rc.1"
 dependencies = [
  "autd3-driver",
  "autd3-link-soem",
@@ -5012,7 +5013,7 @@ checksum = "d66dc143e6b11c1eddc06d5c423cfc97062865baf299914ab64caa38182078fe"
 
 [[package]]
 name = "simulator"
-version = "28.0.0-rc.0"
+version = "28.0.0-rc.1"
 dependencies = [
  "anyhow",
  "autd3-derive",
