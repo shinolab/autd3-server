@@ -807,6 +807,15 @@ impl ImGuiRenderer {
                                                 })
                                                 .collect()
                                         }
+                                        autd3_firmware_emulator::fpga::params::DBG_SYS_TIME_EQ => {
+                                            let now = (((cpu.dc_sys_time().sys_time() / 25000)
+                                                << 8)
+                                                & 0x00FF_FFFF_FFFF_FFFF)
+                                                >> 8;
+                                            let value = value >> 8;
+                                            let v = if now == value { 1.0 } else { 0.0 };
+                                            vec![v; ULTRASOUND_PERIOD_COUNT]
+                                        }
                                         autd3_firmware_emulator::fpga::params::DBG_DIRECT => {
                                             vec![value as f32; ULTRASOUND_PERIOD_COUNT]
                                         }
