@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "SOEMAUTDServer"
-version = "28.0.0-rc.1"
+version = "28.0.0"
 dependencies = [
  "anyhow",
  "autd3-driver",
@@ -22,7 +22,7 @@ dependencies = [
 
 [[package]]
 name = "TwinCATAUTDServerLightweight"
-version = "28.0.0-rc.1"
+version = "28.0.0"
 dependencies = [
  "anyhow",
  "autd3-link-twincat",
@@ -249,9 +249,9 @@ dependencies = [
 
 [[package]]
 name = "ashpd"
-version = "0.9.1"
+version = "0.9.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bfe7e0dd0ac5a401dc116ed9f9119cf9decc625600474cb41f0fc0a0050abc9a"
+checksum = "4d43c03d9e36dd40cab48435be0b09646da362c278223ca535493877b2c1dee9"
 dependencies = [
  "enumflags2",
  "futures-channel",
@@ -473,9 +473,9 @@ checksum = "1505bd5d3d116872e7271a6d4e16d81d0c8570876c8de68093a09ac269d8aac0"
 
 [[package]]
 name = "autd3"
-version = "28.0.0-rc.1"
+version = "28.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "90ba3034c73a8332904c83f03847009060e49eabd8522f8a3f3d8afb003ba341"
+checksum = "ebfaa419e13cb0101a69597c5080ec107709e4137d1a1f318410267656ff866f"
 dependencies = [
  "autd3-driver",
  "autd3-firmware-emulator",
@@ -493,9 +493,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-derive"
-version = "28.0.0-rc.1"
+version = "28.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0927f6cf277806d7e4002267118c48c11befe46a88d6a67b764d66061d129a31"
+checksum = "8e448edff2133214d314c1f65d9ae66da5bc0a706ba6ad642c3fee5e181b3fb6"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -505,9 +505,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-driver"
-version = "28.0.0-rc.1"
+version = "28.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "89e51565b2a92a7b8e009a9ad9140f930f0cd6deac9a318b37f9d79bc2589566"
+checksum = "bfd45a8079b4116cc6aa72ad4ff19089c542a1f871616e12130dcd28cafde74d"
 dependencies = [
  "async-trait",
  "autd3-derive",
@@ -530,9 +530,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-firmware-emulator"
-version = "28.0.0-rc.1"
+version = "28.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9075be9222367fd6e534dba6ff23aa274b7ad7e1c41c1861f01d39b7b6d252ef"
+checksum = "3b0824a2900f438bb47977664613ccb602cf9fe71c4b5f1aef89b8317453d4b3"
 dependencies = [
  "autd3-derive",
  "autd3-driver",
@@ -543,9 +543,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-gain-holo"
-version = "28.0.0-rc.1"
+version = "28.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8672814f78ec1945823f75b80870086cd9f5bc8ebd6e7754934837d696e7012d"
+checksum = "b4e25b31c4ff32e5431c759fd5c9955a26aa223d03ba630d598ecfd79f758381"
 dependencies = [
  "autd3-driver",
  "bit-vec 0.8.0",
@@ -559,9 +559,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-simulator"
-version = "28.0.0-rc.1"
+version = "28.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5232bd52bd352abd973bed7696197b2512dc20f732aa532a0d5ffc5197739128"
+checksum = "a6f8ad8905a1d23a4ebc0ad1dd4a6d4c8a3061227f4ab9590b733d4a9e3ccd13"
 dependencies = [
  "autd3-driver",
  "autd3-protobuf",
@@ -571,9 +571,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-soem"
-version = "28.0.0-rc.1"
+version = "28.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7769f8e38f232fbfd6f462a9d6d93ff0ada6f2e6566856573fdebc293d3732d6"
+checksum = "915f363ee10f11bb1d63e8f119c7f221f45e52a9622b27c8db9d681ffd691ab9"
 dependencies = [
  "anyhow",
  "async-channel",
@@ -595,9 +595,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-twincat"
-version = "28.0.0-rc.1"
+version = "28.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "81401fc2bffebc4b9f8aaa6e8cce0c3d91b1120da5fd272417d26118e5740146"
+checksum = "8b50f451f9aab65f5fcc4869ec49a64175dc895c70ffb4f5d9f6b8760232803e"
 dependencies = [
  "autd3-driver",
  "libloading 0.8.5",
@@ -606,9 +606,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-protobuf"
-version = "28.0.0-rc.1"
+version = "28.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e930e4fd1d57a72af1ed003128a072a39a6abf1f93dad30c309bcfd729f1a55c"
+checksum = "df88823548df1887f6a69c5d1b05279b6e2c7bbde829c49e69c950aa1b0ae583"
 dependencies = [
  "autd3",
  "autd3-driver",
@@ -622,7 +622,7 @@ dependencies = [
 
 [[package]]
 name = "autd3-server"
-version = "28.0.0-rc.1"
+version = "28.0.0"
 dependencies = [
  "autd3-driver",
  "autd3-link-soem",
@@ -1011,9 +1011,9 @@ dependencies = [
 
 [[package]]
 name = "cc"
-version = "1.1.28"
+version = "1.1.30"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2e80e3b6a3ab07840e1cae9b0666a63970dc28e8ed5ffbcdacbfc760c281bfc1"
+checksum = "b16803a61b81d9eabb7eae2588776c4c1e584b738ede45fdbb4c972cec1e9945"
 dependencies = [
  "jobserver",
  "libc",
@@ -2937,9 +2937,9 @@ dependencies = [
 
 [[package]]
 name = "js-sys"
-version = "0.3.70"
+version = "0.3.72"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1868808506b929d7b0cfa8f75951347aa71bb21144b7791bae35d9bccfcfe37a"
+checksum = "6a88f1bda2bd75b0452a14784937d796722fdebfe50df998aeb3f0b7603019a9"
 dependencies = [
  "wasm-bindgen",
 ]
@@ -3891,9 +3891,9 @@ checksum = "57c0d7b74b563b49d38dae00a0c37d4d6de9b432382b2892f0574ddcae73fd0a"
 
 [[package]]
 name = "pathdiff"
-version = "0.2.1"
+version = "0.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8835116a5c179084a830efb3adc117ab007512b535bc1a21c991d3b32a6b44dd"
+checksum = "d61c5ce1153ab5b689d0c074c4e7fc613e942dfb7dd9eea5ab202d2ad91fe361"
 
 [[package]]
 name = "percent-encoding"
@@ -5013,7 +5013,7 @@ checksum = "d66dc143e6b11c1eddc06d5c423cfc97062865baf299914ab64caa38182078fe"
 
 [[package]]
 name = "simulator"
-version = "28.0.0-rc.1"
+version = "28.0.0"
 dependencies = [
  "anyhow",
  "autd3-derive",
@@ -6394,9 +6394,9 @@ checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
 
 [[package]]
 name = "wasm-bindgen"
-version = "0.2.93"
+version = "0.2.95"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a82edfc16a6c469f5f44dc7b571814045d60404b55a0ee849f9bcfa2e63dd9b5"
+checksum = "128d1e363af62632b8eb57219c8fd7877144af57558fb2ef0368d0087bddeb2e"
 dependencies = [
  "cfg-if",
  "once_cell",
@@ -6405,9 +6405,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-backend"
-version = "0.2.93"
+version = "0.2.95"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9de396da306523044d3302746f1208fa71d7532227f15e347e2d93e4145dd77b"
+checksum = "cb6dd4d3ca0ddffd1dd1c9c04f94b868c37ff5fac97c30b97cff2d74fce3a358"
 dependencies = [
  "bumpalo",
  "log",
@@ -6420,9 +6420,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-futures"
-version = "0.4.43"
+version = "0.4.45"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "61e9300f63a621e96ed275155c108eb6f843b6a26d053f122ab69724559dc8ed"
+checksum = "cc7ec4f8827a71586374db3e87abdb5a2bb3a15afed140221307c3ec06b1f63b"
 dependencies = [
  "cfg-if",
  "js-sys",
@@ -6432,9 +6432,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-macro"
-version = "0.2.93"
+version = "0.2.95"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "585c4c91a46b072c92e908d99cb1dcdf95c5218eeb6f3bf1efa991ee7a68cccf"
+checksum = "e79384be7f8f5a9dd5d7167216f022090cf1f9ec128e6e6a482a2cb5c5422c56"
 dependencies = [
  "quote",
  "wasm-bindgen-macro-support",
@@ -6442,9 +6442,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-macro-support"
-version = "0.2.93"
+version = "0.2.95"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "afc340c74d9005395cf9dd098506f7f44e38f2b4a21c6aaacf9a105ea5e1e836"
+checksum = "26c6ab57572f7a24a4985830b120de1594465e5d500f24afe89e16b4e833ef68"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -6455,9 +6455,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-bindgen-shared"
-version = "0.2.93"
+version = "0.2.95"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c62a0a307cb4a311d3a07867860911ca130c3494e8c2719593806c08bc5d0484"
+checksum = "65fc09f10666a9f147042251e0dda9c18f166ff7de300607007e96bdebc1068d"
 
 [[package]]
 name = "wasm-streams"
@@ -6595,9 +6595,9 @@ dependencies = [
 
 [[package]]
 name = "web-sys"
-version = "0.3.70"
+version = "0.3.72"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "26fdeaafd9bd129f65e7c031593c24d62186301e0c72c8978fa1678be7d532c0"
+checksum = "f6488b90108c040df0fe62fa815cbdee25124641df01814dd7282749234c6112"
 dependencies = [
  "js-sys",
  "wasm-bindgen",

@@ -114,31 +114,31 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 28.0.0-rc.1 (MIT)
+autd3 28.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 28.0.0-rc.1 (MIT)
+autd3-derive 28.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 28.0.0-rc.1 (MIT)
+autd3-driver 28.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 28.0.0-rc.1 (MIT)
+autd3-firmware-emulator 28.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 28.0.0-rc.1 (MIT)
+autd3-gain-holo 28.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-simulator 28.0.0-rc.1 (MIT)
+autd3-link-simulator 28.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-protobuf 28.0.0-rc.1 (MIT)
+autd3-protobuf 28.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -646,7 +646,7 @@ jni-sys 0.3.0 (Apache-2.0 OR MIT)
 https://github.com/sfackler/rust-jni-sys
 ---------------------------------------------------------
 
-js-sys 0.3.70 (Apache-2.0 OR MIT)
+js-sys 0.3.72 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/js-sys
 ---------------------------------------------------------
 
@@ -1113,7 +1113,7 @@ simd-adler32 0.3.7 (MIT)
 https://github.com/mcountryman/simd-adler32
 ---------------------------------------------------------
 
-simulator 28.0.0-rc.1 (MIT)
+simulator 28.0.0 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -1341,27 +1341,27 @@ wasi 0.11.0+wasi-snapshot-preview1 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception
 https://github.com/bytecodealliance/wasi
 ---------------------------------------------------------
 
-wasm-bindgen 0.2.93 (Apache-2.0 OR MIT)
+wasm-bindgen 0.2.95 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen
 ---------------------------------------------------------
 
-wasm-bindgen-backend 0.2.93 (Apache-2.0 OR MIT)
+wasm-bindgen-backend 0.2.95 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/backend
 ---------------------------------------------------------
 
-wasm-bindgen-futures 0.4.43 (Apache-2.0 OR MIT)
+wasm-bindgen-futures 0.4.45 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/futures
 ---------------------------------------------------------
 
-wasm-bindgen-macro 0.2.93 (Apache-2.0 OR MIT)
+wasm-bindgen-macro 0.2.95 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/macro
 ---------------------------------------------------------
 
-wasm-bindgen-macro-support 0.2.93 (Apache-2.0 OR MIT)
+wasm-bindgen-macro-support 0.2.95 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/macro-support
 ---------------------------------------------------------
 
-wasm-bindgen-shared 0.2.93 (Apache-2.0 OR MIT)
+wasm-bindgen-shared 0.2.95 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/shared
 ---------------------------------------------------------
 
@@ -1401,7 +1401,7 @@ wayland-sys 0.31.5 (MIT)
 https://github.com/smithay/wayland-rs
 ---------------------------------------------------------
 
-web-sys 0.3.70 (Apache-2.0 OR MIT)
+web-sys 0.3.72 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/web-sys
 ---------------------------------------------------------
 
