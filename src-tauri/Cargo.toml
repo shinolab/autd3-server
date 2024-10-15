@@ -1,6 +1,6 @@
 [package]
 name = "autd3-server"
-version = "28.0.0"
+version = "28.1.0"
 description = "AUTD3 Server app"
 authors = ["shun suzuki <suzuki@hapis.k.u-tokyo.ac.jp>"]
 edition = "2021"
@@ -20,8 +20,8 @@ serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 tokio = { version = "1.40.0", features = ["macros", "rt-multi-thread", "time", "process"] }
 tauri = { version = "2", features = [] }
-autd3-driver = { version = "28.0.1", features = ["serde"] }
-autd3-link-soem = { version = "28.0.0", features = ["serde"] }
+autd3-driver = { version = "28.1.0", features = ["serde"] }
+autd3-link-soem = { version = "28.1.0", features = ["serde"] }
 tauri-plugin-dialog = "2"
 tauri-plugin-fs = "2"
 tauri-plugin-notification = "2"
