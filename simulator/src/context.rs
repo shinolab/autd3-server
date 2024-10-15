@@ -3,7 +3,7 @@ use std::sync::Arc;
 use autd3_derive::Builder;
 use winit::window::Window;
 
-use crate::{error::SimulatorError, surface::SurfaceWrapper};
+use crate::{error::SimulatorError, surface::SurfaceWrapper, State};
 
 #[derive(Builder)]
 pub struct Context {
@@ -17,6 +17,7 @@ pub struct Context {
 
 impl Context {
     pub async fn init(
+        state: &State,
         surface: &mut SurfaceWrapper,
         window: Arc<Window>,
     ) -> Result<Self, SimulatorError> {
@@ -51,7 +52,7 @@ impl Context {
             )
             .await?;
 
-        surface.configure(window);
+        surface.configure(state, window);
 
         Ok(Self {
             _instance: instance,
