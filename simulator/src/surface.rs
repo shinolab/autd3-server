@@ -3,7 +3,7 @@ use std::sync::Arc;
 use autd3_derive::Builder;
 use winit::{dpi::PhysicalSize, window::Window};
 
-use crate::{context::Context, error::SimulatorError};
+use crate::{context::Context, error::SimulatorError, State};
 
 #[derive(Builder)]
 pub struct SurfaceWrapper {
@@ -36,9 +36,9 @@ impl SurfaceWrapper {
         Ok(())
     }
 
-    pub fn configure(&mut self, window: Arc<Window>) {
+    pub fn configure(&mut self, state: &State, window: Arc<Window>) {
         let size = window.inner_size();
-        self.config = Some(Self::surface_configuration(&size, true));
+        self.config = Some(Self::surface_configuration(&size, state.vsync));
     }
 
     pub fn resize(&mut self, context: &Context, size: &PhysicalSize<u32>) {

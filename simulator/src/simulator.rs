@@ -36,7 +36,7 @@ impl Simulator {
                 .build(&event_loop)?,
         );
         let mut surface = SurfaceWrapper::new();
-        let context = Context::init(&mut surface, window.clone()).await?;
+        let context = Context::init(&state, &mut surface, window.clone()).await?;
         let renderer = Renderer::new(&state, &context, &surface, window.clone())?;
         let server = ServerWrapper::new(state.port, state.lightweight, state.lightweight_port);
         Ok(Self {
