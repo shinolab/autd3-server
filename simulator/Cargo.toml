@@ -10,7 +10,7 @@ repository = "https://github.com/shinolab/autd3-server"
 keywords = ["autd"]
 
 [dependencies]
-anyhow = "1.0.89"
+anyhow = "1.0.90"
 autd3-derive = "28.0.1"
 autd3-driver = { version = "28.1.0", features = ["async-trait"] }
 autd3-firmware-emulator = { version = "28.1.0", features = ["async-trait"] }
