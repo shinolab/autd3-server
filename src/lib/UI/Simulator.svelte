@@ -11,12 +11,16 @@
   import CheckBox from "./utils/CheckBox.svelte";
   import NumberInput from "./utils/NumberInput.svelte";
 
-  export let simulatorOptions: SimulatorOptions;
+  interface Props {
+    simulatorOptions: SimulatorOptions;
+  }
+
+  let { simulatorOptions = $bindable() }: Props = $props();
 
   let appConfigDirPath: string;
 
   let command;
-  let child: null | Child = null;
+  let child: null | Child = $state(null);
 
   let handleRunClick = async () => {
     const args: string[] = [

@@ -27,6 +27,7 @@ tauri-plugin-fs = "2"
 tauri-plugin-notification = "2"
 tauri-plugin-shell = "2"
 tauri-plugin-os = "2"
+showfile = "0.1.1"
 
 [target.'cfg(windows)'.dependencies]
 libloading = "0.8.5"

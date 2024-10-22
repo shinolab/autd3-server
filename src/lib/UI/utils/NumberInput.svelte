@@ -1,9 +1,19 @@
 <script lang="ts">
-  export let id = "";
-  export let value = 0;
-  export let min: string | undefined = undefined;
-  export let max: string | undefined = undefined;
-  export let step = "1";
+  interface Props {
+    id?: string;
+    value?: number;
+    min?: string | undefined;
+    max?: string | undefined;
+    step?: string;
+  }
+
+  let {
+    id = "",
+    value = $bindable(0),
+    min = undefined,
+    max = undefined,
+    step = "1"
+  }: Props = $props();
 
   let count_up = () => {
     value = value + 1;
@@ -23,19 +33,19 @@
     class="spinner-up-wrap"
     role="button"
     tabindex={-1}
-    on:click={count_up}
-    on:keyup={count_up}
+    onclick={count_up}
+    onkeyup={count_up}
   >
-    <span class="spinner-up" />
+    <span class="spinner-up"></span>
   </span>
   <span
     class="spinner-down-wrap"
     role="button"
     tabindex={-1}
-    on:click={count_down}
-    on:keydown={count_down}
+    onclick={count_down}
+    onkeydown={count_down}
   >
-    <span class="spinner-down" />
+    <span class="spinner-down"></span>
   </span>
 </label>
 

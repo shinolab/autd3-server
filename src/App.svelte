@@ -2,24 +2,25 @@
   import type { Options } from "./lib/UI/options";
 
   import { onMount } from "svelte";
-  import { writable } from "svelte/store";
 
   import { invoke } from "@tauri-apps/api/core";
   import { getCurrentWebviewWindow } from "@tauri-apps/api/webviewWindow";
   import { TauriEvent } from "@tauri-apps/api/event";
+  import { resolveResource } from "@tauri-apps/api/path";
 
   import LeftPanel from "./lib/LeftPanel.svelte";
   import RightPanel from "./lib/RightPanel.svelte";
 
-  import License from "./lib/License.svelte";
-  // @ts-ignore
-  import Modal, { bind } from "svelte-simple-modal";
   const appWindow = getCurrentWebviewWindow();
 
-  const licenseModal = writable<any>(null);
-  const showLicenseModal = () => licenseModal.set(bind(License, {}));
+  const showLicense = async () => {
+    const resourcePath = await resolveResource("LICENSE");
+    await invoke("showfile", {
+      path: resourcePath,
+    });
+  };
 
-  let options: null | Options = null;
+  let options: null | Options = $state(null);
 
   onMount(async () => {
     options = await invoke("load_settings", {});
@@ -51,13 +52,7 @@
   </div>
 
   <footer class="right-align">
-    <Modal
-      show={$licenseModal}
-      closeButton={false}
-      styleWindow={{ backgroundColor: "#101923" }}
-    >
-      <button on:click={showLicenseModal}>License</button>
-    </Modal>
+    <button onclick={showLicense}>License</button>
   </footer>
 </main>
 

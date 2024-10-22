@@ -11,11 +11,15 @@
   import NumberInput from "./utils/NumberInput.svelte";
   import IpInput from "./utils/IpInput.svelte";
 
-  export let twincatOptions: TwinCATOptions;
+  interface Props {
+    twincatOptions: TwinCATOptions;
+  }
+
+  let { twincatOptions = $bindable() }: Props = $props();
 
   let command;
   let child: null | Child = null;
-  let running = false;
+  let running = $state(false);
 
   let handleRunClick = async () => {
     await handleCloseClick();

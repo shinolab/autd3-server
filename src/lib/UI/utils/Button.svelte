@@ -1,13 +1,17 @@
 <script lang="ts">
-  export let disabled = false;
-  export let label = "";
-  export let click = () => {};
+  interface Props {
+    disabled?: boolean;
+    label?: string;
+    click?: any;
+  }
+
+  let { disabled = false, label = "", click = () => {} }: Props = $props();
 </script>
 
 {#if disabled}
   <button disabled>{label}</button>
 {:else}
-  <button on:click={click}>{label}</button>
+  <button onclick={click}>{label}</button>
 {/if}
 
 <style>
