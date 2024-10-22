@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import type { SOEMOptions, SyncMode, TimerStrategy } from "./options.ts";
   import { SyncModeValues, TimerStrategyValues } from "./options.ts";
 
@@ -20,11 +22,15 @@
     sFromDuration,
   } from "./utils/duration.ts";
 
-  export let soemOptions: SOEMOptions;
-  export let adapters: string[] = [];
+  interface Props {
+    soemOptions: SOEMOptions;
+    adapters?: string[];
+  }
+
+  let { soemOptions = $bindable(), adapters = [] }: Props = $props();
 
   let command;
-  let child: null | Child = null;
+  let child: null | Child = $state(null);
 
   let parseStrategy = (strategy: TimerStrategy) => {
     switch (strategy) {
@@ -37,26 +43,26 @@
     }
   };
 
-  let stateCheckIntervalMs = msFromDuration(soemOptions.state_check_interval);
-  $: {
+  let stateCheckIntervalMs = $state(msFromDuration(soemOptions.state_check_interval));
+  run(() => {
     soemOptions.state_check_interval = msToDuration(stateCheckIntervalMs);
-  }
-  let timeoutMs = msFromDuration(soemOptions.timeout);
-  $: {
+  });
+  let timeoutMs = $state(msFromDuration(soemOptions.timeout));
+  run(() => {
     soemOptions.timeout = msToDuration(timeoutMs);
-  }
-  let syncToleranceUs = usFromDuration(soemOptions.sync_tolerance);
-  $: {
+  });
+  let syncToleranceUs = $state(usFromDuration(soemOptions.sync_tolerance));
+  run(() => {
     soemOptions.sync_tolerance = usToDuration(syncToleranceUs);
-  }
-  let syncTimeoutS = sFromDuration(soemOptions.sync_timeout);
-  $: {
+  });
+  let syncTimeoutS = $state(sFromDuration(soemOptions.sync_timeout));
+  run(() => {
     soemOptions.sync_timeout = sToDuration(syncTimeoutS);
-  }
+  });
 
-  let adapterNames: string[] = [];
-  let adapterName: string = "Auto";
-  $: {
+  let adapterNames: string[] = $state([]);
+  let adapterName: string = $state("Auto");
+  run(() => {
     if (adapterName == "Auto") {
       soemOptions.ifname = "Auto";
     } else {
@@ -65,7 +71,7 @@
       );
       soemOptions.ifname = adapters[idx].split(",")[0].trim();
     }
-  }
+  });
 
   let handleRunClick = async () => {
     const args: string[] = [

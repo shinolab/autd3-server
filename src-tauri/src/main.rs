@@ -50,6 +50,11 @@ fn set_libpath(_: tauri::AppHandle) {
 }
 
 #[tauri::command]
+fn showfile(_: tauri::AppHandle, path: &str) {
+    showfile::show_path_in_file_manager(path);
+}
+
+#[tauri::command]
 async fn load_settings(handle: tauri::AppHandle) -> Result<Options, String> {
     let options: Options = if let Ok(mut file) =
         File::open(get_settings_file_path(&handle).map_err(|e| e.to_string())?).await
@@ -261,6 +266,7 @@ async fn main() {
         })
         .invoke_handler(tauri::generate_handler![
             set_libpath,
+            showfile,
             load_settings,
             save_settings,
             copy_autd_xml,

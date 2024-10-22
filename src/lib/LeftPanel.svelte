@@ -12,11 +12,15 @@
   import SOEM from "./UI/SOEM.svelte";
   import Simulator from "./UI/Simulator.svelte";
 
-  export let options: Options;
+  interface Props {
+    options: Options;
+  }
+
+  let { options }: Props = $props();
 
   const platformName = platform();
 
-  let adapters: string[] = [];
+  let adapters: string[] = $state([]);
 
   async function checkAvailableTabs() {
     let twincatAvailable =

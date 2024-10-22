@@ -1,7 +1,11 @@
 <script lang="ts">
-  export let id = "";
-  export let value = "";
-  export let values: readonly string[] = [];
+  interface Props {
+    id?: string;
+    value?: string;
+    values?: readonly string[];
+  }
+
+  let { id = "", value = $bindable(""), values = [] }: Props = $props();
 </script>
 
 <div class="container">

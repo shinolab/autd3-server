@@ -1,10 +1,14 @@
 <script lang="ts">
-  export let id = "";
-  export let checked = false;
+  interface Props {
+    id?: string;
+    checked?: boolean;
+  }
+
+  let { id = "", checked = $bindable(false) }: Props = $props();
 </script>
 
 <input {id} type="checkbox" bind:checked />
-<label for={id} />
+<label for={id}></label>
 
 <style>
   input[type="checkbox"] {
