@@ -724,7 +724,6 @@ impl ImGuiRenderer {
                                                 match cpu.fpga().current_mod_segment() {
                                                     Segment::S0 => 0.0,
                                                     Segment::S1 => 1.0,
-                                                    _ => unimplemented!(),
                                                 };
                                                 ULTRASOUND_PERIOD_COUNT
                                             ]
@@ -744,7 +743,6 @@ impl ImGuiRenderer {
                                                 match cpu.fpga().current_stm_segment() {
                                                     Segment::S0 => 0.0,
                                                     Segment::S1 => 1.0,
-                                                    _ => unimplemented!(),
                                                 };
                                                 ULTRASOUND_PERIOD_COUNT
                                             ]

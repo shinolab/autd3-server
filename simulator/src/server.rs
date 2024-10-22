@@ -4,7 +4,7 @@ use std::{
     sync::{Arc, RwLock},
 };
 
-use autd3_driver::firmware::cpu::TxDatagram;
+use autd3_driver::firmware::cpu::TxMessage;
 use crossbeam_channel::{bounded, Receiver, Sender, TryRecvError};
 use futures_util::future::FutureExt;
 use tokio::{runtime::Builder, sync::oneshot};
@@ -220,7 +220,7 @@ impl ServerWrapper {
                 update_flag.set(UpdateFlag::UPDATE_TRANS_POS, true);
             }
             Ok(Signal::Send(raw)) => {
-                let tx = TxDatagram::from_msg(&raw)?;
+                let tx = Vec::<TxMessage>::from_msg(&raw)?;
                 state.cpus.iter_mut().for_each(|cpu| {
                     cpu.send(&tx);
                 });

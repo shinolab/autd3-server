@@ -7,7 +7,7 @@ use std::num::{NonZeroU64, NonZeroUsize};
 use log_formatter::LogFormatter;
 
 use autd3_driver::{
-    firmware::cpu::TxDatagram,
+    firmware::cpu::TxMessage,
     link::{Link, LinkBuilder},
 };
 use autd3_link_soem::{TimerStrategy, SOEM};
@@ -23,10 +23,12 @@ use tonic::{transport::Server, Request, Response, Status};
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
 enum TimerStrategyArg {
-    /// use sleep
-    Sleep,
-    /// use busy wait
-    BusyWait,
+    /// use std::time::sleep
+    StdSleep,
+    /// use spin_sleep wait
+    SpinSleep,
+    /// use spin loop
+    SpinWait,
 }
 
 #[derive(Parser)]
@@ -62,9 +64,6 @@ struct Arg {
     /// State check interval in ms
     #[clap(short = 'e', long = "state_check_interval", default_value = "500")]
     state_check_interval: u64,
-    /// Timeout in ms
-    #[clap(short = 't', long = "timeout", default_value = "20")]
-    timeout: u64,
     /// Sync tolerance in us
     #[clap(long = "sync_tolerance", default_value = "1")]
     sync_tolerance: u64,
@@ -93,7 +92,7 @@ impl ecat_server::Ecat for SOEMServer {
         &self,
         request: Request<TxRawData>,
     ) -> Result<Response<SendResponse>, Status> {
-        let tx = TxDatagram::from_msg(&request.into_inner())?;
+        let tx = Vec::<TxMessage>::from_msg(&request.into_inner())?;
         Ok(Response::new(SendResponse {
             success: Link::send(&mut *self.soem.write().await, &tx)
                 .await
@@ -145,11 +144,11 @@ async fn main_() -> anyhow::Result<()> {
             let sync_tolerance = std::time::Duration::from_micros(args.sync_tolerance);
             let sync_timeout = std::time::Duration::from_secs(args.sync_timeout);
             let timer_strategy = match args.timer_strategy {
-                TimerStrategyArg::Sleep => TimerStrategy::Sleep,
-                TimerStrategyArg::BusyWait => TimerStrategy::BusyWait,
+                TimerStrategyArg::StdSleep => TimerStrategy::StdSleep,
+                TimerStrategyArg::SpinSleep => TimerStrategy::SpinSleep,
+                TimerStrategyArg::SpinWait => TimerStrategy::SpinWait,
             };
             let buf_size = args.buf_size;
-            let timeout = args.timeout;
             let f = move || -> autd3_link_soem::local::link_soem::SOEMBuilder {
                 autd3_link_soem::SOEM::builder()
                     .with_buf_size(buf_size)
@@ -162,7 +161,6 @@ async fn main_() -> anyhow::Result<()> {
                     .with_timer_strategy(timer_strategy)
                     .with_sync_tolerance(sync_tolerance)
                     .with_sync_timeout(sync_timeout)
-                    .with_timeout(std::time::Duration::from_millis(timeout))
                     .with_err_handler(|slave, status| match status {
                         autd3_link_soem::Status::Error => {
                             tracing::error!("Error [{}]: {}", slave, status)
