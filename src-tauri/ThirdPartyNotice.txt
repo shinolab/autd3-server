@@ -34,7 +34,7 @@ android_system_properties 0.1.5 (Apache-2.0 OR MIT)
 https://github.com/nical/android_system_properties
 ---------------------------------------------------------
 
-anyhow 1.0.90 (Apache-2.0 OR MIT)
+anyhow 1.0.91 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/anyhow
 ---------------------------------------------------------
 
@@ -110,27 +110,27 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 29.0.0-alpha.0 (MIT)
+autd3 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 29.0.0-alpha.0 (MIT)
+autd3-derive 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 29.0.0-alpha.0 (MIT)
+autd3-driver 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 29.0.0-alpha.0 (MIT)
+autd3-firmware-emulator 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 29.0.0-alpha.0 (MIT)
+autd3-gain-holo 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 29.0.0-alpha.0
+autd3-link-soem 29.0.0-rc.0
 https://github.com/shinolab/autd3-rs
 
 ---
@@ -196,11 +196,11 @@ SOEM write to Beckhoff Automation GmbH, Eiserstrasse 5, D-33415 Verl, Germany
 
 ---------------------------------------------------------
 
-autd3-protobuf 29.0.0-alpha.0 (MIT)
+autd3-protobuf 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-server 29.0.0-alpha.0 (MIT)
+autd3-server 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -503,7 +503,7 @@ embed_plist 1.2.2 (Apache-2.0 OR MIT)
 https://github.com/nvzqz/embed-plist-rs
 ---------------------------------------------------------
 
-encoding_rs 0.8.34 ((Apache-2.0 OR MIT) AND BSD-3-Clause)
+encoding_rs 0.8.35 ((Apache-2.0 OR MIT) AND BSD-3-Clause)
 https://github.com/hsivonen/encoding_rs
 ---------------------------------------------------------
 
@@ -1245,15 +1245,15 @@ phf_shared 0.11.2 (MIT)
 https://github.com/rust-phf/rust-phf
 ---------------------------------------------------------
 
-pin-project 1.1.6 (Apache-2.0 OR MIT)
+pin-project 1.1.7 (Apache-2.0 OR MIT)
 https://github.com/taiki-e/pin-project
 ---------------------------------------------------------
 
-pin-project-internal 1.1.6 (Apache-2.0 OR MIT)
+pin-project-internal 1.1.7 (Apache-2.0 OR MIT)
 https://github.com/taiki-e/pin-project
 ---------------------------------------------------------
 
-pin-project-lite 0.2.14 (Apache-2.0 OR MIT)
+pin-project-lite 0.2.15 (Apache-2.0 OR MIT)
 https://github.com/taiki-e/pin-project-lite
 ---------------------------------------------------------
 
@@ -1309,7 +1309,7 @@ proc-macro-hack 0.5.20+deprecated (Apache-2.0 OR MIT)
 https://github.com/dtolnay/proc-macro-hack
 ---------------------------------------------------------
 
-proc-macro2 1.0.88 (Apache-2.0 OR MIT)
+proc-macro2 1.0.89 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/proc-macro2
 ---------------------------------------------------------
 
@@ -1393,7 +1393,7 @@ redox_users 0.4.6 (MIT)
 https://gitlab.redox-os.org/redox-os/users
 ---------------------------------------------------------
 
-regex 1.11.0 (Apache-2.0 OR MIT)
+regex 1.11.1 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/regex
 ---------------------------------------------------------
 
@@ -1471,7 +1471,7 @@ seq-macro 0.3.5 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/seq-macro
 ---------------------------------------------------------
 
-serde 1.0.210 (Apache-2.0 OR MIT)
+serde 1.0.213 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
@@ -1479,7 +1479,7 @@ serde-untagged 0.1.6 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/serde-untagged
 ---------------------------------------------------------
 
-serde_derive 1.0.210 (Apache-2.0 OR MIT)
+serde_derive 1.0.213 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
@@ -1607,7 +1607,7 @@ syn 1.0.109 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
-syn 2.0.82 (Apache-2.0 OR MIT)
+syn 2.0.85 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
@@ -1695,11 +1695,11 @@ thin-slice 0.1.1 (MPL-2.0)
 https://github.com/heycam/thin-slice
 ---------------------------------------------------------
 
-thiserror 1.0.64 (Apache-2.0 OR MIT)
+thiserror 1.0.65 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
-thiserror-impl 1.0.64 (Apache-2.0 OR MIT)
+thiserror-impl 1.0.65 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
@@ -1727,7 +1727,7 @@ tinyvec_macros 0.1.1 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Soveu/tinyvec_macros
 ---------------------------------------------------------
 
-tokio 1.40.0 (MIT)
+tokio 1.41.0 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
@@ -1919,7 +1919,7 @@ wasm-bindgen-shared 0.2.95 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/shared
 ---------------------------------------------------------
 
-wasm-streams 0.4.1 (Apache-2.0 OR MIT)
+wasm-streams 0.4.2 (Apache-2.0 OR MIT)
 https://github.com/MattiasBuelens/wasm-streams/
 ---------------------------------------------------------
 
@@ -1927,11 +1927,11 @@ wayland-backend 0.3.7 (MIT)
 https://github.com/smithay/wayland-rs
 ---------------------------------------------------------
 
-wayland-client 0.31.6 (MIT)
+wayland-client 0.31.7 (MIT)
 https://github.com/smithay/wayland-rs
 ---------------------------------------------------------
 
-wayland-protocols 0.32.4 (MIT)
+wayland-protocols 0.32.5 (MIT)
 https://github.com/smithay/wayland-rs
 ---------------------------------------------------------
 

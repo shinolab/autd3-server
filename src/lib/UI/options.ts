@@ -3,7 +3,7 @@ import type { Duration } from "./utils/duration.js";
 export const SyncModeValues = ["DC", "FreeRun"] as const
 export type SyncMode = typeof SyncModeValues[number]
 
-export const TimerStrategyValues = ["Sleep", "BusyWait"] as const
+export const TimerStrategyValues = ["SpinSleep", "StdSleep", "SpinWait"] as const
 export type TimerStrategy = typeof TimerStrategyValues[number]
 
 export interface TwinCATOptions {
@@ -19,14 +19,13 @@ export interface TwinCATOptions {
 export interface SOEMOptions {
     ifname: string;
     port: number;
-    sync0: number;
-    send: number;
+    sync0: Duration;
+    send: Duration;
     buf_size: number;
     timer_strategy: TimerStrategy;
     state_check_interval: Duration;
     sync_tolerance: Duration;
     sync_timeout: Duration;
-    timeout: Duration;
     lightweight: boolean;
 }
 

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
+  import { run } from "svelte/legacy";
 
-  import type { SOEMOptions, SyncMode, TimerStrategy } from "./options.ts";
-  import { SyncModeValues, TimerStrategyValues } from "./options.ts";
+  import type { SOEMOptions, TimerStrategy } from "./options.ts";
+  import { TimerStrategyValues } from "./options.ts";
 
   import { onMount } from "svelte";
   import { Command, Child } from "@tauri-apps/plugin-shell";
@@ -34,23 +34,33 @@
 
   let parseStrategy = (strategy: TimerStrategy) => {
     switch (strategy) {
-      case "Sleep":
-        return "sleep";
-      case "BusyWait":
-        return "busy-wait";
+      case "SpinSleep":
+        return "spin-sleep";
+      case "StdSleep":
+        return "std-sleep";
+      case "SpinWait":
+        return "spin-wait";
       default:
-        return "sleep";
+        return "spin-sleep";
     }
   };
 
-  let stateCheckIntervalMs = $state(msFromDuration(soemOptions.state_check_interval));
+  let stateCheckIntervalMs = $state(
+    msFromDuration(soemOptions.state_check_interval),
+  );
   run(() => {
     soemOptions.state_check_interval = msToDuration(stateCheckIntervalMs);
   });
-  let timeoutMs = $state(msFromDuration(soemOptions.timeout));
+
+  let sendUs = $state(usFromDuration(soemOptions.send));
   run(() => {
-    soemOptions.timeout = msToDuration(timeoutMs);
+    soemOptions.send = usToDuration(sendUs);
   });
+  let sync0Us = $state(usFromDuration(soemOptions.sync0));
+  run(() => {
+    soemOptions.sync0 = usToDuration(sync0Us);
+  });
+
   let syncToleranceUs = $state(usFromDuration(soemOptions.sync_tolerance));
   run(() => {
     soemOptions.sync_tolerance = usToDuration(syncToleranceUs);
@@ -81,17 +91,15 @@
       "-p",
       soemOptions.port.toString(),
       "-s",
-      soemOptions.sync0.toString(),
+      sync0Us.toString(),
       "-c",
-      soemOptions.send.toString(),
+      sendUs.toString(),
       "-b",
       soemOptions.buf_size.toString(),
       "-w",
       parseStrategy(soemOptions.timer_strategy),
       "-e",
       stateCheckIntervalMs.toString(),
-      "-t",
-      timeoutMs.toString(),
       "--sync_tolerance",
       syncToleranceUs.toString(),
       "--sync_timeout",
@@ -160,11 +168,11 @@
     step="1"
   />
 
-  <label for="sync0">Sync0 cycle:</label>
-  <NumberInput id="sync0" bind:value={soemOptions.sync0} min="1" step="1" />
+  <label for="sync0Us">Sync0 cycle [us]:</label>
+  <NumberInput id="sync0Us" bind:value={sync0Us} min="500" step="500" />
 
-  <label for="send">Send cycle:</label>
-  <NumberInput id="send" bind:value={soemOptions.send} min="1" step="1" />
+  <label for="sendUs">Send cycle [us]:</label>
+  <NumberInput id="sendUs" bind:value={sendUs} min="500" step="500" />
 
   <label for="timer_strategy">Timer strategy:</label>
   <Select
@@ -191,9 +199,6 @@
 
   <label for="syncTimeoutS">Sync timeout [s]:</label>
   <NumberInput id="syncTimeoutS" bind:value={syncTimeoutS} min="1" step="1" />
-
-  <label for="timeoutMs">Timeout [ms]:</label>
-  <NumberInput id="timeoutMs" bind:value={timeoutMs} min="1" step="1" />
 
   <label for="lightweight">Lightweight mode:</label>
   <CheckBox id="lightweight" bind:checked={soemOptions.lightweight} />

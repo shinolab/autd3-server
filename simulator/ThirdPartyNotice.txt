@@ -50,27 +50,27 @@ android_system_properties 0.1.5 (Apache-2.0 OR MIT)
 https://github.com/nical/android_system_properties
 ---------------------------------------------------------
 
-anstream 0.6.15 (Apache-2.0 OR MIT)
+anstream 0.6.17 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
-anstyle 1.0.8 (Apache-2.0 OR MIT)
+anstyle 1.0.9 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
-anstyle-parse 0.2.5 (Apache-2.0 OR MIT)
+anstyle-parse 0.2.6 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
-anstyle-query 1.1.1 (Apache-2.0 OR MIT)
-https://github.com/rust-cli/anstyle
----------------------------------------------------------
-
-anstyle-wincon 3.0.4 (Apache-2.0 OR MIT)
+anstyle-query 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
-anyhow 1.0.90 (Apache-2.0 OR MIT)
+anstyle-wincon 3.0.6 (Apache-2.0 OR MIT)
+https://github.com/rust-cli/anstyle.git
+---------------------------------------------------------
+
+anyhow 1.0.91 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/anyhow
 ---------------------------------------------------------
 
@@ -114,7 +114,7 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 29.0.0-alpha.0 (MIT)
+autd3 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -122,27 +122,27 @@ autd3-derive 28.1.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 29.0.0-alpha.0 (MIT)
+autd3-derive 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 29.0.0-alpha.0 (MIT)
+autd3-driver 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 29.0.0-alpha.0 (MIT)
+autd3-firmware-emulator 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 29.0.0-alpha.0 (MIT)
+autd3-gain-holo 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-simulator 29.0.0-alpha.0 (MIT)
+autd3-link-simulator 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-protobuf 29.0.0-alpha.0 (MIT)
+autd3-protobuf 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -274,8 +274,8 @@ codespan-reporting 0.11.1 (Apache-2.0)
 https://github.com/brendanzab/codespan
 ---------------------------------------------------------
 
-colorchoice 1.0.2 (Apache-2.0 OR MIT)
-https://github.com/rust-cli/anstyle
+colorchoice 1.0.3 (Apache-2.0 OR MIT)
+https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
 com 0.6.0 (MIT)
@@ -356,6 +356,10 @@ https://github.com/gfx-rs/wgpu/tree/trunk/d3d12
 
 deranged 0.3.11 (Apache-2.0 OR MIT)
 https://github.com/jhpratt/deranged
+---------------------------------------------------------
+
+derivative 2.2.0 (Apache-2.0 OR MIT)
+https://github.com/mcarton/rust-derivative
 ---------------------------------------------------------
 
 derive-new 0.7.0 (MIT)
@@ -878,15 +882,15 @@ percent-encoding 2.3.1 (Apache-2.0 OR MIT)
 https://github.com/servo/rust-url/
 ---------------------------------------------------------
 
-pin-project 1.1.6 (Apache-2.0 OR MIT)
+pin-project 1.1.7 (Apache-2.0 OR MIT)
 https://github.com/taiki-e/pin-project
 ---------------------------------------------------------
 
-pin-project-internal 1.1.6 (Apache-2.0 OR MIT)
+pin-project-internal 1.1.7 (Apache-2.0 OR MIT)
 https://github.com/taiki-e/pin-project
 ---------------------------------------------------------
 
-pin-project-lite 0.2.14 (Apache-2.0 OR MIT)
+pin-project-lite 0.2.15 (Apache-2.0 OR MIT)
 https://github.com/taiki-e/pin-project-lite
 ---------------------------------------------------------
 
@@ -934,7 +938,7 @@ proc-macro-crate 2.0.2 (Apache-2.0 OR MIT)
 https://github.com/bkchr/proc-macro-crate
 ---------------------------------------------------------
 
-proc-macro2 1.0.88 (Apache-2.0 OR MIT)
+proc-macro2 1.0.89 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/proc-macro2
 ---------------------------------------------------------
 
@@ -1002,7 +1006,7 @@ redox_syscall 0.5.7 (MIT)
 https://gitlab.redox-os.org/redox-os/syscall
 ---------------------------------------------------------
 
-regex 1.11.0 (Apache-2.0 OR MIT)
+regex 1.11.1 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/regex
 ---------------------------------------------------------
 
@@ -1077,11 +1081,11 @@ seq-macro 0.3.5 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/seq-macro
 ---------------------------------------------------------
 
-serde 1.0.210 (Apache-2.0 OR MIT)
+serde 1.0.213 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
-serde_derive 1.0.210 (Apache-2.0 OR MIT)
+serde_derive 1.0.213 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
@@ -1113,7 +1117,7 @@ simd-adler32 0.3.7 (MIT)
 https://github.com/mcountryman/simd-adler32
 ---------------------------------------------------------
 
-simulator 29.0.0-alpha.0 (MIT)
+simulator 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -1181,7 +1185,7 @@ syn 1.0.109 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
-syn 2.0.82 (Apache-2.0 OR MIT)
+syn 2.0.85 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
@@ -1197,11 +1201,11 @@ termcolor 1.4.1 (MIT OR Unlicense)
 https://github.com/BurntSushi/termcolor
 ---------------------------------------------------------
 
-thiserror 1.0.64 (Apache-2.0 OR MIT)
+thiserror 1.0.65 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
-thiserror-impl 1.0.64 (Apache-2.0 OR MIT)
+thiserror-impl 1.0.65 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
@@ -1229,7 +1233,7 @@ tiny-skia-path 0.11.4 (BSD-3-Clause)
 https://github.com/RazrFalcon/tiny-skia/tree/master/path
 ---------------------------------------------------------
 
-tokio 1.40.0 (MIT)
+tokio 1.41.0 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
@@ -1373,7 +1377,7 @@ wayland-backend 0.3.7 (MIT)
 https://github.com/smithay/wayland-rs
 ---------------------------------------------------------
 
-wayland-client 0.31.6 (MIT)
+wayland-client 0.31.7 (MIT)
 https://github.com/smithay/wayland-rs
 ---------------------------------------------------------
 
@@ -1381,7 +1385,7 @@ wayland-csd-frame 0.3.0 (MIT)
 https://github.com/rust-windowing/wayland-csd-frame
 ---------------------------------------------------------
 
-wayland-cursor 0.31.6 (MIT)
+wayland-cursor 0.31.7 (MIT)
 https://github.com/smithay/wayland-rs
 ---------------------------------------------------------
 

@@ -12,16 +12,16 @@
     value = $bindable(0),
     min = undefined,
     max = undefined,
-    step = "1"
+    step = "1",
   }: Props = $props();
 
   let count_up = () => {
-    value = value + 1;
+    value = value + Number(step);
     if (max === undefined) return;
     if (value > Number(max)) value = Number(max);
   };
   let count_down = () => {
-    value = value - 1;
+    value = value - Number(step);
     if (min === undefined) return;
     if (value < Number(min)) value = Number(min);
   };

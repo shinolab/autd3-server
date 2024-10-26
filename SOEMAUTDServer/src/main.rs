@@ -49,11 +49,11 @@ struct Arg {
     /// Client port
     #[clap(short = 'p', long = "port")]
     port: u16,
-    /// Sync0 cycle time in units of 500us
-    #[clap(short = 's', long = "sync0", default_value = "2")]
+    /// Sync0 cycle time in us
+    #[clap(short = 's', long = "sync0", default_value = "1000")]
     sync0: NonZeroU64,
-    /// Send cycle time in units of 500us
-    #[clap(short = 'c', long = "send", default_value = "2")]
+    /// Send cycle time in us
+    #[clap(short = 'c', long = "send", default_value = "1000")]
     send: NonZeroU64,
     /// Buffer size
     #[clap(short = 'b', long = "buffer_size", default_value = "32")]
@@ -62,8 +62,8 @@ struct Arg {
     #[clap(short = 'w', long = "timer", default_value = "sleep")]
     timer_strategy: TimerStrategyArg,
     /// State check interval in ms
-    #[clap(short = 'e', long = "state_check_interval", default_value = "500")]
-    state_check_interval: u64,
+    #[clap(short = 'e', long = "state_check_interval", default_value = "100")]
+    state_check_interval: NonZeroU64,
     /// Sync tolerance in us
     #[clap(long = "sync_tolerance", default_value = "1")]
     sync_tolerance: u64,
@@ -153,24 +153,18 @@ async fn main_() -> anyhow::Result<()> {
                 autd3_link_soem::SOEM::builder()
                     .with_buf_size(buf_size)
                     .with_ifname(ifname.clone())
-                    .with_send_cycle(send_cycle)
+                    .with_send_cycle(std::time::Duration::from_micros(send_cycle.get()))
                     .with_state_check_interval(std::time::Duration::from_millis(
-                        state_check_interval,
+                        state_check_interval.get(),
                     ))
-                    .with_sync0_cycle(sync0_cycle)
+                    .with_sync0_cycle(std::time::Duration::from_micros(sync0_cycle.get()))
                     .with_timer_strategy(timer_strategy)
                     .with_sync_tolerance(sync_tolerance)
                     .with_sync_timeout(sync_timeout)
-                    .with_err_handler(|slave, status| match status {
-                        autd3_link_soem::Status::Error => {
-                            tracing::error!("Error [{}]: {}", slave, status)
-                        }
-                        autd3_link_soem::Status::Lost => {
-                            tracing::error!("Lost [{}]: {}", slave, status);
+                    .with_err_handler(|slave, status| {
+                        tracing::error!("slave [{}]: {}", slave, status);
+                        if status == autd3_link_soem::Status::Lost {
                             std::process::exit(-1);
-                        }
-                        autd3_link_soem::Status::StateChanged => {
-                            tracing::error!("StateChanged [{}]: {}", slave, status)
                         }
                     })
             };
