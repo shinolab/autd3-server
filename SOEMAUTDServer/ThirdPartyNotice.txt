@@ -6,7 +6,7 @@ The license terms for each of these components are provided later in this notice
 
 ---------------------------------------------------------
 
-SOEMAUTDServer 29.0.0-alpha.0 (MIT)
+SOEMAUTDServer 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -30,27 +30,27 @@ android_system_properties 0.1.5 (Apache-2.0 OR MIT)
 https://github.com/nical/android_system_properties
 ---------------------------------------------------------
 
-anstream 0.6.15 (Apache-2.0 OR MIT)
+anstream 0.6.17 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
-anstyle 1.0.8 (Apache-2.0 OR MIT)
+anstyle 1.0.9 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
-anstyle-parse 0.2.5 (Apache-2.0 OR MIT)
+anstyle-parse 0.2.6 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
-anstyle-query 1.1.1 (Apache-2.0 OR MIT)
-https://github.com/rust-cli/anstyle
----------------------------------------------------------
-
-anstyle-wincon 3.0.4 (Apache-2.0 OR MIT)
+anstyle-query 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
-anyhow 1.0.90 (Apache-2.0 OR MIT)
+anstyle-wincon 3.0.6 (Apache-2.0 OR MIT)
+https://github.com/rust-cli/anstyle.git
+---------------------------------------------------------
+
+anyhow 1.0.91 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/anyhow
 ---------------------------------------------------------
 
@@ -78,27 +78,27 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 29.0.0-alpha.0 (MIT)
+autd3 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 29.0.0-alpha.0 (MIT)
+autd3-derive 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 29.0.0-alpha.0 (MIT)
+autd3-driver 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 29.0.0-alpha.0 (MIT)
+autd3-firmware-emulator 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 29.0.0-alpha.0 (MIT)
+autd3-gain-holo 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 29.0.0-alpha.0
+autd3-link-soem 29.0.0-rc.0
 https://github.com/shinolab/autd3-rs
 
 ---
@@ -164,7 +164,7 @@ SOEM write to Beckhoff Automation GmbH, Eiserstrasse 5, D-33415 Verl, Germany
 
 ---------------------------------------------------------
 
-autd3-protobuf 29.0.0-alpha.0 (MIT)
+autd3-protobuf 29.0.0-rc.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -244,8 +244,8 @@ clap_lex 0.7.2 (Apache-2.0 OR MIT)
 https://github.com/clap-rs/clap
 ---------------------------------------------------------
 
-colorchoice 1.0.2 (Apache-2.0 OR MIT)
-https://github.com/rust-cli/anstyle
+colorchoice 1.0.3 (Apache-2.0 OR MIT)
+https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
 concurrent-queue 2.5.0 (Apache-2.0 OR MIT)
@@ -274,6 +274,10 @@ https://github.com/Detegr/rust-ctrlc.git
 
 deranged 0.3.11 (Apache-2.0 OR MIT)
 https://github.com/jhpratt/deranged
+---------------------------------------------------------
+
+derivative 2.2.0 (Apache-2.0 OR MIT)
+https://github.com/mcarton/rust-derivative
 ---------------------------------------------------------
 
 derive-new 0.7.0 (MIT)
@@ -552,15 +556,15 @@ percent-encoding 2.3.1 (Apache-2.0 OR MIT)
 https://github.com/servo/rust-url/
 ---------------------------------------------------------
 
-pin-project 1.1.6 (Apache-2.0 OR MIT)
+pin-project 1.1.7 (Apache-2.0 OR MIT)
 https://github.com/taiki-e/pin-project
 ---------------------------------------------------------
 
-pin-project-internal 1.1.6 (Apache-2.0 OR MIT)
+pin-project-internal 1.1.7 (Apache-2.0 OR MIT)
 https://github.com/taiki-e/pin-project
 ---------------------------------------------------------
 
-pin-project-lite 0.2.14 (Apache-2.0 OR MIT)
+pin-project-lite 0.2.15 (Apache-2.0 OR MIT)
 https://github.com/taiki-e/pin-project-lite
 ---------------------------------------------------------
 
@@ -576,7 +580,7 @@ ppv-lite86 0.2.20 (Apache-2.0 OR MIT)
 https://github.com/cryptocorrosion/cryptocorrosion
 ---------------------------------------------------------
 
-proc-macro2 1.0.88 (Apache-2.0 OR MIT)
+proc-macro2 1.0.89 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/proc-macro2
 ---------------------------------------------------------
 
@@ -616,7 +620,7 @@ rayon-core 1.12.1 (Apache-2.0 OR MIT)
 https://github.com/rayon-rs/rayon
 ---------------------------------------------------------
 
-regex 1.11.0 (Apache-2.0 OR MIT)
+regex 1.11.1 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/regex
 ---------------------------------------------------------
 
@@ -652,11 +656,11 @@ seq-macro 0.3.5 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/seq-macro
 ---------------------------------------------------------
 
-serde 1.0.210 (Apache-2.0 OR MIT)
+serde 1.0.213 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
-serde_derive 1.0.210 (Apache-2.0 OR MIT)
+serde_derive 1.0.213 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
@@ -696,7 +700,11 @@ strsim 0.11.1 (MIT)
 https://github.com/rapidfuzz/strsim-rs
 ---------------------------------------------------------
 
-syn 2.0.82 (Apache-2.0 OR MIT)
+syn 1.0.109 (Apache-2.0 OR MIT)
+https://github.com/dtolnay/syn
+---------------------------------------------------------
+
+syn 2.0.85 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
@@ -712,11 +720,11 @@ ta 0.5.0 (MIT)
 https://github.com/greyblake/ta-rs
 ---------------------------------------------------------
 
-thiserror 1.0.64 (Apache-2.0 OR MIT)
+thiserror 1.0.65 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
-thiserror-impl 1.0.64 (Apache-2.0 OR MIT)
+thiserror-impl 1.0.65 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
@@ -740,7 +748,7 @@ time-macros 0.2.18 (Apache-2.0 OR MIT)
 https://github.com/time-rs/time
 ---------------------------------------------------------
 
-tokio 1.40.0 (MIT)
+tokio 1.41.0 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 

@@ -31,14 +31,13 @@ impl Default for TwinCATOptions {
 pub struct SOEMOptions {
     pub ifname: String,
     pub port: u16,
-    pub sync0: u32,
-    pub send: u32,
+    pub sync0: std::time::Duration,
+    pub send: std::time::Duration,
     pub buf_size: usize,
     pub timer_strategy: TimerStrategy,
     pub state_check_interval: std::time::Duration,
     pub sync_tolerance: std::time::Duration,
     pub sync_timeout: std::time::Duration,
-    pub timeout: std::time::Duration,
     pub lightweight: bool,
 }
 
@@ -47,12 +46,11 @@ impl Default for SOEMOptions {
         Self {
             ifname: "".to_string(),
             port: 8080,
-            sync0: 2,
-            send: 2,
+            sync0: std::time::Duration::from_millis(1),
+            send: std::time::Duration::from_millis(1),
             buf_size: 32,
-            timer_strategy: TimerStrategy::Sleep,
-            state_check_interval: std::time::Duration::from_millis(500),
-            timeout: std::time::Duration::from_millis(200),
+            timer_strategy: TimerStrategy::SpinSleep,
+            state_check_interval: std::time::Duration::from_millis(100),
             sync_tolerance: std::time::Duration::from_micros(1),
             sync_timeout: std::time::Duration::from_secs(10),
             lightweight: false,
