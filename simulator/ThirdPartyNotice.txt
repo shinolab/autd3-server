@@ -114,7 +114,7 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 29.0.0-rc.0 (MIT)
+autd3 29.0.0-rc.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -122,27 +122,27 @@ autd3-derive 28.1.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 29.0.0-rc.0 (MIT)
+autd3-derive 29.0.0-rc.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 29.0.0-rc.0 (MIT)
+autd3-driver 29.0.0-rc.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 29.0.0-rc.0 (MIT)
+autd3-firmware-emulator 29.0.0-rc.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 29.0.0-rc.0 (MIT)
+autd3-gain-holo 29.0.0-rc.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-simulator 29.0.0-rc.0 (MIT)
+autd3-link-simulator 29.0.0-rc.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-protobuf 29.0.0-rc.0 (MIT)
+autd3-protobuf 29.0.0-rc.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -678,7 +678,7 @@ libloading 0.8.5 (ISC)
 https://github.com/nagisa/rust_libloading/
 ---------------------------------------------------------
 
-libm 0.2.8 (Apache-2.0 OR MIT)
+libm 0.2.9 (Apache-2.0) OR MIT AND (MIT)
 https://github.com/rust-lang/libm
 ---------------------------------------------------------
 
@@ -1117,7 +1117,7 @@ simd-adler32 0.3.7 (MIT)
 https://github.com/mcountryman/simd-adler32
 ---------------------------------------------------------
 
-simulator 29.0.0-rc.0 (MIT)
+simulator 29.0.0-rc.1 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
