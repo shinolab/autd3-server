@@ -497,21 +497,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-derive"
-version = "28.1.0"
+version = "29.0.0-rc.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "02e1c5178fda3548b4b878986f68835cef2c04e5fd8927069c49a521ce6a6291"
-dependencies = [
- "proc-macro2",
- "quote",
- "regex",
- "syn 2.0.85",
-]
-
-[[package]]
-name = "autd3-derive"
-version = "29.0.0-rc.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5de705cd8e50d2b1cff950fa2aaec4b925d3947a4d0deeb9e252407968ad9e9d"
+checksum = "cc981137164115785a9cd2ec6bd2c2bf3009276356982e77c7927d2ef55d865f"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -526,7 +514,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e7a2364e92b2c886aed052cf70b912784d00e3fa33dd992a96f63564e31d673d"
 dependencies = [
  "async-trait",
- "autd3-derive 29.0.0-rc.1",
+ "autd3-derive",
  "bit-vec 0.8.0",
  "bitfield-struct",
  "bitflags 2.6.0",
@@ -552,7 +540,7 @@ version = "29.0.0-rc.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a8238cba4e659c435df298f7a8aaff3e2b8694c347b14c21969218f2d00446b8"
 dependencies = [
- "autd3-derive 29.0.0-rc.1",
+ "autd3-derive",
  "autd3-driver",
  "bitfield-struct",
  "derive-new",
@@ -5223,7 +5211,7 @@ name = "simulator"
 version = "29.0.0-rc.1"
 dependencies = [
  "anyhow",
- "autd3-derive 28.1.0",
+ "autd3-derive",
  "autd3-driver",
  "autd3-firmware-emulator",
  "autd3-link-simulator",
