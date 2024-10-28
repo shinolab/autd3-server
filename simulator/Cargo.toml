@@ -28,7 +28,7 @@ image = { version = "0.25.4", default-features = false, features = ["png"] }
 imgui = "0.12.0"
 imgui-winit-support = "0.12.0"
 scarlet = "1.2.0"
-serde = { version = "1.0.210", features = ["derive"] }
+serde = { version = "1.0.214", features = ["derive"] }
 serde_json = "1.0.132"
 smallvec = "1.13.2"
 strum = { version = "0.26.3", features = ["derive"] }
