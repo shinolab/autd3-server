@@ -6,7 +6,7 @@ The license terms for each of these components are provided later in this notice
 
 ---------------------------------------------------------
 
-@tauri-apps/api 2.0.2 Apache-2.0 OR MIT
+@tauri-apps/api 2.0.3 Apache-2.0 OR MIT
 git+https://github.com/tauri-apps/tauri.git
 ---------------------------------------------------------
 
