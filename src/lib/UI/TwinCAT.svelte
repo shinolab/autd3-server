@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from "svelte/legacy";
+
   import type { TwinCATOptions } from "./options.ts";
 
   import { Command, Child } from "@tauri-apps/plugin-shell";
@@ -11,11 +13,26 @@
   import NumberInput from "./utils/NumberInput.svelte";
   import IpInput from "./utils/IpInput.svelte";
 
+  import { usFromDuration, usToDuration } from "./utils/duration.ts";
+
   interface Props {
     twincatOptions: TwinCATOptions;
   }
 
   let { twincatOptions = $bindable() }: Props = $props();
+
+  let baseUs = $state(twincatOptions.base * 500);
+  run(() => {
+    twincatOptions.base = baseUs / 500;
+  });
+  let sync0Us = $state(twincatOptions.sync0 * 500);
+  run(() => {
+    twincatOptions.sync0 = sync0Us / 500;
+  });
+  let taskUs = $state(twincatOptions.task * 500);
+  run(() => {
+    twincatOptions.task = taskUs / 500;
+  });
 
   let command;
   let child: null | Child = null;
@@ -85,14 +102,14 @@
   <label for="client">Client IP address:</label>
   <IpInput id="client" bind:value={twincatOptions.client} />
 
-  <label for="sync0">Sync0 cycle time:</label>
-  <NumberInput id="sync0" bind:value={twincatOptions.sync0} min="1" step="1" />
+  <label for="sync0Us">Sync0 cycle time [us]:</label>
+  <NumberInput id="sync0Us" bind:value={sync0Us} min="500" step="500" />
 
-  <label for="task">Send task cycle time:</label>
-  <NumberInput id="task" bind:value={twincatOptions.task} min="1" step="1" />
+  <label for="taskUs">Send task cycle time [us]:</label>
+  <NumberInput id="taskUs" bind:value={taskUs} min="500" step="500" />
 
-  <label for="base">CPU base time:</label>
-  <NumberInput id="base" bind:value={twincatOptions.base} min="1" step="1" />
+  <label for="baseUs">CPU base time [us]:</label>
+  <NumberInput id="baseUs" bind:value={baseUs} min="500" step="500" />
 
   <label for="keep">Keep XAE Shell open:</label>
   <CheckBox id="keep" bind:checked={twincatOptions.keep} />

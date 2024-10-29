@@ -110,27 +110,27 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 29.0.0-rc.1 (MIT)
+autd3 29.0.0-rc.3 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 29.0.0-rc.1 (MIT)
+autd3-derive 29.0.0-rc.3 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 29.0.0-rc.1 (MIT)
+autd3-driver 29.0.0-rc.3 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 29.0.0-rc.1 (MIT)
+autd3-firmware-emulator 29.0.0-rc.3 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 29.0.0-rc.1 (MIT)
+autd3-gain-holo 29.0.0-rc.3 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 29.0.0-rc.1
+autd3-link-soem 29.0.0-rc.3
 https://github.com/shinolab/autd3-rs
 
 ---
@@ -196,11 +196,11 @@ SOEM write to Beckhoff Automation GmbH, Eiserstrasse 5, D-33415 Verl, Germany
 
 ---------------------------------------------------------
 
-autd3-protobuf 29.0.0-rc.1 (MIT)
+autd3-protobuf 29.0.0-rc.3 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-server 29.0.0-rc.1 (MIT)
+autd3-server 29.0.0-rc.3 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -543,7 +543,7 @@ fastrand 2.1.1 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/fastrand
 ---------------------------------------------------------
 
-fdeflate 0.3.5 (Apache-2.0 OR MIT)
+fdeflate 0.3.6 (Apache-2.0 OR MIT)
 https://github.com/image-rs/fdeflate
 ---------------------------------------------------------
 
@@ -775,7 +775,7 @@ hyper-timeout 0.5.1 (Apache-2.0 OR MIT)
 https://github.com/hjr3/hyper-timeout
 ---------------------------------------------------------
 
-hyper-util 0.1.9 (MIT)
+hyper-util 0.1.10 (MIT)
 https://github.com/hyperium/hyper-util
 ---------------------------------------------------------
 
@@ -897,7 +897,7 @@ libloading 0.8.5 (ISC)
 https://github.com/nagisa/rust_libloading/
 ---------------------------------------------------------
 
-libm 0.2.9 (Apache-2.0) OR MIT AND (MIT)
+libm 0.2.11 (Apache-2.0) OR MIT AND (MIT)
 https://github.com/rust-lang/libm
 ---------------------------------------------------------
 
@@ -977,7 +977,7 @@ muda 0.15.1 (Apache-2.0 OR MIT)
 https://github.com/amrbashir/muda
 ---------------------------------------------------------
 
-nalgebra 0.33.1 (Apache-2.0)
+nalgebra 0.33.2 (Apache-2.0)
 https://github.com/dimforge/nalgebra
 ---------------------------------------------------------
 
@@ -1405,7 +1405,7 @@ regex-syntax 0.8.5 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/regex/tree/master/regex-syntax
 ---------------------------------------------------------
 
-reqwest 0.12.8 (Apache-2.0 OR MIT)
+reqwest 0.12.9 (Apache-2.0 OR MIT)
 https://github.com/seanmonstar/reqwest
 ---------------------------------------------------------
 
@@ -1423,7 +1423,7 @@ rustc-demangle 0.1.24 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/rustc-demangle
 ---------------------------------------------------------
 
-rustix 0.38.37 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
+rustix 0.38.38 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
 https://github.com/bytecodealliance/rustix
 ---------------------------------------------------------
 
@@ -1471,7 +1471,7 @@ seq-macro 0.3.5 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/seq-macro
 ---------------------------------------------------------
 
-serde 1.0.213 (Apache-2.0 OR MIT)
+serde 1.0.214 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
@@ -1479,7 +1479,7 @@ serde-untagged 0.1.6 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/serde-untagged
 ---------------------------------------------------------
 
-serde_derive 1.0.213 (Apache-2.0 OR MIT)
+serde_derive 1.0.214 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
@@ -1627,7 +1627,7 @@ ta 0.5.0 (MIT)
 https://github.com/greyblake/ta-rs
 ---------------------------------------------------------
 
-tao 0.30.3 (Apache-2.0)
+tao 0.30.4 (Apache-2.0)
 https://github.com/tauri-apps/tao
 ---------------------------------------------------------
 

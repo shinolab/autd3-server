@@ -6,7 +6,7 @@ The license terms for each of these components are provided later in this notice
 
 ---------------------------------------------------------
 
-TwinCATAUTDServerLightweight 29.0.0-rc.1 (MIT)
+TwinCATAUTDServerLightweight 29.0.0-rc.3 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -74,27 +74,27 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 29.0.0-rc.1 (MIT)
+autd3 29.0.0-rc.3 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 29.0.0-rc.1 (MIT)
+autd3-derive 29.0.0-rc.3 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 29.0.0-rc.1 (MIT)
+autd3-driver 29.0.0-rc.3 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 29.0.0-rc.1 (MIT)
+autd3-firmware-emulator 29.0.0-rc.3 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 29.0.0-rc.1 (MIT)
+autd3-gain-holo 29.0.0-rc.3 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-twincat 29.0.0-rc.1
+autd3-link-twincat 29.0.0-rc.3
 https://github.com/shinolab/autd3-rs
 
 ---
@@ -146,7 +146,7 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-autd3-protobuf 29.0.0-rc.1 (MIT)
+autd3-protobuf 29.0.0-rc.3 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -366,7 +366,7 @@ hyper-timeout 0.5.1 (Apache-2.0 OR MIT)
 https://github.com/hjr3/hyper-timeout
 ---------------------------------------------------------
 
-hyper-util 0.1.9 (MIT)
+hyper-util 0.1.10 (MIT)
 https://github.com/hyperium/hyper-util
 ---------------------------------------------------------
 
@@ -414,7 +414,7 @@ libloading 0.8.5 (ISC)
 https://github.com/nagisa/rust_libloading/
 ---------------------------------------------------------
 
-libm 0.2.9 (Apache-2.0) OR MIT AND (MIT)
+libm 0.2.11 (Apache-2.0) OR MIT AND (MIT)
 https://github.com/rust-lang/libm
 ---------------------------------------------------------
 
@@ -454,7 +454,7 @@ mio 1.0.2 (MIT)
 https://github.com/tokio-rs/mio
 ---------------------------------------------------------
 
-nalgebra 0.33.1 (Apache-2.0)
+nalgebra 0.33.2 (Apache-2.0)
 https://github.com/dimforge/nalgebra
 ---------------------------------------------------------
 
@@ -626,11 +626,11 @@ seq-macro 0.3.5 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/seq-macro
 ---------------------------------------------------------
 
-serde 1.0.213 (Apache-2.0 OR MIT)
+serde 1.0.214 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
-serde_derive 1.0.213 (Apache-2.0 OR MIT)
+serde_derive 1.0.214 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 

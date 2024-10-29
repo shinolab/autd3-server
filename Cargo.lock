@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "SOEMAUTDServer"
-version = "29.0.0-rc.1"
+version = "29.0.0-rc.3"
 dependencies = [
  "anyhow",
  "autd3-driver",
@@ -22,7 +22,7 @@ dependencies = [
 
 [[package]]
 name = "TwinCATAUTDServerLightweight"
-version = "29.0.0-rc.1"
+version = "29.0.0-rc.3"
 dependencies = [
  "anyhow",
  "autd3-link-twincat",
@@ -473,9 +473,9 @@ checksum = "1505bd5d3d116872e7271a6d4e16d81d0c8570876c8de68093a09ac269d8aac0"
 
 [[package]]
 name = "autd3"
-version = "29.0.0-rc.1"
+version = "29.0.0-rc.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e502dd4fcca2aa861aa3be50e955fc5204edcb14b0215e4715bfee8caaf4f920"
+checksum = "a52c66632b5de73e9a113e8f7416592e4186507b351a68aa4faad99fdc06177d"
 dependencies = [
  "autd3-driver",
  "autd3-firmware-emulator",
@@ -509,9 +509,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-derive"
-version = "29.0.0-rc.2"
+version = "29.0.0-rc.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cc981137164115785a9cd2ec6bd2c2bf3009276356982e77c7927d2ef55d865f"
+checksum = "d5dcb7ee3a7b43aaf0b3854c4b88a6b0ef69fdaaa78f24c4ffee6b16d04ec4e2"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -521,12 +521,12 @@ dependencies = [
 
 [[package]]
 name = "autd3-driver"
-version = "29.0.0-rc.2"
+version = "29.0.0-rc.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "11b8b3422bb279dc8fac013c8a50dc5cb40af1e305ef7627e1bba0bc89ede0f9"
+checksum = "e5b02dd4df9d786b602dab8a26396a6a202adca2d20345fa653ddce83205cd1c"
 dependencies = [
  "async-trait",
- "autd3-derive 29.0.0-rc.2",
+ "autd3-derive 29.0.0-rc.3",
  "bit-vec 0.8.0",
  "bitfield-struct",
  "bitflags 2.6.0",
@@ -534,7 +534,7 @@ dependencies = [
  "derive-new",
  "derive_more 1.0.0",
  "itertools 0.13.0",
- "nalgebra 0.33.1",
+ "nalgebra 0.33.2",
  "rayon",
  "seq-macro",
  "serde",
@@ -548,11 +548,11 @@ dependencies = [
 
 [[package]]
 name = "autd3-firmware-emulator"
-version = "29.0.0-rc.1"
+version = "29.0.0-rc.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a8238cba4e659c435df298f7a8aaff3e2b8694c347b14c21969218f2d00446b8"
+checksum = "c8a9a9f7b5100c300f1aa31a6692bbbe3850f13c0ed4fc0a4eba9ba9ee18bb3b"
 dependencies = [
- "autd3-derive 29.0.0-rc.2",
+ "autd3-derive 29.0.0-rc.3",
  "autd3-driver",
  "bitfield-struct",
  "derive-new",
@@ -564,15 +564,15 @@ dependencies = [
 
 [[package]]
 name = "autd3-gain-holo"
-version = "29.0.0-rc.1"
+version = "29.0.0-rc.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "95f7b862a0fac26d9b12cb3eceb05bf6055c73fe313fe129216a8514265d146e"
+checksum = "8c2b5cc4ab2058b03f8a74da340fa842450ae2a01780e17d5b5267337a47e88c"
 dependencies = [
  "autd3-driver",
  "bit-vec 0.8.0",
  "derive-new",
  "derive_more 1.0.0",
- "nalgebra 0.33.1",
+ "nalgebra 0.33.2",
  "rand 0.8.5",
  "rayon",
  "thiserror",
@@ -582,9 +582,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-simulator"
-version = "29.0.0-rc.1"
+version = "29.0.0-rc.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3d7137e1ba07b8b793107d5364ac91bd4644cd5f157f57c7795e383578c86df9"
+checksum = "59d261ad377577ab9a782884e0d8ddee92748933e2e9f47d66bfdea55b1587f8"
 dependencies = [
  "autd3-driver",
  "autd3-protobuf",
@@ -594,9 +594,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-soem"
-version = "29.0.0-rc.1"
+version = "29.0.0-rc.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b51a515acb9e2b3ce925572ea3fed74922a16b7c2742bf934f3e026b36b701c6"
+checksum = "e21b02f2313409a0327a657a3b44dc1452772f234b3394c984dd067f657f0f09"
 dependencies = [
  "anyhow",
  "async-channel",
@@ -620,9 +620,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-twincat"
-version = "29.0.0-rc.1"
+version = "29.0.0-rc.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c87501aabb31b7a922bcfd387072821cfb54405cc1098307802b2d1bca27fc4d"
+checksum = "9417108246ded1bb87435de2f629c53eaed3ce160a823842289f5cda49a537d7"
 dependencies = [
  "autd3-driver",
  "libloading 0.8.5",
@@ -632,9 +632,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-protobuf"
-version = "29.0.0-rc.1"
+version = "29.0.0-rc.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e15f1fdf5c05bfa2fe9d7dfdc85936a562d6ec65908fdcfb40fbe75c0dec8020"
+checksum = "e1afc39217f44fbf4eac246c9aec99afaee60158ea2a6cbae50e82e9d709f0ad"
 dependencies = [
  "autd3",
  "autd3-driver",
@@ -649,7 +649,7 @@ dependencies = [
 
 [[package]]
 name = "autd3-server"
-version = "29.0.0-rc.1"
+version = "29.0.0-rc.3"
 dependencies = [
  "autd3-driver",
  "autd3-link-soem",
@@ -885,7 +885,7 @@ checksum = "fb3ba37f539b414d67436ce143437b697dbb1a5b7aed161258f2a88b1bffa6b0"
 dependencies = [
  "approx",
  "log",
- "nalgebra 0.33.1",
+ "nalgebra 0.33.2",
  "num",
  "rand 0.8.5",
 ]
@@ -1852,9 +1852,9 @@ checksum = "e8c02a5121d4ea3eb16a80748c74f5549a5665e4c21333c6098f283870fbdea6"
 
 [[package]]
 name = "fdeflate"
-version = "0.3.5"
+version = "0.3.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d8090f921a24b04994d9929e204f50b498a33ea6ba559ffaa05e04f7ee7fb5ab"
+checksum = "07c6f4c64c1d33a3111c4466f7365ebdcc37c5bd1ea0d62aae2e3d722aacbedb"
 dependencies = [
  "simd-adler32",
 ]
@@ -2695,9 +2695,9 @@ dependencies = [
 
 [[package]]
 name = "hyper-util"
-version = "0.1.9"
+version = "0.1.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "41296eb09f183ac68eec06e03cdbea2e759633d4067b2f6552fc2e009bcad08b"
+checksum = "df2dcfbe0677734ab2f3ffa7fa7bfd4706bfdc1ef393f2ee30184aed67e631b4"
 dependencies = [
  "bytes",
  "futures-channel",
@@ -3127,9 +3127,9 @@ dependencies = [
 
 [[package]]
 name = "libm"
-version = "0.2.9"
+version = "0.2.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3bda4c6077b0b08da2c48b172195795498381a7c8988c9e6212a6c55c5b9bd70"
+checksum = "8355be11b20d696c8f18f6cc018c4e372165b1fa8126cef092399c9951984ffa"
 
 [[package]]
 name = "libredox"
@@ -3396,9 +3396,9 @@ dependencies = [
 
 [[package]]
 name = "nalgebra"
-version = "0.33.1"
+version = "0.33.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3bf139e93ad757869338ad85239cb1d6c067b23b94e5846e637ca6328ee4be60"
+checksum = "26aecdf64b707efd1310e3544d709c5c0ac61c13756046aaaba41be5c4f66a3b"
 dependencies = [
  "approx",
  "matrixmultiply",
@@ -4704,9 +4704,9 @@ checksum = "19b30a45b0cd0bcca8037f3d0dc3421eaf95327a17cad11964fb8179b4fc4832"
 
 [[package]]
 name = "reqwest"
-version = "0.12.8"
+version = "0.12.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f713147fbe92361e52392c73b8c9e48c04c6625bce969ef54dc901e58e042a7b"
+checksum = "a77c62af46e79de0a562e1a9849205ffcb7fc1238876e9bd743357570e04046f"
 dependencies = [
  "base64 0.22.1",
  "bytes",
@@ -4824,9 +4824,9 @@ dependencies = [
 
 [[package]]
 name = "rustix"
-version = "0.38.37"
+version = "0.38.38"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8acb788b847c24f28525660c4d7758620a7210875711f79e7f663cc152726811"
+checksum = "aa260229e6538e52293eeb577aabd09945a09d6d9cc0fc550ed7529056c2e32a"
 dependencies = [
  "bitflags 2.6.0",
  "errno",
@@ -5220,7 +5220,7 @@ checksum = "d66dc143e6b11c1eddc06d5c423cfc97062865baf299914ab64caa38182078fe"
 
 [[package]]
 name = "simulator"
-version = "29.0.0-rc.1"
+version = "29.0.0-rc.3"
 dependencies = [
  "anyhow",
  "autd3-derive 28.1.0",
@@ -5553,9 +5553,9 @@ checksum = "609409d472a0a7d8d4dd9e19891bbdef546b9dce670c3057d0e02192dc541226"
 
 [[package]]
 name = "tao"
-version = "0.30.3"
+version = "0.30.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a0dbbebe82d02044dfa481adca1550d6dd7bd16e086bc34fa0fbecceb5a63751"
+checksum = "5f716c1804556a00391742f0b7c8e71b72fc9e333060756472c83c3e0eb23752"
 dependencies = [
  "bitflags 2.6.0",
  "cocoa",

@@ -190,7 +190,7 @@ async fn main_() -> anyhow::Result<()> {
                 tracing::info!("Starting SOEM server...");
 
                 let soem = f()
-                    .open(&autd3_driver::geometry::Geometry::new(vec![]))
+                    .open(&autd3_driver::geometry::Geometry::new(vec![], 4))
                     .await?;
                 let num_dev = SOEM::num_devices();
 
