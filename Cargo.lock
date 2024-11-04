@@ -509,9 +509,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-derive"
-version = "29.0.0-rc.3"
+version = "29.0.0-rc.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d5dcb7ee3a7b43aaf0b3854c4b88a6b0ef69fdaaa78f24c4ffee6b16d04ec4e2"
+checksum = "a05140240a8595cd517b264f5a25062fb30be215b53da7d2a520022806d8d2ef"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -521,12 +521,12 @@ dependencies = [
 
 [[package]]
 name = "autd3-driver"
-version = "29.0.0-rc.3"
+version = "29.0.0-rc.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e5b02dd4df9d786b602dab8a26396a6a202adca2d20345fa653ddce83205cd1c"
+checksum = "1569fda7078f07de7a752766669daa1c3da61fb159fdf1b40af5d98b727bf83a"
 dependencies = [
  "async-trait",
- "autd3-derive 29.0.0-rc.3",
+ "autd3-derive 29.0.0-rc.4",
  "bit-vec 0.8.0",
  "bitfield-struct",
  "bitflags 2.6.0",
@@ -540,7 +540,6 @@ dependencies = [
  "serde",
  "thiserror",
  "time",
- "tokio",
  "tracing",
  "windows 0.58.0",
  "zerocopy 0.8.7",
@@ -552,7 +551,7 @@ version = "29.0.0-rc.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c8a9a9f7b5100c300f1aa31a6692bbbe3850f13c0ed4fc0a4eba9ba9ee18bb3b"
 dependencies = [
- "autd3-derive 29.0.0-rc.3",
+ "autd3-derive 29.0.0-rc.4",
  "autd3-driver",
  "bitfield-struct",
  "derive-new",

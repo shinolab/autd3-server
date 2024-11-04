@@ -15,7 +15,7 @@ clap = { version = "4.5.19", features = ["derive"] }
 tokio = { version = "1.40.0", features = ["macros", "rt-multi-thread"] }
 autd3-protobuf = { version = "29.0.0-rc.3", features = ["lightweight", "async-trait"] }
 autd3-link-soem = { version = "29.0.0-rc.3", features = ["async-trait"] }
-autd3-driver = { version = "29.0.0-rc.3", features = ["async-trait"] }
+autd3-driver = { version = "29.0.0-rc.4", features = ["async-trait"] }
 anyhow = "1.0.90"
 ctrlc = "3.4.5"
 tonic = "0.12.3"
