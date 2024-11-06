@@ -6,7 +6,7 @@ The license terms for each of these components are provided later in this notice
 
 ---------------------------------------------------------
 
-SOEMAUTDServer 29.0.0-rc.3 (MIT)
+SOEMAUTDServer 29.0.0-rc.5 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -30,11 +30,11 @@ android_system_properties 0.1.5 (Apache-2.0 OR MIT)
 https://github.com/nical/android_system_properties
 ---------------------------------------------------------
 
-anstream 0.6.17 (Apache-2.0 OR MIT)
+anstream 0.6.18 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
-anstyle 1.0.9 (Apache-2.0 OR MIT)
+anstyle 1.0.10 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
@@ -50,7 +50,7 @@ anstyle-wincon 3.0.6 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
-anyhow 1.0.91 (Apache-2.0 OR MIT)
+anyhow 1.0.92 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/anyhow
 ---------------------------------------------------------
 
@@ -78,93 +78,31 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 29.0.0-rc.3 (MIT)
+autd3 29.0.0-rc.5 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 29.0.0-rc.3 (MIT)
+autd3-derive 29.0.0-rc.5 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 29.0.0-rc.3 (MIT)
+autd3-driver 29.0.0-rc.5 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 29.0.0-rc.3 (MIT)
+autd3-firmware-emulator 29.0.0-rc.5 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 29.0.0-rc.3 (MIT)
+autd3-gain-holo 29.0.0-rc.5 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 29.0.0-rc.3
-https://github.com/shinolab/autd3-rs
-
----
-
-MIT License
-
-Copyright (c) 2022-2024 Shun Suzuki
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-================================== SOEM =======================================
-Simple Open EtherCAT Master Library
-
-Copyright (C) 2005-2017 Speciaal Machinefabriek Ketels v.o.f.
-Copyright (C) 2005-2017 Arthur Ketels
-Copyright (C) 2008-2009 TU/e Technische Universiteit Eindhoven
-Copyright (C) 2009-2017 rt-labs AB, Sweden
-
-SOEM is free software; you can redistribute it and/or modify it under the terms
-of the GNU General Public License version 2 as published by the Free Software
-Foundation.
-
-SOEM is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
-As a special exception, if other files instantiate templates or use macros or
-inline functions from this file, or you compile this file and link it with other
-works to produce a work based on this file, this file does not by itself cause
-the resulting work to be covered by the GNU General Public License. However the
-source code for this file must still be made available in accordance with
-section (3) of the GNU General Public License.
-
-This exception does not invalidate any other reasons why a work based on this
-file might be covered by the GNU General Public License.
-
-The EtherCAT Technology, the trade name and logo "EtherCAT" are the intellectual
-property of, and protected by Beckhoff Automation GmbH. You can use SOEM for the
-sole purpose of creating, using and/or selling or otherwise distributing an
-EtherCAT network master provided that an EtherCAT Master License is obtained
-from Beckhoff Automation GmbH.
-
-In case you did not receive a copy of the EtherCAT Master License along with
-SOEM write to Beckhoff Automation GmbH, Eiserstrasse 5, D-33415 Verl, Germany
-(www.beckhoff.com).
-================================== SOEM =======================================
-
+autd3-link-soem 29.0.0-rc.5 (MIT)
+https://github.com/shinolab/autd3-link-soem
 ---------------------------------------------------------
 
-autd3-protobuf 29.0.0-rc.3 (MIT)
+autd3-protobuf 29.0.0-rc.5 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -356,7 +294,7 @@ hashbrown 0.12.3 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/hashbrown
 ---------------------------------------------------------
 
-hashbrown 0.15.0 (Apache-2.0 OR MIT)
+hashbrown 0.15.1 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/hashbrown
 ---------------------------------------------------------
 
@@ -392,7 +330,7 @@ hyper 1.5.0 (MIT)
 https://github.com/hyperium/hyper
 ---------------------------------------------------------
 
-hyper-timeout 0.5.1 (Apache-2.0 OR MIT)
+hyper-timeout 0.5.2 (Apache-2.0 OR MIT)
 https://github.com/hjr3/hyper-timeout
 ---------------------------------------------------------
 
@@ -704,7 +642,7 @@ syn 1.0.109 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
-syn 2.0.85 (Apache-2.0 OR MIT)
+syn 2.0.87 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
@@ -720,11 +658,11 @@ ta 0.5.0 (MIT)
 https://github.com/greyblake/ta-rs
 ---------------------------------------------------------
 
-thiserror 1.0.65 (Apache-2.0 OR MIT)
+thiserror 1.0.68 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
-thiserror-impl 1.0.65 (Apache-2.0 OR MIT)
+thiserror-impl 1.0.68 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
@@ -952,7 +890,7 @@ zerocopy 0.7.35 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
-zerocopy 0.8.7 (Apache-2.0 OR BSD-2-Clause OR MIT)
+zerocopy 0.8.9 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
@@ -960,7 +898,7 @@ zerocopy-derive 0.7.35 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
-zerocopy-derive 0.8.7 (Apache-2.0 OR BSD-2-Clause OR MIT)
+zerocopy-derive 0.8.9 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 
 ---------------------------------------------------------
