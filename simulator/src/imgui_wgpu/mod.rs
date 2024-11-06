@@ -444,7 +444,7 @@ impl Renderer {
             layout: Some(&pipeline_layout),
             vertex: VertexState {
                 module: &shader_module,
-                entry_point: vertex_shader_entry_point.unwrap(),
+                entry_point: vertex_shader_entry_point,
                 buffers: &[VertexBufferLayout {
                     array_stride: size_of::<DrawVert>() as BufferAddress,
                     step_mode: VertexStepMode::Vertex,
@@ -476,7 +476,7 @@ impl Renderer {
             },
             fragment: Some(FragmentState {
                 module: &shader_module,
-                entry_point: fragment_shader_entry_point.unwrap(),
+                entry_point: fragment_shader_entry_point,
                 targets: &[Some(ColorTargetState {
                     format: texture_format,
                     blend: Some(BlendState {
@@ -661,6 +661,14 @@ impl Renderer {
             return Ok(());
         }
 
+        if render_data
+            .vertex_buffer
+            .as_ref()
+            .is_none_or(|buf| buf.size() == 0)
+        {
+            return Ok(());
+        }
+
         rpass.set_pipeline(&self.pipeline);
         rpass.set_bind_group(0, &self.uniform_bind_group, &[]);
         rpass.set_vertex_buffer(0, render_data.vertex_buffer.as_ref().unwrap().slice(..));
@@ -727,7 +735,7 @@ impl Renderer {
                     .textures
                     .get(texture_id)
                     .ok_or(RendererError::BadTexture(texture_id))?;
-                rpass.set_bind_group(1, &tex.bind_group, &[]);
+                rpass.set_bind_group(1, &*tex.bind_group, &[]);
 
                 // Set scissors on the renderpass.
                 let end = start + count as u32;
