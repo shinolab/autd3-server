@@ -11,6 +11,8 @@ jobs:
     name: check-license
     steps:
     - uses: actions/checkout@v4
+      with:
+        submodules: true
     - uses: actions/setup-node@v4
       with:
         node-version: 'lts/*'
@@ -18,7 +20,6 @@ jobs:
         cache-dependency-path: package-lock.json
     - run: npm install
     - run: |
-        git submodule update --init tools/autd3-license-check
         cd tools/license-checker
         cargo run
 
@@ -57,6 +58,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true
       - uses: ./.github/actions/setup-build
         with:
           os: ${{ matrix.os }}

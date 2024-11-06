@@ -47,6 +47,7 @@ jobs:
 
   test-simulator:
     needs: changed-files
+    if: ${{ needs.changed-files.outputs.simulator == 'true' }}
     name: test-simulator-on-${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -55,18 +56,18 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v4
-        if: ${{ needs.changed-files.outputs.simulator == 'true' }}
+        with:
+          submodules: true
       - uses: ./.github/actions/setup-build
         with:
           os: ${{ matrix.os }}
-        if: ${{ needs.changed-files.outputs.simulator == 'true' }}
       - run: |
           python3 build.py build --simulator
           python3 build.py lint --simulator
-        if: ${{ needs.changed-files.outputs.simulator == 'true' }}
 
   test-soem:
     needs: changed-files
+    if: ${{ needs.changed-files.outputs.soem == 'true' }}
     name: test-soem-on-${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -75,18 +76,18 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v4
-        if: ${{ needs.changed-files.outputs.soem == 'true' }}
+        with:
+          submodules: true
       - uses: ./.github/actions/setup-build
         with:
           os: ${{ matrix.os }}
-        if: ${{ needs.changed-files.outputs.soem == 'true' }}
       - run: |
           python3 build.py build --soem
           python3 build.py lint --soem
-        if: ${{ needs.changed-files.outputs.soem == 'true' }}
 
   test-twincat:
     needs: changed-files
+    if: ${{ needs.changed-files.outputs.twincat == 'true' }}
     name: test-twincat-on-${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -95,18 +96,18 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v4
-        if: ${{ needs.changed-files.outputs.twincat == 'true' }}
+        with:
+          submodules: true
       - uses: ./.github/actions/setup-build
         with:
           os: ${{ matrix.os }}
-        if: ${{ needs.changed-files.outputs.twincat == 'true' }}
       - run: |
           python3 build.py build --twincat
           python3 build.py lint --twincat
-        if: ${{ needs.changed-files.outputs.twincat == 'true' }}
 
   test-main:
     needs: changed-files
+    if: ${{ needs.changed-files.outputs.main == 'true' }}
     name: test-main-on-${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -115,21 +116,19 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v4
-        if: ${{ needs.changed-files.outputs.main == 'true' }}
+        with:
+          submodules: true
       - uses: ./.github/actions/setup-build
         with:
           os: ${{ matrix.os }}
-        if: ${{ needs.changed-files.outputs.main == 'true' }}
       - uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           cache: 'npm'
           cache-dependency-path: package-lock.json
-        if: ${{ needs.changed-files.outputs.main == 'true' }}
       - run: |
           python3 build.py build --main
           python3 build.py lint --main
-        if: ${{ needs.changed-files.outputs.main == 'true' }}
 
   auto-merge:
     needs:
