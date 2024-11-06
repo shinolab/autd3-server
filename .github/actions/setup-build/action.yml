@@ -8,11 +8,10 @@ runs:
   using: "composite"
   steps:
     - name: Setup Python
-      if: needs.check-src.outputs.status
       uses: actions/setup-python@v5
       with:
         python-version: "3.13"
-      
+
     - name: Setup Rust
       uses: actions-rust-lang/setup-rust-toolchain@v1
       with:

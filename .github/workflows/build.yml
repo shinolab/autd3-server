@@ -130,12 +130,17 @@ jobs:
           python3 build.py build --main
           python3 build.py lint --main
 
+  all-tests-passed:
+    if: ${{ always() }}
+    name: all-tests-passed
+    runs-on: ubuntu-latest
+    needs: [test-simulator, test-soem, test-twincat, test-main]
+    steps:
+      - if: ${{ needs.test-simulator.result == 'failure' || needs.test-simulator.result == 'cancelled' || needs.test-soem.result == 'failure' || needs.test-soem.result == 'cancelled' || needs.test-twincat.result == 'failure' || needs.test-twincat.result == 'cancelled' || needs.test-main.result == 'failure' || needs.test-main.result == 'cancelled' }}
+        run: exit 1
+
   auto-merge:
-    needs:
-      - test-simulator
-      - test-soem
-      - test-twincat
-      - test-main
+    needs: all-tests-passed
     permissions:
       pull-requests: write
       contents: write
