@@ -275,13 +275,13 @@ impl SliceRenderer {
                 layout: Some(&pipeline_layout),
                 vertex: wgpu::VertexState {
                     module: &shader,
-                    entry_point: "vs_main",
+                    entry_point: None,
                     compilation_options: Default::default(),
                     buffers: &vertex_buffers,
                 },
                 fragment: Some(wgpu::FragmentState {
                     module: &shader,
-                    entry_point: "fs_main",
+                    entry_point: None,
                     compilation_options: Default::default(),
                     targets: &[Some(wgpu::ColorTargetState {
                         format: config.view_formats[0],
@@ -327,7 +327,7 @@ impl SliceRenderer {
                     label: None,
                     layout: Some(&compute_pipeline_layout),
                     module: &shader,
-                    entry_point: "main",
+                    entry_point: None,
                     compilation_options: Default::default(),
                     cache: None,
                 });
