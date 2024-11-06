@@ -23,6 +23,10 @@
   let child: null | Child = $state(null);
 
   let handleRunClick = async () => {
+    const setting_file = simulatorOptions.unity
+      ? "unity_simulator_settings.json"
+      : "simulator_settings.json";
+
     const args: string[] = [
       "-w",
       `${simulatorOptions.window_width},${simulatorOptions.window_height}`,
@@ -31,7 +35,7 @@
       "-v",
       simulatorOptions.vsync ? "true" : "false",
       "-s",
-      "simulator_settings.json",
+      setting_file,
       "--setting_dir",
       appConfigDirPath,
     ];

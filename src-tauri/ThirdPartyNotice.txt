@@ -34,7 +34,7 @@ android_system_properties 0.1.5 (Apache-2.0 OR MIT)
 https://github.com/nical/android_system_properties
 ---------------------------------------------------------
 
-anyhow 1.0.91 (Apache-2.0 OR MIT)
+anyhow 1.0.92 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/anyhow
 ---------------------------------------------------------
 
@@ -110,97 +110,35 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 29.0.0-rc.3 (MIT)
+autd3 29.0.0-rc.5 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 29.0.0-rc.3 (MIT)
+autd3-derive 29.0.0-rc.5 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 29.0.0-rc.3 (MIT)
+autd3-driver 29.0.0-rc.5 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 29.0.0-rc.3 (MIT)
+autd3-firmware-emulator 29.0.0-rc.5 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 29.0.0-rc.3 (MIT)
+autd3-gain-holo 29.0.0-rc.5 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 29.0.0-rc.3
-https://github.com/shinolab/autd3-rs
-
----
-
-MIT License
-
-Copyright (c) 2022-2024 Shun Suzuki
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-================================== SOEM =======================================
-Simple Open EtherCAT Master Library
-
-Copyright (C) 2005-2017 Speciaal Machinefabriek Ketels v.o.f.
-Copyright (C) 2005-2017 Arthur Ketels
-Copyright (C) 2008-2009 TU/e Technische Universiteit Eindhoven
-Copyright (C) 2009-2017 rt-labs AB, Sweden
-
-SOEM is free software; you can redistribute it and/or modify it under the terms
-of the GNU General Public License version 2 as published by the Free Software
-Foundation.
-
-SOEM is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
-As a special exception, if other files instantiate templates or use macros or
-inline functions from this file, or you compile this file and link it with other
-works to produce a work based on this file, this file does not by itself cause
-the resulting work to be covered by the GNU General Public License. However the
-source code for this file must still be made available in accordance with
-section (3) of the GNU General Public License.
-
-This exception does not invalidate any other reasons why a work based on this
-file might be covered by the GNU General Public License.
-
-The EtherCAT Technology, the trade name and logo "EtherCAT" are the intellectual
-property of, and protected by Beckhoff Automation GmbH. You can use SOEM for the
-sole purpose of creating, using and/or selling or otherwise distributing an
-EtherCAT network master provided that an EtherCAT Master License is obtained
-from Beckhoff Automation GmbH.
-
-In case you did not receive a copy of the EtherCAT Master License along with
-SOEM write to Beckhoff Automation GmbH, Eiserstrasse 5, D-33415 Verl, Germany
-(www.beckhoff.com).
-================================== SOEM =======================================
-
+autd3-link-soem 29.0.0-rc.5 (MIT)
+https://github.com/shinolab/autd3-link-soem
 ---------------------------------------------------------
 
-autd3-protobuf 29.0.0-rc.3 (MIT)
+autd3-protobuf 29.0.0-rc.5 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-server 29.0.0-rc.3 (MIT)
+autd3-server 29.0.0-rc.5 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -460,6 +398,10 @@ dispatch 0.2.0 (MIT)
 http://github.com/SSheldon/rust-dispatch
 ---------------------------------------------------------
 
+displaydoc 0.2.5 (Apache-2.0 OR MIT)
+https://github.com/yaahc/displaydoc
+---------------------------------------------------------
+
 dlib 0.5.2 (MIT)
 https://github.com/elinorbgr/dlib
 ---------------------------------------------------------
@@ -599,7 +541,7 @@ futures-io 0.3.31 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/futures-rs
 ---------------------------------------------------------
 
-futures-lite 2.3.0 (Apache-2.0 OR MIT)
+futures-lite 2.4.0 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/futures-lite
 ---------------------------------------------------------
 
@@ -719,7 +661,7 @@ hashbrown 0.12.3 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/hashbrown
 ---------------------------------------------------------
 
-hashbrown 0.15.0 (Apache-2.0 OR MIT)
+hashbrown 0.15.1 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/hashbrown
 ---------------------------------------------------------
 
@@ -771,7 +713,7 @@ hyper 1.5.0 (MIT)
 https://github.com/hyperium/hyper
 ---------------------------------------------------------
 
-hyper-timeout 0.5.1 (Apache-2.0 OR MIT)
+hyper-timeout 0.5.2 (Apache-2.0 OR MIT)
 https://github.com/hjr3/hyper-timeout
 ---------------------------------------------------------
 
@@ -791,12 +733,56 @@ ico 0.3.0 (MIT)
 https://github.com/mdsteele/rust-ico
 ---------------------------------------------------------
 
+icu_collections 1.5.0 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
+icu_locid 1.5.0 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
+icu_locid_transform 1.5.0 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
+icu_locid_transform_data 1.5.0 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
+icu_normalizer 1.5.0 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
+icu_normalizer_data 1.5.0 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
+icu_properties 1.5.1 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
+icu_properties_data 1.5.0 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
+icu_provider 1.5.0 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
+icu_provider_macros 1.5.0 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
 ident_case 1.0.1 (Apache-2.0 OR MIT)
 https://github.com/TedDriggs/ident_case
 ---------------------------------------------------------
 
-idna 0.5.0 (Apache-2.0 OR MIT)
+idna 1.0.3 (Apache-2.0 OR MIT)
 https://github.com/servo/rust-url/
+---------------------------------------------------------
+
+idna_adapter 1.2.0 (Apache-2.0 OR MIT)
+https://github.com/hsivonen/idna_adapter
 ---------------------------------------------------------
 
 indexmap 1.9.3 (Apache-2.0 OR MIT)
@@ -909,6 +895,10 @@ linux-raw-sys 0.4.14 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
 https://github.com/sunfishcode/linux-raw-sys
 ---------------------------------------------------------
 
+litemap 0.7.3 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
 lock_api 0.4.12 (Apache-2.0 OR MIT)
 https://github.com/Amanieu/parking_lot
 ---------------------------------------------------------
@@ -973,7 +963,7 @@ mio 1.0.2 (MIT)
 https://github.com/tokio-rs/mio
 ---------------------------------------------------------
 
-muda 0.15.1 (Apache-2.0 OR MIT)
+muda 0.15.3 (Apache-2.0 OR MIT)
 https://github.com/amrbashir/muda
 ---------------------------------------------------------
 
@@ -1423,7 +1413,7 @@ rustc-demangle 0.1.24 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/rustc-demangle
 ---------------------------------------------------------
 
-rustix 0.38.38 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
+rustix 0.38.39 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
 https://github.com/bytecodealliance/rustix
 ---------------------------------------------------------
 
@@ -1607,7 +1597,7 @@ syn 1.0.109 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
-syn 2.0.85 (Apache-2.0 OR MIT)
+syn 2.0.87 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
@@ -1619,7 +1609,11 @@ sync_wrapper 1.0.1 (Apache-2.0)
 https://github.com/Actyx/sync_wrapper
 ---------------------------------------------------------
 
-sys-locale 0.3.1 (Apache-2.0 OR MIT)
+synstructure 0.13.1 (MIT)
+https://github.com/mystor/synstructure
+---------------------------------------------------------
+
+sys-locale 0.3.2 (Apache-2.0 OR MIT)
 https://github.com/1Password/sys-locale
 ---------------------------------------------------------
 
@@ -1627,7 +1621,7 @@ ta 0.5.0 (MIT)
 https://github.com/greyblake/ta-rs
 ---------------------------------------------------------
 
-tao 0.30.4 (Apache-2.0)
+tao 0.30.5 (Apache-2.0)
 https://github.com/tauri-apps/tao
 ---------------------------------------------------------
 
@@ -1695,11 +1689,11 @@ thin-slice 0.1.1 (MPL-2.0)
 https://github.com/heycam/thin-slice
 ---------------------------------------------------------
 
-thiserror 1.0.65 (Apache-2.0 OR MIT)
+thiserror 1.0.68 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
-thiserror-impl 1.0.65 (Apache-2.0 OR MIT)
+thiserror-impl 1.0.68 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
@@ -1719,12 +1713,8 @@ time-macros 0.2.18 (Apache-2.0 OR MIT)
 https://github.com/time-rs/time
 ---------------------------------------------------------
 
-tinyvec 1.8.0 (Apache-2.0 OR MIT OR Zlib)
-https://github.com/Lokathor/tinyvec
----------------------------------------------------------
-
-tinyvec_macros 0.1.1 (Apache-2.0 OR MIT OR Zlib)
-https://github.com/Soveu/tinyvec_macros
+tinystr 0.7.6 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
 tokio 1.41.0 (MIT)
@@ -1835,16 +1825,8 @@ unic-ucd-version 0.9.0 (Apache-2.0 OR MIT)
 https://github.com/open-i18n/rust-unic/
 ---------------------------------------------------------
 
-unicode-bidi 0.3.17 (Apache-2.0 OR MIT)
-https://github.com/servo/unicode-bidi
----------------------------------------------------------
-
 unicode-ident 1.0.13 ((MIT OR Apache-2.0) AND Unicode-DFS-2016)
 https://github.com/dtolnay/unicode-ident
----------------------------------------------------------
-
-unicode-normalization 0.1.24 (Apache-2.0 OR MIT)
-https://github.com/unicode-rs/unicode-normalization
 ---------------------------------------------------------
 
 unicode-segmentation 1.12.0 (Apache-2.0 OR MIT)
@@ -1855,7 +1837,7 @@ unicode-xid 0.2.6 (Apache-2.0 OR MIT)
 https://github.com/unicode-rs/unicode-xid
 ---------------------------------------------------------
 
-url 2.5.2 (Apache-2.0 OR MIT)
+url 2.5.3 (Apache-2.0 OR MIT)
 https://github.com/servo/rust-url
 ---------------------------------------------------------
 
@@ -1869,6 +1851,14 @@ https://github.com/denoland/rust-urlpattern
 
 utf-8 0.7.6 (Apache-2.0 OR MIT)
 https://github.com/SimonSapin/rust-utf8
+---------------------------------------------------------
+
+utf16_iter 1.0.5 (Apache-2.0 OR MIT)
+https://github.com/hsivonen/utf16_iter
+---------------------------------------------------------
+
+utf8_iter 1.0.4 (Apache-2.0 OR MIT)
+https://github.com/hsivonen/utf8_iter
 ---------------------------------------------------------
 
 uuid 1.11.0 (Apache-2.0 OR MIT)
@@ -2171,6 +2161,14 @@ winnow 0.5.40 (MIT)
 https://github.com/winnow-rs/winnow
 ---------------------------------------------------------
 
+write16 1.0.0 (Apache-2.0 OR MIT)
+https://github.com/hsivonen/write16
+---------------------------------------------------------
+
+writeable 0.5.5 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
 wry 0.46.3 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/wry
 ---------------------------------------------------------
@@ -2185,6 +2183,14 @@ https://github.com/AltF02/x11-rs.git
 
 xdg-home 1.3.0 (MIT)
 https://github.com/zeenix/xdg-home
+---------------------------------------------------------
+
+yoke 0.7.4 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
+yoke-derive 0.7.4 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
 zbus 4.0.1 (MIT)
@@ -2203,7 +2209,7 @@ zerocopy 0.7.35 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
-zerocopy 0.8.7 (Apache-2.0 OR BSD-2-Clause OR MIT)
+zerocopy 0.8.9 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
@@ -2211,8 +2217,24 @@ zerocopy-derive 0.7.35 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
-zerocopy-derive 0.8.7 (Apache-2.0 OR BSD-2-Clause OR MIT)
+zerocopy-derive 0.8.9 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
+---------------------------------------------------------
+
+zerofrom 0.1.4 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
+zerofrom-derive 0.1.4 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
+zerovec 0.10.4 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
+zerovec-derive 0.10.3 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
 zvariant 4.0.0 (MIT)
