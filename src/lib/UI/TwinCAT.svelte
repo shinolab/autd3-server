@@ -38,17 +38,6 @@
     await handleCloseClick();
     running = true;
 
-    if (twincatOptions) {
-      let args = {
-        twincatOptions: JSON.stringify(twincatOptions),
-      };
-      try {
-        await invoke("run_twincat_server", args);
-      } catch (err) {
-        alert(err);
-      }
-    }
-
     if (twincatOptions.lightweight) {
       const args: string[] = ["-p", twincatOptions.lightweight_port.toString()];
       command = Command.sidecar("TwinCATAUTDServerLightweight", args);
@@ -65,6 +54,15 @@
       );
       command.on("error", () => handleCloseClick());
       command.on("close", () => handleCloseClick());
+    } else {
+      const args = {
+        twincatOptions: JSON.stringify(twincatOptions),
+      };
+      try {
+        await invoke("run_twincat_server", args);
+      } catch (err) {
+        alert(err);
+      }
     }
 
     running = false;
