@@ -2,21 +2,21 @@
 <script lang="ts">
   import { consoleOutputQueue } from "./UI/console_output.ts";
   import { listen } from "@tauri-apps/api/event";
-  import { afterUpdate, onMount } from "svelte";
+  import { onMount } from "svelte";
 
   let element: HTMLTextAreaElement;
 
-  afterUpdate(() => {
+  $effect(() => {
     element.scroll({ top: element.scrollHeight, behavior: "smooth" });
   });
 
-  let console_output = "";
-  $: {
+  let console_output = $state("");
+  $effect(() => {
     while ($consoleOutputQueue.length > 100) {
       $consoleOutputQueue.shift();
     }
     console_output = $consoleOutputQueue.join("\n");
-  }
+  });
 
   onMount(async () => {
     await listen("console-emu", (event) => {
