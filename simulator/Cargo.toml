@@ -1,6 +1,6 @@
 [package]
 name = "simulator"
-version = "29.0.0-rc.5"
+version = "29.0.0-rc.8"
 edition = "2021"
 authors = ["shun suzuki <suzuki@hapis.k.u-tokyo.ac.jp>"]
 
@@ -12,10 +12,10 @@ keywords = ["autd"]
 [dependencies]
 anyhow = "1.0.92"
 autd3-derive = "28.0.1"
-autd3-driver = { version = "29.0.0-rc.5", features = ["async-trait"] }
-autd3-firmware-emulator = { version = "29.0.0-rc.5", features = ["async-trait"] }
-autd3-link-simulator = { version = "29.0.0-rc.5", features = ["async-trait"] }
-autd3-protobuf = { version = "29.0.0-rc.5", features = ["async-trait", "lightweight"] }
+autd3-driver = { version = "29.0.0-rc.8", features = ["async-trait"] }
+autd3-firmware-emulator = { version = "29.0.0-rc.8", features = ["async-trait"] }
+autd3-link-simulator = { version = "29.0.0-rc.8", features = ["async-trait"] }
+autd3-protobuf = { version = "29.0.0-rc.8", features = ["async-trait", "lightweight"] }
 bitflags = "2.6.0"
 bytemuck = { version = "1.19.0", features = ["derive"] }
 camera_controllers = "0.34.0"
