@@ -80,7 +80,9 @@ impl Simulator {
             }
         });
 
+        tracing::info!("Shutting down server...");
         server.shutdown();
+        tracing::info!("Shutting down server...done");
 
         res?;
 

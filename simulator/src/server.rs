@@ -90,6 +90,7 @@ pub struct ServerWrapper {
         std::thread::JoinHandle<Result<(), tonic::transport::Error>>,
         tokio::sync::oneshot::Sender<()>,
     )>,
+    port: u16,
 }
 
 impl ServerWrapper {
@@ -168,6 +169,7 @@ impl ServerWrapper {
             receiver: rx,
             shutdown: tx_shutdown,
             lightweight_server,
+            port,
         }
     }
 
@@ -237,6 +239,11 @@ impl ServerWrapper {
             }
             Ok(Signal::Close) => {
                 state.clear();
+                tracing::info!("Server is closed by client");
+                tracing::info!(
+                    "Waiting for client connection on http://0.0.0.0:{}",
+                    self.port
+                );
             }
             Err(TryRecvError::Empty) => {}
             _ => {}
