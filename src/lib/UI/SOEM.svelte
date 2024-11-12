@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { run } from "svelte/legacy";
-
   import type { SOEMOptions, TimerStrategy } from "./options.ts";
   import { TimerStrategyValues } from "./options.ts";
 
@@ -48,31 +46,31 @@
   let stateCheckIntervalMs = $state(
     msFromDuration(soemOptions.state_check_interval),
   );
-  run(() => {
+  $effect(() => {
     soemOptions.state_check_interval = msToDuration(stateCheckIntervalMs);
   });
 
   let sendUs = $state(usFromDuration(soemOptions.send));
-  run(() => {
+  $effect(() => {
     soemOptions.send = usToDuration(sendUs);
   });
   let sync0Us = $state(usFromDuration(soemOptions.sync0));
-  run(() => {
+  $effect(() => {
     soemOptions.sync0 = usToDuration(sync0Us);
   });
 
   let syncToleranceUs = $state(usFromDuration(soemOptions.sync_tolerance));
-  run(() => {
+  $effect(() => {
     soemOptions.sync_tolerance = usToDuration(syncToleranceUs);
   });
   let syncTimeoutS = $state(sFromDuration(soemOptions.sync_timeout));
-  run(() => {
+  $effect(() => {
     soemOptions.sync_timeout = sToDuration(syncTimeoutS);
   });
 
   let adapterNames: string[] = $state([]);
   let adapterName: string = $state("Auto");
-  run(() => {
+  $effect(() => {
     if (adapterName == "Auto") {
       soemOptions.ifname = "Auto";
     } else {
@@ -126,7 +124,7 @@
       handleCloseClick();
     });
     command.on("close", async (data) => {
-      if (data.code < -1) {
+      if (data.code != null && data.code < -1) {
         alert(`SOEMAUTDServer exited with code ${data.code}`);
       }
       handleCloseClick();

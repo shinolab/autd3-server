@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { run } from "svelte/legacy";
-
   import type { TwinCATOptions } from "./options.ts";
 
   import { Command, Child } from "@tauri-apps/plugin-shell";
@@ -13,8 +11,6 @@
   import NumberInput from "./utils/NumberInput.svelte";
   import IpInput from "./utils/IpInput.svelte";
 
-  import { usFromDuration, usToDuration } from "./utils/duration.ts";
-
   interface Props {
     twincatOptions: TwinCATOptions;
   }
@@ -22,15 +18,15 @@
   let { twincatOptions = $bindable() }: Props = $props();
 
   let baseUs = $state(twincatOptions.base * 500);
-  run(() => {
+  $effect(() => {
     twincatOptions.base = baseUs / 500;
   });
   let sync0Us = $state(twincatOptions.sync0 * 500);
-  run(() => {
+  $effect(() => {
     twincatOptions.sync0 = sync0Us / 500;
   });
   let taskUs = $state(twincatOptions.task * 500);
-  run(() => {
+  $effect(() => {
     twincatOptions.task = taskUs / 500;
   });
 
