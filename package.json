@@ -13,9 +13,9 @@
     "@tauri-apps/api": "^2.1.1",
     "@tauri-apps/plugin-dialog": "^2.0.1",
     "@tauri-apps/plugin-fs": "^2.0.1",
-    "@tauri-apps/plugin-notification": "^2.0.0",
-    "@tauri-apps/plugin-os": "^2.2.0",
-    "@tauri-apps/plugin-shell": "^2.0.1",
+    "@tauri-apps/plugin-notification": "^2.2.0",
+    "@tauri-apps/plugin-os": "^2.0.0",
+    "@tauri-apps/plugin-shell": "^2.2.0",
     "svelte-tabs": "^1.1.0",
     "the-new-css-reset": "^1.11.3"
   },
