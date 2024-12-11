@@ -110,35 +110,35 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 29.0.0-rc.8 (MIT)
+autd3 29.0.0-rc.11 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 29.0.0-rc.8 (MIT)
+autd3-derive 29.0.0-rc.11 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 29.0.0-rc.8 (MIT)
+autd3-driver 29.0.0-rc.11 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 29.0.0-rc.8 (MIT)
+autd3-firmware-emulator 29.0.0-rc.11 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 29.0.0-rc.8 (MIT)
+autd3-gain-holo 29.0.0-rc.11 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 29.0.0-rc.8 (MIT)
+autd3-link-soem 29.0.0-rc.11
 https://github.com/shinolab/autd3-link-soem
 ---------------------------------------------------------
 
-autd3-protobuf 29.0.0-rc.8 (MIT)
+autd3-protobuf 29.0.0-rc.11 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-server 29.0.0-rc.8 (MIT)
+autd3-server 29.0.0-rc.11 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
