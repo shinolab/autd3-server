@@ -36,7 +36,6 @@ export interface SimulatorOptions {
     window_height: number;
     unity: boolean;
     lightweight: boolean;
-    lightweight_port: number;
 }
 
 export interface Options {

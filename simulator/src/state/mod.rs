@@ -72,7 +72,6 @@ pub struct State {
     pub time_scale: f32,
     pub port: u16,
     pub lightweight: bool,
-    pub lightweight_port: u16,
     pub vsync: bool,
     pub settings_dir: String,
     pub time_step: i32,
@@ -108,7 +107,6 @@ impl std::default::Default for State {
             time_scale: 1.0,
             port: 8080,
             lightweight: false,
-            lightweight_port: 8081,
             vsync: true,
             settings_dir: String::new(),
             time_step: 1000000,
@@ -145,7 +143,6 @@ impl State {
         self.time_scale = state.time_scale;
         self.port = state.port;
         self.lightweight = state.lightweight;
-        self.lightweight_port = state.lightweight_port;
         self.vsync = state.vsync;
         self.settings_dir = state.settings_dir;
         self.debug = state.debug;
