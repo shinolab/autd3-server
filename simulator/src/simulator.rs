@@ -1,6 +1,5 @@
 use std::{sync::Arc, time::Instant};
 
-use egui::{mutex::Mutex, ViewportInfo};
 use parking_lot::RwLock;
 use tokio::runtime::{Builder, Runtime};
 use wgpu::InstanceFlags;
@@ -25,7 +24,7 @@ pub struct Simulator {
     server: Option<Server>,
     emulator: EmulatorWrapper,
     instance: wgpu::Instance,
-    repaint_proxy: Arc<Mutex<EventLoopProxy<UserEvent>>>,
+    repaint_proxy: Option<EventLoopProxy<UserEvent>>,
     windows_next_repaint_time: Option<Instant>,
     window: Option<Arc<Window>>,
     renderer: Option<Renderer>,
@@ -60,7 +59,7 @@ impl Simulator {
         let mut app = Self {
             runtime,
             instance,
-            repaint_proxy: Arc::new(Mutex::new(event_loop.create_proxy())),
+            repaint_proxy: Some(event_loop.create_proxy()),
             server: Some(server),
             emulator: EmulatorWrapper::new(rx_buf),
             windows_next_repaint_time: None,
@@ -101,26 +100,9 @@ impl Simulator {
     fn init_run_state(&mut self, egui_ctx: egui::Context, window: Window) -> Result<()> {
         let window = Arc::new(window);
 
-        {
-            let event_loop_proxy = self.repaint_proxy.clone();
-            egui_ctx.set_request_repaint_callback(move |info| {
-                let when = Instant::now() + info.delay;
-                let cumulative_pass_nr = info.current_cumulative_pass_nr;
-                event_loop_proxy
-                    .lock()
-                    .send_event(UserEvent::RequestRepaint {
-                        when,
-                        cumulative_pass_nr,
-                    })
-                    .ok();
-            });
-        }
-
-        let mut info = ViewportInfo::default();
-        egui_winit::update_viewport_info(&mut info, &egui_ctx, &window, true);
-
         self.renderer = Some(self.runtime.block_on(Renderer::new(
             &self.instance,
+            self.repaint_proxy.take().unwrap(),
             egui_ctx,
             window.clone(),
             self.state.window_size.0,
