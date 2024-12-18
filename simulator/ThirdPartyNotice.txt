@@ -14,6 +14,10 @@ ab_glyph_rasterizer 0.1.8 (Apache-2.0)
 https://github.com/alexheretic/ab-glyph
 ---------------------------------------------------------
 
+accesskit 0.17.1 (Apache-2.0 OR MIT)
+https://github.com/AccessKit/accesskit
+---------------------------------------------------------
+
 addr2line 0.24.2 (Apache-2.0 OR MIT)
 https://github.com/gimli-rs/addr2line
 ---------------------------------------------------------
@@ -34,16 +38,12 @@ allocator-api2 0.2.21 (Apache-2.0 OR MIT)
 https://github.com/zakarumych/allocator-api2
 ---------------------------------------------------------
 
-android-activity 0.5.2 (Apache-2.0 OR MIT)
+android-activity 0.6.0 (Apache-2.0 OR MIT)
 https://github.com/rust-mobile/android-activity
 ---------------------------------------------------------
 
 android-properties 0.2.2 (MIT)
 https://github.com/miklelappo/android-properties
----------------------------------------------------------
-
-android-tzdata 0.1.1 (Apache-2.0 OR MIT)
-https://github.com/RumovZ/android-tzdata
 ---------------------------------------------------------
 
 android_system_properties 0.1.5 (Apache-2.0 OR MIT)
@@ -78,16 +78,8 @@ approx 0.5.1 (Apache-2.0)
 https://github.com/brendanzab/approx
 ---------------------------------------------------------
 
-arrayref 0.3.9 (BSD-2-Clause)
-https://github.com/droundy/arrayref
----------------------------------------------------------
-
 arrayvec 0.7.6 (Apache-2.0 OR MIT)
 https://github.com/bluss/arrayvec
----------------------------------------------------------
-
-as-raw-xcb-connection 1.0.1 (Apache-2.0 OR MIT)
-https://github.com/psychon/as-raw-xcb-connection
 ---------------------------------------------------------
 
 ash 0.38.0+1.3.281 (Apache-2.0 OR MIT)
@@ -182,11 +174,7 @@ block 0.1.6 (MIT)
 http://github.com/SSheldon/rust-block
 ---------------------------------------------------------
 
-block-sys 0.2.1 (MIT)
-https://github.com/madsmtm/objc2
----------------------------------------------------------
-
-block2 0.3.0 (MIT)
+block2 0.5.1 (MIT)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
@@ -218,11 +206,11 @@ bytes 1.9.0 (MIT)
 https://github.com/tokio-rs/bytes
 ---------------------------------------------------------
 
-calloop 0.12.4 (MIT)
+calloop 0.13.0 (MIT)
 https://github.com/Smithay/calloop
 ---------------------------------------------------------
 
-calloop-wayland-source 0.2.0 (MIT)
+calloop-wayland-source 0.3.0 (MIT)
 https://github.com/smithay/calloop-wayland-source
 ---------------------------------------------------------
 
@@ -236,10 +224,6 @@ https://github.com/emk/cesu8-rs
 
 cfg-if 1.0.0 (Apache-2.0 OR MIT)
 https://github.com/alexcrichton/cfg-if
----------------------------------------------------------
-
-chrono 0.4.39 (Apache-2.0 OR MIT)
-https://github.com/chronotope/chrono
 ---------------------------------------------------------
 
 clap 4.5.23 (Apache-2.0 OR MIT)
@@ -298,11 +282,7 @@ critical-section 1.2.0 (Apache-2.0 OR MIT)
 https://github.com/rust-embedded/critical-section
 ---------------------------------------------------------
 
-crossbeam-channel 0.5.13 (Apache-2.0 OR MIT)
-https://github.com/crossbeam-rs/crossbeam
----------------------------------------------------------
-
-crossbeam-deque 0.8.5 (Apache-2.0 OR MIT)
+crossbeam-deque 0.8.6 (Apache-2.0 OR MIT)
 https://github.com/crossbeam-rs/crossbeam
 ---------------------------------------------------------
 
@@ -310,7 +290,7 @@ crossbeam-epoch 0.9.18 (Apache-2.0 OR MIT)
 https://github.com/crossbeam-rs/crossbeam
 ---------------------------------------------------------
 
-crossbeam-utils 0.8.20 (Apache-2.0 OR MIT)
+crossbeam-utils 0.8.21 (Apache-2.0 OR MIT)
 https://github.com/crossbeam-rs/crossbeam
 ---------------------------------------------------------
 
@@ -358,12 +338,52 @@ downcast-rs 1.2.1 (Apache-2.0 OR MIT)
 https://github.com/marcianx/downcast-rs
 ---------------------------------------------------------
 
+dpi 0.1.1 (Apache-2.0)
+https://github.com/rust-windowing/winit
+---------------------------------------------------------
+
 earcutr 0.4.3 (ISC)
 https://github.com/frewsxcv/earcutr/
 ---------------------------------------------------------
 
+ecolor 0.30.0 (Apache-2.0 OR MIT)
+https://github.com/emilk/egui
+---------------------------------------------------------
+
+egui 0.30.0 (Apache-2.0 OR MIT)
+https://github.com/emilk/egui
+---------------------------------------------------------
+
+egui-wgpu 0.30.0 (Apache-2.0 OR MIT)
+https://github.com/emilk/egui/tree/master/crates/egui-wgpu
+---------------------------------------------------------
+
+egui-winit 0.30.0 (Apache-2.0 OR MIT)
+https://github.com/emilk/egui/tree/master/crates/egui-winit
+---------------------------------------------------------
+
+egui_plot 0.30.0 (Apache-2.0 OR MIT)
+https://github.com/emilk/egui_plot
+---------------------------------------------------------
+
 either 1.13.0 (Apache-2.0 OR MIT)
 https://github.com/rayon-rs/either
+---------------------------------------------------------
+
+emath 0.30.0 (Apache-2.0 OR MIT)
+https://github.com/emilk/egui/tree/master/crates/emath
+---------------------------------------------------------
+
+enumn 0.1.14 (Apache-2.0 OR MIT)
+https://github.com/dtolnay/enumn
+---------------------------------------------------------
+
+epaint 0.30.0 (Apache-2.0 OR MIT)
+https://github.com/emilk/egui/tree/master/crates/epaint
+---------------------------------------------------------
+
+epaint_default_fonts 0.30.0 ((MIT OR Apache-2.0) AND OFL-1.1 AND LicenseRef-UFL-1.0)
+https://github.com/emilk/egui/tree/master/crates/epaint_default_fonts
 ---------------------------------------------------------
 
 equivalent 1.0.1 (Apache-2.0 OR MIT)
@@ -444,10 +464,6 @@ https://github.com/georust/geo
 
 geographiclib-rs 0.2.4 (MIT)
 https://github.com/georust/geographiclib-rs
----------------------------------------------------------
-
-gethostname 0.4.3 (Apache-2.0)
-https://github.com/swsnr/gethostname.rs.git
 ---------------------------------------------------------
 
 getrandom 0.2.15 (Apache-2.0 OR MIT)
@@ -546,7 +562,7 @@ httpdate 1.0.3 (Apache-2.0 OR MIT)
 https://github.com/pyfisch/httpdate
 ---------------------------------------------------------
 
-hyper 1.5.1 (MIT)
+hyper 1.5.2 (MIT)
 https://github.com/hyperium/hyper
 ---------------------------------------------------------
 
@@ -556,18 +572,6 @@ https://github.com/hjr3/hyper-timeout
 
 hyper-util 0.1.10 (MIT)
 https://github.com/hyperium/hyper-util
----------------------------------------------------------
-
-iana-time-zone 0.1.61 (Apache-2.0 OR MIT)
-https://github.com/strawlab/iana-time-zone
----------------------------------------------------------
-
-iana-time-zone-haiku 0.1.2 (Apache-2.0 OR MIT)
-https://github.com/strawlab/iana-time-zone
----------------------------------------------------------
-
-icrate 0.0.4 (MIT)
-https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
 image 0.25.5 (Apache-2.0 OR MIT)
@@ -690,7 +694,7 @@ minimal-lexical 0.2.1 (Apache-2.0 OR MIT)
 https://github.com/Alexhuszagh/minimal-lexical
 ---------------------------------------------------------
 
-miniz_oxide 0.8.0 (Apache-2.0 OR MIT OR Zlib)
+miniz_oxide 0.8.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide
 ---------------------------------------------------------
 
@@ -698,7 +702,7 @@ mio 1.0.3 (MIT)
 https://github.com/tokio-rs/mio
 ---------------------------------------------------------
 
-naga 23.0.0 (Apache-2.0 OR MIT)
+naga 23.1.0 (Apache-2.0 OR MIT)
 https://github.com/gfx-rs/wgpu/tree/trunk/naga
 ---------------------------------------------------------
 
@@ -714,7 +718,7 @@ nalgebra-macros 0.2.2 (Apache-2.0)
 https://github.com/dimforge/nalgebra
 ---------------------------------------------------------
 
-ndk 0.8.0 (Apache-2.0 OR MIT)
+ndk 0.9.0 (Apache-2.0 OR MIT)
 https://github.com/rust-mobile/ndk
 ---------------------------------------------------------
 
@@ -724,6 +728,14 @@ https://github.com/rust-windowing/android-ndk-rs
 
 ndk-sys 0.5.0+25.2.9519653 (Apache-2.0 OR MIT)
 https://github.com/rust-mobile/ndk
+---------------------------------------------------------
+
+ndk-sys 0.6.0+11769913 (Apache-2.0 OR MIT)
+https://github.com/rust-mobile/ndk
+---------------------------------------------------------
+
+nohash-hasher 0.2.0 (Apache-2.0 OR MIT)
+https://github.com/paritytech/nohash-hasher
 ---------------------------------------------------------
 
 nom 7.1.3 (MIT)
@@ -782,11 +794,67 @@ objc-sys 0.3.5 (MIT)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2 0.4.1 (MIT)
+objc2 0.5.2 (MIT)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2-encode 3.0.0 (MIT)
+objc2-app-kit 0.2.2 (MIT)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-cloud-kit 0.2.2 (MIT)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-contacts 0.2.2 (MIT)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-core-data 0.2.2 (MIT)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-core-image 0.2.2 (MIT)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-core-location 0.2.2 (MIT)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-encode 4.0.3 (MIT)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-foundation 0.2.2 (MIT)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-link-presentation 0.2.2 (MIT)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-metal 0.2.2 (MIT)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-quartz-core 0.2.2 (MIT)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-symbols 0.2.2 (MIT)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-ui-kit 0.2.2 (MIT)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-uniform-type-identifiers 0.2.2 (MIT)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-user-notifications 0.2.2 (MIT)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
@@ -942,7 +1010,7 @@ rayon-core 1.12.1 (Apache-2.0 OR MIT)
 https://github.com/rayon-rs/rayon
 ---------------------------------------------------------
 
-redox_syscall 0.3.5 (MIT)
+redox_syscall 0.4.1 (MIT)
 https://gitlab.redox-os.org/redox-os/syscall
 ---------------------------------------------------------
 
@@ -1017,10 +1085,6 @@ scopeguard 1.2.0 (Apache-2.0 OR MIT)
 https://github.com/bluss/scopeguard
 ---------------------------------------------------------
 
-sctk-adwaita 0.8.3 (MIT)
-https://github.com/PolyMeilex/sctk-adwaita
----------------------------------------------------------
-
 seq-macro 0.3.5 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/seq-macro
 ---------------------------------------------------------
@@ -1077,7 +1141,7 @@ smallvec 1.13.2 (Apache-2.0 OR MIT)
 https://github.com/servo/rust-smallvec
 ---------------------------------------------------------
 
-smithay-client-toolkit 0.18.1 (MIT)
+smithay-client-toolkit 0.19.2 (MIT)
 https://github.com/smithay/client-toolkit
 ---------------------------------------------------------
 
@@ -1093,7 +1157,7 @@ spin 0.9.8 (MIT)
 https://github.com/mvdnes/spin-rs.git
 ---------------------------------------------------------
 
-spin_sleep 1.2.1 (Apache-2.0)
+spin_sleep 1.3.0 (Apache-2.0)
 https://github.com/alexheretic/spin-sleep
 ---------------------------------------------------------
 
@@ -1107,10 +1171,6 @@ https://github.com/storyyeller/stable_deref_trait
 
 static_assertions 1.1.0 (Apache-2.0 OR MIT)
 https://github.com/nvzqz/static-assertions-rs
----------------------------------------------------------
-
-strict-num 0.1.1 (MIT)
-https://github.com/RazrFalcon/strict-num
 ---------------------------------------------------------
 
 strsim 0.11.1 (MIT)
@@ -1137,11 +1197,15 @@ termcolor 1.4.1 (MIT OR Unlicense)
 https://github.com/BurntSushi/termcolor
 ---------------------------------------------------------
 
+terminal_size 0.4.1 (Apache-2.0 OR MIT)
+https://github.com/eminence/terminal-size
+---------------------------------------------------------
+
 thiserror 1.0.69 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
-thiserror 2.0.6 (Apache-2.0 OR MIT)
+thiserror 2.0.8 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
@@ -1149,7 +1213,7 @@ thiserror-impl 1.0.69 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
-thiserror-impl 2.0.6 (Apache-2.0 OR MIT)
+thiserror-impl 2.0.8 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
@@ -1167,14 +1231,6 @@ https://github.com/time-rs/time
 
 time-macros 0.2.19 (Apache-2.0 OR MIT)
 https://github.com/time-rs/time
----------------------------------------------------------
-
-tiny-skia 0.11.4 (BSD-3-Clause)
-https://github.com/RazrFalcon/tiny-skia
----------------------------------------------------------
-
-tiny-skia-path 0.11.4 (BSD-3-Clause)
-https://github.com/RazrFalcon/tiny-skia/tree/master/path
 ---------------------------------------------------------
 
 tokio 1.42.0 (MIT)
@@ -1251,6 +1307,10 @@ https://github.com/harfbuzz/ttf-parser
 
 tynm 0.1.10 (Apache-2.0 OR MIT)
 https://github.com/azriel91/tynm
+---------------------------------------------------------
+
+type-map 0.5.0 (Apache-2.0 OR MIT)
+https://github.com/kardeiz/type-map
 ---------------------------------------------------------
 
 typenum 1.17.0 (Apache-2.0 OR MIT)
@@ -1333,15 +1393,15 @@ wayland-cursor 0.31.7 (MIT)
 https://github.com/smithay/wayland-rs
 ---------------------------------------------------------
 
-wayland-protocols 0.31.2 (MIT)
+wayland-protocols 0.32.5 (MIT)
 https://github.com/smithay/wayland-rs
 ---------------------------------------------------------
 
-wayland-protocols-plasma 0.2.0 (MIT)
+wayland-protocols-plasma 0.3.5 (MIT)
 https://github.com/smithay/wayland-rs
 ---------------------------------------------------------
 
-wayland-protocols-wlr 0.2.0 (MIT)
+wayland-protocols-wlr 0.3.5 (MIT)
 https://github.com/smithay/wayland-rs
 ---------------------------------------------------------
 
@@ -1357,7 +1417,7 @@ web-sys 0.3.76 (Apache-2.0 OR MIT)
 https://github.com/rustwasm/wasm-bindgen/tree/master/crates/web-sys
 ---------------------------------------------------------
 
-web-time 0.2.4 (Apache-2.0 OR MIT)
+web-time 1.1.0 (Apache-2.0 OR MIT)
 https://github.com/daxpedda/web-time
 ---------------------------------------------------------
 
@@ -1401,10 +1461,6 @@ windows 0.58.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-core 0.52.0 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
 windows-core 0.58.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
@@ -1429,10 +1485,6 @@ windows-sys 0.45.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-sys 0.48.0 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
 windows-sys 0.52.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
@@ -1445,19 +1497,11 @@ windows-targets 0.42.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-targets 0.48.5 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
 windows-targets 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
 windows_aarch64_gnullvm 0.42.2 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
-windows_aarch64_gnullvm 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1469,19 +1513,11 @@ windows_aarch64_msvc 0.42.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_aarch64_msvc 0.48.5 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
 windows_aarch64_msvc 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
 windows_i686_gnu 0.42.2 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
-windows_i686_gnu 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1497,19 +1533,11 @@ windows_i686_msvc 0.42.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_i686_msvc 0.48.5 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
 windows_i686_msvc 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
 windows_x86_64_gnu 0.42.2 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
-windows_x86_64_gnu 0.48.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1521,10 +1549,6 @@ windows_x86_64_gnullvm 0.42.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_gnullvm 0.48.5 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
 windows_x86_64_gnullvm 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
@@ -1533,32 +1557,16 @@ windows_x86_64_msvc 0.42.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_msvc 0.48.5 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
 windows_x86_64_msvc 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-winit 0.29.15 (Apache-2.0)
+winit 0.30.5 (Apache-2.0)
 https://github.com/rust-windowing/winit
 ---------------------------------------------------------
 
 winnow 0.6.20 (MIT)
 https://github.com/winnow-rs/winnow
----------------------------------------------------------
-
-x11-dl 2.21.0 (MIT)
-https://github.com/AltF02/x11-rs.git
----------------------------------------------------------
-
-x11rb 0.13.1 (Apache-2.0 OR MIT)
-https://github.com/psychon/x11rb
----------------------------------------------------------
-
-x11rb-protocol 0.13.1 (Apache-2.0 OR MIT)
-https://github.com/psychon/x11rb
 ---------------------------------------------------------
 
 xcursor 0.3.8 (MIT)
@@ -2072,6 +2080,109 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+---------------------------------------------------------
+
+OFL
+
+---
+
+Copyright (c) <dates>, <Copyright Holder> (<URL|email>),
+with Reserved Font Name <Reserved Font Name>.
+Copyright (c) <dates>, <additional Copyright Holder> (<URL|email>),
+with Reserved Font Name <additional Reserved Font Name>.
+Copyright (c) <dates>, <additional Copyright Holder> (<URL|email>).
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded, 
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
 ---------------------------------------------------------
 
 Unicode-3.0
