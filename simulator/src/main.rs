@@ -126,9 +126,6 @@ fn main() -> anyhow::Result<()> {
     }
 
     let event_loop = winit::event_loop::EventLoop::with_user_event().build()?;
-
-    state.debug = true;
-
     let state = Simulator::run(event_loop, state)?;
 
     {
