@@ -5,7 +5,3 @@ license_file_url = "https://raw.githubusercontent.com/shinolab/autd3-rs/master/a
 [[package]]
 name = "autd3-link-twincat"
 license_file_url = "https://raw.githubusercontent.com/shinolab/autd3-rs/master/autd3-link-twincat/LICENSE"
-
-[[package]]
-name = "imgui-wgpu-rs"
-license_file_url = "https://raw.githubusercontent.com/Yatekii/imgui-wgpu-rs/refs/heads/master/LICENSE.md"

@@ -5,10 +5,9 @@ use std::{
     path::Path,
 };
 
-use simulator::{Simulator, State};
-
 use clap::Parser;
-use tracing_core::LevelFilter;
+use simulator::{Simulator, State};
+use tracing::level_filters::LevelFilter;
 use tracing_subscriber::{fmt, layer::SubscriberExt, util::SubscriberInitExt, EnvFilter};
 
 fn parse_key_val<T, U>(s: &str) -> Result<(T, U), Box<dyn Error + Send + Sync + 'static>>
@@ -54,17 +53,12 @@ struct Args {
     #[arg(long = "lightweight", default_value = "false")]
     lightweight: Option<bool>,
 
-    /// lightweight port
-    #[arg(long = "lightweight_port")]
-    lightweight_port: Option<u16>,
-
     /// Debug mode
     #[arg(short = 'd', long = "debug", default_value = "false")]
     debug: bool,
 }
 
-#[tokio::main]
-async fn main() -> anyhow::Result<()> {
+fn main() -> anyhow::Result<()> {
     let arg = Args::parse();
 
     let port = arg.port;
@@ -76,13 +70,12 @@ async fn main() -> anyhow::Result<()> {
     };
     let vsync = arg.vsync;
     let lightweight = arg.lightweight;
-    let lightweight_port = arg.lightweight_port;
     let debug = arg.debug;
 
     let filter = if debug {
         EnvFilter::builder()
             .with_default_directive(LevelFilter::DEBUG.into())
-            .parse("wgpu_core=debug,simulator=debug")?
+            .parse("wgpu_core=warn,simulator=debug")?
     } else {
         EnvFilter::builder()
             .with_default_directive(LevelFilter::INFO.into())
@@ -115,6 +108,7 @@ async fn main() -> anyhow::Result<()> {
         Default::default()
     };
 
+    state.debug = debug;
     if let Some(port) = port {
         state.port = port;
     }
@@ -130,11 +124,12 @@ async fn main() -> anyhow::Result<()> {
     if let Some(lightweight) = lightweight {
         state.lightweight = lightweight;
     }
-    if let Some(port) = lightweight_port {
-        state.lightweight_port = port;
-    }
 
-    let state = Simulator::new(state).await?.run()?;
+    let event_loop = winit::event_loop::EventLoop::with_user_event().build()?;
+
+    state.debug = true;
+
+    let state = Simulator::run(event_loop, state)?;
 
     {
         let settings_str = serde_json::to_string_pretty(&state)?;

@@ -638,10 +638,6 @@ syn 2.0.90 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
-sync_wrapper 0.1.2 (Apache-2.0)
-https://github.com/Actyx/sync_wrapper
----------------------------------------------------------
-
 sync_wrapper 1.0.2 (Apache-2.0)
 https://github.com/Actyx/sync_wrapper
 ---------------------------------------------------------
@@ -702,7 +698,7 @@ tower 0.4.13 (MIT)
 https://github.com/tower-rs/tower
 ---------------------------------------------------------
 
-tower 0.5.1 (MIT)
+tower 0.5.2 (MIT)
 https://github.com/tower-rs/tower
 ---------------------------------------------------------
 
