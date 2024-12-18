@@ -231,6 +231,8 @@ impl Simulator {
             if emulator.initialized() && state.auto_play {
                 if cfg!(target_os = "windows") {
                     window.request_redraw();
+                } else {
+                    return Ok(EventResult::RepaintNow);
                 }
             }
 
