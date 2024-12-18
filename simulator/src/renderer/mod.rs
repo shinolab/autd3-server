@@ -78,11 +78,11 @@ impl Renderer {
             width,
             height,
             present_mode: if state.vsync {
-                wgpu::PresentMode::Fifo
+                wgpu::PresentMode::AutoVsync
             } else {
-                wgpu::PresentMode::Immediate
+                wgpu::PresentMode::AutoNoVsync
             },
-            desired_maximum_frame_latency: 2,
+            desired_maximum_frame_latency: 0,
             alpha_mode: swapchain_capabilities.alpha_modes[0],
             view_formats: vec![wgpu::TextureFormat::Bgra8UnormSrgb],
         };
