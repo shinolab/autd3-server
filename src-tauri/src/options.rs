@@ -66,7 +66,6 @@ pub struct SimulatorOptions {
     pub window_height: u32,
     pub unity: bool,
     pub lightweight: bool,
-    pub lightweight_port: u16,
 }
 
 impl Default for SimulatorOptions {
@@ -78,7 +77,6 @@ impl Default for SimulatorOptions {
             window_height: 600,
             unity: false,
             lightweight: false,
-            lightweight_port: 8081,
         }
     }
 }

@@ -17,14 +17,10 @@ pub struct TransState {
 
 #[derive(Debug, Default)]
 pub struct Transducers {
-    pub positions: Vec<Vector4>,
-    pub rotations: Vec<Quaternion>,
-    pub states: Vec<TransState>,
-    pub body_pointer: Vec<usize>,
-}
-
-pub struct SubTransducers<'a> {
-    pub states: &'a mut [TransState],
+    positions: Vec<Vector4>,
+    rotations: Vec<Quaternion>,
+    states: Vec<TransState>,
+    body_pointer: Vec<usize>,
 }
 
 impl Transducers {
@@ -37,6 +33,22 @@ impl Transducers {
         }
     }
 
+    pub fn len(&self) -> usize {
+        self.positions.len()
+    }
+
+    pub fn positions(&self) -> &[Vector4] {
+        &self.positions
+    }
+
+    pub fn rotations(&self) -> &[Quaternion] {
+        &self.rotations
+    }
+
+    pub fn states(&self) -> &[TransState] {
+        &self.states
+    }
+
     pub fn clear(&mut self) {
         self.positions.clear();
         self.rotations.clear();
@@ -44,15 +56,16 @@ impl Transducers {
         self.body_pointer.clear();
     }
 
-    pub fn device(&mut self, dev_idx: usize) -> SubTransducers {
-        let end = self.body_pointer[dev_idx + 1];
-        let start = self.body_pointer[dev_idx];
-        SubTransducers {
-            states: &mut self.states[start..end],
+    pub fn devices(&mut self) -> impl Iterator<Item = &mut [TransState]> {
+        unsafe {
+            let ptr = self.states.as_mut_ptr();
+            self.body_pointer
+                .windows(2)
+                .map(move |w| std::slice::from_raw_parts_mut(ptr.add(w[0]), w[1] - w[0]))
         }
     }
 
-    pub fn init(&mut self, geometry: Geometry) {
+    pub fn initialize(&mut self, geometry: &Geometry) {
         self.positions.clear();
         self.rotations.clear();
         self.states.clear();
@@ -60,7 +73,7 @@ impl Transducers {
 
         let mut body_cursor = 0;
         self.body_pointer.push(body_cursor);
-        geometry.into_iter().for_each(|dev| {
+        geometry.iter().for_each(|dev| {
             body_cursor += dev.num_transducers();
             self.body_pointer.push(body_cursor);
             let rot = dev.rotation();
@@ -84,7 +97,7 @@ impl Transducers {
         });
     }
 
-    pub fn update_geometry(&mut self, geometry: Geometry) {
+    pub fn update_geometry(&mut self, geometry: &Geometry) {
         let mut cursor = 0;
         geometry.into_iter().for_each(|dev| {
             let rot = to_gl_rot(Quaternion::from_xyzw(

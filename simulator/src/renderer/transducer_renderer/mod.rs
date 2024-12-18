@@ -1,15 +1,15 @@
 use autd3_driver::autd3_device::AUTD3;
 use bytemuck::{Pod, Zeroable};
+use egui_wgpu::wgpu;
 use image::{ImageBuffer, Rgba};
 use std::{borrow::Cow, f32::consts::PI, mem};
-use wgpu::{util::DeviceExt, RenderPass};
+use wgpu::{util::DeviceExt, Device, Queue, RenderPass, SurfaceConfiguration};
 
 use crate::{
     common::color::{Color, Hsv},
-    context::Context,
-    state::State,
-    surface::SurfaceWrapper,
-    Matrix4, SimulatorError, Vector3, Vector4,
+    emulator::EmulatorWrapper,
+    error::SimulatorError,
+    Matrix4, Vector3, Vector4,
 };
 
 use super::DepthTexture;
@@ -71,61 +71,55 @@ fn coloring_hsv(h: f32, v: f32, a: f32) -> [f32; 4] {
 }
 
 impl TransducerRenderer {
-    pub fn new(surface: &SurfaceWrapper, context: &Context) -> Result<Self, SimulatorError> {
+    pub fn new(
+        device: &Device,
+        queue: &Queue,
+        surface_config: &SurfaceConfiguration,
+    ) -> Result<Self, SimulatorError> {
         let vertex_size = mem::size_of::<Vertex>();
         let (vertex_data, index_data) = create_vertices();
 
-        let vertex_buf = context
-            .device()
-            .create_buffer_init(&wgpu::util::BufferInitDescriptor {
-                label: Some("Vertex Buffer"),
-                contents: bytemuck::cast_slice(&vertex_data),
-                usage: wgpu::BufferUsages::VERTEX,
-            });
-        let index_buf = context
-            .device()
-            .create_buffer_init(&wgpu::util::BufferInitDescriptor {
-                label: Some("Index Buffer"),
-                contents: bytemuck::cast_slice(&index_data),
-                usage: wgpu::BufferUsages::INDEX,
-            });
+        let vertex_buf = device.create_buffer_init(&wgpu::util::BufferInitDescriptor {
+            label: Some("Vertex Buffer"),
+            contents: bytemuck::cast_slice(&vertex_data),
+            usage: wgpu::BufferUsages::VERTEX,
+        });
+        let index_buf = device.create_buffer_init(&wgpu::util::BufferInitDescriptor {
+            label: Some("Index Buffer"),
+            contents: bytemuck::cast_slice(&index_data),
+            usage: wgpu::BufferUsages::INDEX,
+        });
 
-        let bind_group_layout =
-            context
-                .device()
-                .create_bind_group_layout(&wgpu::BindGroupLayoutDescriptor {
-                    label: None,
-                    entries: &[
-                        wgpu::BindGroupLayoutEntry {
-                            binding: 0,
-                            visibility: wgpu::ShaderStages::VERTEX,
-                            ty: wgpu::BindingType::Buffer {
-                                ty: wgpu::BufferBindingType::Uniform,
-                                has_dynamic_offset: false,
-                                min_binding_size: wgpu::BufferSize::new(64),
-                            },
-                            count: None,
-                        },
-                        wgpu::BindGroupLayoutEntry {
-                            binding: 1,
-                            visibility: wgpu::ShaderStages::FRAGMENT,
-                            ty: wgpu::BindingType::Texture {
-                                multisampled: false,
-                                sample_type: wgpu::TextureSampleType::Float { filterable: true },
-                                view_dimension: wgpu::TextureViewDimension::D2,
-                            },
-                            count: None,
-                        },
-                    ],
-                });
-        let pipeline_layout =
-            context
-                .device()
-                .create_pipeline_layout(&wgpu::PipelineLayoutDescriptor {
-                    label: None,
-                    bind_group_layouts: &[&bind_group_layout],
-                    push_constant_ranges: &[],
-                });
+        let bind_group_layout = device.create_bind_group_layout(&wgpu::BindGroupLayoutDescriptor {
+            label: None,
+            entries: &[
+                wgpu::BindGroupLayoutEntry {
+                    binding: 0,
+                    visibility: wgpu::ShaderStages::VERTEX,
+                    ty: wgpu::BindingType::Buffer {
+                        ty: wgpu::BufferBindingType::Uniform,
+                        has_dynamic_offset: false,
+                        min_binding_size: wgpu::BufferSize::new(64),
+                    },
+                    count: None,
+                },
+                wgpu::BindGroupLayoutEntry {
+                    binding: 1,
+                    visibility: wgpu::ShaderStages::FRAGMENT,
+                    ty: wgpu::BindingType::Texture {
+                        multisampled: false,
+                        sample_type: wgpu::TextureSampleType::Float { filterable: true },
+                        view_dimension: wgpu::TextureViewDimension::D2,
+                    },
+                    count: None,
+                },
+            ],
+        });
+        let pipeline_layout = device.create_pipeline_layout(&wgpu::PipelineLayoutDescriptor {
+            label: None,
+            bind_group_layouts: &[&bind_group_layout],
+            push_constant_ranges: &[],
+        });
 
         let ((width, height), texels) = create_texels()?;
         let texture_extent = wgpu::Extent3d {
@@ -133,7 +127,7 @@ impl TransducerRenderer {
             height,
             depth_or_array_layers: 1,
         };
-        let texture = context.device().create_texture(&wgpu::TextureDescriptor {
+        let texture = device.create_texture(&wgpu::TextureDescriptor {
             label: None,
             size: texture_extent,
             mip_level_count: 1,
@@ -144,7 +138,7 @@ impl TransducerRenderer {
             view_formats: &[],
         });
         let texture_view = texture.create_view(&wgpu::TextureViewDescriptor::default());
-        context.queue().write_texture(
+        queue.write_texture(
             texture.as_image_copy(),
             &texels,
             wgpu::ImageDataLayout {
@@ -155,36 +149,32 @@ impl TransducerRenderer {
             texture_extent,
         );
 
-        let proj_view_buf = context.device().create_buffer(&wgpu::BufferDescriptor {
+        let proj_view_buf = device.create_buffer(&wgpu::BufferDescriptor {
             label: Some("Projection View Buffer"),
             usage: wgpu::BufferUsages::UNIFORM | wgpu::BufferUsages::COPY_DST,
             size: size_of::<Matrix4>() as wgpu::BufferAddress,
             mapped_at_creation: false,
         });
 
-        let bind_group = context
-            .device()
-            .create_bind_group(&wgpu::BindGroupDescriptor {
-                layout: &bind_group_layout,
-                entries: &[
-                    wgpu::BindGroupEntry {
-                        binding: 0,
-                        resource: proj_view_buf.as_entire_binding(),
-                    },
-                    wgpu::BindGroupEntry {
-                        binding: 1,
-                        resource: wgpu::BindingResource::TextureView(&texture_view),
-                    },
-                ],
-                label: None,
-            });
+        let bind_group = device.create_bind_group(&wgpu::BindGroupDescriptor {
+            layout: &bind_group_layout,
+            entries: &[
+                wgpu::BindGroupEntry {
+                    binding: 0,
+                    resource: proj_view_buf.as_entire_binding(),
+                },
+                wgpu::BindGroupEntry {
+                    binding: 1,
+                    resource: wgpu::BindingResource::TextureView(&texture_view),
+                },
+            ],
+            label: None,
+        });
 
-        let shader = context
-            .device()
-            .create_shader_module(wgpu::ShaderModuleDescriptor {
-                label: None,
-                source: wgpu::ShaderSource::Wgsl(Cow::Borrowed(include_str!("shader.wgsl"))),
-            });
+        let shader = device.create_shader_module(wgpu::ShaderModuleDescriptor {
+            label: None,
+            source: wgpu::ShaderSource::Wgsl(Cow::Borrowed(include_str!("shader.wgsl"))),
+        });
 
         let vertex_buffers = [
             wgpu::VertexBufferLayout {
@@ -240,50 +230,47 @@ impl TransducerRenderer {
             },
         ];
 
-        let config = surface.config();
-        let pipeline = context
-            .device()
-            .create_render_pipeline(&wgpu::RenderPipelineDescriptor {
-                label: None,
-                layout: Some(&pipeline_layout),
-                vertex: wgpu::VertexState {
-                    module: &shader,
-                    entry_point: None,
-                    compilation_options: Default::default(),
-                    buffers: &vertex_buffers,
-                },
-                fragment: Some(wgpu::FragmentState {
-                    module: &shader,
-                    entry_point: None,
-                    compilation_options: Default::default(),
-                    targets: &[Some(wgpu::ColorTargetState {
-                        format: config.view_formats[0],
-                        blend: Some(wgpu::BlendState {
-                            color: wgpu::BlendComponent {
-                                src_factor: wgpu::BlendFactor::SrcAlpha,
-                                dst_factor: wgpu::BlendFactor::OneMinusSrcAlpha,
-                                operation: wgpu::BlendOperation::Add,
-                            },
-                            alpha: wgpu::BlendComponent::OVER,
-                        }),
-                        write_mask: wgpu::ColorWrites::ALL,
-                    })],
-                }),
-                primitive: wgpu::PrimitiveState {
-                    cull_mode: None,
-                    ..Default::default()
-                },
-                depth_stencil: Some(wgpu::DepthStencilState {
-                    format: DepthTexture::DEPTH_FORMAT,
-                    depth_write_enabled: true,
-                    depth_compare: wgpu::CompareFunction::Less,
-                    stencil: wgpu::StencilState::default(),
-                    bias: wgpu::DepthBiasState::default(),
-                }),
-                multisample: wgpu::MultisampleState::default(),
-                multiview: None,
-                cache: None,
-            });
+        let pipeline = device.create_render_pipeline(&wgpu::RenderPipelineDescriptor {
+            label: None,
+            layout: Some(&pipeline_layout),
+            vertex: wgpu::VertexState {
+                module: &shader,
+                entry_point: None,
+                compilation_options: Default::default(),
+                buffers: &vertex_buffers,
+            },
+            fragment: Some(wgpu::FragmentState {
+                module: &shader,
+                entry_point: None,
+                compilation_options: Default::default(),
+                targets: &[Some(wgpu::ColorTargetState {
+                    format: surface_config.view_formats[0],
+                    blend: Some(wgpu::BlendState {
+                        color: wgpu::BlendComponent {
+                            src_factor: wgpu::BlendFactor::SrcAlpha,
+                            dst_factor: wgpu::BlendFactor::OneMinusSrcAlpha,
+                            operation: wgpu::BlendOperation::Add,
+                        },
+                        alpha: wgpu::BlendComponent::OVER,
+                    }),
+                    write_mask: wgpu::ColorWrites::ALL,
+                })],
+            }),
+            primitive: wgpu::PrimitiveState {
+                cull_mode: None,
+                ..Default::default()
+            },
+            depth_stencil: Some(wgpu::DepthStencilState {
+                format: DepthTexture::DEPTH_FORMAT,
+                depth_write_enabled: true,
+                depth_compare: wgpu::CompareFunction::Less,
+                stencil: wgpu::StencilState::default(),
+                bias: wgpu::DepthBiasState::default(),
+            }),
+            multisample: wgpu::MultisampleState::default(),
+            multiview: None,
+            cache: None,
+        });
 
         Ok(Self {
             vertex_buf,
@@ -298,16 +285,16 @@ impl TransducerRenderer {
         })
     }
 
-    pub fn update_camera(&mut self, proj_view: Matrix4, context: &Context) {
-        context.queue().write_buffer(
+    pub fn update_camera(&mut self, proj_view: Matrix4, queue: &Queue) {
+        queue.write_buffer(
             &self.proj_view_buf,
             0,
             bytemuck::cast_slice(proj_view.as_ref()),
         );
     }
 
-    pub fn resize(&mut self, proj_view: Matrix4, context: &Context) {
-        self.update_camera(proj_view, context);
+    pub fn resize(&mut self, proj_view: Matrix4, queue: &Queue) {
+        self.update_camera(proj_view, queue);
     }
 
     pub fn render(&mut self, pass: &mut RenderPass) {
@@ -320,15 +307,15 @@ impl TransducerRenderer {
         pass.draw_indexed(0..self.index_count as u32, 0, 0..self.instance_count);
     }
 
-    pub fn init(&mut self, state: &State, context: &Context) {
-        let instance_count = state.transducers.positions.len();
-        self.model_instance_buf = Some(context.device().create_buffer(&wgpu::BufferDescriptor {
+    pub fn initialize(&mut self, device: &Device, emulator: &EmulatorWrapper) {
+        let instance_count = emulator.transducers().len();
+        self.model_instance_buf = Some(device.create_buffer(&wgpu::BufferDescriptor {
             label: Some("Model Instance Buffer"),
             usage: wgpu::BufferUsages::VERTEX | wgpu::BufferUsages::COPY_DST,
             size: (size_of::<Matrix4>() * instance_count) as _,
             mapped_at_creation: false,
         }));
-        self.color_instance_buf = Some(context.device().create_buffer(&wgpu::BufferDescriptor {
+        self.color_instance_buf = Some(device.create_buffer(&wgpu::BufferDescriptor {
             label: Some("Color Instance Buffer"),
             usage: wgpu::BufferUsages::VERTEX | wgpu::BufferUsages::COPY_DST,
             size: (size_of::<Vector4>() * instance_count) as _,
@@ -337,12 +324,12 @@ impl TransducerRenderer {
         self.instance_count = instance_count as _;
     }
 
-    pub fn update_model(&mut self, state: &State, context: &Context) {
-        let instance_data = state
-            .transducers
-            .positions
+    pub fn update_model(&mut self, emulator: &EmulatorWrapper, queue: &Queue) {
+        let instance_data = emulator
+            .transducers()
+            .positions()
             .iter()
-            .zip(state.transducers.rotations.iter())
+            .zip(emulator.transducers().rotations().iter())
             .map(|(p, r)| {
                 Matrix4::from_rotation_translation(*r, p.truncate())
                     * Matrix4::from_scale(Vector3::new(
@@ -352,21 +339,21 @@ impl TransducerRenderer {
                     ))
             })
             .collect::<Vec<_>>();
-        context.queue().write_buffer(
+        queue.write_buffer(
             self.model_instance_buf.as_ref().unwrap(),
             0,
             bytemuck::cast_slice(instance_data.as_ref()),
         );
     }
 
-    pub fn update_color(&mut self, state: &State, context: &Context) {
-        let instance_data = state
-            .transducers
-            .states
+    pub fn update_color(&mut self, emulator: &EmulatorWrapper, queue: &Queue) {
+        let instance_data = emulator
+            .transducers()
+            .states()
             .iter()
             .map(|d| coloring_hsv(d.phase / (2.0 * PI), d.amp, d.alpha))
             .collect::<Vec<_>>();
-        context.queue().write_buffer(
+        queue.write_buffer(
             self.color_instance_buf.as_ref().unwrap(),
             0,
             bytemuck::cast_slice(instance_data.as_ref()),

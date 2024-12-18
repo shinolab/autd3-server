@@ -3,7 +3,7 @@ use scarlet::colormap::ColorMap as _;
 use serde::{Deserialize, Serialize};
 use strum::EnumIter;
 
-#[derive(Serialize, Deserialize, Debug, Clone, Hash, PartialEq, Eq, EnumIter)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, Hash, PartialEq, Eq, EnumIter)]
 pub enum ColorMap {
     Bluered,
     Breeze,

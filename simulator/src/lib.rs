@@ -1,16 +1,13 @@
 mod common;
-mod context;
+mod emulator;
 mod error;
-// `imgui_wgpu` mod is forked from [Yatekii/imgui-wgpu-rs](https://github.com/Yatekii/imgui-wgpu-rs)
-mod imgui_wgpu;
+mod event;
 mod renderer;
 mod server;
 mod simulator;
 mod state;
-mod surface;
 mod update_flag;
 
-pub use error::SimulatorError;
 pub use simulator::Simulator;
 pub use state::State;
 

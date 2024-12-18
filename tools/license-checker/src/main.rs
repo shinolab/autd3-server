@@ -7,19 +7,11 @@ fn main() -> anyhow::Result<()> {
         Path::new(env!("CARGO_MANIFEST_DIR")).join("license-file.toml"),
     )?;
 
-    let imgui_wgpu = (
-        "MIT",
-        r"imgui-wgpu-rs 0.24.0 (MIT)
-https://github.com/Yatekii/imgui-wgpu-rs
-Modification of the original version by Shun Suzuki <suzuki@hapis.k.u-tokyo.ac.jp>",
-    );
-    let notofont_dep = ("OFL", "Noto Sans v2.012 (OFL)");
-
     let changed = autd3_license_check::check(
         Path::new(env!("CARGO_MANIFEST_DIR")).join("../../simulator/Cargo.toml"),
         "ThirdPartyNotice",
         &license_file_map,
-        &[imgui_wgpu, notofont_dep],
+        &[],
     )?;
 
     let changed = autd3_license_check::check(
