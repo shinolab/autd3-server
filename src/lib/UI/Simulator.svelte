@@ -33,15 +33,14 @@
       "-p",
       simulatorOptions.port.toString(),
       "-v",
-      simulatorOptions.vsync ? "true" : "false",
+      simulatorOptions.vsync.toString(),
       "-s",
       setting_file,
       "--setting_dir",
       appConfigDirPath,
+      "--lightweight",
+      simulatorOptions.lightweight.toString(),
     ];
-    if (simulatorOptions.lightweight) {
-      args.push("--lightweight");
-    }
     command = simulatorOptions.unity
       ? Command.sidecar("simulator-unity", args)
       : Command.sidecar("simulator", args);

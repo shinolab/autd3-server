@@ -41,8 +41,8 @@ impl Simulator {
         let rx_buf = Arc::new(RwLock::default());
         let server = Server::new(
             &runtime,
-            8080,
-            true,
+            state.port,
+            state.lightweight,
             rx_buf.clone(),
             event_loop.create_proxy(),
         )?;
