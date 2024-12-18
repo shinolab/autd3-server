@@ -51,7 +51,7 @@ def server_build(args) -> None:  # noqa: ANN001
         create_dummy_if_not_exists("target/release/simulator")
         create_dummy_if_not_exists("target/release/SOEMAUTDServer")
         create_dummy_if_not_exists("target/release/TwinCATAUTDServerLightweight")
-        run_command(["npm", "run", "tauri", "build"], shell=config.is_windows())
+        run_command(["npm", "run", "tauri", "build", "--ci"], shell=config.is_windows())
 
 
 def server_lint(args) -> None:  # noqa: ANN001
