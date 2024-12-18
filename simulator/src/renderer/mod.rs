@@ -201,10 +201,6 @@ impl Renderer {
         queue.submit(Some(encoder.finish()));
         surface_texture.present();
 
-        if state.auto_play {
-            window.request_redraw();
-        }
-
         Ok(result)
     }
 
