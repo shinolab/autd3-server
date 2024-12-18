@@ -229,7 +229,9 @@ impl Simulator {
             let result = renderer.run_ui_and_paint(state, emulator, window, update_flag)?;
 
             if emulator.initialized() && state.auto_play {
-                return Ok(EventResult::RepaintNow);
+                if cfg!(target_os = "windows") {
+                    window.request_redraw();
+                }
             }
 
             Ok(result)
