@@ -136,8 +136,8 @@ impl Simulator {
         let system_time = self.state.system_time();
         self.emulator.update(system_time);
 
-        match event {
-            Some(UserEvent::Server(signal)) => match signal {
+        if let Some(UserEvent::Server(signal)) = event {
+            match signal {
                 crate::event::Signal::ConfigGeometry(geometry) => {
                     self.emulator.initialize(geometry);
                     self.renderer.as_mut().unwrap().initialize(&self.emulator);
@@ -170,8 +170,7 @@ impl Simulator {
                         self.state.port
                     );
                 }
-            },
-            _ => {}
+            }
         }
     }
 

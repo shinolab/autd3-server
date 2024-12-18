@@ -52,10 +52,10 @@ impl SliceState {
 #[derive(Debug, PartialEq, Default, Clone, Serialize, Deserialize)]
 pub enum Tab {
     #[default]
-    SLICE,
-    CAMERA,
-    CONFIG,
-    INFO,
+    Slice,
+    Camera,
+    Config,
+    Info,
 }
 
 #[derive(Serialize, Deserialize)]

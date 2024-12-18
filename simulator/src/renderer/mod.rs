@@ -295,7 +295,7 @@ impl Renderer {
                     let view_proj = Self::proj_view(camera, state, window);
                     self.transducer_renderer.resize(view_proj, queue);
                     self.slice_renderer.resize(view_proj, queue);
-                    self.depth_texture = DepthTexture::new(device, &surface_config);
+                    self.depth_texture = DepthTexture::new(device, surface_config);
                 }
             }
 

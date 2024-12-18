@@ -389,17 +389,17 @@ impl EguiRenderer {
             .default_open(true)
             .show(ctx, |ui| {
                 ui.horizontal(|ui| {
-                    ui.selectable_value(&mut state.tab, Tab::SLICE, "Slice");
-                    ui.selectable_value(&mut state.tab, Tab::CAMERA, "Camera");
-                    ui.selectable_value(&mut state.tab, Tab::CONFIG, "Config");
-                    ui.selectable_value(&mut state.tab, Tab::INFO, "Info");
+                    ui.selectable_value(&mut state.tab, Tab::Slice, "Slice");
+                    ui.selectable_value(&mut state.tab, Tab::Camera, "Camera");
+                    ui.selectable_value(&mut state.tab, Tab::Config, "Config");
+                    ui.selectable_value(&mut state.tab, Tab::Info, "Info");
                 });
                 ui.separator();
                 match state.tab {
-                    Tab::SLICE => Self::slice_tab(ui, state, update_flag),
-                    Tab::CAMERA => Self::camera_tab(ui, state, update_flag),
-                    Tab::CONFIG => Self::config_tab(ui, state, emulator, update_flag),
-                    Tab::INFO => Self::info_tab(ui, state, emulator, update_flag),
+                    Tab::Slice => Self::slice_tab(ui, state, update_flag),
+                    Tab::Camera => Self::camera_tab(ui, state, update_flag),
+                    Tab::Config => Self::config_tab(ui, state, emulator, update_flag),
+                    Tab::Info => Self::info_tab(ui, state, emulator, update_flag),
                 }
 
                 ui.separator();
