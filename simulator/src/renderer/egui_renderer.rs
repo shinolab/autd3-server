@@ -807,7 +807,6 @@ impl EguiRenderer {
                         }
 
                         if ui.checkbox(emulator.thermal, "").changed() {
-                            update_flag.set(UpdateFlag::UPDATE_DEVICE_INFO, true);
                             if *emulator.thermal {
                                 emulator.cpu.fpga_mut().assert_thermal_sensor();
                             } else {
