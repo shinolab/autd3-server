@@ -32,7 +32,7 @@ serde = { version = "1.0.216", default-features = false, features = ["derive"] }
 scarlet = { version = "1.2.0", default-features = false }
 strum = { version = "0.26.3", default-features = false, features = ["derive"] }
 parking_lot = { version = "0.12.3", default-features = false }
-bytemuck = { version = "1.20.0", default-features = false, features = ["derive"] }
+bytemuck = { version = "1.21.0", default-features = false, features = ["derive"] }
 egui-wgpu = { version = "0.30.0", default-features = false, features = ["wayland", "winit"] }
 serde_json = { version = "1.0.133", default-features = false, features = ["std"] }
 bitflags = { version = "2.6.0", default-features = false }
