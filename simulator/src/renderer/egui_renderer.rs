@@ -852,20 +852,20 @@ impl EguiRenderer {
                     if cpu.fpga().silencer_fixed_completion_steps_mode() {
                         ui.label(format!(
                             "Completion time intensity: {:?}",
-                            cpu.fpga().silencer_completion_steps().intensity()
+                            cpu.fpga().silencer_completion_steps().intensity
                         ));
                         ui.label(format!(
                             "Completion time phase: {:?}",
-                            cpu.fpga().silencer_completion_steps().phase()
+                            cpu.fpga().silencer_completion_steps().phase
                         ));
                     } else {
                         ui.label(format!(
                             "Update rate intensity: {}",
-                            cpu.fpga().silencer_update_rate().intensity()
+                            cpu.fpga().silencer_update_rate().intensity
                         ));
                         ui.label(format!(
                             "Update rate phase: {}",
-                            cpu.fpga().silencer_update_rate().phase()
+                            cpu.fpga().silencer_update_rate().phase
                         ));
                     }
                 });

@@ -149,7 +149,7 @@ async fn main_() -> anyhow::Result<()> {
                 TimerStrategyArg::SpinWait => TimerStrategy::SpinWait,
             };
             let buf_size = args.buf_size;
-            let f = move || -> autd3_link_soem::local::link_soem::SOEMBuilder {
+            let f = move || -> autd3_link_soem::local::SOEMBuilder {
                 autd3_link_soem::SOEM::builder()
                     .with_buf_size(buf_size)
                     .with_ifname(ifname.clone())

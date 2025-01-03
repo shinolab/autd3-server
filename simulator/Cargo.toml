@@ -1,6 +1,6 @@
 [package]
 name = "simulator"
-version = "29.0.0-rc.11"
+version = "29.0.0-rc.12"
 edition = "2021"
 authors = ["shun suzuki <suzuki@hapis.k.u-tokyo.ac.jp>"]
 
@@ -11,10 +11,10 @@ keywords = ["autd"]
 
 [dependencies]
 anyhow = { version = "1.0.94" }
-autd3-driver = { version = "29.0.0-rc.11", default-features = false, features = ["async-trait"] }
-autd3-firmware-emulator = { version = "29.0.0-rc.11", default-features = false, features = ["async-trait"] }
-autd3-link-simulator = { version = "29.0.0-rc.11", default-features = false, features = ["async-trait"] }
-autd3-protobuf = { version = "29.0.0-rc.11", default-features = false, features = ["async-trait", "lightweight"] }
+autd3-driver = { version = "29.0.0-rc.12", default-features = false, features = ["async-trait"] }
+autd3-firmware-emulator = { version = "29.0.0-rc.12", default-features = false, features = ["async-trait"] }
+autd3-link-simulator = { version = "29.0.0-rc.12", default-features = false, features = ["async-trait"] }
+autd3-protobuf = { version = "29.0.0-rc.12", default-features = false, features = ["async-trait", "lightweight"] }
 camera_controllers = { version = "0.34.0", default-features = false }
 egui = { version = "0.30.0", default-features = false, features = ["default_fonts", "serde"] }
 egui-winit = { version = "0.30.0", default-features = false, features = ["wayland"] }
