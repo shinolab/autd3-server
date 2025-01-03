@@ -6,7 +6,7 @@ The license terms for each of these components are provided later in this notice
 
 ---------------------------------------------------------
 
-SOEMAUTDServer 29.0.0-rc.11 (MIT)
+SOEMAUTDServer 29.0.0-rc.12 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -50,7 +50,7 @@ anstyle-wincon 3.0.6 (Apache-2.0 OR MIT)
 https://github.com/rust-cli/anstyle.git
 ---------------------------------------------------------
 
-anyhow 1.0.94 (Apache-2.0 OR MIT)
+anyhow 1.0.95 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/anyhow
 ---------------------------------------------------------
 
@@ -78,31 +78,31 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3 29.0.0-rc.11 (MIT)
+autd3 29.0.0-rc.12 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 29.0.0-rc.11 (MIT)
+autd3-derive 29.0.0-rc.12 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-driver 29.0.0-rc.11 (MIT)
+autd3-driver 29.0.0-rc.12 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-firmware-emulator 29.0.0-rc.11 (MIT)
+autd3-firmware-emulator 29.0.0-rc.12 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-gain-holo 29.0.0-rc.11 (MIT)
+autd3-gain-holo 29.0.0-rc.12 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 29.0.0-rc.11 (MIT)
+autd3-link-soem 29.0.0-rc.12 (MIT)
 https://github.com/shinolab/autd3-link-soem
 ---------------------------------------------------------
 
-autd3-protobuf 29.0.0-rc.11 (MIT)
+autd3-protobuf 29.0.0-rc.12 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
@@ -126,7 +126,7 @@ bit-vec 0.8.0 (Apache-2.0 OR MIT)
 https://github.com/contain-rs/bit-vec
 ---------------------------------------------------------
 
-bitfield-struct 0.9.3 (MIT)
+bitfield-struct 0.10.0 (MIT)
 https://github.com/wrenger/bitfield-struct-rs.git
 ---------------------------------------------------------
 
@@ -142,11 +142,11 @@ bvh 0.10.0 (MIT)
 https://github.com/svenstaro/bvh
 ---------------------------------------------------------
 
-bytemuck 1.20.0 (Apache-2.0 OR MIT OR Zlib)
+bytemuck 1.21.0 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/bytemuck
 ---------------------------------------------------------
 
-bytemuck_derive 1.8.0 (Apache-2.0 OR MIT OR Zlib)
+bytemuck_derive 1.8.1 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/bytemuck
 ---------------------------------------------------------
 
@@ -248,6 +248,10 @@ https://github.com/smol-rs/event-listener-strategy
 
 fnv 1.0.7 (Apache-2.0 OR MIT)
 https://github.com/servo/rust-fnv
+---------------------------------------------------------
+
+foldhash 0.1.4 (Zlib)
+https://github.com/orlp/foldhash
 ---------------------------------------------------------
 
 futures-channel 0.3.31 (Apache-2.0 OR MIT)
@@ -370,7 +374,7 @@ lazy_static 1.5.0 (Apache-2.0 OR MIT)
 https://github.com/rust-lang-nursery/lazy-static.rs
 ---------------------------------------------------------
 
-libc 0.2.168 (Apache-2.0 OR MIT)
+libc 0.2.169 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/libc
 ---------------------------------------------------------
 
@@ -474,7 +478,7 @@ num-traits 0.2.19 (Apache-2.0 OR MIT)
 https://github.com/rust-num/num-traits
 ---------------------------------------------------------
 
-object 0.36.5 (Apache-2.0 OR MIT)
+object 0.36.7 (Apache-2.0 OR MIT)
 https://github.com/gimli-rs/object
 ---------------------------------------------------------
 
@@ -534,7 +538,7 @@ prost-derive 0.13.4 (Apache-2.0)
 https://github.com/tokio-rs/prost
 ---------------------------------------------------------
 
-quote 1.0.37 (Apache-2.0 OR MIT)
+quote 1.0.38 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/quote
 ---------------------------------------------------------
 
@@ -590,11 +594,11 @@ rustix 0.38.42 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
 https://github.com/bytecodealliance/rustix
 ---------------------------------------------------------
 
-rustversion 1.0.18 (Apache-2.0 OR MIT)
+rustversion 1.0.19 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/rustversion
 ---------------------------------------------------------
 
-safe_arch 0.7.2 (Apache-2.0 OR MIT OR Zlib)
+safe_arch 0.7.4 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/safe_arch
 ---------------------------------------------------------
 
@@ -602,11 +606,11 @@ seq-macro 0.3.5 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/seq-macro
 ---------------------------------------------------------
 
-serde 1.0.216 (Apache-2.0 OR MIT)
+serde 1.0.217 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
-serde_derive 1.0.216 (Apache-2.0 OR MIT)
+serde_derive 1.0.217 (Apache-2.0 OR MIT)
 https://github.com/serde-rs/serde
 ---------------------------------------------------------
 
@@ -646,7 +650,7 @@ strsim 0.11.1 (MIT)
 https://github.com/rapidfuzz/strsim-rs
 ---------------------------------------------------------
 
-syn 2.0.90 (Apache-2.0 OR MIT)
+syn 2.0.94 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
@@ -662,11 +666,11 @@ terminal_size 0.4.1 (Apache-2.0 OR MIT)
 https://github.com/eminence/terminal-size
 ---------------------------------------------------------
 
-thiserror 2.0.8 (Apache-2.0 OR MIT)
+thiserror 2.0.9 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
-thiserror-impl 2.0.8 (Apache-2.0 OR MIT)
+thiserror-impl 2.0.9 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/thiserror
 ---------------------------------------------------------
 
@@ -894,7 +898,7 @@ zerocopy 0.7.35 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
-zerocopy 0.8.13 (Apache-2.0 OR BSD-2-Clause OR MIT)
+zerocopy 0.8.14 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
@@ -902,8 +906,12 @@ zerocopy-derive 0.7.35 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
-zerocopy-derive 0.8.13 (Apache-2.0 OR BSD-2-Clause OR MIT)
+zerocopy-derive 0.8.14 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
+---------------------------------------------------------
+
+SOEM
+https://github.com/OpenEtherCATsociety/SOEM
 
 ---------------------------------------------------------
 
@@ -1242,6 +1250,46 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+---------------------------------------------------------
+
+SOEM
+
+---
+
+Simple Open EtherCAT Master Library
+
+Copyright (C) 2005-2017 Speciaal Machinefabriek Ketels v.o.f.
+Copyright (C) 2005-2017 Arthur Ketels
+Copyright (C) 2008-2009 TU/e Technische Universiteit Eindhoven
+Copyright (C) 2009-2017 rt-labs AB, Sweden
+
+SOEM is free software; you can redistribute it and/or modify it under the terms
+of the GNU General Public License version 2 as published by the Free Software
+Foundation.
+
+SOEM is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+As a special exception, if other files instantiate templates or use macros or
+inline functions from this file, or you compile this file and link it with other
+works to produce a work based on this file, this file does not by itself cause
+the resulting work to be covered by the GNU General Public License. However the
+source code for this file must still be made available in accordance with
+section (3) of the GNU General Public License.
+
+This exception does not invalidate any other reasons why a work based on this
+file might be covered by the GNU General Public License.
+
+The EtherCAT Technology, the trade name and logo "EtherCAT" are the intellectual
+property of, and protected by Beckhoff Automation GmbH. You can use SOEM for the
+sole purpose of creating, using and/or selling or otherwise distributing an
+EtherCAT network master provided that an EtherCAT Master License is obtained
+from Beckhoff Automation GmbH.
+
+In case you did not receive a copy of the EtherCAT Master License along with
+SOEM write to Beckhoff Automation GmbH, Eiserstrasse 5, D-33415 Verl, Germany
+(www.beckhoff.com).
 ---------------------------------------------------------
 
 Unicode-3.0

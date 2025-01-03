@@ -1,11 +1,7 @@
 use std::path::Path;
 
-use autd3_license_check::license_file;
-
 fn main() -> anyhow::Result<()> {
-    let license_file_map = license_file::load_license_file_map(
-        Path::new(env!("CARGO_MANIFEST_DIR")).join("license-file.toml"),
-    )?;
+    let license_file_map = Vec::new();
 
     let changed = autd3_license_check::check(
         Path::new(env!("CARGO_MANIFEST_DIR")).join("../../simulator/Cargo.toml"),
@@ -18,7 +14,7 @@ fn main() -> anyhow::Result<()> {
         Path::new(env!("CARGO_MANIFEST_DIR")).join("../../SOEMAUTDServer/Cargo.toml"),
         "ThirdPartyNotice",
         &license_file_map,
-        &[],
+        &[("SOEM", "SOEM\nhttps://github.com/OpenEtherCATsociety/SOEM")],
     )? || changed;
 
     let changed = autd3_license_check::check(
