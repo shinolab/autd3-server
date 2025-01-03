@@ -21,11 +21,12 @@ use egui_winit::{winit, ActionRequested, EventResponse};
 use glam::{EulerRot, Quat};
 use strum::IntoEnumIterator;
 use wgpu::{Device, Queue, SurfaceConfiguration};
+use winit::event_loop::EventLoopProxy;
 use winit::window::Window;
 
 use crate::common::color_map::ColorMap;
 use crate::emulator::EmulatorWrapper;
-use crate::event::EventResult;
+use crate::event::{EventResult, UserEvent};
 use crate::state::Tab;
 use crate::update_flag::UpdateFlag;
 use crate::{error::SimulatorError, Vector3, ZPARITY};
@@ -50,10 +51,27 @@ impl EguiRenderer {
     pub fn new(
         state: &crate::State,
         device: &Device,
+        event_loop_proxy: EventLoopProxy<UserEvent>,
         egui_ctx: egui::Context,
         window: Arc<Window>,
         surface_config: &SurfaceConfiguration,
     ) -> Self {
+        {
+            egui_ctx.set_request_repaint_callback(move |info| {
+                let when = Instant::now() + info.delay;
+                let cumulative_pass_nr = info.current_cumulative_pass_nr;
+                event_loop_proxy
+                    .send_event(UserEvent::RequestRepaint {
+                        when,
+                        cumulative_pass_nr,
+                    })
+                    .ok();
+            });
+        }
+
+        let mut info = ViewportInfo::default();
+        egui_winit::update_viewport_info(&mut info, &egui_ctx, &window, true);
+
         let egui_winit = egui_winit::State::new(
             egui_ctx,
             egui::viewport::ViewportId::ROOT,

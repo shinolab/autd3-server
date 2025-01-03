@@ -18,7 +18,7 @@ use depth_texture::DepthTexture;
 use egui::ViewportId;
 use egui_renderer::EguiRenderer;
 use egui_wgpu::ScreenDescriptor;
-use winit::{event::DeviceEvent, window::Window};
+use winit::{event::DeviceEvent, event_loop::EventLoopProxy, window::Window};
 
 pub struct Renderer {
     surface: wgpu::Surface<'static>,
@@ -35,6 +35,7 @@ pub struct Renderer {
 impl Renderer {
     pub async fn new(
         instance: &wgpu::Instance,
+        event_loop_proxy: EventLoopProxy<UserEvent>,
         egui_ctx: egui::Context,
         window: Arc<Window>,
         width: u32,
@@ -89,7 +90,14 @@ impl Renderer {
         surface.configure(&device, &surface_config);
 
         Ok(Self {
-            egui_renderer: EguiRenderer::new(state, &device, egui_ctx, window, &surface_config),
+            egui_renderer: EguiRenderer::new(
+                state,
+                &device,
+                event_loop_proxy,
+                egui_ctx,
+                window,
+                &surface_config,
+            ),
             transducer_renderer: transducer_renderer::TransducerRenderer::new(
                 &device,
                 &queue,
