@@ -207,6 +207,8 @@ impl Simulator {
                 update_flag.remove(UpdateFlag::UPDATE_SLICE_COLOR_MAP);
             }
 
+            assert!(update_flag.is_empty());
+
             let result = renderer.run_ui_and_paint(state, emulator, window, update_flag)?;
 
             if emulator.initialized() && state.auto_play {

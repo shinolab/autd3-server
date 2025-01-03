@@ -11,7 +11,5 @@ bitflags::bitflags! {
         const UPDATE_TRANS_POS = 1 << 6;
 
         const UPDATE_CONFIG = 1 << 7;
-
-        const UPDATE_DEVICE_INFO = 1 << 9;
     }
 }
