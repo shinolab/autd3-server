@@ -1,0 +1,50 @@
+[config]
+default_to_workspace = false
+skip_core_tasks = true
+
+[tasks.license]
+dependencies = ["update"]
+cwd = "tools/license-checker"
+command = "cargo"
+args = ["run"]
+
+[tasks.update]
+dependencies = ["update-cargo", "update-npm"]
+
+[tasks.update-cargo]
+cwd = "src-tauri"
+command = "cargo"
+args = ["update"]
+
+[tasks.update-npm]
+script_runner = "@shell"
+script = '''
+npm i
+npm update
+'''
+
+[tasks.update-version]
+script_runner = "python"
+script_extension = "py"
+script = '''
+import sys
+import re
+from pathlib import Path
+
+version = sys.argv[1]
+file = Path("src-tauri/Cargo.toml")
+content = file.read_text(encoding="utf-8")
+content = re.sub(r'^version = "(.*?)"', f'version = "{version}"', content, flags=re.MULTILINE)
+content = re.sub(r'^autd3(.*)version = "(.*?)"', f'autd3\\1version = "{version}"', content, flags=re.MULTILINE)
+file.write_text(content, encoding="utf-8")
+
+file = Path("package.json")
+content = file.read_text(encoding="utf-8")
+content = re.sub(r'"version": "(.*?)"', f'"version": "{version}"', content, flags=re.MULTILINE)
+file.write_text(content, encoding="utf-8")
+
+file = Path("src-tauri/tauri.conf.json")
+content = file.read_text(encoding="utf-8")
+content = re.sub(r'"version": "(.*?)"', f'"version": "{version}"', content, flags=re.MULTILINE)
+file.write_text(content, encoding="utf-8")
+'''

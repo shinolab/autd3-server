@@ -6,7 +6,7 @@ The license terms for each of these components are provided later in this notice
 
 ---------------------------------------------------------
 
-@tauri-apps/api 2.1.1 Apache-2.0 OR MIT
+@tauri-apps/api 2.2.0 Apache-2.0 OR MIT
 git+https://github.com/tauri-apps/tauri.git
 ---------------------------------------------------------
 
@@ -18,7 +18,7 @@ https://github.com/tauri-apps/plugins-workspace
 https://github.com/tauri-apps/plugins-workspace
 ---------------------------------------------------------
 
-@tauri-apps/plugin-notification 2.2.0 MIT OR Apache-2.0
+@tauri-apps/plugin-notification 2.2.1 MIT OR Apache-2.0
 https://github.com/tauri-apps/plugins-workspace
 ---------------------------------------------------------
 

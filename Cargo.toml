@@ -1,6 +1,0 @@
-[workspace]
-
-members = ["simulator", "SOEMAUTDServer", "TwinCATAUTDServerLightweight", "src-tauri"]
-exclude = ["tools"]
-
-resolver = "2"
