@@ -63,6 +63,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     std::fs::copy(manifest_dir.join("../LICENSE"), license_path)?;
 
+    // NOTICE
+    let license_path = manifest_dir.join("NOTICE");
+    if license_path.exists() {
+        std::fs::remove_file(&license_path)?;
+    }
+    std::fs::copy(manifest_dir.join("../ThirdPartyNotice.txt"), license_path)?;
+
     tauri_build::build();
 
     Ok(())
