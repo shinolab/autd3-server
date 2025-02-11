@@ -907,7 +907,7 @@ mime 0.3.17 (Apache-2.0 OR MIT)
 https://github.com/hyperium/mime
 ---------------------------------------------------------
 
-miniz_oxide 0.8.3 (Apache-2.0 OR MIT OR Zlib)
+miniz_oxide 0.8.4 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide
 ---------------------------------------------------------
 
@@ -1593,7 +1593,7 @@ rustix 0.38.44 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
 https://github.com/bytecodealliance/rustix
 ---------------------------------------------------------
 
-rustls 0.23.22 (Apache-2.0 OR ISC OR MIT)
+rustls 0.23.23 (Apache-2.0 OR ISC OR MIT)
 https://github.com/rustls/rustls
 ---------------------------------------------------------
 
