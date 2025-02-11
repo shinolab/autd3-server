@@ -91,14 +91,13 @@ with Path("package.json").open() as f:
     version = re.search(r'"version": "(.*)"', content).group(1)
 
 
-if platform.system() == "Windows":
-    tmp_file = Path("tmp.zip")
-    urllib.request.urlretrieve(
-        f"https://github.com/shinolab/TwinCATAUTDServer/releases/download/v{version}/TwinCATAUTDServer-v{version}.zip",
-        tmp_file,
-    )
-    shutil.unpack_archive(tmp_file, "src-tauri/TwinCATAUTDServer")
-    tmp_file.unlink()
+tmp_file = Path("tmp.zip")
+urllib.request.urlretrieve(
+    f"https://github.com/shinolab/TwinCATAUTDServer/releases/download/v{version}/TwinCATAUTDServer-v{version}.zip",
+    tmp_file,
+)
+shutil.unpack_archive(tmp_file, "src-tauri/TwinCATAUTDServer")
+tmp_file.unlink()
 
 download_and_extract("autd3-simulator", "autd3-simulator", version)
 download_and_extract("SOEMAUTDServer", "SOEMAUTDServer", version)
