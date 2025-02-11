@@ -53,13 +53,13 @@
         {
           "args": true,
           "cmd": "",
-          "name": "simulator",
+          "name": "autd3-simulator",
           "sidecar": true
         },
         {
           "args": true,
           "cmd": "",
-          "name": "simulator-unity",
+          "name": "autd3-simulator-unity",
           "sidecar": true
         },
         {
@@ -82,13 +82,13 @@
         {
           "args": true,
           "cmd": "",
-          "name": "simulator",
+          "name": "autd3-simulator",
           "sidecar": true
         },
         {
           "args": true,
           "cmd": "",
-          "name": "simulator-unity",
+          "name": "autd3-simulator-unity",
           "sidecar": true
         },
         {
@@ -111,13 +111,13 @@
         {
           "args": true,
           "cmd": "",
-          "name": "simulator",
+          "name": "autd3-simulator",
           "sidecar": true
         },
         {
           "args": true,
           "cmd": "",
-          "name": "simulator-unity",
+          "name": "autd3-simulator-unity",
           "sidecar": true
         },
         {

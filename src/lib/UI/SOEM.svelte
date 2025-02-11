@@ -94,7 +94,7 @@
       sendUs.toString(),
       "-b",
       soemOptions.buf_size.toString(),
-      "-w",
+      "-t",
       parseStrategy(soemOptions.timer_strategy),
       "-e",
       stateCheckIntervalMs.toString(),

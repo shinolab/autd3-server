@@ -1,0 +1,131 @@
+[config]
+default_to_workspace = false
+skip_core_tasks = true
+
+[tasks.check]
+dependencies = ["format", "npm-install", "build", "lint"]
+
+[tasks.build]
+dependencies = ["download-deps", "license"]
+script_runner = "@shell"
+script = '''
+npm run tauri build
+'''
+
+[tasks.format]
+cwd = "src-tauri"
+ignore_errors = true
+command = "cargo"
+args = ["fmt"]
+
+[tasks.lint]
+cwd = "src-tauri"
+command = "cargo"
+args = ["clippy", "${@}", "--", "-D", "warnings"]
+
+[tasks.license]
+dependencies = ["update"]
+cwd = "tools/license-checker"
+command = "cargo"
+args = ["run"]
+
+[tasks.update]
+dependencies = ["update-cargo", "npm-install", "npm-update"]
+
+[tasks.update-cargo]
+cwd = "src-tauri"
+command = "cargo"
+args = ["update"]
+
+[tasks.npm-install]
+script_runner = "@shell"
+script = '''
+npm i
+'''
+
+[tasks.npm-update]
+script_runner = "@shell"
+script = '''
+npm update
+'''
+
+[tasks.download-deps]
+script_runner = "python"
+script_extension = "py"
+script = '''
+import platform
+import re
+import shutil
+import tarfile
+import urllib.request
+from pathlib import Path
+
+
+def download_and_extract(repo: str, name: str, version: str) -> None:
+    url: str
+    base_url = f"https://github.com/shinolab/{repo}/releases/download/v{version}/{name}-v{version}"
+    if platform.system() == "Windows":
+        url = f"{base_url}-win-x64.zip"
+    elif platform.system() == "Darwin":
+        url = f"{base_url}-macos-aarch64.tar.gz"
+    else:
+        url = f"{base_url}-linux-x64.tar.gz"
+
+    tmp_file = Path("tmp.zip" if url.endswith(".zip") else "tmp.tar.gz")
+    urllib.request.urlretrieve(url, tmp_file)
+    if tmp_file.suffix == ".zip":
+        shutil.unpack_archive(tmp_file, "tmp")
+    else:
+        with tarfile.open(tmp_file, "r:gz") as tar:
+            tar.extractall("tmp", filter="fully_trusted")
+    tmp_file.unlink()
+
+    shutil.copyfile(
+        "tmp/ThirdPartyNotice.txt", f"src-tauri/{name}-ThirdPartyNotice.txt"
+    )
+    shutil.copyfile("tmp/LICENSE", f"src-tauri/{name}-LICENSE")
+
+
+with Path("package.json").open() as f:
+    content = f.read()
+    version = re.search(r'"version": "(.*)"', content).group(1)
+
+
+tmp_file = Path("tmp.zip")
+urllib.request.urlretrieve(
+    f"https://github.com/shinolab/TwinCATAUTDServer/releases/download/v{version}/TwinCATAUTDServer-v{version}.zip",
+    tmp_file,
+)
+shutil.unpack_archive(tmp_file, "src-tauri/TwinCATAUTDServer")
+tmp_file.unlink()
+
+download_and_extract("autd3-simulator", "autd3-simulator", version)
+download_and_extract("SOEMAUTDServer", "SOEMAUTDServer", version)
+download_and_extract("TwinCATAUTDServer", "TwinCATAUTDServerLightweight", version)
+'''
+
+[tasks.update-version]
+script_runner = "python"
+script_extension = "py"
+script = '''
+import sys
+import re
+from pathlib import Path
+
+version = sys.argv[1]
+file = Path("src-tauri/Cargo.toml")
+content = file.read_text(encoding="utf-8")
+content = re.sub(r'^version = "(.*?)"', f'version = "{version}"', content, flags=re.MULTILINE)
+content = re.sub(r'^autd3(.*)version = "(.*?)"', f'autd3\\1version = "{version}"', content, flags=re.MULTILINE)
+file.write_text(content, encoding="utf-8")
+
+file = Path("package.json")
+content = file.read_text(encoding="utf-8")
+content = re.sub(r'"version": "(.*?)"', f'"version": "{version}"', content, flags=re.MULTILINE)
+file.write_text(content, encoding="utf-8")
+
+file = Path("src-tauri/tauri.conf.json")
+content = file.read_text(encoding="utf-8")
+content = re.sub(r'"version": "(.*?)"', f'"version": "{version}"', content, flags=re.MULTILINE)
+file.write_text(content, encoding="utf-8")
+'''

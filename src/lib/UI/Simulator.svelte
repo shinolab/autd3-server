@@ -42,8 +42,8 @@
       simulatorOptions.lightweight.toString(),
     ];
     command = simulatorOptions.unity
-      ? Command.sidecar("simulator-unity", args)
-      : Command.sidecar("simulator", args);
+      ? Command.sidecar("autd3-simulator-unity", args)
+      : Command.sidecar("autd3-simulator", args);
     child = await command.spawn();
     command.stdout.on("data", (line) =>
       consoleOutputQueue.update((v) => {

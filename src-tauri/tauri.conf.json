@@ -30,6 +30,12 @@
     "resources": [
       "./LICENSE",
       "./NOTICE",
+      "./autd3-simulator-LICENSE",
+      "./autd3-simulator-ThirdPartyNotice.txt",
+      "./SOEMAUTDServer-LICENSE",
+      "./SOEMAUTDServer-ThirdPartyNotice.txt",
+      "./TwinCATAUTDServerLightweight-LICENSE",
+      "./TwinCATAUTDServerLightweight-ThirdPartyNotice.txt",
       "./TwinCATAUTDServer/LICENSE",
       "./TwinCATAUTDServer/README.md",
       "./TwinCATAUTDServer/AUTD.xml",
@@ -41,13 +47,13 @@
       "./TwinCATAUTDServer/System.Runtime.CompilerServices.Unsafe.dll",
       "./TwinCATAUTDServer/TwinCAT.Ads.dll"
     ],
-    "copyright": "Copyright (c) 2023-2024 Shun Suzuki. All rights reserved.",
+    "copyright": "Copyright (c) 2023-2025 Shun Suzuki. All rights reserved.",
     "category": "DeveloperTool",
     "shortDescription": "AUTD3 Server application",
     "longDescription": "",
     "externalBin": [
-      "simulator",
-      "simulator-unity",
+      "autd3-simulator",
+      "autd3-simulator-unity",
       "SOEMAUTDServer",
       "TwinCATAUTDServerLightweight"
     ],
@@ -80,7 +86,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "AUTD3 Server v29.0.0-rc.12",
+        "title": "AUTD3 Server v29.0.0",
         "width": 800
       }
     ],
