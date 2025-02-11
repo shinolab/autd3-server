@@ -15,26 +15,14 @@ jobs:
     name: changed-files
     runs-on: ubuntu-latest
     outputs:
-      simulator: ${{ steps.changed-files-yaml.outputs.simulator_any_changed }}
-      soem: ${{ steps.changed-files-yaml.outputs.soem_any_changed }}
-      twincat: ${{ steps.changed-files-yaml.outputs.twincat_any_changed }}
-      main: ${{ steps.changed-files-yaml.outputs.main_any_changed }}
+      src: ${{ steps.changed-files-yaml.outputs.src_any_changed }}
     steps:
       - uses: actions/checkout@v4
       - id: changed-files-yaml
         uses: tj-actions/changed-files@v44
         with:
           files_yaml: |
-            simulator:
-              - 'simulator/**/*.rs'
-              - 'simulator/Cargo.toml'
-            soem:
-              - 'SOEMAUTDServer/**/*.rs'
-              - 'SOEMAUTDServer/Cargo.toml'
-            twincat:
-              - 'TwinCATAUTDServerLightweight/**/*.rs'
-              - 'TwinCATAUTDServerLightweight/Cargo.toml'
-            main:
+            src:
               - 'src-tauri/**/*.rs'
               - 'src-tauri/Cargo.toml'
               - 'src/**/*.svelte'
@@ -45,69 +33,9 @@ jobs:
               - 'tsconfig.json'
               - 'tsconfig.node.json'
 
-  test-simulator:
+  build:
     needs: changed-files
-    if: ${{ needs.changed-files.outputs.simulator == 'true' }}
-    name: test-simulator-on-${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-      - uses: ./.github/actions/setup-build
-        with:
-          os: ${{ matrix.os }}
-      - run: |
-          python3 build.py build --simulator
-          python3 build.py lint --simulator
-
-  test-soem:
-    needs: changed-files
-    if: ${{ needs.changed-files.outputs.soem == 'true' }}
-    name: test-soem-on-${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-      - uses: ./.github/actions/setup-build
-        with:
-          os: ${{ matrix.os }}
-      - run: |
-          python3 build.py build --soem
-          python3 build.py lint --soem
-
-  test-twincat:
-    needs: changed-files
-    if: ${{ needs.changed-files.outputs.twincat == 'true' }}
-    name: test-twincat-on-${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-      - uses: ./.github/actions/setup-build
-        with:
-          os: ${{ matrix.os }}
-      - run: |
-          python3 build.py build --twincat
-          python3 build.py lint --twincat
-
-  test-main:
-    needs: changed-files
-    if: ${{ needs.changed-files.outputs.main == 'true' }}
+    if: ${{ needs.changed-files.outputs.src == 'true' }}
     name: test-main-on-${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -127,16 +55,15 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
       - run: |
-          python3 build.py build --main
-          python3 build.py lint --main
+          cargo make check
 
   all-tests-passed:
     if: ${{ always() }}
     name: all-tests-passed
     runs-on: ubuntu-latest
-    needs: [test-simulator, test-soem, test-twincat, test-main]
+    needs: [build]
     steps:
-      - if: ${{ needs.test-simulator.result == 'failure' || needs.test-simulator.result == 'cancelled' || needs.test-soem.result == 'failure' || needs.test-soem.result == 'cancelled' || needs.test-twincat.result == 'failure' || needs.test-twincat.result == 'cancelled' || needs.test-main.result == 'failure' || needs.test-main.result == 'cancelled' }}
+      - if: ${{ needs.build.result == 'failure' || needs.build.result == 'cancelled'  }}
         run: exit 1
 
   auto-merge:

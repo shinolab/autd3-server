@@ -124,7 +124,7 @@ async fn copy_autd_xml(
         return Ok(());
     }
 
-    if dst.parent().map_or(false, |p| !p.exists()) {
+    if dst.parent().is_some_and(|p| !p.exists()) {
         return Err("TwinCAT is not installed".to_string());
     }
 
