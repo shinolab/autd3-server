@@ -2,7 +2,7 @@
 
 # LICENSE
 
-* See [LICENSE](./LICENSE) and [ThirdPartyNotice](./ThirdPartyNotice.txt) for more information.
+* See [LICENSE](./LICENSE) and [NOTICE](./NOTICE) for more information.
 
 # Author
 
