@@ -52,8 +52,7 @@ jobs:
           node-version: 'lts/*'
           cache: 'npm'
           cache-dependency-path: package-lock.json
-      - run: |
-          cargo make check
+      - run: cargo make ci
 
   all-tests-passed:
     if: ${{ always() }}
