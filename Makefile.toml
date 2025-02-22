@@ -3,13 +3,13 @@ default_to_workspace = false
 skip_core_tasks = true
 
 [tasks.check]
-dependencies = ["format", "npm-install", "build", "lint", "license"]
+dependencies = ["format", "license", "build", "lint"]
 
 [tasks.ci]
-dependencies = ["format", "npm-install", "build", "lint"]
+dependencies = ["format", "build", "lint"]
 
 [tasks.build]
-dependencies = ["download-deps"]
+dependencies = ["npm-install", "download-deps"]
 script_runner = "@shell"
 script = '''
 npm run tauri build
