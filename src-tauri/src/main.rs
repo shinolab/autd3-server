@@ -13,7 +13,7 @@ use tokio::{
     fs::{File, OpenOptions},
     io::{AsyncBufReadExt, AsyncReadExt, AsyncWriteExt, BufReader},
     process::Command,
-    sync::mpsc::{channel, Sender},
+    sync::mpsc::{Sender, channel},
 };
 
 const SETTINGS_PATH: &str = "settings.json";
@@ -45,7 +45,9 @@ fn set_libpath(_: tauri::AppHandle) {
         } else {
             libpath
         };
-        std::env::set_var("DYLD_FALLBACK_LIBRARY_PATH", fallback_path);
+        unsafe {
+            std::env::set_var("DYLD_FALLBACK_LIBRARY_PATH", fallback_path);
+        }
     }
 }
 
