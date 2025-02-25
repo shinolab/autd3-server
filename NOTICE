@@ -133,19 +133,11 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3-core 30.0.0 (MIT)
+autd3-core 30.0.1 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-derive 30.0.0 (MIT)
-https://github.com/shinolab/autd3-rs
----------------------------------------------------------
-
-autd3-driver 30.0.0 (MIT)
-https://github.com/shinolab/autd3-rs
----------------------------------------------------------
-
-autd3-link-soem 30.0.0 (MIT)
+autd3-link-soem 30.0.1 (MIT)
 https://github.com/shinolab/autd3-link-soem
 ---------------------------------------------------------
 
@@ -163,14 +155,6 @@ https://github.com/marshallpierce/rust-base64
 
 base64 0.22.1 (Apache-2.0 OR MIT)
 https://github.com/marshallpierce/rust-base64
----------------------------------------------------------
-
-bit-vec 0.8.0 (Apache-2.0 OR MIT)
-https://github.com/contain-rs/bit-vec
----------------------------------------------------------
-
-bitfield-struct 0.10.1 (MIT)
-https://github.com/wrenger/bitfield-struct-rs.git
 ---------------------------------------------------------
 
 bitflags 1.3.2 (Apache-2.0 OR MIT)
@@ -321,14 +305,6 @@ crossbeam-channel 0.5.14 (Apache-2.0 OR MIT)
 https://github.com/crossbeam-rs/crossbeam
 ---------------------------------------------------------
 
-crossbeam-deque 0.8.6 (Apache-2.0 OR MIT)
-https://github.com/crossbeam-rs/crossbeam
----------------------------------------------------------
-
-crossbeam-epoch 0.9.18 (Apache-2.0 OR MIT)
-https://github.com/crossbeam-rs/crossbeam
----------------------------------------------------------
-
 crossbeam-utils 0.8.21 (Apache-2.0 OR MIT)
 https://github.com/crossbeam-rs/crossbeam
 ---------------------------------------------------------
@@ -440,10 +416,6 @@ dyn-clone 1.0.18 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/dyn-clone
 ---------------------------------------------------------
 
-either 1.13.0 (Apache-2.0 OR MIT)
-https://github.com/rayon-rs/either
----------------------------------------------------------
-
 embed_plist 1.2.2 (Apache-2.0 OR MIT)
 https://github.com/nvzqz/embed-plist-rs
 ---------------------------------------------------------
@@ -496,7 +468,7 @@ field-offset 0.3.6 (Apache-2.0 OR MIT)
 https://github.com/Diggsey/rust-field-offset
 ---------------------------------------------------------
 
-flate2 1.0.35 (Apache-2.0 OR MIT)
+flate2 1.1.0 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/flate2-rs
 ---------------------------------------------------------
 
@@ -804,10 +776,6 @@ is-wsl 0.4.0 (MIT)
 https://github.com/TheLarkInn/is-wsl
 ---------------------------------------------------------
 
-itertools 0.14.0 (Apache-2.0 OR MIT)
-https://github.com/rust-itertools/itertools
----------------------------------------------------------
-
 itoa 0.4.8 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/itoa
 ---------------------------------------------------------
@@ -862,7 +830,7 @@ libappindicator 0.9.0 (Apache-2.0 OR MIT)
 libappindicator-sys 0.9.0 (Apache-2.0 OR MIT)
 ---------------------------------------------------------
 
-libc 0.2.169 (Apache-2.0 OR MIT)
+libc 0.2.170 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/libc
 ---------------------------------------------------------
 
@@ -1362,7 +1330,7 @@ rand_core 0.6.4 (Apache-2.0 OR MIT)
 https://github.com/rust-random/rand
 ---------------------------------------------------------
 
-rand_core 0.9.1 (Apache-2.0 OR MIT)
+rand_core 0.9.2 (Apache-2.0 OR MIT)
 https://github.com/rust-random/rand
 ---------------------------------------------------------
 
@@ -1380,14 +1348,6 @@ https://github.com/rust-windowing/raw-window-handle
 
 rawpointer 0.2.1 (Apache-2.0 OR MIT)
 https://github.com/bluss/rawpointer/
----------------------------------------------------------
-
-rayon 1.10.0 (Apache-2.0 OR MIT)
-https://github.com/rayon-rs/rayon
----------------------------------------------------------
-
-rayon-core 1.12.1 (Apache-2.0 OR MIT)
-https://github.com/rayon-rs/rayon
 ---------------------------------------------------------
 
 redox_syscall 0.5.9 (MIT)
@@ -1422,8 +1382,8 @@ rfd 0.15.2 (MIT)
 https://github.com/PolyMeilex/rfd
 ---------------------------------------------------------
 
-ring 0.17.10 (Apache-2.0 AND ISC)
-https://github.com/briansmith/ring
+ring 0.17.11 (Apache-2.0 AND ISC)
+https://github.com/ctz/ring
 ---------------------------------------------------------
 
 rustbus 0.19.3 (MIT)
@@ -1498,10 +1458,6 @@ https://github.com/servo/servo
 
 semver 1.0.25 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/semver
----------------------------------------------------------
-
-seq-macro 0.3.5 (Apache-2.0 OR MIT)
-https://github.com/dtolnay/seq-macro
 ---------------------------------------------------------
 
 serde 1.0.218 (Apache-2.0 OR MIT)
@@ -2056,7 +2012,11 @@ windows 0.58.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows 0.59.0 (Apache-2.0 OR MIT)
+windows 0.60.0 (Apache-2.0 OR MIT)
+https://github.com/microsoft/windows-rs
+---------------------------------------------------------
+
+windows-collections 0.1.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -2072,7 +2032,11 @@ windows-core 0.58.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-core 0.59.0 (Apache-2.0 OR MIT)
+windows-core 0.60.1 (Apache-2.0 OR MIT)
+https://github.com/microsoft/windows-rs
+---------------------------------------------------------
+
+windows-future 0.1.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -2101,6 +2065,10 @@ https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
 windows-link 0.1.0 (Apache-2.0 OR MIT)
+https://github.com/microsoft/windows-rs
+---------------------------------------------------------
+
+windows-numerics 0.1.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -2148,10 +2116,6 @@ windows-targets 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-targets 0.53.0 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
 windows-version 0.1.3 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
@@ -2164,19 +2128,11 @@ windows_aarch64_gnullvm 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_aarch64_gnullvm 0.53.0 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
 windows_aarch64_msvc 0.42.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
 windows_aarch64_msvc 0.52.6 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
-windows_aarch64_msvc 0.53.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -2188,15 +2144,7 @@ windows_i686_gnu 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_i686_gnu 0.53.0 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
 windows_i686_gnullvm 0.52.6 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
-windows_i686_gnullvm 0.53.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -2208,19 +2156,11 @@ windows_i686_msvc 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_i686_msvc 0.53.0 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
 windows_x86_64_gnu 0.42.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
 windows_x86_64_gnu 0.52.6 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
-windows_x86_64_gnu 0.53.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -2232,19 +2172,11 @@ windows_x86_64_gnullvm 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_gnullvm 0.53.0 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
 windows_x86_64_msvc 0.42.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
 windows_x86_64_msvc 0.52.6 (Apache-2.0 OR MIT)
-https://github.com/microsoft/windows-rs
----------------------------------------------------------
-
-windows_x86_64_msvc 0.53.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 

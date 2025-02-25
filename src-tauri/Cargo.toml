@@ -20,7 +20,6 @@ serde_json = "1.0.139"
 serde = { version = "1.0.217", features = ["derive"] }
 tokio = { version = "1.43.0", features = ["macros", "rt-multi-thread", "time", "process"] }
 tauri = { version = "2.2.5", features = [] }
-autd3-driver = { version = "30.0.0" }
 autd3-link-soem = { version = "30.0.0", features = ["serde"] }
 tauri-plugin-dialog = "2.2.0"
 tauri-plugin-fs = "2.2.0"
