@@ -68,6 +68,11 @@ The license terms for each of these components are provided later in this notice
                 dep.name,
                 dep.version,
                 if let Some(license) = dep.license {
+                    let license = if license == "Apache-2.0 OR LGPL-2.1-or-later OR MIT" {
+                        "Apache-2.0 OR MIT".to_string()
+                    } else {
+                        license
+                    };
                     license
                         .split("AND")
                         .flat_map(|token| {
