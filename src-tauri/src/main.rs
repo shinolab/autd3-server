@@ -245,9 +245,6 @@ async fn main() {
     tauri::Builder::default()
         .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_shell::init())
-        .plugin(tauri_plugin_notification::init())
-        .plugin(tauri_plugin_fs::init())
-        .plugin(tauri_plugin_dialog::init())
         .manage(console_emu_input_tx)
         .setup(|app| {
             #[cfg(debug_assertions)]
