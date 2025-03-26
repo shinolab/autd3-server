@@ -96,9 +96,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-core"
-version = "32.0.0"
+version = "32.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "789b2d65cb1a71bc2aff3ad8ee7fae3ec1bec9221c8fcd5a4d368e00d80ee0d2"
+checksum = "c870755ca6038fe39d7693330cc8e6a3c3bb491bcff90e9d4efd91b461e82a66"
 dependencies = [
  "bvh",
  "derive_more 2.0.1",
@@ -113,9 +113,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-soem"
-version = "32.0.0"
+version = "32.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "45f21fbb348a117eb29a2a68cf665ec8ae0b4575546269cef274827d37342272"
+checksum = "71028b4717817d85bf98f1d778699b24640f37c6068de1fd68c398d7833af85f"
 dependencies = [
  "anyhow",
  "autd3-core",
@@ -137,7 +137,7 @@ dependencies = [
 
 [[package]]
 name = "autd3-server"
-version = "32.0.0"
+version = "32.0.1"
 dependencies = [
  "autd3-link-soem",
  "libloading 0.8.6",
@@ -1075,9 +1075,9 @@ dependencies = [
 
 [[package]]
 name = "gethostname"
-version = "1.0.0"
+version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4fd4b8790c0792e3b11895efdf5f289ebe8b59107a6624f1cce68f24ff8c7035"
+checksum = "ed7131e57abbde63513e0e6636f76668a1ca9798dcae2df4e283cae9ee83859e"
 dependencies = [
  "rustix",
  "windows-targets 0.52.6",
@@ -1821,9 +1821,9 @@ dependencies = [
 
 [[package]]
 name = "linux-raw-sys"
-version = "0.4.15"
+version = "0.9.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d26c52dbd32dccf2d10cac7725f8eae5296885fb5703b261f7d0a0739ec807ab"
+checksum = "fe7db12097d22ec582439daf8618b8fdd1a7bef6270e9af3b1ebcd30893cf413"
 
 [[package]]
 name = "litemap"
@@ -3050,9 +3050,9 @@ dependencies = [
 
 [[package]]
 name = "rustix"
-version = "0.38.44"
+version = "1.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fdb5bc1ae2baa591800df16c9ca78619bf65c0488b41b96ccec5d11220d8c154"
+checksum = "e56a18552996ac8d29ecc3b190b4fdbb2d91ca4ec396de7bbffaf43f3d637e96"
 dependencies = [
  "bitflags 2.9.0",
  "errno",

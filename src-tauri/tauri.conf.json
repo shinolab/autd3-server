@@ -77,7 +77,7 @@
   },
   "productName": "AUTD3 Server",
   "mainBinaryName": "AUTD3 Server",
-  "version": "32.0.0",
+  "version": "32.0.1",
   "identifier": "com.shinolab.autd3-server",
   "plugins": {},
   "app": {
