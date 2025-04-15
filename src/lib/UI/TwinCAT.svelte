@@ -40,6 +40,7 @@
 
     if (twincatOptions.lightweight) {
       const args: string[] = ["-p", twincatOptions.lightweight_port.toString()];
+      console.log("Running lightweight TwinCAT server with args:", args);
       command = Command.sidecar("TwinCATAUTDServerLightweight", args);
       child = await command.spawn();
       command.stdout.on("data", (line) =>
@@ -59,6 +60,7 @@
         twincatOptions: JSON.stringify(twincatOptions),
       };
       try {
+        console.log("Running TwinCAT server with args:", args);
         await invoke("run_twincat_server", args);
       } catch (err) {
         alert(err);
