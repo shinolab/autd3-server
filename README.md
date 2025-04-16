@@ -4,6 +4,15 @@
 
 [Prebuilt binaries are available for Windows, macOS, and Linux.](https://github.com/shinolab/autd3-server/releases/latest)
 
+## For macOS users
+
+This program is not signed, so you need to allow it to run. To do this, follow these steps:
+```
+cd /Applications
+xattr -d com.apple.quarantine AUTD3\ Server.app
+```
+Or, build from source as described below.
+
 # Building from source
 
 To build from source, you need to install the following dependencies:
