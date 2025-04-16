@@ -31,6 +31,8 @@
       if (await invoke("wpcap_installed", {})) {
         ifnames = (await Command.sidecar("SOEMAUTDServer", ["list"]).execute())
           .stdout;
+      } else {
+        console.log("wpcap not installed, no adapters available.");
       }
       adapters = ifnames
         .split("\n")
@@ -38,6 +40,7 @@
         .filter((s) => s)
         .map((line) => line.trim().split("\t").join(","));
     } catch (err) {
+      console.log(err);
       adapters = [];
     }
     let soemAvailable = adapters.length > 0;
