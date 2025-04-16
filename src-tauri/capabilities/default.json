@@ -1,0 +1,76 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    "core:window:allow-close",
+    "core:window:allow-destroy",
+    {
+      "identifier": "shell:allow-execute",
+      "allow": [
+        {
+          "name": "autd3-simulator",
+          "sidecar": true
+        },
+        {
+          "name": "autd3-simulator-unity",
+          "sidecar": true
+        },
+        {
+          "name": "SOEMAUTDServer",
+          "sidecar": true
+        },
+        {
+          "name": "TwinCATAUTDServerLightweight",
+          "sidecar": true
+        }
+      ]
+    },
+    {
+      "identifier": "shell:allow-spawn",
+      "allow": [
+        {
+          "name": "autd3-simulator",
+          "sidecar": true
+        },
+        {
+          "name": "autd3-simulator-unity",
+          "sidecar": true
+        },
+        {
+          "name": "SOEMAUTDServer",
+          "sidecar": true
+        },
+        {
+          "name": "TwinCATAUTDServerLightweight",
+          "sidecar": true
+        }
+      ]
+    },
+    {
+      "identifier": "shell:allow-kill",
+      "allow": [
+        {
+          "name": "autd3-simulator",
+          "sidecar": true
+        },
+        {
+          "name": "autd3-simulator-unity",
+          "sidecar": true
+        },
+        {
+          "name": "SOEMAUTDServer",
+          "sidecar": true
+        },
+        {
+          "name": "TwinCATAUTDServerLightweight",
+          "sidecar": true
+        }
+      ]
+    }
+  ]
+}
