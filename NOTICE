@@ -69,15 +69,15 @@ atk-sys 0.18.2 (MIT)
 https://github.com/gtk-rs/gtk3-rs
 ---------------------------------------------------------
 
-autd3-core 32.0.1 (MIT)
+autd3-core 32.1.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 32.0.1 (MIT)
+autd3-link-soem 32.1.0 (MIT)
 https://github.com/shinolab/autd3-link-soem
 ---------------------------------------------------------
 
-autd3-server 32.0.1 (MIT)
+autd3-server 32.1.0 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -1074,7 +1074,7 @@ proc-macro-hack 0.5.20+deprecated (Apache-2.0 OR MIT)
 https://github.com/dtolnay/proc-macro-hack
 ---------------------------------------------------------
 
-proc-macro2 1.0.94 (Apache-2.0 OR MIT)
+proc-macro2 1.0.95 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/proc-macro2
 ---------------------------------------------------------
 
