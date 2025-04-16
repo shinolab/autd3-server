@@ -14,19 +14,23 @@
       "allow": [
         {
           "name": "autd3-simulator",
-          "sidecar": true
+          "sidecar": true,
+          "args": true
         },
         {
           "name": "autd3-simulator-unity",
-          "sidecar": true
+          "sidecar": true,
+          "args": true
         },
         {
           "name": "SOEMAUTDServer",
-          "sidecar": true
+          "sidecar": true,
+          "args": true
         },
         {
           "name": "TwinCATAUTDServerLightweight",
-          "sidecar": true
+          "sidecar": true,
+          "args": true
         }
       ]
     },
@@ -35,19 +39,23 @@
       "allow": [
         {
           "name": "autd3-simulator",
-          "sidecar": true
+          "sidecar": true,
+          "args": true
         },
         {
           "name": "autd3-simulator-unity",
-          "sidecar": true
+          "sidecar": true,
+          "args": true
         },
         {
           "name": "SOEMAUTDServer",
-          "sidecar": true
+          "sidecar": true,
+          "args": true
         },
         {
           "name": "TwinCATAUTDServerLightweight",
-          "sidecar": true
+          "sidecar": true,
+          "args": true
         }
       ]
     },
