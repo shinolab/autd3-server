@@ -96,9 +96,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-core"
-version = "32.1.0"
+version = "32.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3ad075dd1c3cbd3dc20b312334e8373c22b9d42fb61070d8db4f30f7ab11f395"
+checksum = "b36fb64e93260305f306631b04d2dcc44e745866e0d2eca53d048226bfe18b69"
 dependencies = [
  "bvh",
  "derive_more 2.0.1",
@@ -113,9 +113,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-soem"
-version = "32.1.0"
+version = "32.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9f5934ce06339a04f38b0d0a2d14319023daf7b0f6c9a5337aca1c896feb34c6"
+checksum = "92d28f739b37dba2d76087919b6fe82584f2e438b6588fa07831e3017be56fc3"
 dependencies = [
  "anyhow",
  "autd3-core",
