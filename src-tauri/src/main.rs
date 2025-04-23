@@ -108,7 +108,7 @@ async fn wpcap_installed() -> bool {
 
 #[tauri::command]
 async fn twincat_installed() -> bool {
-    std::path::Path::new("C:/TwinCAT/3.1/Config/Io/EtherCAT").exists()
+    std::path::Path::new("C:/Program Files (x86)/Beckhoff/TwinCAT/3.1/Config/Io/EtherCAT").exists()
 }
 
 #[tauri::command]
@@ -116,7 +116,9 @@ async fn copy_autd_xml(
     handle: tauri::AppHandle,
     console_emu_input_tx: tauri::State<'_, Sender<String>>,
 ) -> Result<(), String> {
-    let dst = std::path::Path::new("C:/TwinCAT/3.1/Config/Io/EtherCAT/AUTD.xml");
+    let dst = std::path::Path::new(
+        "C:/Program Files (x86)/Beckhoff/TwinCAT/3.1/Config/Io/EtherCAT/AUTD.xml",
+    );
 
     if dst.exists() {
         console_emu_input_tx
@@ -138,7 +140,7 @@ async fn copy_autd_xml(
 
     tokio::fs::copy(autd_xml_path, dst)
         .await
-        .map_err(|e| e.to_string())?;
+        .map_err(|e| format!("{}: please run as administrator", e))?;
 
     console_emu_input_tx
         .send("AUTD.xml is successfully copied".to_string())
@@ -216,7 +218,7 @@ async fn open_xae_shell() -> Result<(), String> {
         .join("TwinCATAUTDServer.sln");
 
     let xae_shell = std::path::Path::new("C:\\")
-        .join("Program Files (x86)")
+        .join("Program Files")
         .join("Beckhoff")
         .join("TcXaeShell")
         .join("Common7")

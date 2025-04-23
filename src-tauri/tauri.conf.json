@@ -39,13 +39,7 @@
       "./TwinCATAUTDServer/LICENSE",
       "./TwinCATAUTDServer/README.md",
       "./TwinCATAUTDServer/AUTD.xml",
-      "./TwinCATAUTDServer/TwinCATAUTDServer.exe",
-      "./TwinCATAUTDServer/System.Buffers.dll",
-      "./TwinCATAUTDServer/System.CommandLine.dll",
-      "./TwinCATAUTDServer/System.Memory.dll",
-      "./TwinCATAUTDServer/System.Numerics.Vectors.dll",
-      "./TwinCATAUTDServer/System.Runtime.CompilerServices.Unsafe.dll",
-      "./TwinCATAUTDServer/TwinCAT.Ads.dll"
+      "./TwinCATAUTDServer/TwinCATAUTDServer.exe"
     ],
     "copyright": "Copyright (c) 2023-2025 Shun Suzuki. All rights reserved.",
     "category": "DeveloperTool",
