@@ -24,7 +24,7 @@
     "@tauri-apps/cli": "^2.5.0",
     "@tsconfig/svelte": "^5.0.4",
     "svelte": "^5.28.1",
-    "svelte-check": "^4.1.6",
+    "svelte-check": "^4.1.7",
     "svelte-preprocess": "^6.0.3",
     "tslib": "^2.8.1",
     "typescript": "^5.8.3",
