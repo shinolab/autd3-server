@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { TwinCATOptions } from "./options.ts";
+  import { CpuBaseTimeValues, type TwinCATOptions } from "./options.ts";
 
   import { Command, Child } from "@tauri-apps/plugin-shell";
 
@@ -8,6 +8,7 @@
 
   import Button from "./utils/Button.svelte";
   import CheckBox from "./utils/CheckBox.svelte";
+  import Select from "./utils/Select.svelte";
   import NumberInput from "./utils/NumberInput.svelte";
   import IpInput from "./utils/IpInput.svelte";
 
@@ -16,19 +17,6 @@
   }
 
   let { twincatOptions = $bindable() }: Props = $props();
-
-  let baseUs = $state(twincatOptions.base * 500);
-  $effect(() => {
-    twincatOptions.base = baseUs / 500;
-  });
-  let sync0Us = $state(twincatOptions.sync0 * 500);
-  $effect(() => {
-    twincatOptions.sync0 = sync0Us / 500;
-  });
-  let taskUs = $state(twincatOptions.task * 500);
-  $effect(() => {
-    twincatOptions.task = taskUs / 500;
-  });
 
   let command;
   let child: null | Child = null;
@@ -98,14 +86,23 @@
   <label for="client">Client IP address:</label>
   <IpInput id="client" bind:value={twincatOptions.client} />
 
-  <label for="sync0Us">Sync0 cycle time [us]:</label>
-  <NumberInput id="sync0Us" bind:value={sync0Us} min="500" step="500" />
+  <label for="sync0Us">Sync0 cycle in units of 500μs:</label>
+  <NumberInput
+    id="sync0Us"
+    bind:value={twincatOptions.sync0}
+    min="1"
+    step="1"
+  />
 
-  <label for="taskUs">Send task cycle time [us]:</label>
-  <NumberInput id="taskUs" bind:value={taskUs} min="500" step="500" />
+  <label for="taskUs">Send task cycle in units of CPU base time:</label>
+  <NumberInput id="taskUs" bind:value={twincatOptions.task} min="1" step="1" />
 
-  <label for="baseUs">CPU base time [us]:</label>
-  <NumberInput id="baseUs" bind:value={baseUs} min="500" step="500" />
+  <label for="cpuBase">CPU base time:</label>
+  <Select
+    id="cpuBase"
+    bind:value={twincatOptions.base}
+    values={CpuBaseTimeValues}
+  />
 
   <label for="keep">Keep XAE Shell open:</label>
   <CheckBox id="keep" bind:checked={twincatOptions.keep} />

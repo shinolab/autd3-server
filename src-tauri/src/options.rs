@@ -3,11 +3,61 @@ use serde::{Deserialize, Serialize};
 use autd3_link_soem::TimerStrategy;
 
 #[derive(Debug, Serialize, Deserialize)]
+pub enum CpuBaseTime {
+    #[serde(rename = "1ms")]
+    T1ms,
+    #[serde(rename = "500us")]
+    T500us,
+    #[serde(rename = "333us")]
+    T333us,
+    #[serde(rename = "250us")]
+    T250us,
+    #[serde(rename = "200us")]
+    T200us,
+    #[serde(rename = "125us")]
+    T125us,
+    #[serde(rename = "100us")]
+    T100us,
+    #[serde(rename = "83.3us")]
+    T83p3us,
+    #[serde(rename = "76.9us")]
+    T76p9us,
+    #[serde(rename = "71.4us")]
+    T71p4us,
+    #[serde(rename = "66.6us")]
+    T66p6us,
+    #[serde(rename = "62.5us")]
+    T62p5us,
+    #[serde(rename = "50us")]
+    T50us,
+}
+
+impl std::fmt::Display for CpuBaseTime {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            CpuBaseTime::T1ms => write!(f, "1ms"),
+            CpuBaseTime::T500us => write!(f, "500us"),
+            CpuBaseTime::T333us => write!(f, "333us"),
+            CpuBaseTime::T250us => write!(f, "250us"),
+            CpuBaseTime::T200us => write!(f, "200us"),
+            CpuBaseTime::T125us => write!(f, "125us"),
+            CpuBaseTime::T100us => write!(f, "100us"),
+            CpuBaseTime::T83p3us => write!(f, "83.3us"),
+            CpuBaseTime::T76p9us => write!(f, "76.9us"),
+            CpuBaseTime::T71p4us => write!(f, "71.4us"),
+            CpuBaseTime::T66p6us => write!(f, "66.6us"),
+            CpuBaseTime::T62p5us => write!(f, "62.5us"),
+            CpuBaseTime::T50us => write!(f, "50us"),
+        }
+    }
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct TwinCATOptions {
     pub client: String,
     pub sync0: u32,
     pub task: u32,
-    pub base: u32,
+    pub base: CpuBaseTime,
     pub keep: bool,
     pub lightweight: bool,
     pub lightweight_port: u16,
@@ -18,9 +68,9 @@ impl Default for TwinCATOptions {
         Self {
             client: "".to_string(),
             sync0: 2,
-            task: 2,
-            base: 1,
-            keep: false,
+            task: 1,
+            base: CpuBaseTime::T1ms,
+            keep: true,
             lightweight: false,
             lightweight_port: 8080,
         }
