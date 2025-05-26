@@ -69,19 +69,19 @@ atk-sys 0.18.2 (MIT)
 https://github.com/gtk-rs/gtk3-rs
 ---------------------------------------------------------
 
-autd3-core 32.1.1 (MIT)
+autd3-core 33.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 32.1.1 (MIT)
+autd3-link-soem 33.0.0 (MIT)
 https://github.com/shinolab/autd3-link-soem
 ---------------------------------------------------------
 
-autd3-server 32.1.1 (MIT)
+autd3-server 33.0.0 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
-backtrace 0.3.74 (Apache-2.0 OR MIT)
+backtrace 0.3.75 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/backtrace-rs
 ---------------------------------------------------------
 
@@ -97,7 +97,7 @@ bitflags 1.3.2 (Apache-2.0 OR MIT)
 https://github.com/bitflags/bitflags
 ---------------------------------------------------------
 
-bitflags 2.9.0 (Apache-2.0 OR MIT)
+bitflags 2.9.1 (Apache-2.0 OR MIT)
 https://github.com/bitflags/bitflags
 ---------------------------------------------------------
 
@@ -129,7 +129,7 @@ bvh 0.11.0 (MIT)
 https://github.com/svenstaro/bvh
 ---------------------------------------------------------
 
-bytemuck 1.22.0 (Apache-2.0 OR MIT OR Zlib)
+bytemuck 1.23.0 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/bytemuck
 ---------------------------------------------------------
 
@@ -173,7 +173,7 @@ cfg-if 1.0.0 (Apache-2.0 OR MIT)
 https://github.com/alexcrichton/cfg-if
 ---------------------------------------------------------
 
-chrono 0.4.40 (Apache-2.0 OR MIT)
+chrono 0.4.41 (Apache-2.0 OR MIT)
 https://github.com/chronotope/chrono
 ---------------------------------------------------------
 
@@ -253,7 +253,7 @@ deranged 0.4.0 (Apache-2.0 OR MIT)
 https://github.com/jhpratt/deranged
 ---------------------------------------------------------
 
-derive_more 0.99.19 (MIT)
+derive_more 0.99.20 (MIT)
 https://github.com/JelteF/derive_more
 ---------------------------------------------------------
 
@@ -296,7 +296,7 @@ https://github.com/OpenByteDev/dlopen2
 dlopen2_derive 0.4.0 (MIT)
 ---------------------------------------------------------
 
-dpi 0.1.1 (Apache-2.0)
+dpi 0.1.2 (Apache-2.0 AND MIT)
 https://github.com/rust-windowing/winit
 ---------------------------------------------------------
 
@@ -332,7 +332,7 @@ erased-serde 0.4.6 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/erased-serde
 ---------------------------------------------------------
 
-errno 0.3.11 (Apache-2.0 OR MIT)
+errno 0.3.12 (Apache-2.0 OR MIT)
 https://github.com/lambda-fairy/rust-errno
 ---------------------------------------------------------
 
@@ -440,8 +440,8 @@ generic-array 0.14.7 (MIT)
 https://github.com/fizyk20/generic-array.git
 ---------------------------------------------------------
 
-gethostname 1.0.1 (Apache-2.0)
-https://github.com/swsnr/gethostname.rs.git
+gethostname 1.0.2 (Apache-2.0)
+https://codeberg.org/swsnr/gethostname.rs.git
 ---------------------------------------------------------
 
 getrandom 0.1.16 (Apache-2.0 OR MIT)
@@ -452,7 +452,7 @@ getrandom 0.2.16 (Apache-2.0 OR MIT)
 https://github.com/rust-random/getrandom
 ---------------------------------------------------------
 
-getrandom 0.3.2 (Apache-2.0 OR MIT)
+getrandom 0.3.3 (Apache-2.0 OR MIT)
 https://github.com/rust-random/getrandom
 ---------------------------------------------------------
 
@@ -508,7 +508,7 @@ hashbrown 0.12.3 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/hashbrown
 ---------------------------------------------------------
 
-hashbrown 0.15.2 (Apache-2.0 OR MIT)
+hashbrown 0.15.3 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/hashbrown
 ---------------------------------------------------------
 
@@ -548,7 +548,7 @@ hyper 1.6.0 (MIT)
 https://github.com/hyperium/hyper
 ---------------------------------------------------------
 
-hyper-util 0.1.11 (MIT)
+hyper-util 0.1.12 (MIT)
 https://github.com/hyperium/hyper-util
 ---------------------------------------------------------
 
@@ -564,43 +564,31 @@ ico 0.4.0 (MIT)
 https://github.com/mdsteele/rust-ico
 ---------------------------------------------------------
 
-icu_collections 1.5.0 (Unicode-3.0)
+icu_collections 2.0.0 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-icu_locid 1.5.0 (Unicode-3.0)
+icu_locale_core 2.0.0 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-icu_locid_transform 1.5.0 (Unicode-3.0)
+icu_normalizer 2.0.0 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-icu_locid_transform_data 1.5.1 (Unicode-3.0)
+icu_normalizer_data 2.0.0 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-icu_normalizer 1.5.0 (Unicode-3.0)
+icu_properties 2.0.1 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-icu_normalizer_data 1.5.1 (Unicode-3.0)
+icu_properties_data 2.0.1 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-icu_properties 1.5.1 (Unicode-3.0)
-https://github.com/unicode-org/icu4x
----------------------------------------------------------
-
-icu_properties_data 1.5.1 (Unicode-3.0)
-https://github.com/unicode-org/icu4x
----------------------------------------------------------
-
-icu_provider 1.5.0 (Unicode-3.0)
-https://github.com/unicode-org/icu4x
----------------------------------------------------------
-
-icu_provider_macros 1.5.0 (Unicode-3.0)
+icu_provider 2.0.0 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
@@ -612,7 +600,7 @@ idna 1.0.3 (Apache-2.0 OR MIT)
 https://github.com/servo/rust-url/
 ---------------------------------------------------------
 
-idna_adapter 1.2.0 (Apache-2.0 OR MIT)
+idna_adapter 1.2.1 (Apache-2.0 OR MIT)
 https://github.com/hsivonen/idna_adapter
 ---------------------------------------------------------
 
@@ -702,7 +690,7 @@ libloading 0.7.4 (ISC)
 https://github.com/nagisa/rust_libloading/
 ---------------------------------------------------------
 
-libloading 0.8.6 (ISC)
+libloading 0.8.7 (ISC)
 https://github.com/nagisa/rust_libloading/
 ---------------------------------------------------------
 
@@ -714,7 +702,7 @@ linux-raw-sys 0.9.4 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
 https://github.com/sunfishcode/linux-raw-sys
 ---------------------------------------------------------
 
-litemap 0.7.5 (Unicode-3.0)
+litemap 0.8.0 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
@@ -742,7 +730,7 @@ matches 0.1.10 (MIT)
 https://github.com/SimonSapin/rust-std-candidates
 ---------------------------------------------------------
 
-matrixmultiply 0.3.9 (Apache-2.0 OR MIT)
+matrixmultiply 0.3.10 (Apache-2.0 OR MIT)
 https://github.com/bluss/matrixmultiply/
 ---------------------------------------------------------
 
@@ -766,7 +754,7 @@ miniz_oxide 0.8.8 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide
 ---------------------------------------------------------
 
-mio 1.0.3 (MIT)
+mio 1.0.4 (MIT)
 https://github.com/tokio-rs/mio
 ---------------------------------------------------------
 
@@ -942,11 +930,11 @@ option-ext 0.2.0 (MPL-2.0)
 https://github.com/soc/option-ext.git
 ---------------------------------------------------------
 
-os_info 3.10.0 (MIT)
+os_info 3.11.0 (MIT)
 https://github.com/stanislav-tkach/os_info
 ---------------------------------------------------------
 
-os_pipe 1.2.1 (MIT)
+os_pipe 1.2.2 (MIT)
 https://github.com/oconnor663/os_pipe.rs
 ---------------------------------------------------------
 
@@ -1032,6 +1020,10 @@ https://github.com/ebarnard/rust-plist/
 
 png 0.17.16 (Apache-2.0 OR MIT)
 https://github.com/image-rs/image-png
+---------------------------------------------------------
+
+potential_utf 0.1.2 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
 powerfmt 0.2.0 (Apache-2.0 OR MIT)
@@ -1146,7 +1138,7 @@ rawpointer 0.2.1 (Apache-2.0 OR MIT)
 https://github.com/bluss/rawpointer/
 ---------------------------------------------------------
 
-redox_syscall 0.5.11 (MIT)
+redox_syscall 0.5.12 (MIT)
 https://gitlab.redox-os.org/redox-os/syscall
 ---------------------------------------------------------
 
@@ -1180,11 +1172,11 @@ rustc-demangle 0.1.24 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/rustc-demangle
 ---------------------------------------------------------
 
-rustix 1.0.5 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
+rustix 1.0.7 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
 https://github.com/bytecodealliance/rustix
 ---------------------------------------------------------
 
-rustversion 1.0.20 (Apache-2.0 OR MIT)
+rustversion 1.0.21 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/rustversion
 ---------------------------------------------------------
 
@@ -1272,11 +1264,11 @@ servo_arc 0.1.1 (Apache-2.0 OR MIT)
 https://github.com/servo/servo
 ---------------------------------------------------------
 
-sha2 0.10.8 (Apache-2.0 OR MIT)
+sha2 0.10.9 (Apache-2.0 OR MIT)
 https://github.com/RustCrypto/hashes
 ---------------------------------------------------------
 
-shared_child 1.0.1 (MIT)
+shared_child 1.0.2 (MIT)
 https://github.com/oconnor663/shared_child.rs
 ---------------------------------------------------------
 
@@ -1352,7 +1344,7 @@ syn 1.0.109 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
-syn 2.0.100 (Apache-2.0 OR MIT)
+syn 2.0.101 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
@@ -1360,7 +1352,7 @@ sync_wrapper 1.0.2 (Apache-2.0)
 https://github.com/Actyx/sync_wrapper
 ---------------------------------------------------------
 
-synstructure 0.13.1 (MIT)
+synstructure 0.13.2 (MIT)
 https://github.com/mystor/synstructure
 ---------------------------------------------------------
 
@@ -1452,11 +1444,11 @@ time-macros 0.2.22 (Apache-2.0 OR MIT)
 https://github.com/time-rs/time
 ---------------------------------------------------------
 
-tinystr 0.7.6 (Unicode-3.0)
+tinystr 0.8.1 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-tokio 1.44.2 (MIT)
+tokio 1.45.1 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
@@ -1464,15 +1456,15 @@ tokio-macros 2.5.0 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
-tokio-util 0.7.14 (MIT)
+tokio-util 0.7.15 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
-toml 0.8.20 (Apache-2.0 OR MIT)
+toml 0.8.22 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
-toml_datetime 0.6.8 (Apache-2.0 OR MIT)
+toml_datetime 0.6.9 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
@@ -1484,7 +1476,11 @@ toml_edit 0.20.7 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
-toml_edit 0.22.24 (Apache-2.0 OR MIT)
+toml_edit 0.22.26 (Apache-2.0 OR MIT)
+https://github.com/toml-rs/toml
+---------------------------------------------------------
+
+toml_write 0.1.1 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
@@ -1572,15 +1568,11 @@ utf-8 0.7.6 (Apache-2.0 OR MIT)
 https://github.com/SimonSapin/rust-utf8
 ---------------------------------------------------------
 
-utf16_iter 1.0.5 (Apache-2.0 OR MIT)
-https://github.com/hsivonen/utf16_iter
----------------------------------------------------------
-
 utf8_iter 1.0.4 (Apache-2.0 OR MIT)
 https://github.com/hsivonen/utf8_iter
 ---------------------------------------------------------
 
-uuid 1.16.0 (Apache-2.0 OR MIT)
+uuid 1.17.0 (Apache-2.0 OR MIT)
 https://github.com/uuid-rs/uuid
 ---------------------------------------------------------
 
@@ -1696,11 +1688,11 @@ windows-core 0.52.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-core 0.61.0 (Apache-2.0 OR MIT)
+windows-core 0.61.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-future 0.2.0 (Apache-2.0 OR MIT)
+windows-future 0.2.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1724,7 +1716,7 @@ windows-registry 0.4.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-result 0.3.2 (Apache-2.0 OR MIT)
+windows-result 0.3.4 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1732,7 +1724,7 @@ windows-strings 0.3.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-strings 0.4.0 (Apache-2.0 OR MIT)
+windows-strings 0.4.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1757,6 +1749,10 @@ https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
 windows-targets 0.53.0 (Apache-2.0 OR MIT)
+https://github.com/microsoft/windows-rs
+---------------------------------------------------------
+
+windows-threading 0.1.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1860,7 +1856,7 @@ winnow 0.5.40 (MIT)
 https://github.com/winnow-rs/winnow
 ---------------------------------------------------------
 
-winnow 0.7.6 (MIT)
+winnow 0.7.10 (MIT)
 https://github.com/winnow-rs/winnow
 ---------------------------------------------------------
 
@@ -1868,11 +1864,7 @@ wit-bindgen-rt 0.39.0 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
 https://github.com/bytecodealliance/wit-bindgen
 ---------------------------------------------------------
 
-write16 1.0.0 (Apache-2.0 OR MIT)
-https://github.com/hsivonen/write16
----------------------------------------------------------
-
-writeable 0.5.5 (Unicode-3.0)
+writeable 0.6.1 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
@@ -1888,19 +1880,19 @@ x11-dl 2.21.0 (MIT)
 https://github.com/AltF02/x11-rs.git
 ---------------------------------------------------------
 
-yoke 0.7.5 (Unicode-3.0)
+yoke 0.8.0 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-yoke-derive 0.7.5 (Unicode-3.0)
+yoke-derive 0.8.0 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-zerocopy 0.8.24 (Apache-2.0 OR BSD-2-Clause OR MIT)
+zerocopy 0.8.25 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
-zerocopy-derive 0.8.24 (Apache-2.0 OR BSD-2-Clause OR MIT)
+zerocopy-derive 0.8.25 (Apache-2.0 OR BSD-2-Clause OR MIT)
 https://github.com/google/zerocopy
 ---------------------------------------------------------
 
@@ -1912,11 +1904,15 @@ zerofrom-derive 0.1.6 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-zerovec 0.10.4 (Unicode-3.0)
+zerotrie 0.2.2 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-zerovec-derive 0.10.3 (Unicode-3.0)
+zerovec 0.11.2 (Unicode-3.0)
+https://github.com/unicode-org/icu4x
+---------------------------------------------------------
+
+zerovec-derive 0.11.1 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
         

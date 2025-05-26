@@ -87,7 +87,7 @@
 <style>
   div {
     display: flex;
-    width: 360px;
+    width: 440px;
     flex-direction: column;
     align-items: flex-start;
     flex-shrink: 0;

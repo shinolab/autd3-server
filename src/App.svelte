@@ -24,6 +24,7 @@
 
   onMount(async () => {
     options = await invoke("load_settings", {});
+    console.log("Loaded settings:", options);
   });
 
   const handleUnload = async () => {
