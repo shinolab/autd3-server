@@ -21,7 +21,7 @@ serde = { version = "1.0.219", features = ["derive"] }
 tokio = { version = "1.45.0", features = ["macros", "rt-multi-thread", "time", "process"] }
 tauri = { version = "2.5.1", features = [] }
 autd3-link-soem = { version = "33.0.0", features = ["serde"] }
-tauri-plugin-shell = "2.2.1"
+tauri-plugin-shell = "2.2.2"
 tauri-plugin-os = "2.2.1"
 showfile = "0.1.1"
 
