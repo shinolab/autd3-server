@@ -1,6 +1,11 @@
 use serde::{Deserialize, Serialize};
 
-use autd3_link_soem::TimerStrategy;
+#[derive(Debug, Serialize, Deserialize)]
+pub enum Sleeper {
+    Std,
+    Spin,
+    SpinWait,
+}
 
 #[derive(Debug, Serialize, Deserialize)]
 pub enum CpuBaseTime {
@@ -53,26 +58,45 @@ impl std::fmt::Display for CpuBaseTime {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+pub enum TwinCATVersion {
+    #[serde(rename = "4024")]
+    Build4024,
+    #[serde(rename = "4026")]
+    Build4026,
+}
+
+impl std::fmt::Display for TwinCATVersion {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            TwinCATVersion::Build4024 => write!(f, "4024"),
+            TwinCATVersion::Build4026 => write!(f, "4026"),
+        }
+    }
+}
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct TwinCATOptions {
     pub client: String,
+    pub device_name: String,
+    pub version: TwinCATVersion,
     pub sync0: u32,
     pub task: u32,
     pub base: CpuBaseTime,
     pub keep: bool,
-    pub lightweight: bool,
-    pub lightweight_port: u16,
+    pub debug: bool,
 }
 
 impl Default for TwinCATOptions {
     fn default() -> Self {
         Self {
             client: "".to_string(),
+            device_name: "".to_string(),
+            version: TwinCATVersion::Build4026,
             sync0: 2,
             task: 1,
             base: CpuBaseTime::T1ms,
             keep: true,
-            lightweight: false,
-            lightweight_port: 8080,
+            debug: false,
         }
     }
 }
@@ -84,11 +108,10 @@ pub struct SOEMOptions {
     pub sync0: std::time::Duration,
     pub send: std::time::Duration,
     pub buf_size: usize,
-    pub timer_strategy: TimerStrategy,
+    pub sleeper: Sleeper,
     pub state_check_interval: std::time::Duration,
     pub sync_tolerance: std::time::Duration,
     pub sync_timeout: std::time::Duration,
-    pub lightweight: bool,
 }
 
 impl Default for SOEMOptions {
@@ -99,11 +122,10 @@ impl Default for SOEMOptions {
             sync0: std::time::Duration::from_millis(1),
             send: std::time::Duration::from_millis(1),
             buf_size: 32,
-            timer_strategy: TimerStrategy::SpinSleep,
+            sleeper: Sleeper::Spin,
             state_check_interval: std::time::Duration::from_millis(100),
             sync_tolerance: std::time::Duration::from_micros(1),
             sync_timeout: std::time::Duration::from_secs(10),
-            lightweight: false,
         }
     }
 }
@@ -115,7 +137,6 @@ pub struct SimulatorOptions {
     pub window_width: u32,
     pub window_height: u32,
     pub unity: bool,
-    pub lightweight: bool,
 }
 
 impl Default for SimulatorOptions {
@@ -126,7 +147,6 @@ impl Default for SimulatorOptions {
             window_width: 800,
             window_height: 600,
             unity: false,
-            lightweight: false,
         }
     }
 }

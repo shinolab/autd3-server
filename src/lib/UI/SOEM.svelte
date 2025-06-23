@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { SOEMOptions, TimerStrategy } from "./options.ts";
-  import { TimerStrategyValues } from "./options.ts";
+  import type { SOEMOptions, Sleeper } from "./options.ts";
+  import { SleeperValues } from "./options.ts";
 
   import { onMount } from "svelte";
   import { Command, Child } from "@tauri-apps/plugin-shell";
@@ -8,7 +8,6 @@
 
   import Button from "./utils/Button.svelte";
   import Select from "./utils/Select.svelte";
-  import CheckBox from "./utils/CheckBox.svelte";
   import NumberInput from "./utils/NumberInput.svelte";
 
   import {
@@ -30,11 +29,11 @@
   let command;
   let child: null | Child = $state(null);
 
-  let parseStrategy = (strategy: TimerStrategy) => {
+  let parseSleeper = (strategy: Sleeper) => {
     switch (strategy) {
-      case "SpinSleep":
+      case "Spin":
         return "spin-sleep";
-      case "StdSleep":
+      case "Std":
         return "std-sleep";
       case "SpinWait":
         return "spin-wait";
@@ -95,7 +94,7 @@
       "-b",
       soemOptions.buf_size.toString(),
       "-t",
-      parseStrategy(soemOptions.timer_strategy),
+      parseSleeper(soemOptions.sleeper),
       "-e",
       stateCheckIntervalMs.toString(),
       "--sync_tolerance",
@@ -103,9 +102,6 @@
       "--sync_timeout",
       syncTimeoutS.toString(),
     ];
-    if (soemOptions.lightweight) {
-      args.push("-l");
-    }
 
     command = Command.sidecar("SOEMAUTDServer", args);
     child = await command.spawn();
@@ -175,8 +171,8 @@
   <label for="timer_strategy">Timer strategy:</label>
   <Select
     id="timer_strategy"
-    bind:value={soemOptions.timer_strategy}
-    values={TimerStrategyValues}
+    bind:value={soemOptions.sleeper}
+    values={SleeperValues}
   />
 
   <label for="stateCheckIntervalMs">State check interval [ms]:</label>
@@ -197,9 +193,6 @@
 
   <label for="syncTimeoutS">Sync timeout [s]:</label>
   <NumberInput id="syncTimeoutS" bind:value={syncTimeoutS} min="1" step="1" />
-
-  <label for="lightweight">Lightweight mode:</label>
-  <CheckBox id="lightweight" bind:checked={soemOptions.lightweight} />
 
   <Button label="Run" click={handleRunClick} disabled={!!child} />
   <Button label="Close" click={handleCloseClick} disabled={!child} />

@@ -1,5 +1,9 @@
 <script lang="ts">
-  import { CpuBaseTimeValues, type TwinCATOptions } from "./options.ts";
+  import {
+    CpuBaseTimeValues,
+    TwinCATVersionValues,
+    type TwinCATOptions,
+  } from "./options.ts";
 
   import { Command, Child } from "@tauri-apps/plugin-shell";
 
@@ -11,6 +15,8 @@
   import Select from "./utils/Select.svelte";
   import NumberInput from "./utils/NumberInput.svelte";
   import IpInput from "./utils/IpInput.svelte";
+
+  import { Tooltip } from "@svelte-plugins/tooltips";
 
   interface Props {
     twincatOptions: TwinCATOptions;
@@ -26,33 +32,14 @@
     await handleCloseClick();
     running = true;
 
-    if (twincatOptions.lightweight) {
-      const args: string[] = ["-p", twincatOptions.lightweight_port.toString()];
-      console.log("Running lightweight TwinCAT server with args:", args);
-      command = Command.sidecar("TwinCATAUTDServerLightweight", args);
-      child = await command.spawn();
-      command.stdout.on("data", (line) =>
-        consoleOutputQueue.update((v) => {
-          return [...v, line.trimEnd()];
-        }),
-      );
-      command.stderr.on("data", (line) =>
-        consoleOutputQueue.update((v) => {
-          return [...v, line.trimEnd()];
-        }),
-      );
-      command.on("error", () => handleCloseClick());
-      command.on("close", () => handleCloseClick());
-    } else {
-      const args = {
-        twincatOptions: JSON.stringify(twincatOptions),
-      };
-      try {
-        console.log("Running TwinCAT server with args:", args);
-        await invoke("run_twincat_server", args);
-      } catch (err) {
-        alert(err);
-      }
+    const args = {
+      twincatOptions: JSON.stringify(twincatOptions),
+    };
+    try {
+      console.log("Running TwinCAT server with args:", args);
+      await invoke("run_twincat_server", args);
+    } catch (err) {
+      alert(err);
     }
 
     running = false;
@@ -83,8 +70,22 @@
 </script>
 
 <div class="ui">
-  <label for="client">Client IP address:</label>
+  <label for="twincatVersion">TwinCAT Version:</label>
+  <Select
+    id="twincatVersion"
+    bind:value={twincatOptions.version}
+    values={TwinCATVersionValues}
+  />
+
+  <Tooltip content="If empty, use local TwinCAT.">
+    <label for="client">Client IP address:</label>
+  </Tooltip>
   <IpInput id="client" bind:value={twincatOptions.client} />
+
+  <Tooltip content="If empty, use the first device found.">
+    <label for="device_name">Ethernet device name:</label>
+  </Tooltip>
+  <input id="device_name" bind:value={twincatOptions.device_name} />
 
   <label for="sync0Us">Sync0 cycle in units of 500μs:</label>
   <NumberInput
@@ -107,19 +108,8 @@
   <label for="keep">Keep XAE Shell open:</label>
   <CheckBox id="keep" bind:checked={twincatOptions.keep} />
 
-  <label for="lightweight">Lightweight mode:</label>
-  <CheckBox id="lightweight" bind:checked={twincatOptions.lightweight} />
-
-  {#if twincatOptions.lightweight}
-    <label for="lightweight_port">Lightweight port:</label>
-    <NumberInput
-      id="lightweight_port"
-      bind:value={twincatOptions.lightweight_port}
-      min="0"
-      max="65535"
-      step="1"
-    />
-  {/if}
+  <label for="debug">Debug:</label>
+  <CheckBox id="debug" bind:checked={twincatOptions.debug} />
 
   <Button label="Run" click={handleRunClick} disabled={running} />
   <Button label="Open XAE Shell" click={handleOpenXaeShellClick} />
@@ -136,5 +126,15 @@
   label {
     text-align: right;
     padding-right: 10px;
+  }
+  :global(.tooltip-container) {
+    text-align: right;
+  }
+
+  input {
+    border-radius: 3px;
+    border: 1px solid var(--color-border-interactive-muted, #2b659b);
+    background: var(--color-background-base-default, #101923);
+    color: var(--color-text-base-default, #ffffff);
   }
 </style>

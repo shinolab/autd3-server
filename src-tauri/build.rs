@@ -39,15 +39,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         )),
     )?;
 
-    std::fs::copy(
-        manifest_dir.join(format!("../tmp/TwinCATAUTDServerLightweight{}", ext)),
-        manifest_dir.join(format!(
-            "TwinCATAUTDServerLightweight-{}{}",
-            std::env::var("TARGET")?,
-            ext
-        )),
-    )?;
-
     // LICENSE
     let license_path = manifest_dir.join("LICENSE");
     if license_path.exists() {

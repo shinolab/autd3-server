@@ -26,11 +26,6 @@
           "name": "SOEMAUTDServer",
           "sidecar": true,
           "args": true
-        },
-        {
-          "name": "TwinCATAUTDServerLightweight",
-          "sidecar": true,
-          "args": true
         }
       ]
     },
@@ -51,11 +46,6 @@
           "name": "SOEMAUTDServer",
           "sidecar": true,
           "args": true
-        },
-        {
-          "name": "TwinCATAUTDServerLightweight",
-          "sidecar": true,
-          "args": true
         }
       ]
     },
@@ -72,10 +62,6 @@
         },
         {
           "name": "SOEMAUTDServer",
-          "sidecar": true
-        },
-        {
-          "name": "TwinCATAUTDServerLightweight",
           "sidecar": true
         }
       ]
