@@ -168,6 +168,10 @@ async fn run_twincat_server(
     let mut args = vec![
         "-c".to_string(),
         twincat_options.client,
+        "--device_name".to_string(),
+        twincat_options.device_name,
+        "--twincat".to_string(),
+        twincat_options.version.to_string(),
         "-s".to_string(),
         twincat_options.sync0.to_string(),
         "-t".to_string(),
@@ -177,6 +181,9 @@ async fn run_twincat_server(
     ];
     if twincat_options.keep {
         args.push("-k".to_string());
+    }
+    if twincat_options.debug {
+        args.push("--debug".to_string());
     }
 
     #[cfg(target_os = "windows")]

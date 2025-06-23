@@ -38,8 +38,6 @@
       setting_file,
       "--setting_dir",
       appConfigDirPath,
-      "--lightweight",
-      simulatorOptions.lightweight.toString(),
     ];
     command = simulatorOptions.unity
       ? Command.sidecar("autd3-simulator-unity", args)
@@ -104,9 +102,6 @@
 
   <label for="unity">Unity:</label>
   <CheckBox id="unity" bind:checked={simulatorOptions.unity} />
-
-  <label for="lightweight">Lightweight mode:</label>
-  <CheckBox id="lightweight" bind:checked={simulatorOptions.lightweight} />
 
   <Button label="Run" click={handleRunClick} disabled={!!child} />
   <Button label="Close" click={handleCloseClick} disabled={!child} />

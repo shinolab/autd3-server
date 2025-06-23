@@ -34,8 +34,6 @@
       "./autd3-simulator-NOTICE",
       "./SOEMAUTDServer-LICENSE",
       "./SOEMAUTDServer-NOTICE",
-      "./TwinCATAUTDServerLightweight-LICENSE",
-      "./TwinCATAUTDServerLightweight-NOTICE",
       "./TwinCATAUTDServer/LICENSE",
       "./TwinCATAUTDServer/README.md",
       "./TwinCATAUTDServer/AUTD.xml",
@@ -48,8 +46,7 @@
     "externalBin": [
       "autd3-simulator",
       "autd3-simulator-unity",
-      "SOEMAUTDServer",
-      "TwinCATAUTDServerLightweight"
+      "SOEMAUTDServer"
     ],
     "macOS": {
       "entitlements": null,
@@ -71,7 +68,7 @@
   },
   "productName": "AUTD3 Server",
   "mainBinaryName": "AUTD3 Server",
-  "version": "33.0.0",
+  "version": "34.0.0",
   "identifier": "com.shinolab.autd3-server",
   "plugins": {},
   "app": {
@@ -80,7 +77,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "AUTD3 Server v33.0.0",
+        "title": "AUTD3 Server v34.0.0",
         "width": 800
       }
     ],

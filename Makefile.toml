@@ -104,7 +104,6 @@ tmp_file.unlink()
 
 download_and_extract("autd3-simulator", "autd3-simulator", version)
 download_and_extract("SOEMAUTDServer", "SOEMAUTDServer", version)
-download_and_extract("TwinCATAUTDServer", "TwinCATAUTDServerLightweight", version)
 '''
 
 [tasks.update-version]
