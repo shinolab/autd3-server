@@ -35,12 +35,12 @@ fn get_settings_file_path(handle: &tauri::AppHandle) -> std::io::Result<PathBuf>
 fn set_libpath(_: tauri::AppHandle) {
     if cfg!(target_os = "macos") {
         let home = std::env::var("HOME").unwrap_or_default();
-        let libpath = format!("{}/lib:/usr/local/lib:/usr/lib", home);
+        let libpath = format!("{home}/lib:/usr/local/lib:/usr/lib");
         let fallback_path = if let Ok(path) = std::env::var("DYLD_FALLBACK_LIBRARY_PATH") {
             if path.contains(&libpath) {
                 path
             } else {
-                format!("{}:{}", path, libpath)
+                format!("{path}:{libpath}")
             }
         } else {
             libpath
@@ -140,7 +140,7 @@ async fn copy_autd_xml(
 
     tokio::fs::copy(autd_xml_path, dst)
         .await
-        .map_err(|e| format!("{}: please run as administrator", e))?;
+        .map_err(|e| format!("{e}: please run as administrator"))?;
 
     console_emu_input_tx
         .send("AUTD.xml is successfully copied".to_string())

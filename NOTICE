@@ -9,24 +9,20 @@ The license terms for each of these components are provided later in this notice
 https://github.com/ampproject/remapping.git
 ---------------------------------------------------------
 
-@jridgewell/gen-mapping 0.3.8 (MIT)
-https://github.com/jridgewell/gen-mapping
+@jridgewell/gen-mapping 0.3.10 (MIT)
+https://github.com/jridgewell/sourcemaps.git
 ---------------------------------------------------------
 
 @jridgewell/resolve-uri 3.1.2 (MIT)
 https://github.com/jridgewell/resolve-uri
 ---------------------------------------------------------
 
-@jridgewell/set-array 1.2.1 (MIT)
-https://github.com/jridgewell/set-array
+@jridgewell/sourcemap-codec 1.5.2 (MIT)
+https://github.com/jridgewell/sourcemaps.git
 ---------------------------------------------------------
 
-@jridgewell/sourcemap-codec 1.5.0 (MIT)
-https://github.com/jridgewell/sourcemap-codec.git
----------------------------------------------------------
-
-@jridgewell/trace-mapping 0.3.25 (MIT)
-https://github.com/jridgewell/trace-mapping.git
+@jridgewell/trace-mapping 0.3.27 (MIT)
+https://github.com/jridgewell/sourcemaps.git
 ---------------------------------------------------------
 
 @svelte-plugins/tooltips 3.0.3 (MIT)
@@ -37,15 +33,15 @@ https://github.com/svelte-plugins/tooltips.git
 https://github.com/sveltejs/acorn-typescript.git
 ---------------------------------------------------------
 
-@tauri-apps/api 2.5.0 (Apache-2.0 OR MIT)
+@tauri-apps/api 2.6.0 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri.git
 ---------------------------------------------------------
 
-@tauri-apps/plugin-os 2.2.2 (MIT OR Apache-2.0)
+@tauri-apps/plugin-os 2.3.0 (MIT OR Apache-2.0)
 https://github.com/tauri-apps/plugins-workspace
 ---------------------------------------------------------
 
-@tauri-apps/plugin-shell 2.2.2 (MIT OR Apache-2.0)
+@tauri-apps/plugin-shell 2.3.0 (MIT OR Apache-2.0)
 https://github.com/tauri-apps/plugins-workspace
 ---------------------------------------------------------
 
@@ -89,7 +85,7 @@ magic-string 0.30.17 (MIT)
 https://github.com/rich-harris/magic-string
 ---------------------------------------------------------
 
-svelte 5.34.7 (MIT)
+svelte 5.34.9 (MIT)
 https://github.com/sveltejs/svelte.git
 ---------------------------------------------------------
 
@@ -149,15 +145,15 @@ atk-sys 0.18.2 (MIT)
 https://github.com/gtk-rs/gtk3-rs
 ---------------------------------------------------------
 
-autd3-core 34.0.0 (MIT)
+autd3-core 35.0.0 (MIT)
 https://github.com/shinolab/autd3-rs
 ---------------------------------------------------------
 
-autd3-link-soem 34.0.0 (MIT)
+autd3-link-soem 35.0.0 (MIT)
 https://github.com/shinolab/autd3-link-soem
 ---------------------------------------------------------
 
-autd3-server 34.0.0 (MIT)
+autd3-server 35.0.0 (MIT)
 https://github.com/shinolab/autd3-server
 ---------------------------------------------------------
 
@@ -197,15 +193,15 @@ block2 0.6.1 (MIT)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-brotli 7.0.0 (BSD-3-Clause AND MIT)
+brotli 8.0.1 (BSD-3-Clause AND MIT)
 https://github.com/dropbox/rust-brotli
 ---------------------------------------------------------
 
-brotli-decompressor 4.0.3 (BSD-3-Clause OR MIT)
+brotli-decompressor 5.0.0 (BSD-3-Clause OR MIT)
 https://github.com/dropbox/rust-brotli-decompressor
 ---------------------------------------------------------
 
-bumpalo 3.18.1 (Apache-2.0 OR MIT)
+bumpalo 3.19.0 (Apache-2.0 OR MIT)
 https://github.com/fitzgen/bumpalo
 ---------------------------------------------------------
 
@@ -289,6 +285,10 @@ core-graphics-types 0.2.0 (Apache-2.0 OR MIT)
 https://github.com/servo/core-foundation-rs
 ---------------------------------------------------------
 
+core_affinity 0.8.3 (Apache-2.0 OR MIT)
+https://github.com/Elzair/core_affinity_rs
+---------------------------------------------------------
+
 cpufeatures 0.2.17 (Apache-2.0 OR MIT)
 https://github.com/RustCrypto/utils
 ---------------------------------------------------------
@@ -309,7 +309,7 @@ crypto-common 0.1.6 (Apache-2.0 OR MIT)
 https://github.com/RustCrypto/traits
 ---------------------------------------------------------
 
-cssparser 0.27.2 (MPL-2.0)
+cssparser 0.29.6 (MPL-2.0)
 https://github.com/servo/rust-cssparser
 ---------------------------------------------------------
 
@@ -532,10 +532,6 @@ gethostname 1.0.2 (Apache-2.0)
 https://codeberg.org/swsnr/gethostname.rs.git
 ---------------------------------------------------------
 
-getrandom 0.1.16 (Apache-2.0 OR MIT)
-https://github.com/rust-random/getrandom
----------------------------------------------------------
-
 getrandom 0.2.16 (Apache-2.0 OR MIT)
 https://github.com/rust-random/getrandom
 ---------------------------------------------------------
@@ -608,11 +604,15 @@ heck 0.5.0 (Apache-2.0 OR MIT)
 https://github.com/withoutboats/heck
 ---------------------------------------------------------
 
+hermit-abi 0.5.2 (Apache-2.0 OR MIT)
+https://github.com/hermit-os/hermit-rs
+---------------------------------------------------------
+
 hex 0.4.3 (Apache-2.0 OR MIT)
 https://github.com/KokaKiwi/rust-hex
 ---------------------------------------------------------
 
-html5ever 0.26.0 (Apache-2.0 OR MIT)
+html5ever 0.29.1 (Apache-2.0 OR MIT)
 https://github.com/servo/html5ever
 ---------------------------------------------------------
 
@@ -696,7 +696,7 @@ indexmap 1.9.3 (Apache-2.0 OR MIT)
 https://github.com/bluss/indexmap
 ---------------------------------------------------------
 
-indexmap 2.9.0 (Apache-2.0 OR MIT)
+indexmap 2.10.0 (Apache-2.0 OR MIT)
 https://github.com/indexmap-rs/indexmap
 ---------------------------------------------------------
 
@@ -718,10 +718,6 @@ https://github.com/TheLarkInn/is-docker
 
 is-wsl 0.4.0 (MIT)
 https://github.com/TheLarkInn/is-wsl
----------------------------------------------------------
-
-itoa 0.4.8 (Apache-2.0 OR MIT)
-https://github.com/dtolnay/itoa
 ---------------------------------------------------------
 
 itoa 1.0.15 (Apache-2.0 OR MIT)
@@ -760,7 +756,7 @@ keyboard-types 0.7.0 (Apache-2.0 OR MIT)
 https://github.com/pyfisch/keyboard-types
 ---------------------------------------------------------
 
-kuchikiki 0.8.2 (MIT)
+kuchikiki 0.8.8-speedreader (MIT)
 https://github.com/brave/kuchikiki
 ---------------------------------------------------------
 
@@ -786,7 +782,7 @@ libloading 0.8.8 (ISC)
 https://github.com/nagisa/rust_libloading/
 ---------------------------------------------------------
 
-libredox 0.1.3 (MIT)
+libredox 0.1.4 (MIT)
 https://gitlab.redox-os.org/redox-os/libredox.git
 ---------------------------------------------------------
 
@@ -814,7 +810,11 @@ malloc_buf 0.0.6 (MIT)
 https://github.com/SSheldon/malloc_buf
 ---------------------------------------------------------
 
-markup5ever 0.11.0 (Apache-2.0 OR MIT)
+markup5ever 0.14.1 (Apache-2.0 OR MIT)
+https://github.com/servo/html5ever
+---------------------------------------------------------
+
+match_token 0.1.0 (Apache-2.0 OR MIT)
 https://github.com/servo/html5ever
 ---------------------------------------------------------
 
@@ -850,7 +850,7 @@ mio 1.0.4 (MIT)
 https://github.com/tokio-rs/mio
 ---------------------------------------------------------
 
-muda 0.16.1 (Apache-2.0 OR MIT)
+muda 0.17.0 (Apache-2.0 OR MIT)
 https://github.com/amrbashir/muda
 ---------------------------------------------------------
 
@@ -916,6 +916,10 @@ https://github.com/rust-num/num-rational
 
 num-traits 0.2.19 (Apache-2.0 OR MIT)
 https://github.com/rust-num/num-traits
+---------------------------------------------------------
+
+num_cpus 1.17.0 (Apache-2.0 OR MIT)
+https://github.com/seanmonstar/num_cpus
 ---------------------------------------------------------
 
 num_enum 0.7.4 (Apache-2.0 OR BSD-3-Clause OR MIT)
@@ -1070,7 +1074,7 @@ phf 0.11.3 (MIT)
 https://github.com/rust-phf/rust-phf
 ---------------------------------------------------------
 
-phf_generator 0.8.0 (MIT)
+phf_generator 0.10.0 (MIT)
 https://github.com/sfackler/rust-phf
 ---------------------------------------------------------
 
@@ -1078,7 +1082,7 @@ phf_generator 0.11.3 (MIT)
 https://github.com/rust-phf/rust-phf
 ---------------------------------------------------------
 
-phf_macros 0.8.0 (MIT)
+phf_macros 0.10.0 (MIT)
 https://github.com/sfackler/rust-phf
 ---------------------------------------------------------
 
@@ -1178,19 +1182,11 @@ r-efi 5.3.0 (Apache-2.0 OR MIT)
 https://github.com/r-efi/r-efi
 ---------------------------------------------------------
 
-rand 0.7.3 (Apache-2.0 OR MIT)
-https://github.com/rust-random/rand
----------------------------------------------------------
-
 rand 0.8.5 (Apache-2.0 OR MIT)
 https://github.com/rust-random/rand
 ---------------------------------------------------------
 
 rand 0.9.1 (Apache-2.0 OR MIT)
-https://github.com/rust-random/rand
----------------------------------------------------------
-
-rand_chacha 0.2.2 (Apache-2.0 OR MIT)
 https://github.com/rust-random/rand
 ---------------------------------------------------------
 
@@ -1202,23 +1198,11 @@ rand_chacha 0.9.0 (Apache-2.0 OR MIT)
 https://github.com/rust-random/rand
 ---------------------------------------------------------
 
-rand_core 0.5.1 (Apache-2.0 OR MIT)
-https://github.com/rust-random/rand
----------------------------------------------------------
-
 rand_core 0.6.4 (Apache-2.0 OR MIT)
 https://github.com/rust-random/rand
 ---------------------------------------------------------
 
 rand_core 0.9.3 (Apache-2.0 OR MIT)
-https://github.com/rust-random/rand
----------------------------------------------------------
-
-rand_hc 0.2.0 (Apache-2.0 OR MIT)
-https://github.com/rust-random/rand
----------------------------------------------------------
-
-rand_pcg 0.2.1 (Apache-2.0 OR MIT)
 https://github.com/rust-random/rand
 ---------------------------------------------------------
 
@@ -1308,7 +1292,7 @@ scopeguard 1.2.0 (Apache-2.0 OR MIT)
 https://github.com/bluss/scopeguard
 ---------------------------------------------------------
 
-selectors 0.22.0 (MPL-2.0)
+selectors 0.24.0 (MPL-2.0)
 https://github.com/servo/servo
 ---------------------------------------------------------
 
@@ -1364,7 +1348,7 @@ serialize-to-javascript-impl 0.1.1 (Apache-2.0 OR MIT)
 https://github.com/chippers/serialize-to-javascript
 ---------------------------------------------------------
 
-servo_arc 0.1.1 (Apache-2.0 OR MIT)
+servo_arc 0.2.0 (Apache-2.0 OR MIT)
 https://github.com/servo/servo
 ---------------------------------------------------------
 
@@ -1476,7 +1460,7 @@ ta 0.5.0 (MIT)
 https://github.com/greyblake/ta-rs
 ---------------------------------------------------------
 
-tao 0.33.0 (Apache-2.0)
+tao 0.34.0 (Apache-2.0)
 https://github.com/tauri-apps/tao
 ---------------------------------------------------------
 
@@ -1484,44 +1468,40 @@ tao-macros 0.1.3 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tao
 ---------------------------------------------------------
 
-tauri 2.5.1 (Apache-2.0 OR MIT)
+tauri 2.6.2 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
-tauri-codegen 2.2.0 (Apache-2.0 OR MIT)
+tauri-codegen 2.3.0 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
-tauri-macros 2.2.0 (Apache-2.0 OR MIT)
+tauri-macros 2.3.1 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
-tauri-plugin-os 2.2.2 (Apache-2.0 OR MIT)
+tauri-plugin-os 2.3.0 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/plugins-workspace
 ---------------------------------------------------------
 
-tauri-plugin-shell 2.2.2 (Apache-2.0 OR MIT)
+tauri-plugin-shell 2.3.0 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/plugins-workspace
 ---------------------------------------------------------
 
-tauri-runtime 2.6.0 (Apache-2.0 OR MIT)
+tauri-runtime 2.7.0 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
-tauri-runtime-wry 2.6.0 (Apache-2.0 OR MIT)
+tauri-runtime-wry 2.7.1 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
-tauri-utils 2.4.0 (Apache-2.0 OR MIT)
+tauri-utils 2.5.0 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
 tendril 0.4.3 (Apache-2.0 OR MIT)
 https://github.com/servo/tendril
----------------------------------------------------------
-
-thin-slice 0.1.1 (MPL-2.0)
-https://github.com/heycam/thin-slice
 ---------------------------------------------------------
 
 thiserror 1.0.69 (Apache-2.0 OR MIT)
@@ -1620,7 +1600,7 @@ tracing-core 0.1.34 (MIT)
 https://github.com/tokio-rs/tracing
 ---------------------------------------------------------
 
-tray-icon 0.20.1 (Apache-2.0 OR MIT)
+tray-icon 0.21.0 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tray-icon
 ---------------------------------------------------------
 
@@ -1700,10 +1680,6 @@ want 0.3.1 (MIT)
 https://github.com/seanmonstar/want
 ---------------------------------------------------------
 
-wasi 0.9.0+wasi-snapshot-preview1 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
-https://github.com/bytecodealliance/wasi
----------------------------------------------------------
-
 wasi 0.11.1+wasi-snapshot-preview1 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
 https://github.com/bytecodealliance/wasi
 ---------------------------------------------------------
@@ -1752,7 +1728,7 @@ webkit2gtk-sys 2.0.1 (MIT)
 https://github.com/tauri-apps/webkit2gtk-rs
 ---------------------------------------------------------
 
-webview2-com 0.37.0 (MIT)
+webview2-com 0.38.0 (MIT)
 https://github.com/wravery/webview2-rs
 ---------------------------------------------------------
 
@@ -1760,7 +1736,7 @@ webview2-com-macros 0.8.0 (MIT)
 https://github.com/wravery/webview2-rs
 ---------------------------------------------------------
 
-webview2-com-sys 0.37.0 (MIT)
+webview2-com-sys 0.38.0 (MIT)
 https://github.com/wravery/webview2-rs
 ---------------------------------------------------------
 
@@ -1980,7 +1956,7 @@ writeable 0.6.1 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-wry 0.51.2 (Apache-2.0 OR MIT)
+wry 0.52.1 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/wry
 ---------------------------------------------------------
 
