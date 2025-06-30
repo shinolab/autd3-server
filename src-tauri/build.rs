@@ -14,7 +14,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     };
 
     std::fs::copy(
-        manifest_dir.join(format!("../tmp/autd3-simulator{}", ext)),
+        manifest_dir.join(format!("../tmp/autd3-simulator{ext}")),
         manifest_dir.join(format!(
             "autd3-simulator-{}{}",
             std::env::var("TARGET")?,
@@ -22,7 +22,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         )),
     )?;
     std::fs::copy(
-        manifest_dir.join(format!("../tmp/autd3-simulator-unity{}", ext)),
+        manifest_dir.join(format!("../tmp/autd3-simulator-unity{ext}")),
         manifest_dir.join(format!(
             "autd3-simulator-unity-{}{}",
             std::env::var("TARGET")?,
@@ -31,7 +31,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     )?;
 
     std::fs::copy(
-        manifest_dir.join(format!("../tmp/SOEMAUTDServer{}", ext)),
+        manifest_dir.join(format!("../tmp/SOEMAUTDServer{ext}")),
         manifest_dir.join(format!(
             "SOEMAUTDServer-{}{}",
             std::env::var("TARGET")?,
