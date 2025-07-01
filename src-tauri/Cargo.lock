@@ -96,9 +96,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-core"
-version = "35.0.0"
+version = "35.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "278bdf1ea4ee92d436f0d42aab5bf7c3365ea9754102432eedc17db340067d63"
+checksum = "3e5338d842e0b13d14140d422613c8d11ed2fe60b87ac3e37d50f45f7da5c0b7"
 dependencies = [
  "bitfield-struct",
  "bvh",
@@ -116,9 +116,9 @@ dependencies = [
 
 [[package]]
 name = "autd3-link-soem"
-version = "35.0.0"
+version = "35.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "be3c5328da77b9e75566a058f9698ff538c0e1f8d0b2c65577c0f7498822b68a"
+checksum = "c130741453264ab4ddaf9fe850df9b5ab218db73de4782520d9cd8906056f54c"
 dependencies = [
  "anyhow",
  "autd3-core",
