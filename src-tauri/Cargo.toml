@@ -22,7 +22,7 @@ tokio = { version = "1.47.1", features = ["macros", "rt-multi-thread", "time", "
 tauri = { version = "2.7.0", features = [] }
 autd3-link-soem = { version = "35.0.1", features = ["serde"] }
 tauri-plugin-shell = "2.2.2"
-tauri-plugin-os = "2.2.2"
+tauri-plugin-os = "2.3.1"
 showfile = "0.1.1"
 
 [target.'cfg(windows)'.dependencies]
