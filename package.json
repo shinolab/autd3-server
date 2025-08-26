@@ -15,7 +15,7 @@
   "dependencies": {
     "@svelte-plugins/tooltips": "^3.0.3",
     "@tauri-apps/api": "^2.8.0",
-    "@tauri-apps/plugin-os": "^2.2.2",
+    "@tauri-apps/plugin-os": "^2.3.1",
     "@tauri-apps/plugin-shell": "^2.2.2",
     "svelte-tabs": "^1.1.0",
     "the-new-css-reset": "^1.11.3"
