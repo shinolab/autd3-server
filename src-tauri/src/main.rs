@@ -109,6 +109,20 @@ async fn wpcap_installed() -> bool {
 #[tauri::command]
 async fn twincat_installed() -> bool {
     std::path::Path::new("C:/Program Files (x86)/Beckhoff/TwinCAT/3.1/Config/Io/EtherCAT").exists()
+        || std::path::Path::new("C:/TwinCAT/3.1/Config/Io/EtherCAT").exists()
+}
+
+fn twincat_autd_xml_paths() -> Vec<std::path::PathBuf> {
+    [
+        std::path::Path::new(
+            "C:/Program Files (x86)/Beckhoff/TwinCAT/3.1/Config/Io/EtherCAT/AUTD.xml",
+        ),
+        std::path::Path::new("C:/TwinCAT/3.1/Config/Io/EtherCAT/AUTD.xml"),
+    ]
+    .into_iter()
+    .filter(|dst| !dst.exists())
+    .map(|p| p.to_path_buf())
+    .collect()
 }
 
 #[tauri::command]
@@ -116,20 +130,13 @@ async fn copy_autd_xml(
     handle: tauri::AppHandle,
     console_emu_input_tx: tauri::State<'_, Sender<String>>,
 ) -> Result<(), String> {
-    let dst = std::path::Path::new(
-        "C:/Program Files (x86)/Beckhoff/TwinCAT/3.1/Config/Io/EtherCAT/AUTD.xml",
-    );
-
-    if dst.exists() {
+    let dsts = twincat_autd_xml_paths();
+    if dsts.is_empty() {
         console_emu_input_tx
             .send("AUTD.xml is already exists".to_string())
             .await
             .map_err(|e| e.to_string())?;
         return Ok(());
-    }
-
-    if dst.parent().is_some_and(|p| !p.exists()) {
-        return Err("TwinCAT is not installed".to_string());
     }
 
     let autd_xml_path = handle
@@ -138,9 +145,11 @@ async fn copy_autd_xml(
         .map(|resource| resource.join("TwinCATAUTDServer/AUTD.xml"))
         .map_err(|_| "Can't find AUTD.xml")?;
 
-    tokio::fs::copy(autd_xml_path, dst)
-        .await
-        .map_err(|e| format!("{e}: please run as administrator"))?;
+    for dst in dsts {
+        tokio::fs::copy(&autd_xml_path, dst)
+            .await
+            .map_err(|e| format!("{e}: please run as administrator"))?;
+    }
 
     console_emu_input_tx
         .send("AUTD.xml is successfully copied".to_string())
