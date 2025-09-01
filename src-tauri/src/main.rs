@@ -120,7 +120,7 @@ fn twincat_autd_xml_paths() -> Vec<std::path::PathBuf> {
         std::path::Path::new("C:/TwinCAT/3.1/Config/Io/EtherCAT/AUTD.xml"),
     ]
     .into_iter()
-    .filter(|dst| !dst.exists())
+    .filter(|dst| !dst.exists() && dst.parent().map(|p| p.exists()).unwrap_or(false))
     .map(|p| p.to_path_buf())
     .collect()
 }
