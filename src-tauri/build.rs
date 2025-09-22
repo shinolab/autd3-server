@@ -30,15 +30,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         )),
     )?;
 
-    std::fs::copy(
-        manifest_dir.join(format!("../tmp/SOEMAUTDServer{ext}")),
-        manifest_dir.join(format!(
-            "SOEMAUTDServer-{}{}",
-            std::env::var("TARGET")?,
-            ext
-        )),
-    )?;
-
     // LICENSE
     let license_path = manifest_dir.join("LICENSE");
     if license_path.exists() {

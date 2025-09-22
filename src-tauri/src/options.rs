@@ -1,13 +1,6 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
-pub enum Sleeper {
-    Std,
-    Spin,
-    SpinWait,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub enum CpuBaseTime {
     #[serde(rename = "1ms")]
     T1ms,
@@ -102,35 +95,6 @@ impl Default for TwinCATOptions {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SOEMOptions {
-    pub ifname: String,
-    pub port: u16,
-    pub sync0: std::time::Duration,
-    pub send: std::time::Duration,
-    pub buf_size: usize,
-    pub sleeper: Sleeper,
-    pub state_check_interval: std::time::Duration,
-    pub sync_tolerance: std::time::Duration,
-    pub sync_timeout: std::time::Duration,
-}
-
-impl Default for SOEMOptions {
-    fn default() -> Self {
-        Self {
-            ifname: "".to_string(),
-            port: 8080,
-            sync0: std::time::Duration::from_millis(1),
-            send: std::time::Duration::from_millis(1),
-            buf_size: 32,
-            sleeper: Sleeper::Spin,
-            state_check_interval: std::time::Duration::from_millis(100),
-            sync_tolerance: std::time::Duration::from_micros(1),
-            sync_timeout: std::time::Duration::from_secs(10),
-        }
-    }
-}
-
-#[derive(Debug, Serialize, Deserialize)]
 pub struct SimulatorOptions {
     pub vsync: bool,
     pub port: u16,
@@ -154,6 +118,5 @@ impl Default for SimulatorOptions {
 #[derive(Default, Debug, Serialize, Deserialize)]
 pub struct Options {
     pub twincat: TwinCATOptions,
-    pub soem: SOEMOptions,
     pub simulator: SimulatorOptions,
 }

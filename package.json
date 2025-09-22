@@ -1,6 +1,6 @@
 {
   "name": "autd3-server",
-  "version": "35.0.0",
+  "version": "36.0.2",
   "description": "",
   "type": "module",
   "scripts": {
@@ -21,14 +21,14 @@
     "the-new-css-reset": "^1.11.3"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^6.2.0",
+    "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@tauri-apps/cli": "^2.8.3",
     "@tsconfig/svelte": "^5.0.5",
-    "svelte": "^5.39.4",
-    "svelte-check": "^4.3.1",
+    "svelte": "^5.39.8",
+    "svelte-check": "^4.3.2",
     "svelte-preprocess": "^6.0.3",
     "tslib": "^2.8.1",
-    "typescript": "^5.9.2",
+    "typescript": "^5.9.3",
     "vite": "^7.1.7"
   }
 }
