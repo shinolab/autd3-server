@@ -103,7 +103,6 @@ shutil.unpack_archive(tmp_file, "src-tauri/TwinCATAUTDServer")
 tmp_file.unlink()
 
 download_and_extract("autd3-simulator", "autd3-simulator", version)
-download_and_extract("SOEMAUTDServer", "SOEMAUTDServer", version)
 '''
 
 [tasks.update-version]

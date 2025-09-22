@@ -21,11 +21,6 @@
           "name": "autd3-simulator-unity",
           "sidecar": true,
           "args": true
-        },
-        {
-          "name": "SOEMAUTDServer",
-          "sidecar": true,
-          "args": true
         }
       ]
     },
@@ -41,11 +36,6 @@
           "name": "autd3-simulator-unity",
           "sidecar": true,
           "args": true
-        },
-        {
-          "name": "SOEMAUTDServer",
-          "sidecar": true,
-          "args": true
         }
       ]
     },
@@ -58,10 +48,6 @@
         },
         {
           "name": "autd3-simulator-unity",
-          "sidecar": true
-        },
-        {
-          "name": "SOEMAUTDServer",
           "sidecar": true
         }
       ]

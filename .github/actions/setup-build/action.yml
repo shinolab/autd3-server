@@ -4,6 +4,10 @@ inputs:
     description: 'os'
     required: true
     default: ''
+  components:
+    description: 'components'
+    required: false
+    default: ''
 runs:
   using: "composite"
   steps:
@@ -11,6 +15,7 @@ runs:
       uses: actions-rust-lang/setup-rust-toolchain@v1
       with:
         toolchain: 'stable'
+        components: ${{ inputs.components }}
     - name: Setup cargo-make
       uses: taiki-e/install-action@v2
       with:
