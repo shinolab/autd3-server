@@ -1,6 +1,6 @@
 [package]
 name = "autd3-server"
-version = "36.0.2"
+version = "37.0.0"
 description = "AUTD3 Server app"
 authors = ["shun suzuki <suzuki@hapis.k.u-tokyo.ac.jp>"]
 edition = "2024"

@@ -33,7 +33,7 @@ https://github.com/svelte-plugins/tooltips.git
 https://github.com/sveltejs/acorn-typescript.git
 ---------------------------------------------------------
 
-@tauri-apps/api 2.8.0 (Apache-2.0 OR MIT)
+@tauri-apps/api 2.9.0 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri.git
 ---------------------------------------------------------
 
@@ -85,7 +85,7 @@ magic-string 0.30.19 (MIT)
 https://github.com/rich-harris/magic-string.git
 ---------------------------------------------------------
 
-svelte 5.39.8 (MIT)
+svelte 5.41.1 (MIT)
 https://github.com/sveltejs/svelte.git
 ---------------------------------------------------------
 
@@ -99,10 +99,6 @@ https://github.com/elad2412/the-new-css-reset.git
 
 zimmerframe 1.1.4 (MIT)
 https://github.com/sveltejs/zimmerframe
----------------------------------------------------------
-
-addr2line 0.25.1 (Apache-2.0 OR MIT)
-https://github.com/gimli-rs/addr2line
 ---------------------------------------------------------
 
 adler2 2.0.1 (0BSD OR Apache-2.0 OR MIT)
@@ -141,12 +137,8 @@ atomic-waker 1.1.2 (Apache-2.0 OR MIT)
 https://github.com/smol-rs/atomic-waker
 ---------------------------------------------------------
 
-autd3-server 36.0.2 (MIT)
+autd3-server 37.0.0 (MIT)
 https://github.com/shinolab/autd3-server
----------------------------------------------------------
-
-backtrace 0.3.76 (Apache-2.0 OR MIT)
-https://github.com/rust-lang/backtrace-rs
 ---------------------------------------------------------
 
 base64 0.21.7 (Apache-2.0 OR MIT)
@@ -161,7 +153,7 @@ bitflags 1.3.2 (Apache-2.0 OR MIT)
 https://github.com/bitflags/bitflags
 ---------------------------------------------------------
 
-bitflags 2.9.4 (Apache-2.0 OR MIT)
+bitflags 2.10.0 (Apache-2.0 OR MIT)
 https://github.com/bitflags/bitflags
 ---------------------------------------------------------
 
@@ -173,7 +165,7 @@ block2 0.5.1 (MIT)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-block2 0.6.1 (MIT)
+block2 0.6.2 (MIT)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
@@ -189,7 +181,7 @@ bumpalo 3.19.0 (Apache-2.0 OR MIT)
 https://github.com/fitzgen/bumpalo
 ---------------------------------------------------------
 
-bytemuck 1.23.2 (Apache-2.0 OR MIT OR Zlib)
+bytemuck 1.24.0 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Lokathor/bytemuck
 ---------------------------------------------------------
 
@@ -229,7 +221,7 @@ cfb 0.7.3 (MIT)
 https://github.com/mdsteele/rust-cfb
 ---------------------------------------------------------
 
-cfg-if 1.0.3 (Apache-2.0 OR MIT)
+cfg-if 1.0.4 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/cfg-if
 ---------------------------------------------------------
 
@@ -403,7 +395,7 @@ field-offset 0.3.6 (Apache-2.0 OR MIT)
 https://github.com/Diggsey/rust-field-offset
 ---------------------------------------------------------
 
-flate2 1.1.2 (Apache-2.0 OR MIT)
+flate2 1.1.4 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/flate2-rs
 ---------------------------------------------------------
 
@@ -495,11 +487,11 @@ gdkx11-sys 0.18.2 (MIT)
 https://github.com/gtk-rs/gtk3-rs
 ---------------------------------------------------------
 
-generic-array 0.14.7 (MIT)
+generic-array 0.14.9 (MIT)
 https://github.com/fizyk20/generic-array.git
 ---------------------------------------------------------
 
-gethostname 1.0.2 (Apache-2.0)
+gethostname 1.1.0 (Apache-2.0)
 https://codeberg.org/swsnr/gethostname.rs.git
 ---------------------------------------------------------
 
@@ -507,12 +499,8 @@ getrandom 0.2.16 (Apache-2.0 OR MIT)
 https://github.com/rust-random/getrandom
 ---------------------------------------------------------
 
-getrandom 0.3.3 (Apache-2.0 OR MIT)
+getrandom 0.3.4 (Apache-2.0 OR MIT)
 https://github.com/rust-random/getrandom
----------------------------------------------------------
-
-gimli 0.32.3 (Apache-2.0 OR MIT)
-https://github.com/gimli-rs/gimli
 ---------------------------------------------------------
 
 gio 0.18.4 (MIT)
@@ -659,16 +647,12 @@ indexmap 1.9.3 (Apache-2.0 OR MIT)
 https://github.com/bluss/indexmap
 ---------------------------------------------------------
 
-indexmap 2.11.4 (Apache-2.0 OR MIT)
+indexmap 2.12.0 (Apache-2.0 OR MIT)
 https://github.com/indexmap-rs/indexmap
 ---------------------------------------------------------
 
 infer 0.19.0 (MIT)
 https://github.com/bojand/infer
----------------------------------------------------------
-
-io-uring 0.7.10 (Apache-2.0 OR MIT)
-https://github.com/tokio-rs/io-uring
 ---------------------------------------------------------
 
 ipnet 2.11.0 (Apache-2.0 OR MIT)
@@ -737,7 +721,7 @@ libappindicator 0.9.0 (Apache-2.0 OR MIT)
 libappindicator-sys 0.9.0 (Apache-2.0 OR MIT)
 ---------------------------------------------------------
 
-libc 0.2.176 (Apache-2.0 OR MIT)
+libc 0.2.177 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/libc
 ---------------------------------------------------------
 
@@ -761,7 +745,7 @@ litemap 0.8.0 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-lock_api 0.4.13 (Apache-2.0 OR MIT)
+lock_api 0.4.14 (Apache-2.0 OR MIT)
 https://github.com/Amanieu/parking_lot
 ---------------------------------------------------------
 
@@ -809,7 +793,7 @@ miniz_oxide 0.8.9 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide
 ---------------------------------------------------------
 
-mio 1.0.4 (MIT)
+mio 1.1.0 (MIT)
 https://github.com/tokio-rs/mio
 ---------------------------------------------------------
 
@@ -849,11 +833,11 @@ num-traits 0.2.19 (Apache-2.0 OR MIT)
 https://github.com/rust-num/num-traits
 ---------------------------------------------------------
 
-num_enum 0.7.4 (Apache-2.0 OR BSD-3-Clause OR MIT)
+num_enum 0.7.5 (Apache-2.0 OR BSD-3-Clause OR MIT)
 https://github.com/illicitonion/num_enum
 ---------------------------------------------------------
 
-num_enum_derive 0.7.4 (Apache-2.0 OR BSD-3-Clause OR MIT)
+num_enum_derive 0.7.5 (Apache-2.0 OR BSD-3-Clause OR MIT)
 https://github.com/illicitonion/num_enum
 ---------------------------------------------------------
 
@@ -869,31 +853,39 @@ objc2 0.5.2 (MIT)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2 0.6.2 (MIT)
+objc2 0.6.3 (MIT)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2-app-kit 0.3.1 (Apache-2.0 OR MIT OR Zlib)
+objc2-app-kit 0.3.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2-cloud-kit 0.3.1 (Apache-2.0 OR MIT OR Zlib)
+objc2-cloud-kit 0.3.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2-core-data 0.3.1 (Apache-2.0 OR MIT OR Zlib)
+objc2-core-data 0.3.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2-core-foundation 0.3.1 (Apache-2.0 OR MIT OR Zlib)
+objc2-core-foundation 0.3.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2-core-graphics 0.3.1 (Apache-2.0 OR MIT OR Zlib)
+objc2-core-graphics 0.3.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2-core-image 0.3.1 (Apache-2.0 OR MIT OR Zlib)
+objc2-core-image 0.3.2 (Apache-2.0 OR MIT OR Zlib)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-core-text 0.3.2 (Apache-2.0 OR MIT OR Zlib)
+https://github.com/madsmtm/objc2
+---------------------------------------------------------
+
+objc2-core-video 0.3.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
@@ -909,15 +901,15 @@ objc2-foundation 0.2.2 (MIT)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2-foundation 0.3.1 (MIT)
+objc2-foundation 0.3.2 (MIT)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2-io-surface 0.3.1 (Apache-2.0 OR MIT OR Zlib)
+objc2-io-surface 0.3.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2-javascript-core 0.3.1 (Apache-2.0 OR MIT OR Zlib)
+objc2-javascript-core 0.3.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
@@ -929,24 +921,20 @@ objc2-quartz-core 0.2.2 (MIT)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2-quartz-core 0.3.1 (Apache-2.0 OR MIT OR Zlib)
+objc2-quartz-core 0.3.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2-security 0.3.1 (Apache-2.0 OR MIT OR Zlib)
+objc2-security 0.3.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2-ui-kit 0.3.1 (Apache-2.0 OR MIT OR Zlib)
+objc2-ui-kit 0.3.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/madsmtm/objc2
 ---------------------------------------------------------
 
-objc2-web-kit 0.3.1 (Apache-2.0 OR MIT OR Zlib)
+objc2-web-kit 0.3.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/madsmtm/objc2
----------------------------------------------------------
-
-object 0.37.3 (Apache-2.0 OR MIT)
-https://github.com/gimli-rs/object
 ---------------------------------------------------------
 
 once_cell 1.21.3 (Apache-2.0 OR MIT)
@@ -965,7 +953,7 @@ os_info 3.12.0 (MIT)
 https://github.com/stanislav-tkach/os_info
 ---------------------------------------------------------
 
-os_pipe 1.2.2 (MIT)
+os_pipe 1.2.3 (MIT)
 https://github.com/oconnor663/os_pipe.rs
 ---------------------------------------------------------
 
@@ -977,11 +965,11 @@ pango-sys 0.18.0 (MIT)
 https://github.com/gtk-rs/gtk-rs-core
 ---------------------------------------------------------
 
-parking_lot 0.12.4 (Apache-2.0 OR MIT)
+parking_lot 0.12.5 (Apache-2.0 OR MIT)
 https://github.com/Amanieu/parking_lot
 ---------------------------------------------------------
 
-parking_lot_core 0.9.11 (Apache-2.0 OR MIT)
+parking_lot_core 0.9.12 (Apache-2.0 OR MIT)
 https://github.com/Amanieu/parking_lot
 ---------------------------------------------------------
 
@@ -1121,7 +1109,7 @@ raw-window-handle 0.6.2 (Apache-2.0 OR MIT OR Zlib)
 https://github.com/rust-windowing/raw-window-handle
 ---------------------------------------------------------
 
-redox_syscall 0.5.17 (MIT)
+redox_syscall 0.5.18 (MIT)
 https://gitlab.redox-os.org/redox-os/syscall
 ---------------------------------------------------------
 
@@ -1137,19 +1125,19 @@ ref-cast-impl 1.0.25 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/ref-cast
 ---------------------------------------------------------
 
-regex 1.11.3 (Apache-2.0 OR MIT)
+regex 1.12.2 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/regex
 ---------------------------------------------------------
 
-regex-automata 0.4.11 (Apache-2.0 OR MIT)
+regex-automata 0.4.13 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/regex
 ---------------------------------------------------------
 
-regex-syntax 0.8.6 (Apache-2.0 OR MIT)
+regex-syntax 0.8.8 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/regex
 ---------------------------------------------------------
 
-reqwest 0.12.23 (Apache-2.0 OR MIT)
+reqwest 0.12.24 (Apache-2.0 OR MIT)
 https://github.com/seanmonstar/reqwest
 ---------------------------------------------------------
 
@@ -1157,10 +1145,6 @@ rustbus 0.19.3 (MIT)
 ---------------------------------------------------------
 
 rustbus_derive 0.5.0 (MIT)
----------------------------------------------------------
-
-rustc-demangle 0.1.26 (Apache-2.0 OR MIT)
-https://github.com/rust-lang/rustc-demangle
 ---------------------------------------------------------
 
 rustix 1.1.2 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
@@ -1239,7 +1223,7 @@ serde_spanned 0.6.9 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
-serde_spanned 1.0.2 (Apache-2.0 OR MIT)
+serde_spanned 1.0.3 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
@@ -1247,11 +1231,11 @@ serde_urlencoded 0.7.1 (Apache-2.0 OR MIT)
 https://github.com/nox/serde_urlencoded
 ---------------------------------------------------------
 
-serde_with 3.14.1 (Apache-2.0 OR MIT)
+serde_with 3.15.1 (Apache-2.0 OR MIT)
 https://github.com/jonasbb/serde_with/
 ---------------------------------------------------------
 
-serde_with_macros 3.14.1 (Apache-2.0 OR MIT)
+serde_with_macros 3.15.1 (Apache-2.0 OR MIT)
 https://github.com/jonasbb/serde_with/
 ---------------------------------------------------------
 
@@ -1311,7 +1295,7 @@ smallvec 1.15.1 (Apache-2.0 OR MIT)
 https://github.com/servo/rust-smallvec
 ---------------------------------------------------------
 
-socket2 0.6.0 (Apache-2.0 OR MIT)
+socket2 0.6.1 (Apache-2.0 OR MIT)
 https://github.com/rust-lang/socket2
 ---------------------------------------------------------
 
@@ -1327,7 +1311,7 @@ soup3-sys 0.5.0 (MIT)
 https://gitlab.gnome.org/World/Rust/soup3-rs
 ---------------------------------------------------------
 
-stable_deref_trait 1.2.0 (Apache-2.0 OR MIT)
+stable_deref_trait 1.2.1 (Apache-2.0 OR MIT)
 https://github.com/storyyeller/stable_deref_trait
 ---------------------------------------------------------
 
@@ -1347,7 +1331,7 @@ syn 1.0.109 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
-syn 2.0.106 (Apache-2.0 OR MIT)
+syn 2.0.107 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/syn
 ---------------------------------------------------------
 
@@ -1363,7 +1347,7 @@ sys-locale 0.3.2 (Apache-2.0 OR MIT)
 https://github.com/1Password/sys-locale
 ---------------------------------------------------------
 
-tao 0.34.3 (Apache-2.0)
+tao 0.34.5 (Apache-2.0)
 https://github.com/tauri-apps/tao
 ---------------------------------------------------------
 
@@ -1371,15 +1355,15 @@ tao-macros 0.1.3 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tao
 ---------------------------------------------------------
 
-tauri 2.8.5 (Apache-2.0 OR MIT)
+tauri 2.9.0 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
-tauri-codegen 2.4.0 (Apache-2.0 OR MIT)
+tauri-codegen 2.5.0 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
-tauri-macros 2.4.0 (Apache-2.0 OR MIT)
+tauri-macros 2.5.0 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
@@ -1391,15 +1375,15 @@ tauri-plugin-shell 2.3.1 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/plugins-workspace
 ---------------------------------------------------------
 
-tauri-runtime 2.8.0 (Apache-2.0 OR MIT)
+tauri-runtime 2.9.0 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
-tauri-runtime-wry 2.8.1 (Apache-2.0 OR MIT)
+tauri-runtime-wry 2.9.0 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
-tauri-utils 2.7.0 (Apache-2.0 OR MIT)
+tauri-utils 2.8.0 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tauri
 ---------------------------------------------------------
 
@@ -1439,11 +1423,11 @@ tinystr 0.8.1 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-tokio 1.47.1 (MIT)
+tokio 1.48.0 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
-tokio-macros 2.5.0 (MIT)
+tokio-macros 2.6.0 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
@@ -1451,7 +1435,7 @@ tokio-util 0.7.16 (MIT)
 https://github.com/tokio-rs/tokio
 ---------------------------------------------------------
 
-toml 0.9.7 (Apache-2.0 OR MIT)
+toml 0.9.8 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
@@ -1459,7 +1443,7 @@ toml_datetime 0.6.3 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
-toml_datetime 0.7.2 (Apache-2.0 OR MIT)
+toml_datetime 0.7.3 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
@@ -1471,15 +1455,15 @@ toml_edit 0.20.2 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
-toml_edit 0.23.6 (Apache-2.0 OR MIT)
+toml_edit 0.23.7 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
-toml_parser 1.0.3 (Apache-2.0 OR MIT)
+toml_parser 1.0.4 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
-toml_writer 1.0.3 (Apache-2.0 OR MIT)
+toml_writer 1.0.4 (Apache-2.0 OR MIT)
 https://github.com/toml-rs/toml
 ---------------------------------------------------------
 
@@ -1507,7 +1491,7 @@ tracing-core 0.1.34 (MIT)
 https://github.com/tokio-rs/tracing
 ---------------------------------------------------------
 
-tray-icon 0.21.1 (Apache-2.0 OR MIT)
+tray-icon 0.21.2 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/tray-icon
 ---------------------------------------------------------
 
@@ -1519,7 +1503,7 @@ typeid 1.0.3 (Apache-2.0 OR MIT)
 https://github.com/dtolnay/typeid
 ---------------------------------------------------------
 
-typenum 1.18.0 (Apache-2.0 OR MIT)
+typenum 1.19.0 (Apache-2.0 OR MIT)
 https://github.com/paholg/typenum
 ---------------------------------------------------------
 
@@ -1543,7 +1527,7 @@ unic-ucd-version 0.9.0 (Apache-2.0 OR MIT)
 https://github.com/open-i18n/rust-unic/
 ---------------------------------------------------------
 
-unicode-ident 1.0.19 ((MIT OR Apache-2.0) AND Unicode-3.0)
+unicode-ident 1.0.20 ((MIT OR Apache-2.0) AND Unicode-3.0)
 https://github.com/dtolnay/unicode-ident
 ---------------------------------------------------------
 
@@ -1585,10 +1569,6 @@ https://github.com/seanmonstar/want
 
 wasi 0.11.1+wasi-snapshot-preview1 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
 https://github.com/bytecodealliance/wasi
----------------------------------------------------------
-
-wasi 0.14.7+wasi-0.2.4 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
-https://github.com/bytecodealliance/wasi-rs
 ---------------------------------------------------------
 
 wasip2 1.0.1+wasi-0.2.4 (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT)
@@ -1687,7 +1667,7 @@ windows-core 0.61.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-core 0.62.1 (Apache-2.0 OR MIT)
+windows-core 0.62.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1695,11 +1675,11 @@ windows-future 0.2.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-implement 0.60.1 (Apache-2.0 OR MIT)
+windows-implement 0.60.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-interface 0.59.2 (Apache-2.0 OR MIT)
+windows-interface 0.59.3 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1707,7 +1687,7 @@ windows-link 0.1.3 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-link 0.2.0 (Apache-2.0 OR MIT)
+windows-link 0.2.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1719,7 +1699,7 @@ windows-result 0.3.4 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-result 0.4.0 (Apache-2.0 OR MIT)
+windows-result 0.4.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1727,7 +1707,7 @@ windows-strings 0.4.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-strings 0.5.0 (Apache-2.0 OR MIT)
+windows-strings 0.5.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1747,7 +1727,7 @@ windows-sys 0.60.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-sys 0.61.1 (Apache-2.0 OR MIT)
+windows-sys 0.61.2 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1759,7 +1739,7 @@ windows-targets 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-targets 0.53.4 (Apache-2.0 OR MIT)
+windows-targets 0.53.5 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1767,7 +1747,7 @@ windows-threading 0.1.0 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows-version 0.1.6 (Apache-2.0 OR MIT)
+windows-version 0.1.7 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1779,7 +1759,7 @@ windows_aarch64_gnullvm 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_aarch64_gnullvm 0.53.0 (Apache-2.0 OR MIT)
+windows_aarch64_gnullvm 0.53.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1791,7 +1771,7 @@ windows_aarch64_msvc 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_aarch64_msvc 0.53.0 (Apache-2.0 OR MIT)
+windows_aarch64_msvc 0.53.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1803,7 +1783,7 @@ windows_i686_gnu 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_i686_gnu 0.53.0 (Apache-2.0 OR MIT)
+windows_i686_gnu 0.53.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1811,7 +1791,7 @@ windows_i686_gnullvm 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_i686_gnullvm 0.53.0 (Apache-2.0 OR MIT)
+windows_i686_gnullvm 0.53.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1823,7 +1803,7 @@ windows_i686_msvc 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_i686_msvc 0.53.0 (Apache-2.0 OR MIT)
+windows_i686_msvc 0.53.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1835,7 +1815,7 @@ windows_x86_64_gnu 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_gnu 0.53.0 (Apache-2.0 OR MIT)
+windows_x86_64_gnu 0.53.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1847,7 +1827,7 @@ windows_x86_64_gnullvm 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_gnullvm 0.53.0 (Apache-2.0 OR MIT)
+windows_x86_64_gnullvm 0.53.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1859,7 +1839,7 @@ windows_x86_64_msvc 0.52.6 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
-windows_x86_64_msvc 0.53.0 (Apache-2.0 OR MIT)
+windows_x86_64_msvc 0.53.1 (Apache-2.0 OR MIT)
 https://github.com/microsoft/windows-rs
 ---------------------------------------------------------
 
@@ -1879,7 +1859,7 @@ writeable 0.6.1 (Unicode-3.0)
 https://github.com/unicode-org/icu4x
 ---------------------------------------------------------
 
-wry 0.53.3 (Apache-2.0 OR MIT)
+wry 0.53.4 (Apache-2.0 OR MIT)
 https://github.com/tauri-apps/wry
 ---------------------------------------------------------
 
