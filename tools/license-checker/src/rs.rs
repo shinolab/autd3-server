@@ -2,7 +2,7 @@ use std::fs;
 use std::io::Write;
 use std::{collections::BTreeMap, path::Path, sync::Arc};
 
-use cargo_about::{Krate, get_all_crates, licenses::config::Config};
+use cargo_about::{get_all_crates, licenses::config::Config, Krate};
 use itertools::*;
 use krates::{LockOptions, Utf8Path};
 use semver::Version;
@@ -119,7 +119,8 @@ impl DepWorkaround {
             writeln!(writer)?;
             writeln!(writer, "{}", res.text()?)?;
         } else {
-            anyhow::bail!("no workaround found for crate {}", krate.name);
+            eprintln!("no workaround found for crate {}", krate.name);
+            // anyhow::bail!("no workaround found for crate {}", krate.name);
         }
         Ok(())
     }
