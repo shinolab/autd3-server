@@ -119,8 +119,7 @@ impl DepWorkaround {
             writeln!(writer)?;
             writeln!(writer, "{}", res.text()?)?;
         } else {
-            eprintln!("no workaround found for crate {}", krate.name);
-            // anyhow::bail!("no workaround found for crate {}", krate.name);
+            anyhow::bail!("no workaround found for crate {}", krate.name);
         }
         Ok(())
     }
