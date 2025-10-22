@@ -222,7 +222,7 @@ path = "license-mit"
 
 [[dep]]
 name = "block2"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "block2-${VERSION}"
 
 [[dep]]
