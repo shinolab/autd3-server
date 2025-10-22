@@ -5,9 +5,6 @@ skip_core_tasks = true
 [tasks.check]
 dependencies = ["format", "license", "build", "lint"]
 
-[tasks.ci]
-dependencies = ["format", "build", "lint"]
-
 [tasks.build]
 dependencies = ["npm-install", "download-deps"]
 script_runner = "@shell"
@@ -30,7 +27,7 @@ args = ["clippy", "${@}", "--", "-D", "warnings"]
 dependencies = ["update"]
 cwd = "tools/license-checker"
 command = "cargo"
-args = ["run"]
+args = ["run", "--release"]
 
 [tasks.update]
 dependencies = ["update-cargo", "npm-install", "npm-update"]

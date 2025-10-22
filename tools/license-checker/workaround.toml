@@ -1,0 +1,221 @@
+[[dep]]
+name = "alloc-stdlib"
+path = "LICENSE"
+
+[[dep]]
+name = "brotli-decompressor"
+path = "LICENSE"
+tag = "${VERSION}"
+
+[[dep]]
+name = "convert_case"
+path = "LICENSE"
+
+[[dep]]
+name = "cssparser"
+path = "LICENSE"
+tag = "v${VERSION}"
+
+[[dep]]
+name = "cssparser-macros"
+path = "LICENSE"
+tag = "v${VERSION}"
+
+[[dep]]
+name = "dtoa-short"
+path = "LICENSE"
+
+[[dep]]
+host = "gitlab"
+name = "dunce"
+path = "LICENSE"
+tag = "v${VERSION}"
+
+[[dep]]
+name = "fxhash"
+
+[[dep]]
+name = "mac"
+
+[[dep]]
+name = "match_token"
+path = "LICENSE-MIT"
+branch = "main"
+
+[[dep]]
+name = "option-ext"
+path = "LICENSE.txt"
+
+[[dep]]
+name = "phf"
+path = "LICENSE"
+tag = "v${VERSION}"
+
+[[dep]]
+name = "phf_generator"
+path = "LICENSE"
+tag = "v${VERSION}"
+
+[[dep]]
+name = "phf_macros"
+path = "LICENSE"
+tag = "v${VERSION}"
+
+[[dep]]
+name = "phf_shared"
+path = "LICENSE"
+tag = "v${VERSION}"
+
+[[dep]]
+name = "ryu"
+path = "LICENSE-APACHE"
+tag = "${VERSION}"
+
+[[dep]]
+name = "selectors"
+tag = "${VERSION}"
+
+[[dep]]
+name = "siphasher"
+path = "COPYING"
+tag = "${VERSION}"
+
+[[dep]]
+name = "tauri"
+path = "LICENSE_MIT"
+tag = "tauri-v${VERSION}"
+
+[[dep]]
+name = "tauri-codegen"
+path = "LICENSE_MIT"
+tag = "tauri-codegen-v${VERSION}"
+
+[[dep]]
+name = "tauri-macros"
+path = "LICENSE_MIT"
+tag = "tauri-macros-v${VERSION}"
+
+[[dep]]
+name = "tauri-plugin-os"
+path = "LICENSE_MIT"
+tag = "os-v${VERSION}"
+
+[[dep]]
+name = "tauri-plugin-shell"
+path = "LICENSE_MIT"
+tag = "shell-v${VERSION}"
+
+[[dep]]
+name = "tauri-runtime"
+path = "LICENSE_MIT"
+tag = "tauri-runtime-v${VERSION}"
+
+[[dep]]
+name = "tauri-runtime-wry"
+path = "LICENSE_MIT"
+tag = "tauri-runtime-wry-v${VERSION}"
+
+[[dep]]
+name = "tauri-utils"
+path = "LICENSE_MIT"
+tag = "tauri-utils-v${VERSION}"
+
+[[dep]]
+name = "unic-char-property"
+path = "LICENSE-MIT"
+tag = "v${VERSION}"
+
+[[dep]]
+name = "unic-char-range"
+path = "LICENSE-MIT"
+tag = "v${VERSION}"
+
+[[dep]]
+name = "unic-common"
+path = "LICENSE-MIT"
+tag = "v${VERSION}"
+
+[[dep]]
+name = "unic-ucd-ident"
+path = "LICENSE-MIT"
+tag = "v${VERSION}"
+
+[[dep]]
+name = "unic-ucd-version"
+path = "LICENSE-MIT"
+tag = "v${VERSION}"
+
+[[dep]]
+name = "webview2-com"
+path = "LICENSE"
+branch = "main"
+
+[[dep]]
+name = "webview2-com-macros"
+path = "LICENSE"
+branch = "main"
+
+[[dep]]
+name = "webview2-com-sys"
+path = "LICENSE"
+branch = "main"
+
+[[dep]]
+name = "windows"
+path = "license-mit"
+
+[[dep]]
+name = "windows-collections"
+path = "license-mit"
+
+[[dep]]
+name = "windows-core"
+path = "license-mit"
+
+[[dep]]
+name = "windows-future"
+path = "license-mit"
+
+[[dep]]
+name = "windows-implement"
+path = "license-mit"
+
+[[dep]]
+name = "windows-interface"
+path = "license-mit"
+
+[[dep]]
+name = "windows-link"
+path = "license-mit"
+
+[[dep]]
+name = "windows-numerics"
+path = "license-mit"
+
+[[dep]]
+name = "windows-result"
+path = "license-mit"
+
+[[dep]]
+name = "windows-strings"
+path = "license-mit"
+
+[[dep]]
+name = "windows-sys"
+path = "license-mit"
+
+[[dep]]
+name = "windows-targets"
+path = "license-mit"
+
+[[dep]]
+name = "windows-threading"
+path = "license-mit"
+
+[[dep]]
+name = "windows-version"
+path = "license-mit"
+
+[[dep]]
+name = "windows_x86_64_msvc"
+path = "license-mit"
