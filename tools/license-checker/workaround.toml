@@ -233,47 +233,47 @@ name = "malloc_buf"
 
 [[dep]]
 name = "objc2"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "objc2-${VERSION}"
 
 [[dep]]
 name = "objc2-app-kit"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "frameworks-${VERSION}"
 
 [[dep]]
 name = "objc2-cloud-kit"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "frameworks-${VERSION}"
 
 [[dep]]
 name = "objc2-core-data"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "frameworks-${VERSION}"
 
 [[dep]]
 name = "objc2-core-foundation"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "frameworks-${VERSION}"
 
 [[dep]]
 name = "objc2-core-graphics"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "frameworks-${VERSION}"
 
 [[dep]]
 name = "objc2-core-image"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "frameworks-${VERSION}"
 
 [[dep]]
 name = "objc2-core-text"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "frameworks-${VERSION}"
 
 [[dep]]
 name = "objc2-core-video"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "frameworks-${VERSION}"
 
 [[dep]]
@@ -283,32 +283,32 @@ tag = "objc2-encode-${VERSION}"
 
 [[dep]]
 name = "objc2-exception-helper"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "frameworks-${VERSION}"
 
 [[dep]]
 name = "objc2-foundation"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "frameworks-${VERSION}"
 
 [[dep]]
 name = "objc2-javascript-core"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "frameworks-${VERSION}"
 
 [[dep]]
 name = "objc2-quartz-core"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "frameworks-${VERSION}"
 
 [[dep]]
 name = "objc2-security"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "frameworks-${VERSION}"
 
 [[dep]]
 name = "objc2-web-kit"
-path = "LICENSE.txt"
+path = "LICENSE.md"
 tag = "frameworks-${VERSION}"
 
 [[dep]]

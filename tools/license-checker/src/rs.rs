@@ -110,11 +110,14 @@ impl DepWorkaround {
 
             let res = reqwest::blocking::get(&url)?;
             if !res.status().is_success() {
-                anyhow::bail!(
-                    "failed to fetch license file from {}: {}",
+                eprintln!(
+                    "failed to fetch license file for {} {} from {}: {}",
+                    krate.name,
+                    krate.version,
                     url,
                     res.status()
                 );
+                return Ok(());
             }
             writeln!(writer)?;
             writeln!(writer, "{}", res.text()?)?;
