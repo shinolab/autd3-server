@@ -81,7 +81,7 @@ def download_and_extract(repo: str, name: str, version: str) -> None:
     tmp_file.unlink()
 
     shutil.copyfile(
-        "tmp/ThirdPartyNotice.txt", f"src-tauri/{name}-NOTICE"
+        "tmp/ThirdPartyNotices.txt", f"src-tauri/{name}-NOTICE"
     )
     shutil.copyfile("tmp/LICENSE", f"src-tauri/{name}-LICENSE")
 
