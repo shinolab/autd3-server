@@ -6,19 +6,8 @@ on:
     - 'v*'
 
 jobs:
-  license:
-    name: license
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup-build
-        with:
-          os: ubuntu-latest
-      - run: cargo make license
-
   release:
     name: create-github-release
-    needs: [license]
     runs-on: ubuntu-latest
     steps:
       - id: create_release
@@ -54,6 +43,7 @@ jobs:
           node-version: 'lts/*'
           cache: 'npm'
           cache-dependency-path: package-lock.json
+      - run: cargo make license
       - run: cargo make build
       - uses: actions/download-artifact@v4
         with:
@@ -61,7 +51,7 @@ jobs:
       - id: get_release_info
         uses: juliangruber/read-file-action@v1
         with:
-          path: release_id.txt
+          path: release_id.txti
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

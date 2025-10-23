@@ -1,11 +1,10 @@
 use std::{
     collections::HashMap,
     fs,
+    io::Write,
     io::{BufReader, Read},
     path::Path,
 };
-
-use crate::Dependency;
 
 use serde::Deserialize;
 
@@ -27,14 +26,10 @@ struct PackageJson {
     pub license: String,
 }
 
-pub fn collect_npm_deps<P1, P2>(
+fn collect_npm_deps<P1: AsRef<Path>, P2: AsRef<Path>>(
     node_modules_path: P1,
     package_lock_json_path: P2,
-) -> anyhow::Result<Vec<Dependency>>
-where
-    P1: AsRef<Path>,
-    P2: AsRef<Path>,
-{
+) -> anyhow::Result<Vec<PackageJson>> {
     let mut package_lock_json = String::new();
     fs::File::open(package_lock_json_path)
         .map(BufReader::new)?
@@ -62,7 +57,7 @@ where
         node_modules_path.as_ref().to_str().unwrap(),
         "**/package.json"
     ))?
-    .map(|entry| -> anyhow::Result<Option<Dependency>> {
+    .map(|entry| -> anyhow::Result<Option<PackageJson>> {
         let entry = entry?;
         let mut file_content = String::new();
         fs::File::open(&entry)
@@ -73,25 +68,9 @@ where
             if dev_packages.contains(&package.name) {
                 return Ok(None);
             }
-            Ok(Some(Dependency {
-                name: package.name,
-                version: package.version,
-                license: Some(package.license),
-                license_file: None,
-                repository: match package.repository {
-                    serde_json::Value::String(rep) => Some(rep),
-                    serde_json::Value::Object(map) => {
-                        if let Some(rep) = map.get("url") {
-                            rep.as_str()
-                                .map(|s| s.trim_start_matches("git+").to_owned())
-                        } else {
-                            anyhow::bail!("invalid repository type");
-                        }
-                    }
-                    _ => anyhow::bail!("invalid repository type"),
-                },
-            }))
+            Ok(Some(package))
         } else {
+            eprintln!("failed to parse package.json: {}", entry.display());
             Ok(None)
         }
     })
@@ -99,4 +78,45 @@ where
     .into_iter()
     .filter_map(std::convert::identity)
     .collect())
+}
+
+pub fn get_npm_deps<P1: AsRef<Path>, P2: AsRef<Path>>(
+    node_modules_path: P1,
+    package_lock_json_path: P2,
+) -> anyhow::Result<String> {
+    let deps = collect_npm_deps(node_modules_path, package_lock_json_path)?;
+
+    let mut writer = std::io::BufWriter::new(Vec::new());
+
+    for dep in deps {
+        writeln!(writer)?;
+        writeln!(
+            writer,
+            "---------------------------------------------------------"
+        )?;
+        writeln!(writer)?;
+        writeln!(writer, "{} {} ({})", dep.name, dep.version, dep.license)?;
+        let repo = match dep.repository {
+            serde_json::Value::String(rep) => Some(rep),
+            serde_json::Value::Object(map) => {
+                if let Some(rep) = map.get("url") {
+                    rep.as_str()
+                        .map(|s| s.trim_start_matches("git+").to_owned())
+                } else {
+                    anyhow::bail!("invalid repository type");
+                }
+            }
+            _ => anyhow::bail!("invalid repository type"),
+        };
+        if let Some(repo) = repo {
+            writeln!(writer, "{}", repo)?;
+        }
+        writeln!(writer)?;
+        writeln!(
+            writer,
+            "---------------------------------------------------------"
+        )?;
+    }
+
+    Ok(String::from_utf8(writer.into_inner()?)?)
 }

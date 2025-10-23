@@ -9,7 +9,7 @@
 This program is not signed, so you need to allow it to run. To do this, follow these steps:
 ```
 cd /Applications
-xattr -d com.apple.quarantine AUTD3\ Server.app
+xattr -d com.apple.quarantine AUTD3-Server.app
 ```
 Or, build from source as described below.
 
@@ -29,7 +29,9 @@ cargo make build
 
 # LICENSE
 
-* See [LICENSE](./LICENSE) and [NOTICE](./NOTICE) for more information.
+MIT
+
+This library depends on some third-party libraries. Please check their licenses in the `NOTICE` in the distributed assets.
 
 # Author
 
