@@ -51,7 +51,7 @@ jobs:
       - id: get_release_info
         uses: juliangruber/read-file-action@v1
         with:
-          path: release_id.txti
+          path: release_id.txt
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
