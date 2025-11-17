@@ -12,6 +12,7 @@ export interface TwinCATOptions {
     task: number;
     base: CpuBaseTime;
     keep: boolean;
+    delay: number;
     debug: boolean;
 }
 

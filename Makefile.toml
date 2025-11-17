@@ -93,7 +93,7 @@ with Path("package.json").open() as f:
 
 tmp_file = Path("tmp.zip")
 urllib.request.urlretrieve(
-    f"https://github.com/shinolab/TwinCATAUTDServer/releases/download/v{version}/TwinCATAUTDServer-v{version}.zip",
+    f"https://github.com/shinolab/TwinCATAUTDServer/releases/download/v1.0.0.0/TwinCATAUTDServer-v1.0.0.0.zip",
     tmp_file,
 )
 shutil.unpack_archive(tmp_file, "src-tauri/TwinCATAUTDServer")

@@ -108,6 +108,14 @@
   <label for="keep">Keep XAE Shell open:</label>
   <CheckBox id="keep" bind:checked={twincatOptions.keep} />
 
+  <label for="delay">Delay time [ms]:</label>
+  <NumberInput
+    id="delay"
+    bind:value={twincatOptions.delay}
+    min="0"
+    step="1000"
+  />
+
   <label for="debug">Debug:</label>
   <CheckBox id="debug" bind:checked={twincatOptions.debug} />
 
