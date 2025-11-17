@@ -76,6 +76,7 @@ pub struct TwinCATOptions {
     pub task: u32,
     pub base: CpuBaseTime,
     pub keep: bool,
+    pub delay: u32,
     pub debug: bool,
 }
 
@@ -89,6 +90,7 @@ impl Default for TwinCATOptions {
             task: 1,
             base: CpuBaseTime::T1ms,
             keep: true,
+            delay: 1000,
             debug: false,
         }
     }

@@ -187,6 +187,8 @@ async fn run_twincat_server(
         twincat_options.task.to_string(),
         "-b".to_string(),
         twincat_options.base.to_string(),
+        "--delay".to_string(),
+        twincat_options.delay.to_string(),
     ];
     if twincat_options.keep {
         args.push("-k".to_string());
