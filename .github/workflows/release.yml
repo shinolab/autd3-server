@@ -18,7 +18,7 @@ jobs:
           prerelease: false
       - run: |
           echo "${{ steps.create_release.outputs.id }}" > release_id.txt
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: release_id
           path: release_id.txt
@@ -34,18 +34,18 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./.github/actions/setup-build
         with:
           os: ${{ matrix.os }}
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 'lts/*'
           cache: 'npm'
           cache-dependency-path: package-lock.json
       - run: cargo make license
       - run: cargo make build
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v6
         with:
           name: release_id
       - id: get_release_info
