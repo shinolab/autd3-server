@@ -17,9 +17,9 @@ jobs:
     outputs:
       src: ${{ steps.changed-files-yaml.outputs.src_any_changed }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - id: changed-files-yaml
-        uses: tj-actions/changed-files@v46
+        uses: tj-actions/changed-files@v47
         with:
           files_yaml: |
             src:
@@ -43,12 +43,12 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./.github/actions/setup-build
         with:
           components: "rustfmt, clippy"
           os: ${{ matrix.os }}
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 'lts/*'
           cache: 'npm'
