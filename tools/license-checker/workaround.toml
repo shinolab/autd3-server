@@ -315,3 +315,11 @@ tag = "frameworks-${VERSION}"
 name = "sigchld"
 tag = "{VERSION}"
 branch = "main"
+
+[[dep]]
+name = "dlopen2"
+path = "LICENSE"
+
+[[dep]]
+name = "dlopen2_derive"
+path = "LICENSE"
